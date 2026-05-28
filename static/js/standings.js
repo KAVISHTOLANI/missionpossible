@@ -155,7 +155,7 @@
       <li>Any confirmed participant across any of the 3 teams is eligible.</li>
       <li>A participant must be on the official submitted list (submitted to the WhatsApp group before 6:00 PM the day prior) to be eligible for Overall MVP points for that event.</li>
       <li>A participant may compete in a <strong>maximum of 5 events</strong> across the season. Points are only counted across your participating events.</li>
-      <li>In <strong>team sports</strong> (Basketball, Throwball, Cricket, Kabaddi, Cycling &amp; Tug of War, Swimming &amp; Sand Volleyball) — a player must have played a minimum of <strong>10 minutes of actual game time</strong> to be eligible for points from that event. If they are a substitute, they must play to receive points for that event.</li>
+      <li>In <strong>team sports</strong> (Basketball, Throwball, Cricket, Kabaddi, Cycling &amp; Tug of War, Swimming &amp; Sand Volleyball) — a player must play for at least <strong>1 minute</strong> or make some contribution to be eligible for points from that event. If they are a substitute, they must play to receive points for that event.</li>
       <li>In <strong>individual and cultural events</strong> (Carrom, Chess, Table Tennis, Lemon &amp; Spoon Race, Sack Race, Rangoli, Cooking Competition, 8-Ball Pool) — all active participants are eligible. No minimum time rule applies.</li>
     </ol>
     <p><strong>POINTS SYSTEM</strong></p>
