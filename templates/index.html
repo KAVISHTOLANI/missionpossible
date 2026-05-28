@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block title %}Mission Possible 2026{% endblock %}
+{% block page %}home{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap hero__inner">
+
+    <div class="hero__logo-wrap reveal">
+      <img class="hero__logo brand-logo brand-logo--hero" src="{{ url_for('static', filename='images/logos/deenadayal-logo.png') }}" alt="Deenadayal Group of Companies">
+    </div>
+
+    <div class="hero__kicker reveal" data-delay="1">Presents</div>
+
+    <!-- Main title -->
+    <h1 style="margin:0;">
+      <span class="hero__title-main reveal" data-delay="1">Mission Possible</span>
+      <span class="hero__title-year reveal accent" data-delay="2">2026</span>
+    </h1>
+
+    <p class="hero__sub reveal" data-delay="3">
+      Beyond Impossible &nbsp;·&nbsp; Maredpally, Hyderabad &nbsp;·&nbsp; June – August 2026
+    </p>
+
+    <!-- Countdown -->
+    <div class="countdown reveal" data-delay="3" id="countdown" aria-label="Countdown to opening day">
+      <div class="cd__box"><span class="cd__n" data-u="d">00</span><span class="cd__l">Days</span></div>
+      <div class="cd__box"><span class="cd__n" data-u="h">00</span><span class="cd__l">Hours</span></div>
+      <div class="cd__box"><span class="cd__n" data-u="m">00</span><span class="cd__l">Minutes</span></div>
+      <div class="cd__box"><span class="cd__n" data-u="s">00</span><span class="cd__l">Seconds</span></div>
+    </div>
+    <div class="countdown__caption reveal" data-delay="4">Opening Day · Basketball at YMCA · 4 June 2026</div>
+
+    <div class="hero__cta reveal" data-delay="4">
+      <a class="btn btn--white" href="/sports">View Sports <span class="arr">→</span></a>
+      <a class="btn btn--ghost" href="/live">Live Scores <span class="arr">→</span></a>
+    </div>
+  </div>
+  <div class="hero__scroll" aria-hidden="true"><span></span></div>
+</header>
+
+<!-- ===================== STATS STRIP ===================== -->
+<section class="section--tight">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stats__cell"><div class="stats__n">21</div><div class="stats__l">Events</div></div>
+      <div class="stats__cell"><div class="stats__n">3</div><div class="stats__l">Teams</div></div>
+      <div class="stats__cell"><div class="stats__n">3</div><div class="stats__l">Months</div></div>
+      <div class="stats__cell"><div class="stats__n">15 Aug</div><div class="stats__l">Grand Finale</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SEASONS ===================== -->
+<section class="section--tight">
+  <div class="wrap">
+    <div class="seasonline reveal">
+      <div class="seasonline__kicker">Legacy of Mission Possible</div>
+      <h2 class="seasonline__title">The Journey So Far</h2>
+      <div class="seasonline__grid">
+        <article class="seasoncard reveal" data-delay="0">
+          <div class="seasoncard__year">2023</div>
+          <div class="seasoncard__meta">Season 1</div>
+          <div class="seasoncard__name">The Break Through</div>
+        </article>
+        <article class="seasoncard reveal" data-delay="1">
+          <div class="seasoncard__year">2024</div>
+          <div class="seasoncard__meta">Season 2</div>
+          <div class="seasoncard__name">The Winning Edge</div>
+        </article>
+        <article class="seasoncard reveal" data-delay="2">
+          <div class="seasoncard__year">2025</div>
+          <div class="seasoncard__meta">Season 3</div>
+          <div class="seasoncard__name">Rise Of Champions</div>
+        </article>
+        <article class="seasoncard seasoncard--active reveal" data-delay="3">
+          <div class="seasoncard__year">2026</div>
+          <div class="seasoncard__meta">Season 4</div>
+          <div class="seasoncard__name">Beyond Impossible</div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TICKER ===================== -->
+<div class="ticker" id="ticker">
+  <div class="ticker__track" id="tickerTrack"><span class="ticker__item">Loading the latest…</span></div>
+</div>
+
+<!-- ===================== TEAMS ===================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="ornament-line reveal"><span>The Teams</span></div>
+    <div class="sec-label reveal">
+      <span class="num">001</span>
+      <span class="txt">Three Contenders · One Trophy</span>
+    </div>
+    <div class="grid cols-3" id="homeTeams">
+      <div class="skeleton">Loading teams…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NEXT UP ===================== -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="ornament-line reveal"><span>Schedule</span></div>
+    <div class="sec-label reveal">
+      <span class="num">002</span>
+      <span class="txt">Next Up</span>
+    </div>
+    <div class="nextup" id="homeNext"><div class="skeleton">Loading events…</div></div>
+    <div class="reveal" style="margin-top:36px">
+      <a class="btn btn--ghost" href="/sports">View All Sports <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NAVIGATE ===================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="ornament-line reveal"><span>Navigate</span></div>
+    <div class="sec-label reveal">
+      <span class="num">003</span>
+      <span class="txt">Explore Mission Possible</span>
+    </div>
+    <div class="qgrid">
+      {% set tiles = [
+        ('Sports','/sports','▲'), ('Calendar','/calendar','◷'), ('Teams','/teams','◆'),
+        ('Gallery','/gallery','◉'),
+        ('Live Scores','/live','●'), ('Standings','/standings','■'), ('Champions','/champions','🏅'), ('Awards','/awards','★'),
+        ('Announcements','/announcements','✦')
+      ] %}
+      {% for label, href, sym in tiles %}
+        <a class="qtile reveal card" data-delay="{{ loop.index0 % 4 }}" href="{{ href }}">
+          <span class="qtile__sym">{{ sym }}</span>
+          <span class="qtile__label">{{ label }}</span>
+          <span class="qtile__arr">→</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Live Scores{% endblock %}
+{% block page %}live{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">{% endblock %}
+
+{% block content %}
+<section class="phero">
+  <div class="wrap">
+    <div class="eyebrow reveal">Real-Time</div>
+    <h1 class="reveal" data-delay="1">Live <span class="italic accent">Scores</span></h1>
+    <p class="reveal" data-delay="2">Scores refresh automatically every 30 seconds. No need to reload.</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div id="ytZone"></div>
+    <div id="liveZone"><div class="skeleton">Connecting to the scoreboard…</div></div>
+    <div id="completedZone" style="margin-top:56px"></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/live.js') }}"></script>{% endblock %}

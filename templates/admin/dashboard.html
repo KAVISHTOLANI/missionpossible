@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard · Mission Possible Admin</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/logos/deenadayal-logo.png') }}" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body class="adminbody">
+
+  <!-- Sidebar -->
+  <aside class="asidebar" id="asidebar">
+    <div class="asidebar__brand">
+      <img class="brand-logo brand-logo--sidebar" src="{{ url_for('static', filename='images/logos/deenadayal-logo.png') }}" alt="Deenadayal Group of Companies">
+      <div><strong>Mission Possible</strong><span>Admin Panel</span></div>
+    </div>
+    <nav class="asidebar__nav">
+      <button class="anav active" data-panel="announcements">Announcements</button>
+      <button class="anav" data-panel="live">Live Scores</button>
+      <button class="anav" data-panel="standings">Standings</button>
+      <button class="anav" data-panel="awards">Awards</button>
+      <button class="anav" data-panel="champions">Champions</button>
+      <button class="anav" data-panel="events">Event Details</button>
+      <button class="anav" data-panel="rules">Event Rules</button>
+      <button class="anav" data-panel="gallery">Gallery</button>
+      <button class="anav" data-panel="audit">Audit Log</button>
+    </nav>
+    <div class="asidebar__foot">
+      <a href="/" target="_blank">View site ↗</a>
+      <a href="{{ url_for('admin.logout') }}">Log out →</a>
+    </div>
+  </aside>
+
+  <button class="amenu" id="amenu" aria-label="Menu">☰</button>
+
+  <main class="amain">
+    <div id="atoast" class="atoast"></div>
+
+    <!-- ANNOUNCEMENTS -->
+    <section class="apanel active" data-panel="announcements">
+      <h1>Announcements</h1>
+      <div class="acard">
+        <h3>Post a new announcement</h3>
+        <label class="field"><span>Title</span><input id="annTitle" placeholder="e.g. Basketball results are in!"></label>
+        <label class="field"><span>Body</span><textarea id="annBody" rows="3" placeholder="Write the announcement…"></textarea></label>
+        <label class="field"><span>Tag</span>
+          <select id="annTag"><option>Info</option><option>Urgent</option><option>Result</option></select>
+        </label>
+        <button class="btn btn--gold" onclick="addAnnouncement()">Publish →</button>
+      </div>
+      <div class="acard">
+        <h3>Existing announcements</h3>
+        <div id="annExisting" class="alist">
+          {% for a in announcements %}
+            <div class="arow" data-id="{{ a.id }}">
+              <div><strong>{{ a.title }}</strong><span class="arow__meta">{{ a.tag }} · {{ a.date }}</span></div>
+              <button class="abtn-del" onclick="delAnnouncement('{{ a.id }}', this)">Delete</button>
+            </div>
+          {% else %}<div class="muted">No announcements yet.</div>{% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE -->
+    <section class="apanel" data-panel="live">
+      <h1>Live Scores</h1>
+      <div class="acard">
+        <h3>Current match</h3>
+        <p class="amini">Set live updates by sport type. Unsupported events are hidden from live scoring.</p>
+        <label class="field"><span>Event</span>
+          <select id="liveEvent" onchange="onLiveEventChange()">
+            {% for e in events if e.id not in ['carrom', 'chess', 'cooking', '8ball-pool', 'singing', 'dancing', 'skit', 'fancy-dress'] %}
+              <option value="{{ e.id }}">{{ e.name }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label class="field"><span>Round / Stage</span>
+          <select id="liveRound"></select>
+        </label>
+        <label class="field"><span>Status</span>
+          <select id="liveStatus"><option value="upcoming">Upcoming</option><option value="live" selected>Live</option><option value="completed">Completed (archive)</option></select>
+        </label>
+        <div class="scoregrid scoregrid--2">
+          <label class="field"><span>Team A</span>
+            <select id="liveTeamA">
+              {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+            </select>
+          </label>
+          <label class="field"><span>Score A</span><input type="number" id="liveScoreA" value="0" min="0"></label>
+          <label class="field"><span>Team B</span>
+            <select id="liveTeamB">
+              {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+            </select>
+          </label>
+          <label class="field"><span>Score B</span><input type="number" id="liveScoreB" value="0" min="0"></label>
+        </div>
+        <div id="liveCustomWrap" class="live-custom-wrap">
+          <div id="liveCustomRace" class="live-custom hide">
+            <label class="field"><span>Participant 1 Name</span><input id="raceP1Name" placeholder="Name"></label>
+            <label class="field"><span>Participant 1 Team</span>
+              <select id="raceP1Team">
+                <option value="">Select team</option>
+                {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+              </select>
+            </label>
+            <label class="field"><span>Participant 1 Score</span><input id="raceP1Score" type="number" min="0" value="0"></label>
+            <label class="field"><span>Participant 1 Status</span>
+              <select id="raceP1Status"><option value="leading">Leading</option><option value="trailing">Trailing</option><option value="level">Level</option></select>
+            </label>
+            <label class="field"><span>Participant 2 Name</span><input id="raceP2Name" placeholder="Name"></label>
+            <label class="field"><span>Participant 2 Team</span>
+              <select id="raceP2Team">
+                <option value="">Select team</option>
+                {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+              </select>
+            </label>
+            <label class="field"><span>Participant 2 Score</span><input id="raceP2Score" type="number" min="0" value="0"></label>
+            <label class="field"><span>Participant 2 Status</span>
+              <select id="raceP2Status"><option value="leading">Leading</option><option value="trailing">Trailing</option><option value="level">Level</option></select>
+            </label>
+          </div>
+          <div id="liveCustomCricket" class="live-custom hide">
+            <label class="field"><span>Batting Team</span><input id="crBattingTeam" placeholder="Team name"></label>
+            <label class="field"><span>Score</span><input id="crScore" placeholder="e.g. 127/4"></label>
+            <label class="field"><span>Wickets</span><input id="crWickets" type="number" min="0" value="0"></label>
+            <label class="field"><span>Overs</span><input id="crOvers" placeholder="e.g. 16.3"></label>
+            <label class="field"><span>Striker</span><input id="crStriker" placeholder="Player on strike"></label>
+            <label class="field"><span>Non-striker</span><input id="crNonStriker" placeholder="Player not on strike"></label>
+            <label class="field"><span>Bowler</span><input id="crBowler" placeholder="Current bowler"></label>
+            <label class="field"><span>Target (optional)</span><input id="crTarget" placeholder="e.g. 168"></label>
+          </div>
+        </div>
+        <div class="abtn-row">
+          <button class="btn btn--gold" onclick="updateLive()">Update Scoreboard →</button>
+          <button class="btn btn--ghost" onclick="clearLiveRecord()">Remove Match Record</button>
+        </div>
+      </div>
+      <div class="acard">
+        <h3>YouTube Live</h3>
+        <p class="amini">Paste a YouTube Live link (or embed link). This will appear on the public Live page.</p>
+        <label class="field"><span>YouTube URL</span><input id="ytLiveUrl" placeholder="https://www.youtube.com/watch?v=... or https://www.youtube.com/embed/..."></label>
+        <button class="btn btn--gold" onclick="saveYouTubeLive()">Save YouTube Link →</button>
+      </div>
+      <div class="acard">
+        <h3>Post commentary</h3>
+        <label class="field"><span>Update</span><input id="cmtText" placeholder="e.g. Creators take an early lead!"></label>
+        <button class="btn btn--ghost" onclick="addCommentary()">Add Commentary →</button>
+      </div>
+    </section>
+
+    <!-- STANDINGS -->
+    <section class="apanel" data-panel="standings">
+      <h1>Standings</h1>
+      <div class="acard">
+        <h3>Record points or penalty</h3>
+        <input type="hidden" id="stEntryId">
+        <label class="field"><span>Team</span>
+          <select id="stTeam">
+            {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+          </select>
+        </label>
+        <label class="field"><span>Event</span>
+          <select id="stEvent">
+            {% for e in events %}<option value="{{ e.name }}">{{ e.name }}</option>{% endfor %}
+          </select>
+        </label>
+        <label class="field"><span>Points</span><input type="number" id="stPoints" value="0"></label>
+        <label class="checkrow"><input type="checkbox" id="stPenalty"> <span>This is a penalty deduction</span></label>
+        <label class="field"><span>Note (optional)</span><input id="stNote" placeholder="e.g. Winner of Basketball"></label>
+        <div class="abtn-row">
+          <button class="btn btn--gold" onclick="updateStandings()">Save Entry →</button>
+          <button class="btn btn--ghost" onclick="clearStandingsForm()">Clear Form</button>
+        </div>
+        <p class="amini">Tip: enter 300 for a winner, 150 for runner-up. Tick the box and enter 25 for an unsportsmanlike penalty.</p>
+      </div>
+      <div class="acard">
+        <h3>Edit / Remove points entries</h3>
+        <p class="amini">You can edit any row by tapping Edit, then Save Entry. Delete removes that row and recalculates totals.</p>
+        <div id="stEntries" class="alist"><div class="muted">Loading points entries...</div></div>
+      </div>
+      <div class="acard">
+        <h3>Medals (Gold / Silver / Bronze)</h3>
+        <p class="amini">These show on the public points table and can be updated anytime.</p>
+        <label class="field"><span>Team</span>
+          <select id="mdTeam">
+            {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+          </select>
+        </label>
+        <div class="scoregrid scoregrid--2">
+          <label class="field"><span>Gold</span><input type="number" id="mdGold" value="0" min="0"></label>
+          <label class="field"><span>Silver</span><input type="number" id="mdSilver" value="0" min="0"></label>
+          <label class="field"><span>Bronze</span><input type="number" id="mdBronze" value="0" min="0"></label>
+        </div>
+        <button class="btn btn--gold" onclick="saveMedals()">Save Medals →</button>
+      </div>
+      <div class="acard">
+        <h3>Overall MVP Leaderboard</h3>
+        <p class="amini">Add or update player rows. Public page shows top 10 by points (then gold, silver).</p>
+        <input type="hidden" id="ovmvpId">
+        <div class="scoregrid scoregrid--2">
+          <label class="field"><span>Player name</span><input id="ovmvpPlayer" placeholder="Player name"></label>
+          <label class="field"><span>Team name</span><input id="ovmvpTeam" placeholder="Team Dominators"></label>
+          <label class="field"><span>No. of Gold</span><input type="number" id="ovmvpGold" value="0" min="0"></label>
+          <label class="field"><span>No. of Silver</span><input type="number" id="ovmvpSilver" value="0" min="0"></label>
+          <label class="field"><span>Points</span><input type="number" id="ovmvpPoints" value="0" min="0"></label>
+        </div>
+        <div class="abtn-row">
+          <button class="btn btn--gold" onclick="saveOverallMvpRow()">Save Overall MVP Row →</button>
+          <button class="btn btn--ghost" onclick="clearOverallMvpForm()">Clear Form</button>
+        </div>
+        <div id="ovmvpRows" class="alist"><div class="muted">Loading...</div></div>
+      </div>
+      <div class="acard">
+        <h3>Fair Play Leaderboard</h3>
+        <p class="amini">Add or update fair play rows with team name and fair play points.</p>
+        <input type="hidden" id="fairPlayId">
+        <div class="scoregrid scoregrid--2">
+          <label class="field"><span>Team name</span><input id="fairPlayTeam" placeholder="Team Royals"></label>
+          <label class="field"><span>Fair play points</span><input type="number" id="fairPlayPoints" value="0" min="0"></label>
+        </div>
+        <div class="abtn-row">
+          <button class="btn btn--gold" onclick="saveFairPlayRow()">Save Fair Play Row →</button>
+          <button class="btn btn--ghost" onclick="clearFairPlayForm()">Clear Form</button>
+        </div>
+        <div id="fairPlayRows" class="alist"><div class="muted">Loading...</div></div>
+      </div>
+    </section>
+
+    <!-- AWARDS -->
+    <section class="apanel" data-panel="awards">
+      <h1>Awards</h1>
+      <div class="acard">
+        <h3>Event MVP</h3>
+        <label class="field"><span>Event</span>
+          <select id="mvpEvent">
+            {% for e in events if e.badge not in ['cultural', 'finale'] %}
+              <option value="{{ e.id }}">{{ e.name }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label class="field"><span>Player name</span><input id="mvpPlayer" placeholder="Player name"></label>
+        <label class="field"><span>MVP photo URL (optional)</span><input id="mvpImage" placeholder="https://..."></label>
+        <label class="field"><span>Team</span>
+          <select id="mvpTeam">{% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}</select>
+        </label>
+        <button class="btn btn--gold" onclick="setEventMvp()">Save MVP →</button>
+      </div>
+      <div class="acard">
+        <h3>Overall MVP</h3>
+        <label class="field"><span>Player name</span><input id="bpPlayer" placeholder="Player name"></label>
+        <label class="field"><span>Photo URL (optional)</span><input id="bpImage" placeholder="https://..."></label>
+        <label class="field"><span>Team</span>
+          <select id="bpTeam">{% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}</select>
+        </label>
+        <button class="btn btn--gold" onclick="setBestPlayer()">Save →</button>
+      </div>
+      <div class="acard">
+        <h3>Overall Best Team</h3>
+        <label class="field"><span>Team</span>
+          <select id="btTeam">{% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}</select>
+        </label>
+        <button class="btn btn--gold" onclick="setBestTeam()">Save →</button>
+      </div>
+      <div class="acard">
+        <h3>Fair Play Award</h3>
+        <label class="field"><span>Team</span>
+          <select id="fpTeam">{% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}</select>
+        </label>
+        <div class="abtn-row">
+          <button class="btn btn--gold" onclick="setFairPlay()">Save Fair Play →</button>
+          <button class="btn btn--ghost" onclick="clearAwards()">Clear All Awards</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAMPIONS -->
+    <section class="apanel" data-panel="champions">
+      <h1>Champions</h1>
+      <div class="acard">
+        <h3>Set Champions (Public Page)</h3>
+        <label class="field"><span>Event</span>
+          <select id="chEvent" onchange="loadChampionRow()">
+            {% for e in events %}<option value="{{ e.id }}">{{ e.name }}</option>{% endfor %}
+          </select>
+        </label>
+        <label class="field"><span>Sport category (optional)</span><input id="chCategory" placeholder="e.g. Outdoor Sports"></label>
+        <label class="field"><span>Champion type</span>
+          <select id="chType" onchange="toggleChampionType()">
+            <option value="team">Team Sport</option>
+            <option value="individual">Individual Sport</option>
+          </select>
+        </label>
+        <div id="chTeamBlock" class="live-custom">
+          <label class="field"><span>Team</span>
+            <select id="chTeam">
+              <option value="">Select team</option>
+              {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+            </select>
+          </label>
+          <label class="field"><span>Team display name</span><input id="chTeamName" placeholder="Team Creators"></label>
+          <label class="field"><span>Second place team</span>
+            <select id="chSecondTeam">
+              <option value="">Select team</option>
+              {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+            </select>
+          </label>
+          <label class="field"><span>Second place team display name</span><input id="chSecondTeamName" placeholder="Team Royals"></label>
+          <label class="field" style="grid-column:1 / -1"><span>All player names (one per line)</span><textarea id="chPlayers" rows="5" placeholder="Player 1&#10;Player 2&#10;Player 3"></textarea></label>
+        </div>
+        <div id="chIndividualBlock" class="live-custom hide">
+          <label class="field"><span>Player name</span><input id="chPlayerName" placeholder="Champion player name"></label>
+          <label class="field"><span>Team</span>
+            <select id="chIndTeam">
+              <option value="">Select team</option>
+              {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+            </select>
+          </label>
+          <label class="field"><span>Team display name</span><input id="chIndTeamName" placeholder="Team Royals"></label>
+          <label class="field"><span>Second place player name</span><input id="chSecondPlayerName" placeholder="Runner-up player"></label>
+          <label class="field"><span>Second place team</span>
+            <select id="chSecondIndTeam">
+              <option value="">Select team</option>
+              {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+            </select>
+          </label>
+          <label class="field"><span>Second place team display name</span><input id="chSecondIndTeamName" placeholder="Team Dominators"></label>
+        </div>
+        <div class="abtn-row">
+          <button class="btn btn--gold" onclick="saveChampion()">Save Champion →</button>
+          <button class="btn btn--ghost" onclick="deleteChampion()">Delete for Event</button>
+        </div>
+      </div>
+      <div class="acard">
+        <h3>Saved champions</h3>
+        <div id="championsExisting" class="alist">
+          {% for c in champions %}
+            <div class="arow" data-id="{{ c.event_id }}">
+              <div>
+                <strong>{{ c.event_name }}</strong>
+                <span class="arow__meta">{{ c.champion_type }}{% if c.sport_category %} · {{ c.sport_category }}{% endif %}</span>
+              </div>
+            </div>
+          {% else %}<div class="muted">No champions added yet.</div>{% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENT DETAILS -->
+    <section class="apanel" data-panel="events">
+      <h1>Event Details</h1>
+      <div class="acard">
+        <h3>Edit sports page &amp; event info</h3>
+        <p class="amini">Updates name, date, venue, weather, category, card styling, and status label on the Sports page.</p>
+        <label class="field"><span>Event</span>
+          <select id="evEvent" onchange="loadEventDetails()">
+            {% for e in events %}<option value="{{ e.id }}">{{ e.name }}</option>{% endfor %}
+          </select>
+        </label>
+        <div class="scoregrid scoregrid--2">
+          <label class="field"><span>Event name</span><input id="evName" placeholder="e.g. Basketball"></label>
+          <label class="field"><span>Card number</span><input id="evNum" placeholder="#01"></label>
+          <label class="field"><span>Emoji</span><input id="evEmoji" placeholder="🏀" maxlength="4"></label>
+          <label class="field"><span>Category label</span><input id="evCategory" placeholder="Outdoor Sports"></label>
+          <label class="field"><span>Display date</span><input id="evDate" placeholder="4th June 2026"></label>
+          <label class="field"><span>Day</span><input id="evDay" placeholder="Thursday"></label>
+          <label class="field"><span>Event timing</span><input id="evTime" placeholder="e.g. 10:00 AM - 1:00 PM"></label>
+          <label class="field"><span>Calendar date (ISO)</span><input type="date" id="evIsoDate"></label>
+          <label class="field"><span>Badge type</span>
+            <select id="evBadge">
+              <option value="sports">Sports</option>
+              <option value="cultural">Cultural</option>
+              <option value="indoor">Indoor</option>
+              <option value="fun">Fun</option>
+              <option value="finale">Finale</option>
+            </select>
+          </label>
+          <label class="field"><span>Status label</span>
+            <select id="evStatus">
+              <option value="upcoming">Upcoming</option>
+              <option value="live">Live</option>
+              <option value="completed">Completed</option>
+            </select>
+          </label>
+          <label class="field"><span>Card banner style</span>
+            <select id="evBanner">
+              <option value="banner-basketball">Basketball (blue)</option>
+              <option value="banner-throwball">Throwball (green)</option>
+              <option value="banner-swimming">Swimming (blue)</option>
+              <option value="banner-cycling">Cycling (orange)</option>
+              <option value="banner-badminton">Badminton (purple)</option>
+              <option value="banner-rangoli">Rangoli (red)</option>
+              <option value="banner-cricket">Cricket (lime)</option>
+              <option value="banner-kabaddi">Kabaddi (orange-red)</option>
+              <option value="banner-tabletennis">Table tennis (teal)</option>
+              <option value="banner-carrom">Carrom (blue)</option>
+              <option value="banner-cooking">Cooking (gold)</option>
+              <option value="banner-singing">Singing (purple)</option>
+              <option value="banner-dancing">Dancing (pink)</option>
+              <option value="banner-skit">Skit (blue)</option>
+              <option value="banner-drama">Drama (red)</option>
+              <option value="banner-fancy">Fancy Dress (gold)</option>
+              <option value="banner-annualday">Finale / gold</option>
+            </select>
+          </label>
+          <label class="field"><span>Venue</span><input id="evVenue" placeholder="YMCA"></label>
+          <label class="field"><span>Location</span><input id="evLocation" placeholder="Maredpally, Hyderabad"></label>
+          <label class="field"><span>Maps link (optional)</span><input id="evMaps" placeholder="https://maps.google.com/…"></label>
+          <label class="field"><span>Weather line</span><input id="evWeather" placeholder="Hot &amp; Partly Sunny — ~35°C"></label>
+          <label class="field"><span>Weather icon</span><input id="evWeatherIcon" placeholder="☀️" maxlength="4"></label>
+          <label class="field"><span>Winner points</span><input type="number" id="evWinnerPts" min="0" value="300"></label>
+          <label class="field"><span>Runner-up points</span><input type="number" id="evRunnerPts" min="0" value="150"></label>
+        </div>
+        <label class="field"><span>Weather note (detail page)</span><textarea id="evWeatherNote" rows="3" placeholder="Longer forecast note for the sport detail page…"></textarea></label>
+        <label class="field"><span>Tournament format (sport detail)</span><textarea id="evTournamentFormat" rows="3" placeholder="Add custom tournament format for this event..."></textarea></label>
+        <button class="btn btn--gold" onclick="saveEventDetails()">Save Event Details →</button>
+      </div>
+    </section>
+
+    <!-- RULES -->
+    <section class="apanel" data-panel="rules">
+      <h1>Events — Rules</h1>
+      <div class="acard">
+        <h3>Edit rules for an event</h3>
+        <p class="amini">One rule per line — shown on each sport’s detail page.</p>
+        <label class="field"><span>Event</span>
+          <select id="ruleEvent" onchange="loadRules()">
+            {% for e in events %}<option value="{{ e.id }}">{{ e.name }}</option>{% endfor %}
+          </select>
+        </label>
+        <label class="field"><span>Rules (one per line)</span><textarea id="ruleText" rows="12" placeholder="Each line becomes a numbered rule…"></textarea></label>
+        <button class="btn btn--gold" onclick="saveRules()">Save Rules →</button>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="apanel" data-panel="gallery">
+      <h1>Gallery</h1>
+      <div class="acard">
+        <h3>Upload images</h3>
+        <p class="amini">Upload one or multiple photos to show on the public gallery page.</p>
+        <label class="field"><span>Caption (optional)</span><input id="galCaption" placeholder="e.g. Basketball opening ceremony"></label>
+        <label class="field"><span>Select images</span><input type="file" id="galImages" accept="image/png,image/jpeg,image/jpg,image/webp" multiple></label>
+        <button class="btn btn--gold" onclick="uploadGallery()">Upload to Gallery →</button>
+      </div>
+      <div class="acard">
+        <h3>Existing gallery images</h3>
+        <div id="galleryExisting" class="alist">
+          {% for g in gallery %}
+            <div class="arow" data-id="{{ g.id }}">
+              <div>
+                <strong>{{ g.caption or "Untitled image" }}</strong>
+                <span class="arow__meta">{{ g.uploaded_at or "" }}</span>
+              </div>
+              <button class="abtn-del" onclick="delGallery('{{ g.id }}', this)">Delete</button>
+            </div>
+          {% else %}<div class="muted">No gallery images yet.</div>{% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIT -->
+    <section class="apanel" data-panel="audit">
+      <h1>Audit Log</h1>
+      <div class="acard">
+        <h3>Recent admin actions</h3>
+        <div class="alist">
+          {% for r in audit_rows %}
+            <div class="arow"><div><strong>{{ r.action }}</strong><span class="arow__meta">{{ r.detail }}</span></div><span class="arow__ts">{{ r.ts }}</span></div>
+          {% else %}<div class="muted">No actions recorded yet.</div>{% endfor %}
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    window.CARNIVAL_MATCH_FORMATS = {{ match_formats | tojson }};
+    window.CARNIVAL_LIVE_INIT = {{ scores.live | tojson }};
+  </script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/admin.js', v='20260528b') }}"></script>
+</body>
+</html>

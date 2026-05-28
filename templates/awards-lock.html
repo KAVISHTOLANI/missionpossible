@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Awards Locked{% endblock %}
+{% block page %}awards{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">{% endblock %}
+
+{% block content %}
+<section class="awards-lock-page">
+  <div class="awards-lock-page__glow" aria-hidden="true"></div>
+  <div class="wrap awards-lock-page__inner">
+    <div class="awards-lock-panel reveal in">
+      <div class="awards-lock-panel__icon" aria-hidden="true">★</div>
+      <p class="awards-lock-panel__eyebrow">Mission Possible 2026</p>
+      <h1 class="awards-lock-panel__title">MVP &amp; <span class="accent">Awards</span></h1>
+      <p class="awards-lock-panel__lead">This section is password protected. Enter the organiser password to view event MVPs and honours.</p>
+
+      <form class="awards-lock-form" method="post" action="{{ url_for('unlock_awards') }}">
+        <label class="awards-lock-field">
+          <span>Password</span>
+          <input type="password" name="password" required autofocus placeholder="Enter password" autocomplete="current-password">
+        </label>
+        {% if error %}
+          <div class="awards-lock-error" role="alert">{{ error }}</div>
+        {% endif %}
+        <button class="btn btn--gold awards-lock-submit" type="submit">Unlock Awards →</button>
+      </form>
+
+      <a class="awards-lock-back" href="/">← Back to home</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

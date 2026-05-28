@@ -1,0 +1,35 @@
+[
+  {
+    "id": "creators",
+    "name": "Team Creators",
+    "color": "#D4A017",
+    "color_name": "Paspu Yellow",
+    "company": "Mamta Fertility Hospitals",
+    "company_head": "Dr. Aarti Deenadayal",
+    "overall_coordinator": "Mr. Madhusudan",
+    "coordinators": ["Dr. Janaki Ram", "Mrs. Navneeta"],
+    "logo": "/static/images/logos/creators.png"
+  },
+  {
+    "id": "dominators",
+    "name": "Team Dominators",
+    "color": "#800000",
+    "color_name": "Maroon",
+    "company": "Corporate Office + ADL + GSH + Expresso Foods + MD Residence",
+    "company_head": "Mr. Jeetandra Tolani",
+    "overall_coordinator": "Har Rachan Kaur",
+    "coordinators": ["Suman Uttam", "Anil"],
+    "logo": "/static/images/logos/dominators.png"
+  },
+  {
+    "id": "royals",
+    "name": "Team Royals",
+    "color": "#4169E1",
+    "color_name": "Royal Blue",
+    "company": "Shenoy and DECC",
+    "company_head": "Mrs. Ankita Deenadayal",
+    "overall_coordinator": "Mr. Suraj Uttam",
+    "coordinators": ["Dr. Vamshi (DMO)", "Mr. Srikanth (MOD)"],
+    "logo": "/static/images/logos/royals.png"
+  }
+]

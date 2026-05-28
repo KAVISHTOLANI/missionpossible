@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Teams{% endblock %}
+{% block page %}teams{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">{% endblock %}
+
+{% block content %}
+<section class="phero">
+  <div class="wrap">
+    <div class="eyebrow reveal">Three Companies · One Stage</div>
+    <h1 class="reveal" data-delay="1">The Three <span class="italic accent">Teams</span></h1>
+    <p class="reveal" data-delay="2">Every team carries a company, a crest, and a colour into the season. Twelve events stand between them and the trophy.</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="grid cols-3" id="teamsGrid"><div class="skeleton">Loading teams…</div></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/teams.js') }}"></script>{% endblock %}

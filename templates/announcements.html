@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Announcements{% endblock %}
+{% block page %}announcements{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">{% endblock %}
+
+{% block content %}
+<section class="phero">
+  <div class="wrap">
+    <div class="eyebrow reveal">Minutes Of the Meeting</div>
+    <h1 class="reveal" data-delay="1"><span class="italic accent">Announcements</span></h1>
+    <p class="reveal" data-delay="2">Every update, result, and notice — newest first.</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="annlist" id="annList"><div class="skeleton">Loading announcements…</div></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/announcements.js') }}"></script>{% endblock %}

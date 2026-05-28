@@ -1,0 +1,128 @@
+{
+  "basketball": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "throwball": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "swimming": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "sand-volleyball": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "cycling": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "tug-of-war": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "rangoli": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "badminton": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "cricket": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "kabaddi": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "table-tennis": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "lemon-spoon": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "sack-race": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "carrom": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "chess": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "cooking": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "8ball-pool": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "singing": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "dancing": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "skit": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  },
+  "fancy-dress": {
+    "format_summary": "",
+    "rounds": [
+      "Match"
+    ]
+  }
+}

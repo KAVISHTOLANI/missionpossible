@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Mission Possible 2026{% endblock %} · Deenadayal Group</title>
+  <meta name="description" content="Mission Possible 2026 — the sports & cultural tournament of the Deenadayal Group of Companies. Three teams, twenty-one events, one champion. Maredpally, Hyderabad.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="{{ url_for('static', filename='images/logos/deenadayal-logo.png') }}" type="image/png">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body data-page="{% block page %}{% endblock %}">
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="/">
+        <img class="brand-logo brand-logo--nav" src="{{ url_for('static', filename='images/logos/deenadayal-logo.png') }}" alt="Deenadayal Group of Companies">
+        <span class="brand-tagline">Mission Possible 2026</span>
+      </a>
+      <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="navlinks">
+        {% for label, href, title in nav_links %}
+          <li><a href="{{ href }}" title="{{ title }}"><span class="nav__label-short">{{ label }}</span><span class="nav__label-full">{{ title }}</span></a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <a class="footer__brand" href="/">
+          <img class="brand-logo brand-logo--footer" src="{{ url_for('static', filename='images/logos/deenadayal-logo.png') }}" alt="Deenadayal Group of Companies">
+          <span class="brand-tagline brand-tagline--footer">Mission Possible 2026</span>
+        </a>
+        <ul class="footer__links">
+          {% for label, href, title in nav_links %}
+            <li><a href="{{ href }}">{{ title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer__base">
+        <span>Mission Possible 2026 · Deenadayal Group of Companies · Maredpally, Hyderabad</span>
+        <span>Where Sport Meets Spirit · June – August 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

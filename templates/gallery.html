@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Gallery{% endblock %}
+{% block page %}gallery{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">{% endblock %}
+
+{% block content %}
+<section class="phero">
+  <div class="wrap">
+    <div class="eyebrow reveal">Moments & Memories</div>
+    <h1 class="reveal" data-delay="1">Event <span class="italic accent">Gallery</span></h1>
+    <p class="reveal" data-delay="2">Photos uploaded by organisers from Mission Possible 2026 events.</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="grid cols-3" id="galleryGrid"><div class="skeleton">Loading gallery…</div></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/gallery.js') }}"></script>{% endblock %}

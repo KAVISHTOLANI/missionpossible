@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin · Mission Possible 2026</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/logos/deenadayal-logo.png') }}" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+  <div class="loginwrap">
+    <form class="logincard" method="post" action="{{ url_for('admin.login') }}">
+      <img class="logincard__logo brand-logo brand-logo--login" src="{{ url_for('static', filename='images/logos/deenadayal-logo.png') }}" alt="Deenadayal Group of Companies">
+      <div class="eyebrow center">Organiser Access</div>
+      <h1 class="logincard__title">Mission Possible <span class="accent">Admin</span></h1>
+      <p class="logincard__sub">Mission Possible 2026 · Control Panel</p>
+
+      {% if error %}<div class="loginerr">{{ error }}</div>{% endif %}
+
+      <label class="field">
+        <span>Username</span>
+        <input type="text" name="username" autocomplete="username" required autofocus placeholder="Enter username">
+      </label>
+      <label class="field">
+        <span>Password</span>
+        <input type="password" name="password" autocomplete="current-password" required placeholder="Enter admin password">
+      </label>
+      <button class="btn btn--gold" type="submit" style="width:100%;justify-content:center">Log In →</button>
+      <a class="loginback" href="/">← Back to site</a>
+    </form>
+  </div>
+</body>
+</html>

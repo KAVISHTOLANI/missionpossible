@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Calendar{% endblock %}
+{% block page %}calendar{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/calendar.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="phero">
+  <div class="wrap">
+    <div class="eyebrow reveal">Season Schedule</div>
+    <h1 class="reveal" data-delay="1">Event <span class="italic accent">Calendar</span></h1>
+    <p class="reveal" data-delay="2">June through August 2026 — every sport and cultural event at a glance.</p>
+  </div>
+</section>
+
+<section class="section--tight cal-wrap">
+  <div class="wrap">
+    <div class="cal-toolbar reveal">
+      <button type="button" class="cal-nav" id="calPrev" aria-label="Previous month">←</button>
+      <h2 class="cal-month" id="calMonthLabel">June 2026</h2>
+      <button type="button" class="cal-nav" id="calNext" aria-label="Next month">→</button>
+    </div>
+    <div class="cal-grid reveal" id="calGrid">
+      <div class="skeleton">Loading calendar…</div>
+    </div>
+    <div class="cal-legend reveal">
+      <span><i class="cal-dot cal-dot--event"></i> Event day</span>
+      <span><i class="cal-dot cal-dot--today"></i> Today</span>
+    </div>
+    <div class="cal-list reveal" id="calList"></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Standings{% endblock %}
+{% block page %}standings{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">{% endblock %}
+
+{% block content %}
+<section class="phero">
+  <div class="wrap">
+    <div class="eyebrow reveal">The Race for the Trophy</div>
+    <h1 class="reveal" data-delay="1">Points <span class="italic accent">Table</span></h1>
+    <p class="reveal" data-delay="2">Tap any team to expand its event-by-event breakdown.</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="table-wrap reveal" id="standingsTable"><div class="skeleton">Loading standings…</div></div>
+  </div>
+</section>
+
+<section class="section--tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="num">MVP</span><span class="txt">Overall MVP Leaderboard</span></div>
+    <div id="overallMvpTable" class="awardboard reveal"><div class="skeleton">Loading Overall MVP leaderboard…</div></div>
+  </div>
+</section>
+
+<section class="section--tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="num">FP</span><span class="txt">Fair Play Leaderboard</span></div>
+    <div id="fairPlayTable" class="awardboard reveal"><div class="skeleton">Loading Fair Play leaderboard…</div></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/standings.js') }}"></script>{% endblock %}

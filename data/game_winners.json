@@ -1,0 +1,170 @@
+[
+  {
+    "event_id": "basketball",
+    "event_name": "Basketball",
+    "first": "creators",
+    "second": "dominators",
+    "third": null,
+    "note": "final-check"
+  },
+  {
+    "event_id": "throwball",
+    "event_name": "Throwball",
+    "first": "dominators",
+    "second": "royals",
+    "third": null,
+    "note": "live-check-now"
+  },
+  {
+    "event_id": "swimming",
+    "event_name": "Swimming",
+    "first": "creators",
+    "second": "dominators",
+    "third": null,
+    "note": "congratulations"
+  },
+  {
+    "event_id": "sand-volleyball",
+    "event_name": "Sand Volleyball",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "cycling",
+    "event_name": "Cycling",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "tug-of-war",
+    "event_name": "Tug of War",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "rangoli",
+    "event_name": "Rangoli",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "badminton",
+    "event_name": "Badminton",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "cricket",
+    "event_name": "Cricket",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "kabaddi",
+    "event_name": "Kabaddi",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "table-tennis",
+    "event_name": "Table Tennis",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "lemon-spoon",
+    "event_name": "Lemon & Spoon Race",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "sack-race",
+    "event_name": "Sack Race",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "carrom",
+    "event_name": "Carrom",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "chess",
+    "event_name": "Chess",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "cooking",
+    "event_name": "Cooking Competition",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "8ball-pool",
+    "event_name": "8-Ball Pool",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "singing",
+    "event_name": "Singing",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "dancing",
+    "event_name": "Dancing",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "skit",
+    "event_name": "Skit & Drama",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  },
+  {
+    "event_id": "fancy-dress",
+    "event_name": "Fancy Dress",
+    "first": null,
+    "second": null,
+    "third": null,
+    "note": ""
+  }
+]

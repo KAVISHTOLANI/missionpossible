@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Sports{% endblock %}
+{% block page %}sports{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">{% endblock %}
+
+{% block content %}
+<section class="phero">
+  <div class="wrap">
+    <div class="eyebrow reveal">Twelve Events · Three Months</div>
+    <h1 class="reveal" data-delay="1">The <span class="italic accent">Events</span></h1>
+    <p class="reveal" data-delay="2">From the opening tip-off in June to the Grand Finale on Independence Day — every contest on the calendar.</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="filterbar reveal" id="filterBar">
+      <button class="filt active" data-cat="all">All</button>
+      <button class="filt" data-cat="outdoor">Outdoor</button>
+      <button class="filt" data-cat="indoor">Indoor</button>
+      <button class="filt" data-cat="cultural">Cultural</button>
+    </div>
+    <div class="grid cols-3" id="sportsGrid" style="margin-top:32px"><div class="skeleton">Loading events…</div></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/sports.js') }}"></script>{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Awards{% endblock %}
+{% block page %}awards{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">{% endblock %}
+
+{% block content %}
+<section class="phero">
+  <div class="wrap">
+    <div class="eyebrow reveal">Honours &amp; Glory</div>
+    <h1 class="reveal" data-delay="1">MVP &amp; <span class="italic accent">Awards</span></h1>
+    <p class="reveal" data-delay="2">The standout players of every event, the overall best player, and the champion team.</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="num">★</span><span class="txt">Top Honours</span></div>
+    <div id="overallMvpFeatured"><div class="skeleton">Loading…</div></div>
+    <div class="grid cols-2" id="topAwards"><div class="skeleton">Loading…</div></div>
+  </div>
+</section>
+
+<section class="section--tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="num">001</span><span class="txt">Event MVPs</span></div>
+    <div class="grid cols-3" id="eventMvps"><div class="skeleton">Loading…</div></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/awards.js') }}"></script>{% endblock %}

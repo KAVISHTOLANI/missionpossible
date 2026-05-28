@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Champions{% endblock %}
+{% block page %}champions{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">{% endblock %}
+
+{% block content %}
+<section class="phero">
+  <div class="wrap">
+    <div class="eyebrow reveal">Hall of Champions</div>
+    <h1 class="reveal" data-delay="1"><span class="italic accent">Champions</span></h1>
+    <p class="reveal" data-delay="2">Team champions and individual champions across all events.</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="grid cols-2" id="championsGrid"><div class="skeleton">Loading champions…</div></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/champions.js') }}"></script>{% endblock %}

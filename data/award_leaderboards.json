@@ -1,0 +1,23 @@
+{
+  "overall_mvp": [],
+  "fair_play": [
+    {
+      "id": "fp-91b77bfb91",
+      "team_name": "Team Royals",
+      "fair_play_points": 0,
+      "updated_at": "2026-05-28 14:30"
+    },
+    {
+      "id": "fp-837597e689",
+      "team_name": "Team Creators",
+      "fair_play_points": 0,
+      "updated_at": "2026-05-28 14:30"
+    },
+    {
+      "id": "fp-2e1e526daf",
+      "team_name": "Team Dominators",
+      "fair_play_points": 0,
+      "updated_at": "2026-05-28 14:30"
+    }
+  ]
+}
