@@ -194,6 +194,20 @@
   font-size: 1.6rem;
   line-height: 1;
   color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.seasoncard__champ {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(201,168,76,0.7);
+}
+.seasoncard__champ--large {
+  width: 34px;
+  height: 34px;
 }
 .seasoncard__meta {
   font-size: 0.62rem;

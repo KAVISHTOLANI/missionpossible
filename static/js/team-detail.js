@@ -15,6 +15,15 @@
     CARNIVAL.get("/api/teams/" + teamId).catch(() => null),
     CARNIVAL.get("/api/standings").catch(() => ({ teams: {} })),
   ]).then(([team, standings]) => {
+    function cleanName(v) {
+      return String(v || "")
+        .replace(/\((?:\s*DMO\s*|\s*MOD\s*)\)/gi, "")
+        .replace(/\b(?:DMO|MOD)\b/gi, "")
+        .replace(/\s{2,}/g, " ")
+        .trim();
+    }
+    const coordinators = (team.coordinators || []).map(cleanName).filter(Boolean);
+
     if (!team) { root.innerHTML = errBlock("Team not found."); return; }
     const s = (standings.teams && standings.teams[teamId]) || {
       events_played: 0, wins: 0, points_earned: 0, penalty_deductions: 0, net_points: 0, event_breakdown: [],
@@ -54,9 +63,9 @@
         <div class="wrap">
           <div class="grid cols-2 reveal in">
             <div class="card infocard">
-              <div class="inforow"><span class="k">Company Head</span><span class="v">${CARNIVAL.esc(team.company_head)}</span></div>
-              <div class="inforow"><span class="k">Overall Coordinator</span><span class="v">${CARNIVAL.esc(team.overall_coordinator)}</span></div>
-              <div class="inforow"><span class="k">Team Coordinators</span><span class="v">${team.coordinators.map(CARNIVAL.esc).join(" · ")}</span></div>
+              <div class="inforow"><span class="k">Company Head</span><span class="v v--stack"><span class="role-name">${CARNIVAL.esc(cleanName(team.company_head))}</span></span></div>
+              <div class="inforow"><span class="k">Overall Coordinator</span><span class="v v--stack"><span class="role-name">${CARNIVAL.esc(cleanName(team.overall_coordinator))}</span></span></div>
+              <div class="inforow"><span class="k">Team Coordinators</span><span class="v v--stack">${coordinators.map((name) => `<span class="role-name">${CARNIVAL.esc(name)}</span>`).join("")}</span></div>
               <div class="inforow"><span class="k">Team Colour</span><span class="v"><span class="swatch" style="background:${team.color}"></span>${CARNIVAL.esc(team.color_name)}</span></div>
             </div>
             <div class="card infocard infocard--center">

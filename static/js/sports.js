@@ -40,7 +40,12 @@
   }
 
   CARNIVAL.get("/api/events").then((events) => {
-    allEvents = events;
+    allEvents = (events || []).slice().sort((a, b) => {
+      const da = String(a.iso_date || "9999-12-31");
+      const db = String(b.iso_date || "9999-12-31");
+      if (da !== db) return da.localeCompare(db);
+      return String(a.name || "").localeCompare(String(b.name || ""));
+    });
     render("all");
   }).catch(() => {
     const grid = document.getElementById("sportsGrid");

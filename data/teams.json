@@ -16,7 +16,7 @@
     "color": "#800000",
     "color_name": "Maroon",
     "company": "Corporate Office + ADL + GSH + Expresso Foods + MD Residence",
-    "company_head": "Mr. Jeetandra Tolani",
+    "company_head": "Mr. Jeeandra Tolani",
     "overall_coordinator": "Har Rachan Kaur",
     "coordinators": ["Suman Uttam", "Anil"],
     "logo": "/static/images/logos/dominators.png"
@@ -26,10 +26,10 @@
     "name": "Team Royals",
     "color": "#4169E1",
     "color_name": "Royal Blue",
-    "company": "Shenoy and DECC",
+    "company": "Shenoy Hospitals + DECC",
     "company_head": "Mrs. Ankita Deenadayal",
     "overall_coordinator": "Mr. Suraj Uttam",
-    "coordinators": ["Dr. Vamshi (DMO)", "Mr. Srikanth (MOD)"],
+    "coordinators": ["Dr. Vamshi", "Mr. Srikanth"],
     "logo": "/static/images/logos/royals.png"
   }
 ]

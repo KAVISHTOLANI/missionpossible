@@ -50,7 +50,7 @@
       const embedUrl = mapEmbedSrc(e.venue_maps_link);
       venueBlock = `<div class="vmap"><iframe src="${embedUrl}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>`;
     } else if (e.venue && e.venue !== "TBD") {
-      venueBlock = `<div class="vplace"><span class="vplace__pin">📍</span><span class="vplace__name">${CARNIVAL.esc(e.venue)}</span><span class="vplace__hint">${CARNIVAL.esc(e.location || "Maredpally, Hyderabad")}</span></div>`;
+      venueBlock = `<div class="vplace"><span class="vplace__pin">📍</span><span class="vplace__name">${CARNIVAL.esc(e.venue)}</span><span class="vplace__hint">${CARNIVAL.esc(e.location || "Marredpally, Hyderabad")}</span></div>`;
     } else {
       venueBlock = `<div class="vplace vplace--tba"><span class="vplace__name">Venue To Be Announced</span><span class="vplace__hint">Check back closer to the date</span></div>`;
     }
@@ -124,7 +124,7 @@
             <div class="card detailcard reveal in">
               <div class="detailcard__label">Category</div>
               <div class="info-card-value">${CARNIVAL.esc(e.category)}</div>
-              <p class="info-card-sub">${CARNIVAL.esc(e.location || "Maredpally, Hyderabad, Telangana")}</p>
+              <p class="info-card-sub">${CARNIVAL.esc(e.location || "Marredpally, Hyderabad, Telangana")}</p>
             </div>
             ${pointsHtml}
             ${formatHtml}
