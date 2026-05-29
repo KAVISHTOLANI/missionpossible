@@ -112,6 +112,64 @@
 
 .hero__cta { display: flex; gap: 12px; justify-content: center; margin-top: 48px; flex-wrap: wrap; }
 
+/* ---- Mission Countdown ---- */
+.mission-countdown {
+  padding: 18px 0 0;
+  background: var(--bg);
+}
+.mission-countdown__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: var(--surface);
+  padding: 14px 18px;
+}
+.mission-countdown__title {
+  font-family: var(--f-sans);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+.mission-countdown__timer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: var(--f-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.mission-countdown__timer span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  white-space: nowrap;
+}
+.mission-countdown__timer strong {
+  font-family: var(--f-display);
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 760px) {
+  .mission-countdown__inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .mission-countdown__timer {
+    justify-content: flex-start;
+  }
+}
+
 /* Scroll line */
 .hero__scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 1; }
 .hero__scroll span { display: block; width: 1px; height: 64px; background: linear-gradient(180deg, transparent, var(--faint), transparent); animation: scrollLine 2.2s var(--ease) infinite; }
