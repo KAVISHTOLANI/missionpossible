@@ -26,6 +26,14 @@
     <div class="grid cols-3" id="eventMvps"><div class="skeleton">Loading…</div></div>
   </div>
 </section>
+
+<section class="section--tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-label reveal"><span class="num">002</span><span class="txt">MVP Eligibility</span></div>
+    <div id="mvpEligibilityTable" class="reveal"><div class="skeleton">Loading eligibility…</div></div>
+    <div id="mvpRules" class="reveal" style="margin-top:18px"><div class="skeleton">Loading MVP rules…</div></div>
+  </div>
+</section>
 {% endblock %}
 
 {% block scripts %}<script src="{{ url_for('static', filename='js/awards.js') }}"></script>{% endblock %}

@@ -46,6 +46,19 @@ VALID_BANNERS = {
     "banner-singing", "banner-dancing", "banner-skit", "banner-drama", "banner-fancy",
 }
 LIVE_DISABLED_EVENTS = {"carrom", "chess", "cooking", "8ball-pool", "singing", "dancing", "skit", "fancy-dress"}
+EMPTY_LIVE = {
+    "event_id": None,
+    "event_name": "",
+    "status": "upcoming",
+    "round": "",
+    "team_a": None,
+    "team_b": None,
+    "score_a": 0,
+    "score_b": 0,
+    "scores": {"creators": 0, "dominators": 0, "royals": 0},
+    "commentary": [],
+    "details": {},
+}
 
 # Set by init_audit_db()
 _BASE_DIR = None
@@ -73,6 +86,177 @@ def _save(name, payload):
     with open(tmp, "w", encoding="utf-8") as fh:
         json.dump(payload, fh, indent=2, ensure_ascii=False)
     os.replace(tmp, path)
+
+
+def _empty_live():
+    return json.loads(json.dumps(EMPTY_LIVE))
+
+
+def _match_key(row):
+    return row.get("match_id") or row.get("id") or row.get("event_id")
+
+
+def _new_match_id(event_id):
+    return f"{event_id}-{uuid.uuid4().hex[:8]}"
+
+
+def _normal_scores(raw_scores):
+    raw_scores = raw_scores if isinstance(raw_scores, dict) else {}
+    return {
+        "creators": int(raw_scores.get("creators", 0) or 0),
+        "dominators": int(raw_scores.get("dominators", 0) or 0),
+        "royals": int(raw_scores.get("royals", 0) or 0),
+    }
+
+
+def _sync_live_index(scores):
+    matches = scores.get("live_matches") if isinstance(scores.get("live_matches"), list) else []
+    completed = scores.get("completed") if isinstance(scores.get("completed"), list) else []
+
+    clean_matches = []
+    for m in matches:
+        if not isinstance(m, dict) or not m.get("event_id"):
+            continue
+        m.setdefault("status", "upcoming")
+        m.setdefault("match_id", f"{m['event_id']}-{m.get('status', 'upcoming')}")
+        m.setdefault("commentary", [])
+        m.setdefault("details", {})
+        m.setdefault("scores", {"creators": 0, "dominators": 0, "royals": 0})
+        if m.get("status") != "completed":
+            clean_matches.append(m)
+
+    clean_completed = []
+    for c in completed:
+        if not isinstance(c, dict) or not c.get("event_id"):
+            continue
+        c["status"] = "completed"
+        c.setdefault("match_id", f"{c['event_id']}-completed")
+        c.setdefault("details", {})
+        c.setdefault("scores", {"creators": 0, "dominators": 0, "royals": 0})
+        clean_completed.append(c)
+
+    scores["live_matches"] = clean_matches
+    scores["completed"] = clean_completed
+    first_live = next((m for m in clean_matches if m.get("status") == "live"), clean_matches[0] if clean_matches else None)
+    scores["active_event"] = first_live.get("event_id") if first_live and first_live.get("status") == "live" else None
+    scores["live"] = dict(first_live) if first_live else _empty_live()
+    return scores
+
+
+def _find_match(scores, match_id=None, event_id=None, status=None):
+    rows = []
+    rows.extend(scores.get("live_matches") or [])
+    rows.extend(scores.get("completed") or [])
+    for row in rows:
+        if match_id and _match_key(row) == match_id:
+            return dict(row)
+        if not match_id and event_id and row.get("event_id") == event_id and (not status or row.get("status") == status):
+            return dict(row)
+    return None
+
+
+def _build_match(body, existing=None, partial=False):
+    existing = dict(existing or {})
+    events = {e["id"]: e for e in _load("events.json", [])}
+    formats = _load("match_formats.json", {})
+
+    event_id = (body.get("event_id") or existing.get("event_id") or "").strip()
+    if not event_id:
+        return None, "event_id required"
+    if event_id not in events:
+        return None, "Unknown event"
+    if event_id in LIVE_DISABLED_EVENTS:
+        return None, "Live updates are disabled for this event"
+
+    status = body.get("status", existing.get("status", "upcoming"))
+    if status not in VALID_STATUSES:
+        return None, "Invalid status"
+
+    allowed_rounds = (formats.get(event_id, {}) or {}).get("rounds") or []
+    round_label = (body.get("round", existing.get("round", "")) or "").strip()
+    if allowed_rounds and round_label and round_label not in allowed_rounds:
+        return None, "Invalid round for this sport"
+    if not round_label and allowed_rounds and not partial:
+        round_label = allowed_rounds[0]
+
+    team_a = body.get("team_a", existing.get("team_a"))
+    team_b = body.get("team_b", existing.get("team_b"))
+    if team_a and team_a not in VALID_TEAM_IDS:
+        return None, "Invalid team A"
+    if team_b and team_b not in VALID_TEAM_IDS:
+        return None, "Invalid team B"
+    if team_a and team_b and team_a == team_b:
+        return None, "Teams must be different"
+
+    try:
+        score_a = int(body.get("score_a", existing.get("score_a", 0)) or 0)
+        score_b = int(body.get("score_b", existing.get("score_b", 0)) or 0)
+    except (TypeError, ValueError):
+        return None, "Scores must be numbers"
+
+    match = dict(existing)
+    now = datetime.now().isoformat(timespec="seconds")
+    match.update({
+        "match_id": existing.get("match_id") or body.get("match_id") or _new_match_id(event_id),
+        "event_id": event_id,
+        "event_name": events[event_id]["name"],
+        "date": events[event_id].get("date", ""),
+        "status": status,
+        "round": round_label,
+        "team_a": team_a or None,
+        "team_b": team_b or None,
+        "score_a": max(0, score_a),
+        "score_b": max(0, score_b),
+        "scores": _normal_scores(body.get("scores", existing.get("scores", {}))),
+        "details": body.get("details") if isinstance(body.get("details"), dict) else (existing.get("details") or {}),
+        "commentary": existing.get("commentary") or [],
+        "created_at": existing.get("created_at") or now,
+        "updated_at": now,
+    })
+    return match, None
+
+
+def _save_match(match):
+    scores = _sync_live_index(_load("scores.json", {}))
+    match_id = _match_key(match)
+    scores["live_matches"] = [m for m in scores.get("live_matches", []) if _match_key(m) != match_id]
+    scores["completed"] = [m for m in scores.get("completed", []) if _match_key(m) != match_id]
+
+    if match.get("status") == "completed":
+        scores["completed"].insert(0, dict(match))
+    else:
+        scores["live_matches"].append(dict(match))
+
+    scores = _sync_live_index(scores)
+    _save("scores.json", scores)
+    return scores
+
+
+def _delete_match(match_id=None, event_id=None, status=None):
+    scores = _sync_live_index(_load("scores.json", {}))
+
+    def keep(row):
+        if match_id:
+            return _match_key(row) != match_id
+        if event_id and row.get("event_id") == event_id and (not status or row.get("status") == status):
+            return False
+        return True
+
+    scores["live_matches"] = [m for m in scores.get("live_matches", []) if keep(m)]
+    scores["completed"] = [m for m in scores.get("completed", []) if keep(m)]
+    scores = _sync_live_index(scores)
+    _save("scores.json", scores)
+    return scores
+
+
+def _enrich_match(row, teams):
+    out = dict(row)
+    out["match_id"] = _match_key(out)
+    if out.get("team_a") in teams:
+        out["team_a_name"] = teams[out["team_a"]]["name"]
+    if out.get("team_b") in teams:
+        out["team_b_name"] = teams[out["team_b"]]["name"]
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -157,7 +341,9 @@ def dashboard():
     announcements = _load("announcements.json", [])
     awards = _load("awards.json", {})
     scores = _load("scores.json", {})
-    gallery = _load("gallery.json", [])
+    gallery_seasons = _load("gallery_seasons.json", [])
+    season4 = next((s for s in gallery_seasons if s.get("id") == "season-4"), None)
+    gallery = (season4 or {}).get("photos") or _load("gallery.json", [])
     champions = _load("champions.json", [])
     match_formats = _load("match_formats.json", {})
     audit_rows = _recent_audit()
@@ -226,114 +412,23 @@ def delete_announcement():
 @login_required
 def update_live():
     body = request.get_json(silent=True) or {}
-    event_id = body.get("event_id")
-    status = body.get("status") if body.get("status") in VALID_STATUSES else "upcoming"
+    lookup = _sync_live_index(_load("scores.json", {}))
+    existing = None
+    if body.get("match_id"):
+        existing = _find_match(lookup, match_id=body.get("match_id"))
+    elif not body.get("append_to_live_matches"):
+        existing = _find_match(lookup, event_id=body.get("event_id"))
 
-    events = {e["id"]: e for e in _load("events.json", [])}
-    if event_id not in events:
-        return jsonify({"ok": False, "error": "Unknown event"}), 400
-    if event_id in LIVE_DISABLED_EVENTS:
-        return jsonify({"ok": False, "error": "Live updates are disabled for this event"}), 400
+    match, error = _build_match(body, existing=existing)
+    if error:
+        return jsonify({"ok": False, "error": error}), 400
 
-    formats = _load("match_formats.json", {})
-    sport_fmt = formats.get(event_id, {})
-    allowed_rounds = sport_fmt.get("rounds") or []
-    round_label = (body.get("round") or "").strip()
-    if allowed_rounds and round_label and round_label not in allowed_rounds:
-        return jsonify({"ok": False, "error": "Invalid round for this sport"}), 400
-    if not round_label and allowed_rounds:
-        round_label = allowed_rounds[0]
-
-    team_a = body.get("team_a")
-    team_b = body.get("team_b")
-    if team_a and team_a not in VALID_TEAM_IDS:
-        return jsonify({"ok": False, "error": "Invalid team A"}), 400
-    if team_b and team_b not in VALID_TEAM_IDS:
-        return jsonify({"ok": False, "error": "Invalid team B"}), 400
-    if team_a and team_b and team_a == team_b:
-        return jsonify({"ok": False, "error": "Teams must be different"}), 400
-
-    try:
-        score_a = int(body.get("score_a", 0) or 0)
-        score_b = int(body.get("score_b", 0) or 0)
-    except (TypeError, ValueError):
-        return jsonify({"ok": False, "error": "Scores must be numbers"}), 400
-
-    scores = _load("scores.json", {})
-    matches = scores.setdefault("live_matches", [])
-    if not isinstance(matches, list):
-        matches = []
-    live = next((m for m in matches if m.get("event_id") == event_id), None)
-    if not live:
-        live = {"event_id": event_id, "commentary": []}
-        matches.append(live)
-
-    live["event_id"] = event_id
-    live["event_name"] = events[event_id]["name"]
-    live["status"] = status
-    live["round"] = round_label
-    live["team_a"] = team_a or None
-    live["team_b"] = team_b or None
-    live["score_a"] = max(0, score_a)
-    live["score_b"] = max(0, score_b)
-    live["details"] = body.get("details") if isinstance(body.get("details"), dict) else {}
-    raw_scores = body.get("scores") or {}
-    live["scores"] = {
-        "creators": int(raw_scores.get("creators", 0) or 0),
-        "dominators": int(raw_scores.get("dominators", 0) or 0),
-        "royals": int(raw_scores.get("royals", 0) or 0),
-    }
-    live.setdefault("commentary", live.get("commentary") or [])
-
-    if status == "completed":
-        completed = scores.setdefault("completed", [])
-        completed = [c for c in completed if c.get("event_id") != event_id]
-        snapshot = {
-            "event_id": event_id,
-            "event_name": events[event_id]["name"],
-            "date": events[event_id].get("date", ""),
-            "round": round_label,
-            "team_a": team_a,
-            "team_b": team_b,
-            "score_a": live["score_a"],
-            "score_b": live["score_b"],
-            "scores": dict(live["scores"]),
-            "details": dict(live.get("details") or {}),
-        }
-        completed.insert(0, snapshot)
-        scores["completed"] = completed
-
-        matches = [m for m in matches if m.get("event_id") != event_id]
-
-    live_matches = []
-    for m in matches:
-        if not m.get("event_id"):
-            continue
-        m.setdefault("commentary", [])
-        live_matches.append(m)
-    scores["live_matches"] = live_matches
-    first_live = next((m for m in live_matches if m.get("status") == "live"), live_matches[0] if live_matches else None)
-    scores["active_event"] = first_live.get("event_id") if first_live and first_live.get("status") == "live" else None
-    scores["live"] = dict(first_live) if first_live else {
-        "event_id": None,
-        "event_name": "",
-        "status": "upcoming",
-        "round": "",
-        "team_a": None,
-        "team_b": None,
-        "score_a": 0,
-        "score_b": 0,
-        "scores": {"creators": 0, "dominators": 0, "royals": 0},
-        "commentary": [],
-        "details": {},
-    }
-
-    _save("scores.json", scores)
+    scores = _save_match(match)
     audit(
         "live_update",
-        f"{event_id} {status} {round_label} {team_a} vs {team_b} {score_a}-{score_b}",
+        f"{match['event_id']} {match['status']} {match['round']} {match.get('team_a')} vs {match.get('team_b')} {match['score_a']}-{match['score_b']}",
     )
-    return jsonify({"ok": True, "live_matches": scores.get("live_matches", []), "live": scores.get("live", {})})
+    return jsonify({"ok": True, "match": match, "live_matches": scores.get("live_matches", []), "live": scores.get("live", {})})
 
 
 @admin_bp.route("/api/live/commentary", methods=["POST"])
@@ -341,15 +436,18 @@ def update_live():
 def add_commentary():
     body = request.get_json(silent=True) or {}
     text = (body.get("text") or "").strip()
+    match_id = (body.get("match_id") or "").strip()
     event_id = (body.get("event_id") or "").strip()
     if not text:
         return jsonify({"ok": False, "error": "Empty commentary"}), 400
-    scores = _load("scores.json", {})
+    scores = _sync_live_index(_load("scores.json", {}))
     matches = scores.setdefault("live_matches", [])
     if not isinstance(matches, list):
         matches = []
     live = None
-    if event_id:
+    if match_id:
+        live = next((m for m in matches if _match_key(m) == match_id), None)
+    if not live and event_id:
         live = next((m for m in matches if m.get("event_id") == event_id), None)
     if not live:
         live = next((m for m in matches if m.get("status") == "live"), None)
@@ -404,6 +502,171 @@ def clear_live_record():
     _save("scores.json", scores)
     audit("live_clear", event_id or "all")
     return jsonify({"ok": True, "live_matches": scores.get("live_matches", []), "completed": scores.get("completed", [])})
+
+
+# ---------------------------------------------------------------------------
+# Comprehensive Live Matches Management API
+# ---------------------------------------------------------------------------
+
+@admin_bp.route("/api/live/list", methods=["GET"])
+@login_required
+def list_live_matches():
+    """Get all live, upcoming, and archived matches with optional status filter."""
+    status_filter = request.args.get("status", "").lower()
+    scores = _sync_live_index(_load("scores.json", {}))
+    teams = {t["id"]: t for t in _load("teams.json", [])}
+    all_matches = [_enrich_match(m, teams) for m in (scores.get("live_matches") or [])]
+    all_matches.extend(_enrich_match(m, teams) for m in (scores.get("completed") or []))
+
+    if status_filter:
+        all_matches = [m for m in all_matches if m.get("status") == status_filter]
+
+    status_order = {"live": 0, "upcoming": 1, "completed": 2}
+    all_matches.sort(key=lambda m: (status_order.get(m.get("status"), 3), m.get("event_name", ""), m.get("round", "")))
+    return jsonify({"ok": True, "matches": all_matches, "total": len(all_matches)})
+
+
+@admin_bp.route("/api/live/matches", methods=["GET"])
+@login_required
+def api_live_matches_get():
+    return list_live_matches()
+
+
+@admin_bp.route("/api/live/matches", methods=["POST"])
+@login_required
+def api_live_matches_create():
+    body = request.get_json(silent=True) or {}
+    match, error = _build_match(body)
+    if error:
+        return jsonify({"ok": False, "error": error}), 400
+    scores = _save_match(match)
+    audit("live_match_create", f"{match['match_id']} {match['event_id']} {match['status']}")
+    return jsonify({"ok": True, "match": match, "live": scores.get("live", {})}), 201
+
+
+@admin_bp.route("/api/live/matches/<match_id>", methods=["PUT", "PATCH"])
+@login_required
+def api_live_matches_update(match_id):
+    body = request.get_json(silent=True) or {}
+    scores = _sync_live_index(_load("scores.json", {}))
+    existing = _find_match(scores, match_id=match_id)
+    if not existing:
+        return jsonify({"ok": False, "error": "Match not found"}), 404
+    body["match_id"] = match_id
+    match, error = _build_match(body, existing=existing, partial=request.method == "PATCH")
+    if error:
+        return jsonify({"ok": False, "error": error}), 400
+    scores = _save_match(match)
+    audit("live_match_update", f"{match_id} {match['status']}")
+    return jsonify({"ok": True, "match": match, "live": scores.get("live", {})})
+
+
+@admin_bp.route("/api/live/matches/<match_id>", methods=["DELETE"])
+@login_required
+def api_live_matches_delete(match_id):
+    scores = _sync_live_index(_load("scores.json", {}))
+    if not _find_match(scores, match_id=match_id):
+        return jsonify({"ok": False, "error": "Match not found"}), 404
+    _delete_match(match_id=match_id)
+    audit("live_match_delete", match_id)
+    return jsonify({"ok": True, "message": "Match deleted"})
+
+
+@admin_bp.route("/api/live/matches/<match_id>/status", methods=["POST", "PATCH"])
+@login_required
+def api_live_matches_status(match_id):
+    body = request.get_json(silent=True) or {}
+    new_status = body.get("new_status") or body.get("status")
+    if new_status not in VALID_STATUSES:
+        return jsonify({"ok": False, "error": "Invalid status"}), 400
+    scores = _sync_live_index(_load("scores.json", {}))
+    existing = _find_match(scores, match_id=match_id)
+    if not existing:
+        return jsonify({"ok": False, "error": "Match not found"}), 404
+    existing["status"] = new_status
+    match, error = _build_match(existing, existing=existing, partial=True)
+    if error:
+        return jsonify({"ok": False, "error": error}), 400
+    scores = _save_match(match)
+    audit("live_match_status", f"{match_id} -> {new_status}")
+    return jsonify({"ok": True, "match": match, "live": scores.get("live", {})})
+
+
+@admin_bp.route("/api/live/delete", methods=["POST"])
+@login_required
+def delete_live_match():
+    """Delete a match from live_matches or completed list."""
+    body = request.get_json(silent=True) or {}
+    match_id = body.get("match_id")
+    event_id = body.get("event_id")
+    status = body.get("status", "upcoming")
+
+    if not match_id and not event_id:
+        return jsonify({"ok": False, "error": "match_id or event_id required"}), 400
+
+    _delete_match(match_id=match_id, event_id=event_id, status=status if not match_id else None)
+    audit("live_delete", match_id or f"{event_id} ({status})")
+    return jsonify({"ok": True, "message": "Match deleted"})
+
+
+@admin_bp.route("/api/live/move-status", methods=["POST"])
+@login_required
+def move_match_status():
+    """Move a match from one status to another (upcoming <-> live <-> completed)."""
+    body = request.get_json(silent=True) or {}
+    match_id = body.get("match_id")
+    event_id = body.get("event_id")
+    new_status = body.get("new_status", "upcoming")
+
+    if not match_id and not event_id:
+        return jsonify({"ok": False, "error": "match_id or event_id required"}), 400
+    if new_status not in VALID_STATUSES:
+        return jsonify({"ok": False, "error": "Invalid status"}), 400
+
+    scores = _sync_live_index(_load("scores.json", {}))
+    match = _find_match(scores, match_id=match_id, event_id=event_id)
+    if not match:
+        return jsonify({"ok": False, "error": "Match not found"}), 400
+
+    match["status"] = new_status
+    match, error = _build_match(match, existing=match, partial=True)
+    if error:
+        return jsonify({"ok": False, "error": error}), 400
+    _save_match(match)
+    audit("live_move_status", f"{_match_key(match)} -> {new_status}")
+    return jsonify({"ok": True, "match": match, "message": f"Match moved to {new_status}"})
+
+
+@admin_bp.route("/api/live/quick-update", methods=["POST"])
+@login_required
+def quick_update_scores():
+    """Quick update scores for a match without modifying other fields."""
+    body = request.get_json(silent=True) or {}
+    match_id = body.get("match_id")
+    event_id = body.get("event_id")
+
+    if not match_id and not event_id:
+        return jsonify({"ok": False, "error": "match_id or event_id required"}), 400
+    
+    try:
+        score_a = int(body.get("score_a", 0) or 0)
+        score_b = int(body.get("score_b", 0) or 0)
+    except (TypeError, ValueError):
+        return jsonify({"ok": False, "error": "Scores must be numbers"}), 400
+    
+    scores = _sync_live_index(_load("scores.json", {}))
+    match = _find_match(scores, match_id=match_id, event_id=event_id)
+    if not match:
+        return jsonify({"ok": False, "error": "Match not found"}), 404
+
+    match["score_a"] = max(0, score_a)
+    match["score_b"] = max(0, score_b)
+    match, error = _build_match(match, existing=match, partial=True)
+    if error:
+        return jsonify({"ok": False, "error": error}), 400
+    _save_match(match)
+    audit("live_quick_update", f"{_match_key(match)} {score_a}-{score_b}")
+    return jsonify({"ok": True, "message": "Scores updated"})
 
 
 # ---------------------------------------------------------------------------
@@ -924,9 +1187,21 @@ def upload_gallery():
     if not files:
         return jsonify({"ok": False, "error": "No files uploaded"}), 400
 
-    dest_dir = os.path.join(_BASE_DIR, "static", "images", "gallery")
+    dest_dir = os.path.join(_BASE_DIR, "static", "images", "gallery", "season-4")
     os.makedirs(dest_dir, exist_ok=True)
-    gallery = _load("gallery.json", [])
+    seasons = _load("gallery_seasons.json", [])
+    season4 = next((s for s in seasons if s.get("id") == "season-4"), None)
+    if not season4:
+        season4 = {
+            "id": "season-4",
+            "season": "Season 4",
+            "name": "Mission Possible",
+            "year": "2026",
+            "tagline": "Beyond Impossible",
+            "photos": [],
+        }
+        seasons.insert(0, season4)
+    season4.setdefault("photos", [])
     added = []
 
     for file in files:
@@ -940,17 +1215,17 @@ def upload_gallery():
         file.save(os.path.join(dest_dir, filename))
         item = {
             "id": gid,
-            "path": f"/static/images/gallery/{filename}",
-            "caption": caption,
+            "path": f"/static/images/gallery/season-4/{filename}",
+            "caption": caption or "Mission Possible 2026",
             "uploaded_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
         }
-        gallery.insert(0, item)
+        season4["photos"].insert(0, item)
         added.append(item)
 
     if not added:
         return jsonify({"ok": False, "error": "No valid images (png/jpg/jpeg/webp)"}), 400
 
-    _save("gallery.json", gallery)
+    _save("gallery_seasons.json", seasons)
     audit("gallery_upload", f"{len(added)} image(s)")
     return jsonify({"ok": True, "items": added})
 
@@ -961,12 +1236,25 @@ def delete_gallery():
     gid = (request.get_json(silent=True) or {}).get("id")
     if not gid:
         return jsonify({"ok": False, "error": "id required"}), 400
-    gallery = _load("gallery.json", [])
-    item = next((x for x in gallery if x.get("id") == gid), None)
-    if not item:
-        return jsonify({"ok": False, "error": "Not found"}), 404
-    gallery = [x for x in gallery if x.get("id") != gid]
-    _save("gallery.json", gallery)
+    seasons = _load("gallery_seasons.json", [])
+    item = None
+    for season in seasons:
+        photos = season.get("photos") or []
+        found = next((x for x in photos if x.get("id") == gid), None)
+        if found:
+            item = found
+            season["photos"] = [x for x in photos if x.get("id") != gid]
+            break
+
+    if item:
+        _save("gallery_seasons.json", seasons)
+    else:
+        gallery = _load("gallery.json", [])
+        item = next((x for x in gallery if x.get("id") == gid), None)
+        if not item:
+            return jsonify({"ok": False, "error": "Not found"}), 404
+        gallery = [x for x in gallery if x.get("id") != gid]
+        _save("gallery.json", gallery)
 
     rel = (item.get("path") or "").replace("/static/", "").replace("/", os.sep)
     abs_path = os.path.join(_BASE_DIR, "static", rel) if rel else ""

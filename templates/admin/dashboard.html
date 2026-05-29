@@ -67,86 +67,130 @@
 
     <!-- LIVE -->
     <section class="apanel" data-panel="live">
-      <h1>Live Scores</h1>
-      <div class="acard">
-        <h3>Current match</h3>
-        <p class="amini">Set live updates by sport type. Unsupported events are hidden from live scoring.</p>
-        <label class="field"><span>Event</span>
-          <select id="liveEvent" onchange="onLiveEventChange()">
-            {% for e in events if e.id not in ['carrom', 'chess', 'cooking', '8ball-pool', 'singing', 'dancing', 'skit', 'fancy-dress'] %}
-              <option value="{{ e.id }}">{{ e.name }}</option>
-            {% endfor %}
-          </select>
-        </label>
-        <label class="field"><span>Round / Stage</span>
-          <select id="liveRound"></select>
-        </label>
-        <label class="field"><span>Status</span>
-          <select id="liveStatus"><option value="upcoming">Upcoming</option><option value="live" selected>Live</option><option value="completed">Completed (archive)</option></select>
-        </label>
-        <div class="scoregrid scoregrid--2">
-          <label class="field"><span>Team A</span>
-            <select id="liveTeamA">
-              {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
-            </select>
-          </label>
-          <label class="field"><span>Score A</span><input type="number" id="liveScoreA" value="0" min="0"></label>
-          <label class="field"><span>Team B</span>
-            <select id="liveTeamB">
-              {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
-            </select>
-          </label>
-          <label class="field"><span>Score B</span><input type="number" id="liveScoreB" value="0" min="0"></label>
+      <h1>Live Scores & Matches</h1>
+      
+      <!-- Tabs for match management -->
+      <div class="live-tabs">
+        <button class="live-tab active" data-tab="upcoming" onclick="switchLiveTab('upcoming')">Upcoming</button>
+        <button class="live-tab" data-tab="live" onclick="switchLiveTab('live')">Live Now</button>
+        <button class="live-tab" data-tab="completed" onclick="switchLiveTab('completed')">Completed</button>
+        <button class="live-tab" data-tab="manage" onclick="switchLiveTab('manage')">Add/Edit</button>
+      </div>
+
+      <!-- Upcoming Matches -->
+      <div id="liveTabUpcoming" class="live-tab-content">
+        <div class="acard">
+          <h3>Upcoming Matches</h3>
+          <div id="matchesUpcoming" class="match-list"><div class="muted">Loading...</div></div>
         </div>
-        <div id="liveCustomWrap" class="live-custom-wrap">
-          <div id="liveCustomRace" class="live-custom hide">
-            <label class="field"><span>Participant 1 Name</span><input id="raceP1Name" placeholder="Name"></label>
-            <label class="field"><span>Participant 1 Team</span>
-              <select id="raceP1Team">
-                <option value="">Select team</option>
+      </div>
+
+      <!-- Live Matches -->
+      <div id="liveTabLive" class="live-tab-content" style="display:none;">
+        <div class="acard">
+          <h3>Currently Live</h3>
+          <div id="matchesLive" class="match-list"><div class="muted">No live matches</div></div>
+        </div>
+      </div>
+
+      <!-- Completed Matches -->
+      <div id="liveTabCompleted" class="live-tab-content" style="display:none;">
+        <div class="acard">
+          <h3>Completed / Archived</h3>
+          <div id="matchesCompleted" class="match-list"><div class="muted">No completed matches</div></div>
+        </div>
+      </div>
+
+      <!-- Add/Edit Matches -->
+      <div id="liveTabManage" class="live-tab-content" style="display:none;">
+        <div class="acard">
+          <h3>Add or Edit Match</h3>
+          <p class="amini">Select an event to create/update a match. Fill in teams, scores, and other details.</p>
+          <input type="hidden" id="liveMatchId">
+          <label class="field"><span>Event</span>
+            <select id="liveEvent" onchange="onLiveEventChange()">
+              {% for e in events if e.id not in ['carrom', 'chess', 'cooking', '8ball-pool', 'singing', 'dancing', 'skit', 'fancy-dress'] %}
+                <option value="{{ e.id }}">{{ e.name }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label class="field"><span>Round / Stage</span>
+            <select id="liveRound"></select>
+          </label>
+          <label class="field"><span>Status</span>
+            <select id="liveStatus"><option value="upcoming">Upcoming</option><option value="live" selected>Live</option><option value="completed">Completed (archive)</option></select>
+          </label>
+          <div class="scoregrid scoregrid--2">
+            <label class="field"><span>Team A</span>
+              <select id="liveTeamA">
+                <option value="">—Select—</option>
                 {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
               </select>
             </label>
-            <label class="field"><span>Participant 1 Score</span><input id="raceP1Score" type="number" min="0" value="0"></label>
-            <label class="field"><span>Participant 1 Status</span>
-              <select id="raceP1Status"><option value="leading">Leading</option><option value="trailing">Trailing</option><option value="level">Level</option></select>
-            </label>
-            <label class="field"><span>Participant 2 Name</span><input id="raceP2Name" placeholder="Name"></label>
-            <label class="field"><span>Participant 2 Team</span>
-              <select id="raceP2Team">
-                <option value="">Select team</option>
+            <label class="field"><span>Score A</span><input type="number" id="liveScoreA" value="0" min="0"></label>
+            <label class="field"><span>Team B</span>
+              <select id="liveTeamB">
+                <option value="">—Select—</option>
                 {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
               </select>
             </label>
-            <label class="field"><span>Participant 2 Score</span><input id="raceP2Score" type="number" min="0" value="0"></label>
-            <label class="field"><span>Participant 2 Status</span>
-              <select id="raceP2Status"><option value="leading">Leading</option><option value="trailing">Trailing</option><option value="level">Level</option></select>
-            </label>
+            <label class="field"><span>Score B</span><input type="number" id="liveScoreB" value="0" min="0"></label>
           </div>
-          <div id="liveCustomCricket" class="live-custom hide">
-            <label class="field"><span>Batting Team</span><input id="crBattingTeam" placeholder="Team name"></label>
-            <label class="field"><span>Score</span><input id="crScore" placeholder="e.g. 127/4"></label>
-            <label class="field"><span>Wickets</span><input id="crWickets" type="number" min="0" value="0"></label>
-            <label class="field"><span>Overs</span><input id="crOvers" placeholder="e.g. 16.3"></label>
-            <label class="field"><span>Striker</span><input id="crStriker" placeholder="Player on strike"></label>
-            <label class="field"><span>Non-striker</span><input id="crNonStriker" placeholder="Player not on strike"></label>
-            <label class="field"><span>Bowler</span><input id="crBowler" placeholder="Current bowler"></label>
-            <label class="field"><span>Target (optional)</span><input id="crTarget" placeholder="e.g. 168"></label>
+          <div id="liveCustomWrap" class="live-custom-wrap">
+            <div id="liveCustomRace" class="live-custom hide">
+              <label class="field"><span>Participant 1 Name</span><input id="raceP1Name" placeholder="Name"></label>
+              <label class="field"><span>Participant 1 Team</span>
+                <select id="raceP1Team">
+                  <option value="">Select team</option>
+                  {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+                </select>
+              </label>
+              <label class="field"><span>Participant 1 Score</span><input id="raceP1Score" type="number" min="0" value="0"></label>
+              <label class="field"><span>Participant 1 Status</span>
+                <select id="raceP1Status"><option value="leading">Leading</option><option value="trailing">Trailing</option><option value="level">Level</option></select>
+              </label>
+              <label class="field"><span>Participant 2 Name</span><input id="raceP2Name" placeholder="Name"></label>
+              <label class="field"><span>Participant 2 Team</span>
+                <select id="raceP2Team">
+                  <option value="">Select team</option>
+                  {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+                </select>
+              </label>
+              <label class="field"><span>Participant 2 Score</span><input id="raceP2Score" type="number" min="0" value="0"></label>
+              <label class="field"><span>Participant 2 Status</span>
+                <select id="raceP2Status"><option value="leading">Leading</option><option value="trailing">Trailing</option><option value="level">Level</option></select>
+              </label>
+            </div>
+            <div id="liveCustomCricket" class="live-custom hide">
+              <label class="field"><span>Batting Team</span><input id="crBattingTeam" placeholder="Team name"></label>
+              <label class="field"><span>Score</span><input id="crScore" placeholder="e.g. 127/4"></label>
+              <label class="field"><span>Wickets</span><input id="crWickets" type="number" min="0" value="0"></label>
+              <label class="field"><span>Overs</span><input id="crOvers" placeholder="e.g. 16.3"></label>
+              <label class="field"><span>Striker</span><input id="crStriker" placeholder="Player on strike"></label>
+              <label class="field"><span>Non-striker</span><input id="crNonStriker" placeholder="Player not on strike"></label>
+              <label class="field"><span>Bowler</span><input id="crBowler" placeholder="Current bowler"></label>
+              <label class="field"><span>Target (optional)</span><input id="crTarget" placeholder="e.g. 168"></label>
+            </div>
+          </div>
+          <div class="abtn-row">
+            <button class="btn btn--gold" onclick="updateLive()">Save Match →</button>
+            <button class="btn btn--ghost" onclick="clearLiveForm()">Clear Form</button>
           </div>
         </div>
-        <div class="abtn-row">
-          <button class="btn btn--gold" onclick="updateLive()">Update Scoreboard →</button>
-          <button class="btn btn--ghost" onclick="clearLiveRecord()">Remove Match Record</button>
-        </div>
       </div>
+
+      <!-- YouTube Live -->
       <div class="acard">
-        <h3>YouTube Live</h3>
-        <p class="amini">Paste a YouTube Live link (or embed link). This will appear on the public Live page.</p>
-        <label class="field"><span>YouTube URL</span><input id="ytLiveUrl" placeholder="https://www.youtube.com/watch?v=... or https://www.youtube.com/embed/..."></label>
-        <button class="btn btn--gold" onclick="saveYouTubeLive()">Save YouTube Link →</button>
+        <h3>YouTube Live Link</h3>
+        <p class="amini">Paste a YouTube Live link to display on the public Live page.</p>
+        <label class="field"><span>YouTube URL</span><input id="ytLiveUrl" placeholder="https://www.youtube.com/watch?v=..."></label>
+        <button class="btn btn--gold" onclick="saveYouTubeLive()">Save →</button>
       </div>
+
+      <!-- Add Commentary -->
       <div class="acard">
-        <h3>Post commentary</h3>
+        <h3>Post Commentary</h3>
+        <p class="amini">Add live commentary/updates for the currently live match.</p>
         <label class="field"><span>Update</span><input id="cmtText" placeholder="e.g. Creators take an early lead!"></label>
         <button class="btn btn--ghost" onclick="addCommentary()">Add Commentary →</button>
       </div>
@@ -482,6 +526,6 @@
     window.CARNIVAL_LIVE_INIT = {{ scores.live | tojson }};
   </script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/admin.js', v='20260528b') }}"></script>
+  <script src="{{ url_for('static', filename='js/admin.js', v='20260529-live-matches') }}"></script>
 </body>
 </html>

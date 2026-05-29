@@ -146,80 +146,71 @@
   }
 
   const OVERALL_MVP_RULES = `
-    <h3>ANNUAL CARNIVAL 2026</h3>
-    <p><strong>Overall MVP Award — Official Rules &amp; Regulations</strong></p>
-    <p><strong>WHAT IS THE OVERALL MVP?</strong><br>The Overall MVP is Annual Carnival 2026's individual excellence award. It runs parallel to the team competition across all 11 events. Every eligible participant earns personal points based on their performance throughout the season. The person with the highest points at the end of the season is crowned <strong>Overall MVP of Annual Carnival 2026</strong> and recognised at the Grand Finale on 15th August 2026.</p>
-    <p>The purpose of this award is simple — to reward individuals who show up, compete hard, and perform consistently across multiple events, not just one.</p>
-    <p><strong>ELIGIBILITY</strong></p>
-    <ol>
-      <li>Any confirmed participant across any of the 3 teams is eligible.</li>
-      <li>A participant must be on the official submitted list (submitted to the WhatsApp group before 6:00 PM the day prior) to be eligible for Overall MVP points for that event.</li>
-      <li>A participant may compete in a <strong>maximum of 5 events</strong> across the season. Points are only counted across your participating events.</li>
-      <li>In <strong>team sports</strong> (Basketball, Throwball, Cricket, Kabaddi, Cycling &amp; Tug of War, Swimming &amp; Sand Volleyball) — a player must play for at least <strong>1 minute</strong> or make some contribution to be eligible for points from that event. If they are a substitute, they must play to receive points for that event.</li>
-      <li>In <strong>individual and cultural events</strong> (Carrom, Chess, Table Tennis, Lemon &amp; Spoon Race, Sack Race, Rangoli, Cooking Competition, 8-Ball Pool) — all active participants are eligible. No minimum time rule applies.</li>
-    </ol>
-    <p><strong>POINTS SYSTEM</strong></p>
+    <h3>MVP Award Rules &amp; Regulations</h3>
+    <p><em>Applicable for All 3 Teams</em></p>
+    <p>The <strong>Most Valuable Player (MVP) Award</strong> will be awarded in the following events: Basketball, Throwball, Kabaddi, Badminton, Cricket, Table Tennis, Carrom, Sand Volleyball, Swimming, Dancing, Skit &amp; Drama.</p>
+    <h4>General Rules</h4>
+    <ul>
+      <li>An MVP will be selected <strong>after every match/event</strong> by the referee/judging panel.</li>
+      <li>The referee’s decision will be <strong>final and non-negotiable</strong>.</li>
+      <li>MVP is awarded based on: Performance, Skill level, Team contribution, Sportsmanship/Fair play, Impact on the game/event.</li>
+      <li>MVP can be awarded to a player from <strong>either team</strong>, not necessarily the winning team.</li>
+      <li>Any player showing Misconduct, Abusive language, Unsportsmanlike behaviour, Fighting or cheating will be disqualified from MVP consideration.</li>
+      <li>Teams must respect the referee’s decision at all times. Aggressive arguing may lead to warnings or penalties.</li>
+      <li>Only officially registered players/participants are eligible for MVP awards. Substitutes who do not actively participate receive <strong>0 points</strong>.</li>
+      <li>In team performances like Dancing and Skit &amp; Drama: MVP may be awarded to an individual performer OR a “Best Performer” title may be given based on judges’ discretion.</li>
+      <li>In Swimming, the MVP/Best Performer will be selected based on Timing, Technique, and Overall dominance in the event.</li>
+      <li>Consistent MVP winners across events will be considered for the <strong>Overall Carnival MVP Award</strong>.</li>
+      <li>Fair play, respect, and team spirit are expected from all 3 teams throughout the carnival.</li>
+      <li>Any attempt to influence referees/judges will result in immediate disciplinary action.</li>
+    </ul>
+    <h4>Points System</h4>
     <ul>
       <li>1st Place / Win in an event: 10 points</li>
       <li>2nd Place / Runner-up in an event: 5 points</li>
-      <li>Event MVP of a specific sport: 15 points</li>
       <li>Reserve / Sub who does not play in team sports: 0 points</li>
     </ul>
-    <p><strong>Important:</strong></p>
-    <ul>
-      <li>Event MVP points (15) are the total for that event. The 10 win points are not added on top. MVP replaces, not stacks.</li>
-      <li>2nd place points apply to all eligible active players on the runner-up team. Substitutes must play to receive points.</li>
-      <li>Points apply to all 11 events — Outdoor, Indoor, and Cultural equally. Every event counts the same.</li>
-    </ul>
-    <p><strong>TIEBREAKER</strong></p>
+    <p><strong>Notes:</strong> Event MVP is recognised by the referee/panel but does not carry an extra 15-point allocation in the season tally; only the 10/5 placement points apply as above. Points apply equally across all 21 events (Outdoor, Indoor, and Cultural).</p>
+    <h4>Tiebreaker</h4>
     <ol>
       <li><strong>Step 1 — Count the Golds.</strong> The player with more 1st place finishes (event wins) across their events is declared the winner.</li>
-      <li><strong>Step 2 — If golds are also equal.</strong> All tied players are jointly declared Overall MVP of Annual Carnival 2026. There is no further tiebreaker. Everyone wins.</li>
+      <li><strong>Step 2 — If golds are also equal:</strong> All tied players are jointly declared Overall MVP. There is no further tiebreaker.</li>
     </ol>
-    <p><strong>TRACKING &amp; TRANSPARENCY</strong></p>
+    <h4>Tracking &amp; Transparency</h4>
     <ul>
       <li>Individual points are tracked by the admin after every event concludes.</li>
       <li>The live Overall MVP leaderboard is publicly visible on the website Awards page and updates after each event.</li>
-      <li>Players can track their own standing throughout the season in real time.</li>
-      <li>All point allocations are final once entered by the admin. Disputes follow the same process as general disputes — all 3 overall coordinators must be present.</li>
+      <li>All point allocations are final once entered by the admin. Disputes follow the admin dispute process.</li>
     </ul>
-    <p><strong>THE AWARD</strong><br>The Overall MVP is announced and presented on <strong>15th August 2026</strong> at the Annual Carnival Grand Finale alongside the Best Team trophy. The award recognises individual consistency, effort, and excellence across the season — not just a single moment.</p>
-    <p><em>These rules are final and apply to all participants across Team Creators, Team Dominators, and Team Royals.</em></p>
   `;
 
   const FAIR_PLAY_RULES = `
-    <h3>ANNUAL CARNIVAL 2026</h3>
-    <p><strong>Fair Play Award — Official Rules &amp; Regulations</strong></p>
-    <p><strong>WHAT IS THE FAIR PLAY AWARD?</strong><br>The Fair Play Award recognises the team that competes with the most discipline, respect, and sportsmanship throughout the season. It is not about skill or winning — it is about how you play. The team with the most Fair Play points at the end of the season is crowned the Fair Play Champion of Annual Carnival 2026 and recognised at the Grand Finale on 15th August 2026.</p>
-    <p><strong>WHICH EVENTS COUNT</strong><br>Fair Play points are awarded in sports events only. Cultural events are excluded.</p>
+    <h3>Fair Play Award — Official Rules &amp; Regulations</h3>
+    <p>The Fair Play Award recognises the team that competes with the most discipline, respect, and sportsmanship throughout the season. It is awarded for conduct across <strong>all 21 events</strong> — outdoor, indoor, and cultural.</p>
+    <h4>Which Events Count</h4>
+    <p>Fair Play points are eligible in every event across the season (all sports and cultural events).</p>
+    <h4>How It Works</h4>
+    <p>After every event, Fair Play points are awarded to teams based on conduct and final placing. The evaluation includes:</p>
     <ul>
-      <li><strong>Eligible events:</strong> Basketball, Throwball, Swimming &amp; Sand Volleyball, Cycling &amp; Tug of War, Badminton, Cricket, Kabaddi, Table Tennis, Lemon &amp; Spoon Race, Sack Race, Carrom, Chess, 8-Ball Pool.</li>
-      <li><strong>Cultural events not included:</strong> Rangoli, Cooking Competition, Singing, Dancing, Fancy Dress, Skit &amp; Drama.</li>
-    </ul>
-    <p><strong>HOW IT WORKS</strong><br>After every eligible sports event, Fair Play points are awarded to teams based on final placing and conduct. The evaluation is based on:</p>
-    <ul>
-      <li>Discipline throughout the game</li>
+      <li>Discipline throughout the event</li>
       <li>Respectful behaviour toward opponents, teammates, and officials</li>
-      <li>Minimal or zero arguments with the referee</li>
+      <li>Minimal or no arguments with referees/officials</li>
       <li>Graceful acceptance of decisions — wins and losses</li>
-      <li>Overall conduct that reflects the spirit of the game</li>
+      <li>Overall conduct that reflects the spirit of the carnival</li>
+      <li>The umpire/referee may also consider audience behaviour and other contextual criteria when awarding Fair Play points.</li>
     </ul>
-    <p>The umpire/referee decision is final. No player, coordinator, or team may influence Fair Play scoring.</p>
-    <p><strong>POINTS SYSTEM</strong></p>
+    <p><strong>Points System</strong></p>
     <ul>
       <li>1st place team of an event: 2 points</li>
       <li>2nd place team of an event: 1 point</li>
       <li>All other teams: 0 points</li>
     </ul>
-    <p>Only teams receive Fair Play points in this system. There are no consolation points beyond the 1st and 2nd place team allocations.</p>
-    <p><strong>TIEBREAKER</strong><br>If two or more teams finish the season with equal Fair Play points, look at Overall MVP points. The team linked with the higher Overall MVP tally is declared the Fair Play Champion. This is the only and final tiebreaker. There are no further steps.</p>
-    <p><strong>TRACKING &amp; TRANSPARENCY</strong></p>
+    <p><strong>Tie Policy</strong><br>There is <strong>no tiebreaker</strong> for the Fair Play Award. If two or more teams finish the season with equal Fair Play points, the teams will be jointly declared Fair Play Champions.</p>
+    <h4>Tracking &amp; Transparency</h4>
     <ul>
       <li>Fair Play points are recorded by the admin after every event.</li>
-      <li>The Fair Play leaderboard is publicly visible on the website Awards page alongside the Overall MVP leaderboard.</li>
-      <li>All Fair Play allocations are final once submitted by the umpire/referee. No disputes accepted on Fair Play selections.</li>
+      <li>The Fair Play leaderboard is publicly visible on the website Awards page.</li>
+      <li>All Fair Play allocations are final once submitted by the umpire/referee.</li>
     </ul>
-    <p><strong>THE AWARD</strong><br>The Fair Play Champion team is announced and presented on 15th August 2026 at the Annual Carnival Grand Finale. This award carries equal prestige to the Overall MVP — because how you play matters just as much as whether you win.</p>
-    <p><em>These rules are final and apply to all participants across Team Creators, Team Dominators, and Team Royals.</em></p>
   `;
 })();

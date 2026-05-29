@@ -1,0 +1,56 @@
+[
+  {
+    "id": "season-4",
+    "season": "Season 4",
+    "name": "Mission Possible",
+    "year": "2026",
+    "tagline": "Beyond Impossible",
+    "photos": []
+  },
+  {
+    "id": "season-3",
+    "season": "Season 3",
+    "name": "Mission Possible",
+    "year": "2025",
+    "tagline": "Rise Of Champions",
+    "photos": [
+      { "path": "/static/images/gallery/season-3/whatsapp-2026-05-29-115804.jpeg", "caption": "Season 3 champions" },
+      { "path": "/static/images/gallery/season-3/whatsapp-2026-05-29-115425.jpeg", "caption": "Season 3 leaders" },
+      { "path": "/static/images/gallery/season-3/whatsapp-2026-05-29-115310.jpeg", "caption": "Season 3 gala entrance" },
+      { "path": "/static/images/gallery/season-3/whatsapp-2026-05-29-115234.jpeg", "caption": "Season 3 trophy" },
+      { "path": "/static/images/gallery/season-3/whatsapp-2026-05-29-115802.jpeg", "caption": "Season 3 winning moment" }
+    ]
+  },
+  {
+    "id": "season-2",
+    "season": "Season 2",
+    "name": "Mission Possible",
+    "year": "2024",
+    "tagline": "The Winning Edge",
+    "photos": [
+      { "path": "/static/images/gallery/season-2/kis00307.jpg", "caption": "Season 2 moments" },
+      { "path": "/static/images/gallery/season-2/kis00675.jpg", "caption": "Season 2 winners and teams" },
+      { "path": "/static/images/gallery/season-2/kis00475.jpg", "caption": "Season 2 team activity" },
+      { "path": "/static/images/gallery/season-2/kis00310.jpg", "caption": "Season 2 team lineup" },
+      { "path": "/static/images/gallery/season-2/kis00265.jpg", "caption": "Season 2 audience moments" },
+      { "path": "/static/images/gallery/season-2/dsc09913.jpg", "caption": "Season 2 stage" },
+      { "path": "/static/images/gallery/season-2/dsc00711.jpg", "caption": "Season 2 champions" }
+    ]
+  },
+  {
+    "id": "season-1",
+    "season": "Season 1",
+    "name": "Mission Possible",
+    "year": "2023",
+    "tagline": "The Break Through",
+    "photos": [
+      { "path": "/static/images/gallery/season-1/sde06983.jpg", "caption": "Season 1 champions" },
+      { "path": "/static/images/gallery/season-1/sde06646.jpg", "caption": "Season 1 audience moments" },
+      { "path": "/static/images/gallery/season-1/sde05836.jpg", "caption": "Season 1 team activity" },
+      { "path": "/static/images/gallery/season-1/dsc04695.jpg", "caption": "Season 1 celebrations" },
+      { "path": "/static/images/gallery/season-1/dsc04684.jpg", "caption": "Season 1 team lineup" },
+      { "path": "/static/images/gallery/season-1/dsc04672.jpg", "caption": "Season 1 team gathering" },
+      { "path": "/static/images/gallery/season-1/dsc04653.jpg", "caption": "Season 1 opening moments" }
+    ]
+  }
+]

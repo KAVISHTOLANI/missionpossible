@@ -271,6 +271,14 @@ def api_gallery():
         return jsonify([])
 
 
+@app.route("/api/gallery-seasons")
+def api_gallery_seasons():
+    try:
+        return jsonify(load("gallery_seasons"))
+    except Exception:
+        return jsonify([])
+
+
 @app.route("/api/settings")
 def api_settings():
     try:

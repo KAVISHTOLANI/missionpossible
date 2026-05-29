@@ -199,6 +199,9 @@
 
 /* ---- Standings ---- */
 .table-wrap { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; background: var(--surface); }
+/* allow horizontal scrolling on small screens for wide tables */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.ptable { min-width: 680px; }
 .ptable { width: 100%; border-collapse: collapse; }
 .ptable thead th { text-align: left; padding: 18px 16px; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); font-weight: 600; }
 .ptable thead th:first-child, .ptable td.rank { width: 70px; text-align: center; }
@@ -295,6 +298,134 @@
 }
 @media (max-width: 640px) { .winner-places { grid-template-columns: 1fr; } }
 
+/* ---- MVP Eligibility Table ---- */
+.mvp-eligibility-wrapper {
+  width: 100%;
+}
+
+.mvp-eligibility-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 700px) {
+  .mvp-eligibility-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.mvp-eligible-col,
+.mvp-noteligible-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mvp-col-header {
+  padding: 14px 16px;
+  border-radius: 10px 10px 0 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.mvp-col-header.mvp-eligible {
+  background: linear-gradient(135deg, #27ae60, #229954);
+  color: #ffffff;
+  border: 1px solid #1e8449;
+  border-bottom: none;
+}
+
+.mvp-col-header.mvp-noteligible {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: #ffffff;
+  border: 1px solid #a93226;
+  border-bottom: none;
+}
+
+.mvp-col-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 0 0 10px 10px;
+  background: rgba(212,175,55,0.04);
+  border: 1px solid var(--border);
+  border-top: none;
+  min-height: 120px;
+}
+
+.mvp-sport-badge {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.mvp-sport-badge.mvp-eligible {
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.15), rgba(34, 153, 84, 0.1));
+  color: #27ae60;
+  border: 1px solid rgba(39, 174, 96, 0.3);
+}
+
+.mvp-sport-badge.mvp-noteligible {
+  background: linear-gradient(135deg, rgba(231, 76, 60, 0.15), rgba(192, 57, 43, 0.1));
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.mvp-sport-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ---- MVP Rules Toggle ---- */
+.mvp-rules-toggle {
+  appearance: none;
+  background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04));
+  border: 1px solid rgba(212,175,55,0.4);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mvp-rules-toggle:hover {
+  background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(212,175,55,0.06));
+  border-color: rgba(212,175,55,0.6);
+}
+
+.mvp-rules-toggle:active {
+  transform: scale(0.98);
+}
+
+.mvp-rules-content {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ---- Awards Lock ---- */
 .awards-lock-page {
   min-height: calc(100svh - 80px);
@@ -385,6 +516,37 @@
 .awards-lock-back:hover { color: var(--gold); }
 
 /* ---- Gallery ---- */
+.gallery-stack { display: flex; flex-direction: column; gap: clamp(34px, 6vw, 70px); }
+.gallery-block { scroll-margin-top: 110px; }
+.gallery-block__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+.gallery-block__head h2 {
+  margin-top: 8px;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+}
+.gallery-season {
+  padding-top: clamp(18px, 3vw, 28px);
+  border-top: 1px solid var(--border);
+}
+.gallery-season__count {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.gallery-season__tagline {
+  margin-top: 8px;
+  color: var(--gold);
+  font-family: var(--f-head);
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+}
+.gallery-season__empty { grid-column: 1 / -1; }
 .gcard { overflow: hidden; display: flex; flex-direction: column; }
 .gcard__media { aspect-ratio: 1 / 1; background: #111; overflow: hidden; }
 .gcard__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .4s var(--ease); }
@@ -392,6 +554,9 @@
 .gcard__body { padding: 14px 16px 16px; border-top: 1px solid var(--border); }
 .gcard__caption { font-family: var(--f-head); font-size: 1rem; color: var(--ivory); }
 .gcard__meta { margin-top: 4px; font-size: 0.74rem; color: var(--muted); }
+@media (max-width: 640px) {
+  .gallery-block__head { align-items: flex-start; flex-direction: column; }
+}
 
 /* ---- Champions ---- */
 .champcard { padding: 22px 24px; }

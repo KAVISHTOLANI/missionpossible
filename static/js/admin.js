@@ -4,8 +4,9 @@
 
   const MATCH_FORMATS = window.CARNIVAL_MATCH_FORMATS || {};
   const LIVE_INIT = window.CARNIVAL_LIVE_INIT || {};
-  const RACE_EVENTS = new Set(["swimming", "sand-volleyball", "cycling", "tug-of-war", "table-tennis", "lemon-spoon", "sack-race", "badminton", "rangoli"]);
+  const RACE_EVENTS = new Set(["swimming", "sand-volleyball", "cycling", "lemon-spoon", "sack-race", "rangoli"]);
   const CRICKET_EVENTS = new Set(["cricket"]);
+  let liveMatchesCache = [];
 
   const menu = document.getElementById("amenu");
   const sidebar = document.getElementById("asidebar");
@@ -36,9 +37,9 @@
     toastTimer = setTimeout(() => t.classList.remove("show"), 2800);
   };
 
-  async function postJSON(url, payload) {
+  async function requestJSON(url, payload, method = "POST") {
     const r = await fetch(url, {
-      method: "POST",
+      method,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
@@ -46,6 +47,7 @@
     if (!r.ok || data.ok === false) throw new Error(data.error || "Request failed");
     return data;
   }
+  const postJSON = (url, payload) => requestJSON(url, payload, "POST");
   const val = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ""; };
   const numVal = (id) => { const el = document.getElementById(id); return el ? parseInt(el.value || "0", 10) : 0; };
 
@@ -197,7 +199,9 @@
   };
 
   window.updateLive = function () {
+    const matchId = val("liveMatchId");
     const payload = {
+      match_id: matchId,
       event_id: val("liveEvent"),
       status: val("liveStatus"),
       round: val("liveRound"),
@@ -206,9 +210,16 @@
       score_a: numVal("liveScoreA"),
       score_b: numVal("liveScoreB"),
       details: liveDetailsPayload(),
+      append_to_live_matches: (document.getElementById("liveMultiple") && document.getElementById("liveMultiple").checked) ? true : false,
     };
-    postJSON("/admin/api/live/update", payload)
-      .then(() => toast("Scoreboard updated"))
+    const request = matchId
+      ? requestJSON(`/admin/api/live/matches/${encodeURIComponent(matchId)}`, payload, "PATCH")
+      : postJSON("/admin/api/live/matches", payload);
+    request
+      .then(() => {
+        toast(matchId ? "Match updated" : "Match added");
+        loadLiveMatches();
+      })
       .catch((e) => toast(e.message, true));
   };
 
@@ -234,7 +245,7 @@
   window.addCommentary = function () {
     const text = val("cmtText");
     if (!text) return toast("Commentary cannot be empty", true);
-    postJSON("/admin/api/live/commentary", { text, event_id: val("liveEvent") })
+    postJSON("/admin/api/live/commentary", { text, match_id: val("liveMatchId"), event_id: val("liveEvent") })
       .then(() => { toast("Commentary added"); const e = document.getElementById("cmtText"); if (e) e.value = ""; })
       .catch((e) => toast(e.message, true));
   };
@@ -719,7 +730,216 @@
 
   function esc(s) { const d = document.createElement("div"); d.textContent = s == null ? "" : String(s); return d.innerHTML; }
 
+  // ===== Comprehensive Live Matches Management =====
+  window.switchLiveTab = function(tabName) {
+    // Hide all tabs
+    document.querySelectorAll(".live-tab-content").forEach(tab => tab.style.display = "none");
+    document.querySelectorAll(".live-tab").forEach(btn => btn.classList.remove("active"));
+    
+    // Show selected tab
+    const contentId = "liveTab" + (tabName.charAt(0).toUpperCase() + tabName.slice(1));
+    const contentEl = document.getElementById(contentId);
+    if (contentEl) contentEl.style.display = "block";
+    
+    document.querySelector(`[data-tab="${tabName}"]`)?.classList.add("active");
+    
+    // Load matches if needed
+    if (["upcoming", "live", "completed"].includes(tabName)) {
+      loadLiveMatches(tabName);
+    }
+  };
+
+  function loadLiveMatches() {
+    fetch("/admin/api/live/matches?ts=" + Date.now(), { cache: "no-store" })
+      .then(r => r.json())
+      .then(data => {
+        if (data.ok) {
+          liveMatchesCache = data.matches || [];
+          renderLiveMatches(data.matches || []);
+        }
+      })
+      .catch(e => console.error("Failed to load matches:", e));
+  }
+
+  function renderLiveMatches(matches) {
+    const upcomingEl = document.getElementById("matchesUpcoming");
+    const liveEl = document.getElementById("matchesLive");
+    const completedEl = document.getElementById("matchesCompleted");
+    
+    const upcoming = matches.filter(m => m.status === "upcoming");
+    const live = matches.filter(m => m.status === "live");
+    const completed = matches.filter(m => m.status === "completed");
+    
+    if (upcomingEl) upcomingEl.innerHTML = renderMatchCards(upcoming);
+    if (liveEl) liveEl.innerHTML = renderMatchCards(live);
+    if (completedEl) completedEl.innerHTML = renderMatchCards(completed);
+  }
+
+  function renderMatchCards(matches) {
+    if (!matches || matches.length === 0) {
+      return '<div class="muted">No matches</div>';
+    }
+    
+    return matches.map(m => {
+      const teamA = m.team_a_name || m.team_a || "TBD";
+      const teamB = m.team_b_name || m.team_b || "TBD";
+      const scoreDisplay = m.score_a != null && m.score_b != null ? `${m.score_a} - ${m.score_b}` : "—";
+      const badgeColor = m.status === "live" ? "#ff4444" : (m.status === "completed" ? "#44aa44" : "#d4af37");
+      
+      return `
+        <div class="match-card" style="border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 12px; background: linear-gradient(135deg, rgba(212,175,55,0.04), rgba(212,175,55,0.01)); position: relative;">
+          <div style="position: absolute; top: 8px; right: 12px; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; background: ${badgeColor}; color: white; border-radius: 6px; font-weight: 700;">${esc(m.status)}</div>
+          <div style="display: grid; gap: 10px;">
+            <div>
+              <div style="font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 4px;">${esc(m.event_name || "—")}</div>
+              <div style="font-family: var(--f-head); font-weight: 700; font-size: 1.1rem;">${esc(teamA)} <span style="color: var(--gold);">${scoreDisplay}</span> ${esc(teamB)}</div>
+              <div style="font-size: 0.82rem; color: var(--muted); margin-top: 6px;">${esc(m.round || "")} ${m.commentary && m.commentary.length ? "·  " + m.commentary.length + " updates" : ""}</div>
+            </div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <button class="match-action" onclick="editMatch('${esc(m.match_id)}')">Edit</button>
+              <button class="match-action" onclick="quickUpdateMatch('${esc(m.match_id)}')">Score</button>
+              ${statusButtons(m)}
+              <button class="match-action match-action--danger" onclick="deleteMatch('${esc(m.match_id)}')">Delete</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function statusButtons(match) {
+    return ["upcoming", "live", "completed"]
+      .filter((status) => status !== match.status)
+      .map((status) => `<button class="match-action" onclick="moveMatchStatus('${esc(match.match_id)}', '${status}')">${statusLabel(status)}</button>`)
+      .join("");
+  }
+
+  function statusLabel(status) {
+    return status === "live" ? "Set Live" : (status === "completed" ? "Complete" : "Reopen");
+  }
+
+  window.deleteMatch = function(matchId) {
+    if (!window.confirm("Delete this match?")) return;
+    requestJSON(`/admin/api/live/matches/${encodeURIComponent(matchId)}`, {}, "DELETE")
+      .then(() => {
+        toast("Match deleted");
+        loadLiveMatches();
+      })
+      .catch(e => toast(e.message, true));
+  };
+
+  window.moveMatchStatus = function(matchId, newStatus) {
+    requestJSON(`/admin/api/live/matches/${encodeURIComponent(matchId)}/status`, { status: newStatus }, "PATCH")
+      .then(() => {
+        toast(`Match moved to ${newStatus}`);
+        loadLiveMatches();
+      })
+      .catch(e => toast(e.message, true));
+  };
+
+  window.quickUpdateMatch = function(matchId) {
+    const scoreA = prompt("Score for Team A:", "0");
+    if (scoreA === null) return;
+    const scoreB = prompt("Score for Team B:", "0");
+    if (scoreB === null) return;
+    
+    postJSON("/admin/api/live/quick-update", { 
+      match_id: matchId, 
+      score_a: parseInt(scoreA) || 0, 
+      score_b: parseInt(scoreB) || 0 
+    })
+      .then(() => {
+        toast("Scores updated");
+        loadLiveMatches();
+      })
+      .catch(e => toast(e.message, true));
+  };
+
+  window.editMatch = function(matchId) {
+    const match = liveMatchesCache.find((m) => m.match_id === matchId);
+    if (!match) return toast("Could not find match", true);
+    setField("liveMatchId", match.match_id || "");
+    setField("liveEvent", match.event_id || "");
+    fillRoundOptions(match.event_id || val("liveEvent"), match.round || "");
+    setField("liveStatus", match.status || "upcoming");
+    setField("liveTeamA", match.team_a || "");
+    setField("liveTeamB", match.team_b || "");
+    setField("liveScoreA", match.score_a != null ? match.score_a : 0);
+    setField("liveScoreB", match.score_b != null ? match.score_b : 0);
+    hydrateLiveDetails(match.details || {});
+    toggleLiveCustomFields();
+    switchLiveTab("manage");
+    toast("Match loaded for editing");
+  };
+
+  function hydrateLiveDetails(details) {
+    ["raceP1Name", "raceP1Team", "raceP1Score", "raceP1Status", "raceP2Name", "raceP2Team", "raceP2Score", "raceP2Status", "crBattingTeam", "crScore", "crWickets", "crOvers", "crStriker", "crNonStriker", "crBowler", "crTarget"]
+      .forEach((id) => setField(id, id.includes("Score") || id === "crWickets" ? 0 : ""));
+    if (details.mode === "race") {
+      const p = details.participants || [];
+      setField("raceP1Name", p[0]?.name || "");
+      setField("raceP1Team", p[0]?.team || "");
+      setField("raceP1Score", p[0]?.score || 0);
+      setField("raceP1Status", p[0]?.status || "leading");
+      setField("raceP2Name", p[1]?.name || "");
+      setField("raceP2Team", p[1]?.team || "");
+      setField("raceP2Score", p[1]?.score || 0);
+      setField("raceP2Status", p[1]?.status || "trailing");
+    }
+    if (details.mode === "cricket") {
+      setField("crBattingTeam", details.batting_team || "");
+      setField("crScore", details.score || "");
+      setField("crWickets", details.wickets || 0);
+      setField("crOvers", details.overs || "");
+      setField("crStriker", details.striker || "");
+      setField("crNonStriker", details.non_striker || "");
+      setField("crBowler", details.bowler || "");
+      setField("crTarget", details.target || "");
+    }
+  }
+
+  window.clearLiveForm = function() {
+    setField("liveMatchId", "");
+    const eventSelect = document.getElementById("liveEvent");
+    if (eventSelect) eventSelect.selectedIndex = 0;
+    setField("liveRound", "");
+    setField("liveStatus", "live");
+    setField("liveTeamA", "");
+    setField("liveTeamB", "");
+    setField("liveScoreA", "0");
+    setField("liveScoreB", "0");
+    setField("raceP1Name", "");
+    setField("raceP2Name", "");
+    setField("raceP1Score", "0");
+    setField("raceP2Score", "0");
+    setField("crBattingTeam", "");
+    setField("crScore", "");
+    setField("crWickets", "0");
+    setField("crOvers", "");
+    onLiveEventChange();
+  };
+
+  // Initialize live matches on load
+  function initLiveMatches() {
+    const livePanel = document.querySelector('[data-panel="live"]');
+    if (livePanel) {
+      // Load matches when tab becomes active
+      loadLiveMatches();
+      // Refresh every 10 seconds
+      setInterval(() => {
+        const activeTab = document.querySelector(".live-tab.active");
+        if (activeTab) {
+          const status = activeTab.dataset.tab;
+          if (["upcoming", "live", "completed"].includes(status)) {
+            loadLiveMatches(status);
+          }
+        }
+      }, 10000);
+    }
+  }
+
   initLiveForm();
+  initLiveMatches();
   if (document.getElementById("evEvent")) loadEventDetails();
   if (document.getElementById("ruleEvent")) loadRules();
   if (document.getElementById("chEvent")) { window.toggleChampionType(); loadChampionsList(); window.loadChampionRow(); }

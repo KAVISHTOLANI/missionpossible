@@ -8,15 +8,17 @@
   <div class="wrap">
     <div class="eyebrow reveal">Moments & Memories</div>
     <h1 class="reveal" data-delay="1">Event <span class="italic accent">Gallery</span></h1>
-    <p class="reveal" data-delay="2">Photos uploaded by organisers from Mission Possible 2026 events.</p>
+    <p class="reveal" data-delay="2">Photos uploaded by organisers from Mission Possible events.</p>
   </div>
 </section>
 
 <section class="section--tight">
   <div class="wrap">
-    <div class="grid cols-3" id="galleryGrid"><div class="skeleton">Loading gallery…</div></div>
+    <div class="gallery-stack">
+      <div id="gallerySeasons"><div class="skeleton">Loading seasons...</div></div>
+    </div>
   </div>
 </section>
 {% endblock %}
 
-{% block scripts %}<script src="{{ url_for('static', filename='js/gallery.js') }}"></script>{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/gallery.js', v='20260529-season4') }}"></script>{% endblock %}
