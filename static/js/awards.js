@@ -116,10 +116,8 @@
             <li>MVP is awarded based on: Performance, Skill level, Team contribution, Sportsmanship/Fair play, Impact on the game/event.</li>
             <li>MVP can be awarded to a player from <strong>either team</strong>, not necessarily the winning team.</li>
             <li>Any player showing misconduct, abusive language, unsportsmanlike behaviour, fighting or cheating will be disqualified from MVP consideration.</li>
-            <li>Only officially registered players/participants are eligible for MVP awards. Substitutes who do not actively participate receive <strong>0 points</strong>.</li>
+            <li>Only officially registered players/participants are eligible for MVP awards.</li>
           </ul>
-          <h4>Notes</h4>
-          <p>Event MVP is recognised by the referee/judging panel. For season point tallies, 1st = 10 points and 2nd = 5 points. There is no separate 15-point MVP allocation added to the season tally.</p>
         </div>
         </div>`;
       const toggleBtn = rulesEl.querySelector('.mvp-rules-toggle');
