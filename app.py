@@ -74,8 +74,8 @@ NAV = [
     ("Teams", "/teams", "Teams"),
     ("Champions", "/champions", "Champions"),
     ("Live", "/live", "Live Scores"),
-    ("Standings", "/standings", "Standings"),
     ("Awards", "/awards", "Awards"),
+    ("Standings", "/standings", "Standings"),
     ("Announcements", "/announcements", "Announcements"),
 ]
 
