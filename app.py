@@ -15,6 +15,29 @@ def load(name):
         return json.load(f)
 
 
+def _public_player_row(row):
+    played = row.get("played") if isinstance(row.get("played"), list) else []
+    games = row.get("games") if isinstance(row.get("games"), list) else []
+    return {
+        "id": row.get("id"),
+        "name": row.get("name", ""),
+        "employee_id": row.get("employee_id", ""),
+        "department": row.get("department", ""),
+        "played": [bool(played[idx]) if idx < len(played) else False for idx in range(5)],
+        "games": [str(games[idx] if idx < len(games) else "").strip() for idx in range(5)],
+    }
+
+
+def _public_player_tracker(data):
+    teams = data.get("teams") if isinstance(data.get("teams"), dict) else {}
+    return {
+        "teams": {
+            team_id: [_public_player_row(row if isinstance(row, dict) else {}) for row in (players or [])]
+            for team_id, players in teams.items()
+        }
+    }
+
+
 def _public_event(e, scores_data):
     """Strip private fields and expose status with live/completed fallback."""
     out = dict(e)
@@ -72,6 +95,7 @@ NAV = [
     ("Calendar", "/calendar", "Calendar"),
     ("Gallery", "/gallery", "Gallery"),
     ("Teams", "/teams", "Teams"),
+    ("Player Tracker", "/player-tracker", "Player Tracker"),
     ("Champions", "/champions", "Champions"),
     ("Live", "/live", "Live Scores"),
     ("Awards", "/awards", "Awards"),
@@ -95,6 +119,11 @@ def teams():
 @app.route("/team-detail")
 def team_detail():
     return render_template("team-detail.html", nav_links=NAV)
+
+
+@app.route("/player-tracker")
+def player_tracker():
+    return render_template("player-tracker.html", nav_links=NAV)
 
 
 @app.route("/sports")
@@ -167,6 +196,27 @@ def api_team_detail(team_id):
         if t.get("id") == team_id:
             return jsonify(t)
     return jsonify({"error": "Not found"}), 404
+
+
+@app.route("/api/player-tracker")
+def api_player_tracker():
+    try:
+        return jsonify(_public_player_tracker(load("player_tracker")))
+    except Exception:
+        return jsonify({"teams": {}})
+
+
+@app.route("/api/player-tracker/<team_id>")
+def api_player_tracker_team(team_id):
+    try:
+        data = load("player_tracker")
+        teams = data.get("teams") or {}
+        players = teams.get(team_id)
+        if players is None:
+            return jsonify({"team_id": team_id, "players": []})
+        return jsonify({"team_id": team_id, "players": [_public_player_row(row if isinstance(row, dict) else {}) for row in players]})
+    except Exception:
+        return jsonify({"team_id": team_id, "players": []})
 
 
 @app.route("/api/events")

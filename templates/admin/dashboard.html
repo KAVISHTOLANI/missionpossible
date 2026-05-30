@@ -22,6 +22,7 @@
       <button class="anav active" data-panel="announcements">Announcements</button>
       <button class="anav" data-panel="live">Live Scores</button>
       <button class="anav" data-panel="standings">Standings</button>
+      <button class="anav" data-panel="playerTracker">Player Tracker</button>
       <button class="anav" data-panel="awards">Awards</button>
       <button class="anav" data-panel="champions">Champions</button>
       <button class="anav" data-panel="events">Event Details</button>
@@ -271,6 +272,30 @@
           <button class="btn btn--ghost" onclick="clearFairPlayForm()">Clear Form</button>
         </div>
         <div id="fairPlayRows" class="alist"><div class="muted">Loading...</div></div>
+      </div>
+    </section>
+
+    <!-- PLAYER TRACKER -->
+    <section class="apanel" data-panel="playerTracker">
+      <h1>Player Tracker</h1>
+      <div class="acard">
+        <h3>Add players for a team</h3>
+        <p class="amini">Paste one player per line in the format <strong>Name - Employee ID - Department</strong>. Select the team and click Save.</p>
+        <label class="field"><span>Team</span>
+          <select id="ptTeam">
+            {% for t in teams %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}
+          </select>
+        </label>
+        <label class="field"><span>Players</span><textarea id="ptBulkInput" rows="6" placeholder="John Doe - 12345 - Sales\nJane Smith - 98765 - Marketing"></textarea></label>
+        <div class="abtn-row">
+          <button class="btn btn--gold" onclick="addPlayerTrackerBulk()">Save Players →</button>
+          <button class="btn btn--ghost" onclick="clearPlayerTrackerForm()">Clear Form</button>
+        </div>
+      </div>
+      <div class="acard">
+        <h3>Team player lists</h3>
+        <p class="amini">Tap a name to view slots. Type each game name, tick played games, or remove an employee from the tracker.</p>
+        <div id="ptExisting" class="alist"><div class="muted">Loading player tracker data...</div></div>
       </div>
     </section>
 
@@ -526,6 +551,6 @@
     window.CARNIVAL_LIVE_INIT = {{ scores.live | tojson }};
   </script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/admin.js', v='20260529-live-matches') }}"></script>
+  <script src="{{ url_for('static', filename='js/admin.js', v='20260530-player-tracker-games') }}"></script>
 </body>
 </html>

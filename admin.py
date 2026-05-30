@@ -88,8 +88,297 @@ def _save(name, payload):
     os.replace(tmp, path)
 
 
-def _empty_live():
-    return json.loads(json.dumps(EMPTY_LIVE))
+def _load_player_tracker():
+    return _load("player_tracker.json", {"teams": {}}) or {"teams": {}}
+
+
+def _save_player_tracker(payload):
+    if not isinstance(payload, dict):
+        payload = {"teams": {}}
+    payload.setdefault("teams", {})
+    _save("player_tracker.json", payload)
+    return payload
+
+
+def _normalize_player_row(raw):
+    played = _normalize_played_list(raw.get("played"))
+    games = _normalize_games_list(raw.get("games"))
+    player = {
+        "id": (raw.get("id") or ("pt-" + uuid.uuid4().hex[:10])),
+        "name": (raw.get("name") or "").strip(),
+        "employee_id": (raw.get("employee_id") or "").strip(),
+        "department": (raw.get("department") or "").strip(),
+        "played": played,
+        "games": games,
+        "created_at": raw.get("created_at") or datetime.now().isoformat(timespec="seconds"),
+        "updated_at": datetime.now().isoformat(timespec="seconds"),
+    }
+    return player
+
+
+def _find_player_row(team_rows, player_id=None, employee_id=None):
+    if not isinstance(team_rows, list):
+        return None
+    for row in team_rows:
+        if player_id and row.get("id") == player_id:
+            return row
+        if employee_id and row.get("employee_id") == employee_id:
+            return row
+    return None
+
+
+def _parse_player_bulk_line(line):
+    parts = line.split("-")
+    if len(parts) < 3:
+        return None
+    name = parts[0].strip()
+    employee_id = parts[1].strip()
+    department = "-".join(parts[2:]).strip()
+    if not name or not employee_id or not department:
+        return None
+    return {"name": name, "employee_id": employee_id, "department": department}
+
+
+def _normalize_played_list(raw):
+    played = []
+    if isinstance(raw, list):
+        for idx in range(5):
+            played.append(bool(raw[idx]) if idx < len(raw) else False)
+    else:
+        played = [False] * 5
+    return played
+
+
+def _normalize_games_list(raw):
+    games = []
+    if isinstance(raw, list):
+        for idx in range(5):
+            value = raw[idx] if idx < len(raw) else ""
+            if isinstance(value, dict):
+                value = value.get("name") or value.get("game") or ""
+            games.append(str(value or "").strip())
+    else:
+        games = [""] * 5
+    return games
+
+
+def _ensure_player_data(team_id):
+    data = _load_player_tracker()
+    teams = data.setdefault("teams", {})
+    teams.setdefault(team_id, [])
+    return data
+
+
+def _serialize_tracker_response(data):
+    if not isinstance(data, dict):
+        return {"teams": {}}
+    data.setdefault("teams", {})
+    return data
+
+
+def _normalize_player_line(line):
+    parts = line.split("-")
+    if len(parts) < 3:
+        return None
+    name = parts[0].strip()
+    employee_id = parts[1].strip()
+    department = "-".join(parts[2:]).strip()
+    if not name or not employee_id or not department:
+        return None
+    return {"name": name, "employee_id": employee_id, "department": department}
+
+
+def _trim_team_tracker(data):
+    if not isinstance(data, dict):
+        return {"teams": {}}
+    data.setdefault("teams", {})
+    return data
+
+
+def _team_tracker_safe(data):
+    return _trim_team_tracker(data)
+
+
+def _player_tracker_to_public(data):
+    out = {"teams": {}}
+    teams = data.get("teams") if isinstance(data.get("teams"), dict) else {}
+    for team_id, rows in teams.items():
+        out[team_id] = [
+            {
+                "id": row.get("id"),
+                "name": row.get("name"),
+                "employee_id": row.get("employee_id"),
+                "department": row.get("department"),
+                "played": _normalize_played_list(row.get("played")),
+                "games": _normalize_games_list(row.get("games")),
+            }
+            for row in (rows or [])
+        ]
+    return {"teams": out}
+
+
+def _update_player_row(team_rows, player_id, updates):
+    row = _find_player_row(team_rows, player_id=player_id)
+    if not row:
+        return None
+    if "name" in updates and isinstance(updates["name"], str):
+        row["name"] = updates["name"].strip()
+    if "employee_id" in updates and isinstance(updates["employee_id"], str):
+        row["employee_id"] = updates["employee_id"].strip()
+    if "department" in updates and isinstance(updates["department"], str):
+        row["department"] = updates["department"].strip()
+    if "played" in updates and isinstance(updates["played"], list):
+        row["played"] = _normalize_played_list(updates["played"])
+    if "games" in updates and isinstance(updates["games"], list):
+        row["games"] = _normalize_games_list(updates["games"])
+    if "index" in updates and isinstance(updates["index"], int) and 0 <= updates["index"] < 5:
+        row["played"] = _normalize_played_list(row.get("played", []))
+        row["games"] = _normalize_games_list(row.get("games", []))
+        row["played"][updates["index"]] = bool(updates.get("checked", False))
+        if "game" in updates:
+            row["games"][updates["index"]] = str(updates.get("game") or "").strip()
+    row["updated_at"] = datetime.now().isoformat(timespec="seconds")
+    return row
+
+
+def _public_player_row(row):
+    return {
+        "id": row.get("id"),
+        "name": row.get("name"),
+        "employee_id": row.get("employee_id"),
+        "department": row.get("department"),
+        "played": _normalize_played_list(row.get("played")),
+        "games": _normalize_games_list(row.get("games")),
+    }
+
+
+def _public_player_tracker(data):
+    return {"teams": {k: [_public_player_row(r) for r in (v or [])] for k, v in (data.get("teams") or {}).items()}}
+
+
+def _save_player_tracker_payload(data):
+    _save_player_tracker(data)
+    return data
+
+
+def _normalize_tracker_data(data):
+    if not isinstance(data, dict):
+        return {"teams": {}}
+    cleaned = {"teams": {}}
+    for team_id, players in (data.get("teams") or {}).items():
+        cleaned[team_id] = [
+            _normalize_player_row(player if isinstance(player, dict) else {})
+            for player in (players or [])
+        ]
+    return cleaned
+
+
+def _clean_tracker_data(data):
+    data = _normalize_tracker_data(data)
+    _save_player_tracker(data)
+    return data
+
+
+def _tracker_team_rows(data, team_id):
+    return (data.get("teams") or {}).get(team_id, [])
+
+
+def _is_valid_tracker_team(team_id):
+    return team_id in VALID_TEAM_IDS
+
+
+def _trim_tracker_input(players):
+    if not isinstance(players, list):
+        return []
+    out = []
+    for raw in players:
+        if not isinstance(raw, dict):
+            continue
+        if not raw.get("name") or not raw.get("employee_id"):
+            continue
+        out.append(_normalize_player_row(raw))
+    return out
+
+
+
+def _player_tracker_meta(team_rows):
+    return {
+        "count": len(team_rows),
+        "completed": sum(1 for row in team_rows if sum(bool(x) for x in row.get("played", [])) >= 5),
+    }
+
+
+def _player_tracker_record(team_rows, raw):
+    row = _find_player_row(team_rows, employee_id=raw.get("employee_id"))
+    if row:
+        row.update({
+            "name": raw.get("name", row.get("name")),
+            "department": raw.get("department", row.get("department")),
+            "updated_at": datetime.now().isoformat(timespec="seconds"),
+        })
+        return row
+    new = _normalize_player_row(raw)
+    team_rows.append(new)
+    return new
+
+
+def _player_tracker_for_public(data):
+    return {"teams": {team_id: [_public_player_row(row) for row in rows] for team_id, rows in (data.get("teams") or {}).items()}}
+
+
+
+def _clean_tracker_line(line):
+    return _normalize_player_line(line) if isinstance(line, str) else None
+
+
+def _parse_tracker_bulk(lines):
+    out = []
+    if not isinstance(lines, list):
+        return out
+    for raw in lines:
+        if isinstance(raw, str):
+            item = _clean_tracker_line(raw)
+            if item:
+                out.append(item)
+    return out
+
+
+def _tracker_response(data):
+    return _player_tracker_for_public(data)
+
+
+
+def _tracker_lookup(team_id):
+    data = _load_player_tracker()
+    return (data.get("teams") or {}).get(team_id, [])
+
+
+def _tracker_full():
+    return _player_tracker_for_public(_load_player_tracker())
+
+
+def _tracker_team(team_id):
+    data = _load_player_tracker()
+    rows = _tracker_lookup(team_id)
+    return {"team_id": team_id, "players": [_public_player_row(r) for r in rows]}
+
+
+
+def _tracker_row_exists(team_rows, employee_id):
+    return _find_player_row(team_rows, employee_id=employee_id) is not None
+
+
+
+def _tracker_update_or_add(team_rows, raw):
+    existing = _find_player_row(team_rows, employee_id=raw.get("employee_id"))
+    if existing:
+        existing["name"] = raw.get("name", existing.get("name"))
+        existing["department"] = raw.get("department", existing.get("department"))
+        existing["updated_at"] = datetime.now().isoformat(timespec="seconds")
+        return existing
+    new = _normalize_player_row(raw)
+    team_rows.append(new)
+    return new
 
 
 def _match_key(row):
@@ -403,6 +692,108 @@ def delete_announcement():
     _save("announcements.json", new_items)
     audit("announcement_delete", ann_id or "")
     return jsonify({"ok": True})
+
+
+@admin_bp.route("/api/player-tracker", methods=["GET"])
+@login_required
+def admin_player_tracker():
+    data = _load_player_tracker()
+    return jsonify({"ok": True, "tracker": _player_tracker_for_public(data)})
+
+
+@admin_bp.route("/api/player-tracker/bulk-add", methods=["POST"])
+@login_required
+def admin_player_tracker_bulk_add():
+    body = request.get_json(silent=True) or {}
+    team_id = (body.get("team") or "").strip()
+    lines = body.get("lines") if isinstance(body.get("lines"), list) else []
+    if team_id not in VALID_TEAM_IDS:
+        return jsonify({"ok": False, "error": "Unknown team"}), 400
+    if not lines:
+        return jsonify({"ok": False, "error": "Add at least one player line"}), 400
+
+    data = _load_player_tracker()
+    team_rows = data.setdefault("teams", {}).setdefault(team_id, [])
+    added = 0
+    for raw_line in lines:
+        if not isinstance(raw_line, str):
+            continue
+        parsed = _parse_player_bulk_line(raw_line)
+        if not parsed:
+            continue
+        existing = _find_player_row(team_rows, employee_id=parsed["employee_id"])
+        if existing:
+            existing["name"] = parsed["name"]
+            existing["department"] = parsed["department"]
+            existing["updated_at"] = datetime.now().isoformat(timespec="seconds")
+        else:
+            team_rows.append(_normalize_player_row(parsed))
+        added += 1
+
+    _save_player_tracker(data)
+    audit("player_tracker_bulk_add", f"{team_id} {added} players")
+    return jsonify({"ok": True, "tracker": _player_tracker_for_public(data), "added": added})
+
+
+@admin_bp.route("/api/player-tracker/update-played", methods=["POST"])
+@login_required
+def admin_player_tracker_update_played():
+    body = request.get_json(silent=True) or {}
+    team_id = (body.get("team") or "").strip()
+    player_id = (body.get("player_id") or "").strip()
+    try:
+        index = int(body.get("index"))
+    except (TypeError, ValueError):
+        return jsonify({"ok": False, "error": "Invalid index"}), 400
+    checked = bool(body.get("checked"))
+
+    if team_id not in VALID_TEAM_IDS:
+        return jsonify({"ok": False, "error": "Unknown team"}), 400
+    if not player_id:
+        return jsonify({"ok": False, "error": "player_id is required"}), 400
+    if index < 0 or index > 4:
+        return jsonify({"ok": False, "error": "Index must be between 0 and 4"}), 400
+
+    data = _load_player_tracker()
+    team_rows = data.setdefault("teams", {}).get(team_id, [])
+    row = _find_player_row(team_rows, player_id=player_id)
+    if not row:
+        return jsonify({"ok": False, "error": "Player not found"}), 404
+
+    row["played"] = _normalize_played_list(row.get("played", []))
+    row["games"] = _normalize_games_list(row.get("games", []))
+    row["played"][index] = checked
+    if "game" in body:
+        row["games"][index] = str(body.get("game") or "").strip()
+    row["updated_at"] = datetime.now().isoformat(timespec="seconds")
+
+    _save_player_tracker(data)
+    audit("player_tracker_update_played", f"{team_id} {player_id} game {index + 1} {checked}")
+    return jsonify({"ok": True, "player": _public_player_row(row)})
+
+
+@admin_bp.route("/api/player-tracker/delete", methods=["POST"])
+@login_required
+def admin_player_tracker_delete():
+    body = request.get_json(silent=True) or {}
+    team_id = (body.get("team") or "").strip()
+    player_id = (body.get("player_id") or "").strip()
+
+    if team_id not in VALID_TEAM_IDS:
+        return jsonify({"ok": False, "error": "Unknown team"}), 400
+    if not player_id:
+        return jsonify({"ok": False, "error": "player_id is required"}), 400
+
+    data = _load_player_tracker()
+    team_rows = data.setdefault("teams", {}).get(team_id, [])
+    before = len(team_rows)
+    data["teams"][team_id] = [row for row in team_rows if row.get("id") != player_id]
+    if len(data["teams"][team_id]) == before:
+        return jsonify({"ok": False, "error": "Player not found"}), 404
+
+    _save_player_tracker(data)
+    audit("player_tracker_delete", f"{team_id} {player_id}")
+    return jsonify({"ok": True, "tracker": _player_tracker_for_public(data)})
 
 
 # ---------------------------------------------------------------------------

@@ -730,6 +730,140 @@
 
   function esc(s) { const d = document.createElement("div"); d.textContent = s == null ? "" : String(s); return d.innerHTML; }
 
+  // ===== Player Tracker =====
+  function trackerTeamLabels() {
+    const select = document.getElementById("ptTeam");
+    const labels = {};
+    if (!select) return labels;
+    Array.from(select.options).forEach((opt) => {
+      labels[opt.value] = opt.textContent || opt.value;
+    });
+    return labels;
+  }
+
+  function normalizedPlayed(player) {
+    const raw = Array.isArray(player.played) ? player.played : [];
+    return Array.from({ length: 5 }, (_, idx) => Boolean(raw[idx]));
+  }
+
+  function normalizedGames(player) {
+    const raw = Array.isArray(player.games) ? player.games : [];
+    return Array.from({ length: 5 }, (_, idx) => String(raw[idx] || ""));
+  }
+
+  function renderAdminPlayerTracker(tracker) {
+    const wrap = document.getElementById("ptExisting");
+    if (!wrap) return;
+    const labels = trackerTeamLabels();
+    const teams = (tracker && tracker.teams) || {};
+    const teamIds = Object.keys(labels).length ? Object.keys(labels) : Object.keys(teams);
+
+    wrap.innerHTML = teamIds.map((teamId) => {
+      const players = Array.isArray(teams[teamId]) ? teams[teamId] : [];
+      const rows = players.length ? players.map((player) => {
+        const played = normalizedPlayed(player);
+        const games = normalizedGames(player);
+        const count = played.filter(Boolean).length;
+        const complete = count >= 5;
+        return `
+          <div class="ptrow ${complete ? "ptrow--complete" : ""}" data-player-id="${esc(player.id)}">
+            <button class="ptrow__head" type="button" onclick="this.closest('.ptrow').classList.toggle('open')">
+              <span>
+                <strong>${esc(player.name || "Unnamed player")}</strong>
+                <span class="arow__meta">${esc(player.employee_id || "-")} · ${esc(player.department || "-")}</span>
+              </span>
+              <span class="ptrow__count">${count}/5</span>
+            </button>
+            <div class="ptrow__games">
+              ${played.map((checked, idx) => `
+                <div class="ptcheck">
+                  <label>
+                    <input type="checkbox" ${checked ? "checked" : ""} onchange="updatePlayerTrackerSlot('${esc(teamId)}', '${esc(player.id)}', ${idx}, this.checked, this.closest('.ptcheck').querySelector('.ptgame-input').value)">
+                    <span>Game ${idx + 1}</span>
+                  </label>
+                  <input class="ptgame-input" value="${esc(games[idx])}" placeholder="Type game played" onblur="updatePlayerTrackerSlot('${esc(teamId)}', '${esc(player.id)}', ${idx}, this.closest('.ptcheck').querySelector('input[type=checkbox]').checked, this.value)">
+                </div>
+              `).join("")}
+              <button class="ptremove" type="button" onclick="deletePlayerTrackerEmployee('${esc(teamId)}', '${esc(player.id)}', '${esc(player.name || "this player")}')">Remove employee</button>
+            </div>
+          </div>
+        `;
+      }).join("") : '<div class="muted">No players added yet.</div>';
+
+      return `
+        <div class="ptteam">
+          <div class="ptteam__head">
+            <strong>${esc(labels[teamId] || teamId)}</strong>
+            <span>${players.length} player${players.length === 1 ? "" : "s"}</span>
+          </div>
+          <div class="ptteam__body">${rows}</div>
+        </div>
+      `;
+    }).join("") || '<div class="muted">No teams available.</div>';
+  }
+
+  function loadPlayerTracker() {
+    const wrap = document.getElementById("ptExisting");
+    if (!wrap) return;
+    fetch("/admin/api/player-tracker?ts=" + Date.now(), { cache: "no-store" })
+      .then((r) => r.json())
+      .then((data) => renderAdminPlayerTracker((data && data.tracker) || { teams: {} }))
+      .catch(() => { wrap.innerHTML = '<div class="muted">Could not load player tracker data.</div>'; });
+  }
+
+  window.addPlayerTrackerBulk = function () {
+    const team = val("ptTeam");
+    const bulk = document.getElementById("ptBulkInput");
+    const lines = (bulk && bulk.value ? bulk.value : "")
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    if (!team) return toast("Select a team", true);
+    if (!lines.length) return toast("Paste at least one player", true);
+
+    postJSON("/admin/api/player-tracker/bulk-add", { team, lines })
+      .then((data) => {
+        toast(`${data.added || 0} player${data.added === 1 ? "" : "s"} saved`);
+        if (bulk) bulk.value = "";
+        renderAdminPlayerTracker(data.tracker || { teams: {} });
+      })
+      .catch((e) => toast(e.message, true));
+  };
+
+  window.clearPlayerTrackerForm = function () {
+    const bulk = document.getElementById("ptBulkInput");
+    if (bulk) bulk.value = "";
+  };
+
+  window.updatePlayerTrackerSlot = function (team, playerId, index, checked, game) {
+    postJSON("/admin/api/player-tracker/update-played", {
+      team,
+      player_id: playerId,
+      index,
+      checked,
+      game,
+    })
+      .then(() => {
+        toast("Player tracker updated");
+        loadPlayerTracker();
+      })
+      .catch((e) => {
+        toast(e.message, true);
+        loadPlayerTracker();
+      });
+  };
+
+  window.deletePlayerTrackerEmployee = function (team, playerId, name) {
+    if (!window.confirm(`Remove ${name} from this team tracker?`)) return;
+    postJSON("/admin/api/player-tracker/delete", { team, player_id: playerId })
+      .then((data) => {
+        toast("Employee removed");
+        renderAdminPlayerTracker(data.tracker || { teams: {} });
+      })
+      .catch((e) => toast(e.message, true));
+  };
+
   // ===== Comprehensive Live Matches Management =====
   window.switchLiveTab = function(tabName) {
     // Hide all tabs
@@ -944,5 +1078,6 @@
   if (document.getElementById("ruleEvent")) loadRules();
   if (document.getElementById("chEvent")) { window.toggleChampionType(); loadChampionsList(); window.loadChampionRow(); }
   if (document.getElementById("stEntries")) loadStandingsEntries();
+  if (document.getElementById("ptExisting")) loadPlayerTracker();
   if (document.getElementById("ovmvpRows") || document.getElementById("fairPlayRows")) loadAwardLeaderboards();
 })();

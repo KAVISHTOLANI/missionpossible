@@ -85,7 +85,7 @@
             <div class="stats__cell"><div class="stats__n cup" data-n="${s.penalty_deductions}">0</div><div class="stats__l">Penalties</div></div>
           </div>
           <div style="margin-top:22px">${historyHtml}</div>
-          <div style="margin-top:34px"><a class="btn btn--ghost" href="/teams">← All Teams</a> <a class="btn btn--ghost" href="/standings">Full Standings →</a></div>
+          <div class="team-actions"><a class="btn btn--ghost" href="/teams">← All Teams</a> <a class="btn btn--ghost" href="/player-tracker?team=${encodeURIComponent(teamId)}">Player Tracker</a> <a class="btn btn--ghost" href="/standings">Full Standings →</a></div>
         </div>
       </section>`;
 

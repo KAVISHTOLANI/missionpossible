@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Player Tracker{% endblock %}
+{% block page %}player-tracker{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">{% endblock %}
+
+{% block content %}
+<section class="phero">
+  <div class="wrap">
+    <div class="eyebrow reveal">Player Tracker</div>
+    <h1 class="reveal" data-delay="1">Track players across every game</h1>
+    <p class="reveal" data-delay="2">See players by team, review departments, and tap a name to view the games they have played.</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div id="playerTrackerRoot" class="tracker-shell">
+      <div class="skeleton">Loading player tracker…</div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/player-tracker.js') }}"></script>{% endblock %}

@@ -99,6 +99,134 @@
 .abtn-del { color: #ff7a7a; font-size: 0.82rem; padding: 6px 12px; border: 1px solid rgba(255,93,93,0.3); border-radius: 8px; transition: background .25s; }
 .abtn-del:hover { background: rgba(255,93,93,0.12); }
 
+.ptteam {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg);
+}
+.ptteam__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 15px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(212,175,55,0.06);
+}
+.ptteam__head span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.ptteam__body {
+  display: flex;
+  flex-direction: column;
+}
+.ptrow {
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+.ptrow:last-child {
+  border-bottom: none;
+}
+.ptrow--complete::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 70px;
+  top: 29px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #ff3f3f 14%, #ff9b9b 50%, #ff3f3f 86%, transparent);
+  box-shadow: 0 0 16px rgba(255,63,63,0.48), 0 1px 0 rgba(255,255,255,0.22) inset;
+  pointer-events: none;
+}
+.ptrow__head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 15px;
+  color: var(--white);
+  text-align: left;
+}
+.ptrow__head strong {
+  display: block;
+}
+.ptrow__count {
+  flex-shrink: 0;
+  min-width: 48px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: rgba(212,175,55,0.12);
+  color: var(--gold);
+  font-weight: 800;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.ptrow__games {
+  display: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0 15px 14px;
+}
+.ptrow.open .ptrow__games {
+  display: grid;
+}
+.ptcheck {
+  display: grid;
+  gap: 8px;
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.ptcheck label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ptcheck input {
+  accent-color: var(--gold);
+}
+.ptcheck input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+}
+.ptgame-input {
+  width: 100%;
+  min-width: 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--white);
+  padding: 9px 10px;
+  font: inherit;
+}
+.ptgame-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.ptremove {
+  grid-column: 1 / -1;
+  justify-self: flex-start;
+  color: #ff8d8d;
+  border: 1px solid rgba(255,93,93,0.32);
+  border-radius: 9px;
+  padding: 9px 12px;
+  font-size: 0.82rem;
+}
+.ptremove:hover {
+  background: rgba(255,93,93,0.12);
+}
+@media (max-width: 700px) {
+  .ptrow__games {
+    grid-template-columns: 1fr;
+  }
+}
+
 .live-tabs {
   display: flex;
   gap: 8px;
