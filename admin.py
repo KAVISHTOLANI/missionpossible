@@ -35,6 +35,7 @@ ALLOWED_ADMIN_USERS = {
 }
 ALLOWED_LOGO_EXT = {"png"}
 ALLOWED_GALLERY_EXT = {"png", "jpg", "jpeg", "webp"}
+ALLOWED_CHAMPION_EXT = {"png", "jpg", "jpeg", "webp"}
 VALID_TEAM_IDS = {"creators", "dominators", "royals"}
 VALID_STATUSES = {"upcoming", "live", "completed"}
 VALID_TAGS = {"Urgent", "Info", "Result"}
@@ -59,6 +60,10 @@ EMPTY_LIVE = {
     "commentary": [],
     "details": {},
 }
+
+
+def _empty_live():
+    return json.loads(json.dumps(EMPTY_LIVE))
 
 # Set by init_audit_db()
 _BASE_DIR = None
@@ -454,8 +459,6 @@ def _build_match(body, existing=None, partial=False):
         return None, "event_id required"
     if event_id not in events:
         return None, "Unknown event"
-    if event_id in LIVE_DISABLED_EVENTS:
-        return None, "Live updates are disabled for this event"
 
     status = body.get("status", existing.get("status", "upcoming"))
     if status not in VALID_STATUSES:
@@ -1394,14 +1397,17 @@ def update_awards():
 @admin_bp.route("/api/champions/save", methods=["POST"])
 @login_required
 def save_champion():
-    body = request.get_json(silent=True) or {}
+    body = request.form if request.content_type and request.content_type.startswith("multipart/form-data") else (request.get_json(silent=True) or {})
     event_id = (body.get("event_id") or "").strip()
     champion_type = (body.get("champion_type") or "team").strip().lower()
     sport_category = (body.get("sport_category") or "").strip()
     team_id = body.get("team")
     player_name = (body.get("player_name") or "").strip()
     team_name = (body.get("team_name") or "").strip()
-    players = body.get("players") if isinstance(body.get("players"), list) else []
+    if hasattr(body, "getlist"):
+        players = body.getlist("players")
+    else:
+        players = body.get("players") if isinstance(body.get("players"), list) else []
     players = [str(p).strip() for p in players if str(p).strip()]
 
     events = {e.get("id"): e for e in _load("events.json", [])}
@@ -1430,6 +1436,18 @@ def save_champion():
     row["player_name"] = player_name
     row["second_player_name"] = (body.get("second_player_name") or "").strip()
     row["players"] = players
+    if "winning_photo" in request.files and request.files["winning_photo"].filename:
+        file = request.files["winning_photo"]
+        ext = file.filename.rsplit(".", 1)[-1].lower() if "." in file.filename else ""
+        if ext not in ALLOWED_CHAMPION_EXT:
+            return jsonify({"ok": False, "error": "Winning photo must be PNG, JPG, JPEG, or WEBP"}), 400
+        upload_dir = os.path.join(_BASE_DIR, "static", "images", "champions")
+        os.makedirs(upload_dir, exist_ok=True)
+        filename = secure_filename(f"{event_id}-{uuid.uuid4().hex[:8]}.{ext}")
+        file.save(os.path.join(upload_dir, filename))
+        row["winning_photo"] = f"/static/images/champions/{filename}"
+    else:
+        row["winning_photo"] = (body.get("winning_photo") or row.get("winning_photo") or "").strip()
     row["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     _save("champions.json", champions)
@@ -1499,6 +1517,8 @@ def update_event_details():
     event["weather_note"] = (body.get("weather_note") or "").strip()
     event["event_time"] = (body.get("event_time") or "").strip()
     event["tournament_format"] = (body.get("tournament_format") or "").strip()
+    results = body.get("results")
+    event["results"] = results if isinstance(results, list) else event.get("results", [])
     event["badge"] = badge
     event["status"] = status
     event["banner"] = banner

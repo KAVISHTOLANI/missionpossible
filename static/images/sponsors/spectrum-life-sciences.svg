@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 380" role="img" aria-labelledby="title desc">
+  <title id="title">Spectrum Life Sciences</title>
+  <desc id="desc">Spectrum Life Sciences sponsor logo with multicolor star and blue wordmark.</desc>
+  <rect width="560" height="380" fill="#ffffff"/>
+  <g transform="translate(280 96)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="10">
+    <path d="M0 -72 L22 -18 L80 -18 L34 15 L52 70 L0 38 L-52 70 L-34 15 L-80 -18 L-22 -18 Z" stroke="#ffd447"/>
+    <path d="M0 -72 L22 -18 L80 -18" stroke="#ffe66b"/>
+    <path d="M80 -18 L34 15 L52 70" stroke="#08bd68"/>
+    <path d="M52 70 L0 38 L-52 70" stroke="#22bde6"/>
+    <path d="M-52 70 L-34 15 L-80 -18" stroke="#ec167a"/>
+    <path d="M-80 -18 L-22 -18 L0 -72" stroke="#f49a16"/>
+  </g>
+  <text x="280" y="260" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="68" font-weight="800" letter-spacing="8" fill="#1f68b8">SPECTRUM</text>
+  <text x="368" y="304" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="3" fill="#8a96a2">LIFE SCIENCES</text>
+</svg>

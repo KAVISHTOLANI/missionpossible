@@ -46,6 +46,27 @@
         </div>`
       : `<div class="card infocard team-history-card"><div class="detailcard__label">Event History</div><p class="muted">No results recorded for this team yet.</p></div>`;
 
+    const sponsor = team.sponsor || {};
+    const sponsorHtml = sponsor.name
+      ? `<section class="section--tight sponsor-section" style="padding-top:0">
+          <div class="wrap">
+            <div class="team-sponsor reveal in" style="--tc:${team.color}">
+            <div class="team-sponsor__label">Official Team Sponsor</div>
+            <div class="team-sponsor__body">
+                ${sponsor.logo
+                  ? `<div class="team-sponsor__logo-wrap"><img class="team-sponsor__logo" src="${CARNIVAL.esc(sponsor.logo)}" alt="${CARNIVAL.esc(sponsor.name)}"></div>`
+                  : `<div class="team-sponsor__mark" aria-hidden="true">${CARNIVAL.esc(String(sponsor.name || "").charAt(0))}</div>`}
+                <div class="team-sponsor__copy">
+                  <div class="team-sponsor__name">${CARNIVAL.esc(sponsor.name)}</div>
+                  ${sponsor.subtitle ? `<div class="team-sponsor__subtitle">${CARNIVAL.esc(sponsor.subtitle)}</div>` : ""}
+                  ${sponsor.tagline ? `<div class="team-sponsor__tagline">${CARNIVAL.esc(sponsor.tagline)}</div>` : ""}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>`
+      : "";
+
     root.innerHTML = `
       <header class="tbanner" style="--tc:${team.color}">
         <div class="tbanner__bg"></div>
@@ -75,6 +96,8 @@
           </div>
         </div>
       </section>
+
+      ${sponsorHtml}
 
       <section class="section--tight" style="padding-top:0">
         <div class="wrap">

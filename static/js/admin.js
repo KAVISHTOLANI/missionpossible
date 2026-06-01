@@ -43,8 +43,10 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-    const data = await r.json().catch(() => ({}));
-    if (!r.ok || data.ok === false) throw new Error(data.error || "Request failed");
+    const raw = await r.text();
+    let data = {};
+    try { data = raw ? JSON.parse(raw) : {}; } catch (_) { data = { error: raw.slice(0, 180) }; }
+    if (!r.ok || data.ok === false) throw new Error(data.error || `Request failed (${r.status})`);
     return data;
   }
   const postJSON = (url, payload) => requestJSON(url, payload, "POST");
@@ -591,28 +593,37 @@
         setField("chSecondPlayerName", row.second_player_name || "");
         setField("chSecondIndTeam", row.second_team || "");
         setField("chSecondIndTeamName", row.second_team_name || "");
+        const preview = document.getElementById("chPhotoPreview");
+        if (preview) preview.innerHTML = row.winning_photo ? `Current photo: <a class="accent" href="${esc(row.winning_photo)}" target="_blank">View uploaded photo</a>` : "";
+        const photo = document.getElementById("chWinningPhoto");
+        if (photo) photo.value = "";
       })
       .catch(() => {});
   };
 
   window.saveChampion = function () {
     const champion_type = val("chType") || "team";
-    const payload = {
-      event_id: val("chEvent"),
-      sport_category: val("chCategory"),
-      champion_type,
-      team: champion_type === "team" ? val("chTeam") : val("chIndTeam"),
-      team_name: champion_type === "team" ? val("chTeamName") : val("chIndTeamName"),
-      second_team: champion_type === "team" ? val("chSecondTeam") : val("chSecondIndTeam"),
-      second_team_name: champion_type === "team" ? val("chSecondTeamName") : val("chSecondIndTeamName"),
-      player_name: champion_type === "individual" ? val("chPlayerName") : "",
-      second_player_name: champion_type === "individual" ? val("chSecondPlayerName") : "",
-      players: champion_type === "team"
-        ? (document.getElementById("chPlayers").value || "").split("\n").map((s) => s.trim()).filter(Boolean)
-        : [],
-    };
-    postJSON("/admin/api/champions/save", payload)
-      .then(() => {
+    const fd = new FormData();
+    fd.append("event_id", val("chEvent"));
+    fd.append("sport_category", val("chCategory"));
+    fd.append("champion_type", champion_type);
+    fd.append("team", champion_type === "team" ? val("chTeam") : val("chIndTeam"));
+    fd.append("team_name", champion_type === "team" ? val("chTeamName") : val("chIndTeamName"));
+    fd.append("second_team", champion_type === "team" ? val("chSecondTeam") : val("chSecondIndTeam"));
+    fd.append("second_team_name", champion_type === "team" ? val("chSecondTeamName") : val("chSecondIndTeamName"));
+    fd.append("player_name", champion_type === "individual" ? val("chPlayerName") : "");
+    fd.append("second_player_name", champion_type === "individual" ? val("chSecondPlayerName") : "");
+    (champion_type === "team"
+      ? (document.getElementById("chPlayers").value || "").split("\n").map((s) => s.trim()).filter(Boolean)
+      : []
+    ).forEach((p) => fd.append("players", p));
+    const photo = document.getElementById("chWinningPhoto");
+    if (photo && photo.files && photo.files[0]) fd.append("winning_photo", photo.files[0]);
+
+    fetch("/admin/api/champions/save", { method: "POST", body: fd })
+      .then((r) => r.json().then((data) => ({ ok: r.ok, data })))
+      .then(({ ok, data }) => {
+        if (!ok || data.ok === false) throw new Error(data.error || "Champion save failed");
         toast("Champion saved");
         loadChampionsList();
         window.loadChampionRow();
@@ -627,7 +638,9 @@
     postJSON("/admin/api/champions/delete", { event_id })
       .then(() => {
         toast("Champion deleted");
-        ["chCategory", "chTeam", "chTeamName", "chSecondTeam", "chSecondTeamName", "chPlayers", "chPlayerName", "chIndTeam", "chIndTeamName", "chSecondPlayerName", "chSecondIndTeam", "chSecondIndTeamName"].forEach((id) => setField(id, ""));
+        ["chCategory", "chTeam", "chTeamName", "chSecondTeam", "chSecondTeamName", "chPlayers", "chPlayerName", "chIndTeam", "chIndTeamName", "chSecondPlayerName", "chSecondIndTeam", "chSecondIndTeamName", "chWinningPhoto"].forEach((id) => setField(id, ""));
+        const preview = document.getElementById("chPhotoPreview");
+        if (preview) preview.innerHTML = "";
         loadChampionsList();
       })
       .catch((e) => toast(e.message, true));
@@ -645,6 +658,33 @@
   function setField(id, value) {
     const el = document.getElementById(id);
     if (el) el.value = value == null ? "" : value;
+  }
+
+  function parseEventResults(text) {
+    return (text || "").split(/\r?\n/).map((line) => line.trim()).filter(Boolean).map((line) => {
+      const parts = line.split("|").map((p) => p.trim());
+      return {
+        category: parts[0] || "Result",
+        first_team: parts[1] || "",
+        first_player: parts[2] || "",
+        second_team: parts[3] || "",
+        second_player: parts[4] || "",
+        third_team: parts[5] || "",
+        third_player: parts[6] || "",
+      };
+    }).filter((row) => row.first_team || row.first_player || row.second_team || row.second_player || row.third_team || row.third_player);
+  }
+
+  function formatEventResults(rows) {
+    return (Array.isArray(rows) ? rows : []).map((row) => [
+      row.category || "",
+      row.first_team || "",
+      row.first_player || "",
+      row.second_team || "",
+      row.second_player || "",
+      row.third_team || "",
+      row.third_player || "",
+    ].join(" | ")).join("\n");
   }
 
   window.loadEventDetails = function () {
@@ -668,6 +708,7 @@
         setField("evWeatherIcon", e.weather_icon);
         setField("evWeatherNote", e.weather_note);
         setField("evTournamentFormat", e.tournament_format);
+        setField("evResults", formatEventResults(e.results || []));
         const badge = document.getElementById("evBadge");
         if (badge && e.badge) badge.value = e.badge;
         const status = document.getElementById("evStatus");
@@ -704,6 +745,7 @@
       weather_icon: val("evWeatherIcon"),
       weather_note: val("evWeatherNote"),
       tournament_format: val("evTournamentFormat"),
+      results: parseEventResults(val("evResults")),
       winner_points: numVal("evWinnerPts"),
       runner_up_points: numVal("evRunnerPts"),
     };

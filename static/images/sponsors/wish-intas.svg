@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 350" role="img" aria-labelledby="title desc">
+  <title id="title">Wish - A Division of INTAS</title>
+  <desc id="desc">Wish sponsor logo with dark background, dancer motif, INTAS subtitle, and Realizing the Dreams tagline.</desc>
+  <rect width="400" height="350" fill="#050505"/>
+  <rect x="7" y="7" width="386" height="336" fill="none" stroke="#9a28ff" stroke-width="4"/>
+  <defs>
+    <radialGradient id="orb" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.3" stop-color="#f866a7"/>
+      <stop offset="0.58" stop-color="#ffbd31"/>
+      <stop offset="0.8" stop-color="#44b8ff"/>
+      <stop offset="1" stop-color="#6834d6"/>
+    </radialGradient>
+    <linearGradient id="dancer" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7d663"/>
+      <stop offset="0.36" stop-color="#ef3b8b"/>
+      <stop offset="0.66" stop-color="#2ac1ff"/>
+      <stop offset="1" stop-color="#f7a53c"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="214" cy="46" rx="82" ry="17" fill="#d6b32d" opacity="0.6" transform="rotate(-20 214 46)"/>
+  <circle cx="198" cy="76" r="35" fill="url(#orb)" opacity="0.95"/>
+  <path d="M252 19 C267 38 260 68 239 88 C269 94 296 109 320 134 C287 128 263 123 236 112 C222 141 198 165 166 184 C190 149 204 119 211 87 C223 68 238 46 252 19 Z" fill="url(#dancer)" stroke="#d7d7d7" stroke-width="2" opacity="0.96"/>
+  <path d="M235 86 C267 73 295 55 328 33" stroke="#efcf58" stroke-width="3" opacity="0.85"/>
+  <text x="199" y="222" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="94" font-weight="900" letter-spacing="-4" fill="#5d6f89">WISH</text>
+  <text x="255" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" font-style="italic" fill="#b9b9bd">A Division of INTAS</text>
+  <text x="202" y="328" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-style="italic" fill="#ff3b9c">Realizing the Dreams</text>
+</svg>

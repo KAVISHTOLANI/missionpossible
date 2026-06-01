@@ -37,6 +37,32 @@
   function errBlock(msg) {
     return `<section class="phero"><div class="wrap"><div class="empty">${msg} <a class="accent" href="/sports">Back to sports →</a></div></div></section>`;
   }
+  function placeLine(row, place) {
+    const team = row[`${place}_team`] || "";
+    const player = row[`${place}_player`] || "";
+    const value = [team, player].filter(Boolean).join(" · ");
+    return value ? CARNIVAL.esc(value) : "—";
+  }
+
+  function resultsBlock(results) {
+    if (!Array.isArray(results) || !results.length) return "";
+    return `<div class="card detailcard detailcard--wide reveal in">
+      <div class="detailcard__label">Result</div>
+      <div class="event-results">
+        ${results.map((row) => `
+          <div class="event-result">
+            <div class="event-result__cat">${CARNIVAL.esc(row.category || "Result")}</div>
+            <div class="event-result__places">
+              <div><span>1st</span><strong>${placeLine(row, "first")}</strong></div>
+              <div><span>2nd</span><strong>${placeLine(row, "second")}</strong></div>
+              <div><span>3rd</span><strong>${placeLine(row, "third")}</strong></div>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    </div>`;
+  }
+
   if (!id) { root.innerHTML = errBlock("No event selected."); return; }
 
   CARNIVAL.get("/api/events/" + id).then((e) => {
@@ -128,6 +154,7 @@
             </div>
             ${pointsHtml}
             ${formatHtml}
+            ${resultsBlock(e.results)}
           </div>
           ${specialHtml}
           <div class="card detailcard detailcard--wide reveal in">

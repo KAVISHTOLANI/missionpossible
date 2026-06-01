@@ -23,8 +23,10 @@
       const teamName = teamDisplay(c.team, c.team_name);
       const secondTeamName = teamDisplay(c.second_team, c.second_team_name);
       const category = c.sport_category ? `<span class="badge badge--gold">${CARNIVAL.esc(c.sport_category)}</span>` : "";
+      const photo = c.winning_photo ? `<img class="champcard__photo" src="${CARNIVAL.esc(c.winning_photo)}" alt="${CARNIVAL.esc(c.event_name || "Winning photo")}" loading="lazy">` : "";
       if ((c.champion_type || "").toLowerCase() === "individual") {
         return `<div class="card champcard">
+          ${photo}
           <div class="champcard__top">${category}</div>
           <div class="champcard__event">${CARNIVAL.esc(c.event_name || c.event_id)}</div>
           <div class="champcard__label">Individual Champion</div>
@@ -39,6 +41,7 @@
         ? `<ul class="champcard__players">${(c.players || []).map((p) => `<li>${CARNIVAL.esc(p)}</li>`).join("")}</ul>`
         : '<div class="muted">Players not added yet.</div>';
       return `<div class="card champcard">
+        ${photo}
         <div class="champcard__top">${category}</div>
         <div class="champcard__event">${CARNIVAL.esc(c.event_name || c.event_id)}</div>
         <div class="champcard__label">Team Champion</div>

@@ -398,6 +398,8 @@
           </label>
           <label class="field"><span>Second place team display name</span><input id="chSecondIndTeamName" placeholder="Team Dominators"></label>
         </div>
+        <label class="field"><span>Winning photo</span><input type="file" id="chWinningPhoto" accept="image/png,image/jpeg,image/jpg,image/webp"></label>
+        <div id="chPhotoPreview" class="amini"></div>
         <div class="abtn-row">
           <button class="btn btn--gold" onclick="saveChampion()">Save Champion →</button>
           <button class="btn btn--ghost" onclick="deleteChampion()">Delete for Event</button>
@@ -485,6 +487,7 @@
         </div>
         <label class="field"><span>Weather note (detail page)</span><textarea id="evWeatherNote" rows="3" placeholder="Longer forecast note for the sport detail page…"></textarea></label>
         <label class="field"><span>Tournament format (sport detail)</span><textarea id="evTournamentFormat" rows="3" placeholder="Add custom tournament format for this event..."></textarea></label>
+        <label class="field"><span>Results (one category per line)</span><textarea id="evResults" rows="6" placeholder="Category | 1st Team | 1st Player | 2nd Team | 2nd Player | 3rd Team | 3rd Player&#10;Final | Team Creators | | Team Royals | | Team Dominators |&#10;Men Singles | Team Creators | Arjun | Team Royals | Rahul | Team Dominators | Suman"></textarea></label>
         <button class="btn btn--gold" onclick="saveEventDetails()">Save Event Details →</button>
       </div>
     </section>
@@ -551,6 +554,6 @@
     window.CARNIVAL_LIVE_INIT = {{ scores.live | tojson }};
   </script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/admin.js', v='20260530-player-tracker-games') }}"></script>
+  <script src="{{ url_for('static', filename='js/admin.js', v='20260601-results-champions-live') }}"></script>
 </body>
 </html>

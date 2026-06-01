@@ -8,6 +8,12 @@
     "company_head": "Dr. Aarti Deenadayal",
     "overall_coordinator": "Mr. Madhusudan",
     "coordinators": ["Dr. Janaki Ram", "Mrs. Navneeta"],
+    "sponsor": {
+      "name": "WISH",
+      "subtitle": "A Division of INTAS",
+      "tagline": "Realizing the Dreams",
+      "logo": "/static/images/sponsors/wish-intas.svg"
+    },
     "logo": "/static/images/logos/creators.png"
   },
   {
@@ -19,6 +25,12 @@
     "company_head": "Mr. Jeetandra Tolani",
     "overall_coordinator": "Har Rachan Kaur",
     "coordinators": ["Suman Uttam", "Anil"],
+    "sponsor": {
+      "name": "SPECTRUM",
+      "subtitle": "Life Sciences",
+      "tagline": "Official Team Sponsor",
+      "logo": "/static/images/sponsors/spectrum-life-sciences.svg"
+    },
     "logo": "/static/images/logos/dominators.png"
   },
   {
@@ -30,6 +42,12 @@
     "company_head": "Mrs. Ankita Deenadayal",
     "overall_coordinator": "Mr. Suraj Uttam",
     "coordinators": ["Dr. Vamshi", "Mr. Srikanth"],
+    "sponsor": {
+      "name": "VIVO",
+      "subtitle": "Life Sciences",
+      "tagline": "Official Team Sponsor",
+      "logo": "/static/images/sponsors/vivo-life-sciences.svg"
+    },
     "logo": "/static/images/logos/royals.png"
   }
 ]
