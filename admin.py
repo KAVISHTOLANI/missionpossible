@@ -77,7 +77,54 @@ def _data_path(name):
     return os.path.join(_BASE_DIR, "data", name)
 
 
+def _db_payload_name(name):
+    return name if name.endswith(".json") else f"{name}.json"
+
+
+def _load_from_db(name):
+    if not _DB_PATH:
+        return None
+    try:
+        conn = sqlite3.connect(_DB_PATH)
+        row = conn.execute(
+            "SELECT payload FROM data_store WHERE name = ?",
+            (_db_payload_name(name),),
+        ).fetchone()
+        conn.close()
+        if not row:
+            return None
+        return json.loads(row[0])
+    except (sqlite3.Error, json.JSONDecodeError):
+        return None
+
+
+def _save_to_db(name, payload):
+    if not _DB_PATH:
+        return
+    try:
+        conn = sqlite3.connect(_DB_PATH)
+        conn.execute(
+            """INSERT INTO data_store (name, payload, updated_at)
+               VALUES (?, ?, ?)
+               ON CONFLICT(name) DO UPDATE SET
+                 payload = excluded.payload,
+                 updated_at = excluded.updated_at""",
+            (
+                _db_payload_name(name),
+                json.dumps(payload, ensure_ascii=False),
+                datetime.now().isoformat(timespec="seconds"),
+            ),
+        )
+        conn.commit()
+        conn.close()
+    except sqlite3.Error:
+        pass
+
+
 def _load(name, default=None):
+    db_payload = _load_from_db(name)
+    if db_payload is not None:
+        return db_payload
     try:
         with open(_data_path(name), "r", encoding="utf-8") as fh:
             return json.load(fh)
@@ -91,6 +138,7 @@ def _save(name, payload):
     with open(tmp, "w", encoding="utf-8") as fh:
         json.dump(payload, fh, indent=2, ensure_ascii=False)
     os.replace(tmp, path)
+    _save_to_db(name, payload)
 
 
 def _load_player_tracker():
@@ -555,7 +603,7 @@ def _enrich_match(row, teams):
 # Audit log (SQLite)
 # ---------------------------------------------------------------------------
 def init_audit_db(base_dir):
-    """Called once at app start. Creates carnival.db + audit_log table."""
+    """Called once at app start. Creates carnival.db tables and seeds durable data."""
     global _BASE_DIR, _DB_PATH
     _BASE_DIR = base_dir
     _DB_PATH = os.path.join(base_dir, "carnival.db")
@@ -568,6 +616,29 @@ def init_audit_db(base_dir):
                detail    TEXT
            )"""
     )
+    conn.execute(
+        """CREATE TABLE IF NOT EXISTS data_store (
+               name       TEXT PRIMARY KEY,
+               payload    TEXT NOT NULL,
+               updated_at TEXT NOT NULL
+           )"""
+    )
+    data_dir = os.path.join(base_dir, "data")
+    try:
+        for filename in os.listdir(data_dir):
+            if not filename.endswith(".json"):
+                continue
+            exists = conn.execute("SELECT 1 FROM data_store WHERE name = ?", (filename,)).fetchone()
+            if exists:
+                continue
+            with open(os.path.join(data_dir, filename), "r", encoding="utf-8") as fh:
+                payload = json.load(fh)
+            conn.execute(
+                "INSERT INTO data_store (name, payload, updated_at) VALUES (?, ?, ?)",
+                (filename, json.dumps(payload, ensure_ascii=False), datetime.now().isoformat(timespec="seconds")),
+            )
+    except (OSError, json.JSONDecodeError):
+        pass
     conn.commit()
     conn.close()
 

@@ -1,5 +1,6 @@
 import json
 import os
+import sqlite3
 from datetime import date
 
 from flask import Flask, render_template, jsonify, request, redirect, url_for, session
@@ -8,9 +9,19 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("CARNIVAL_SECRET", "carnival2026-dev-secret")
 
 DATA = os.path.join(os.path.dirname(__file__), "data")
+DB_PATH = os.path.join(os.path.dirname(__file__), "carnival.db")
 
 
 def load(name):
+    db_name = name if name.endswith(".json") else f"{name}.json"
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        row = conn.execute("SELECT payload FROM data_store WHERE name = ?", (db_name,)).fetchone()
+        conn.close()
+        if row:
+            return json.loads(row[0])
+    except (sqlite3.Error, json.JSONDecodeError):
+        pass
     with open(os.path.join(DATA, f"{name}.json"), encoding="utf-8") as f:
         return json.load(f)
 
