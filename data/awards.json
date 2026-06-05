@@ -1,5 +1,11 @@
 {
-  "event_mvps": {},
+  "event_mvps": {
+    "basketball": {
+      "player": "Dr. Janaki Ram",
+      "team": "creators",
+      "image": ""
+    }
+  },
   "overall_best_player": null,
   "best_team": null,
   "fair_play_award": null
