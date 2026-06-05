@@ -1,0 +1,1853 @@
+﻿"""\r
+Mission Possible 2026 â€” Admin blueprint.\r
+\r
+Handles:\r
+  - password login (session cookie)\r
+  - all write endpoints (announcements, live scores, standings, awards, rules, logos)\r
+  - SQLite audit log of every admin action\r
+\r
+Public read APIs live in app.py. This module only mutates the JSON data files.\r
+The admin password is read from the CARNIVAL_ADMIN_PASSWORD env var, falling\r
+back to "carnival2026" for local development.\r
+"""\r
+import json\r
+import os\r
+import sqlite3\r
+import uuid\r
+from datetime import datetime\r
+from functools import wraps\r
+import threading\r
+\r
+from flask import (\r
+    Blueprint, render_template, request, redirect, url_for,\r
+    session, jsonify, current_app,\r
+)\r
+from werkzeug.utils import secure_filename\r
+from git_sync import sync_data_to_github\r
+\r
+admin_bp = Blueprint("admin", __name__, url_prefix="/admin")\r
+\r
+ADMIN_PASSWORD = os.environ.get("CARNIVAL_ADMIN_PASSWORD", "carnival2026")\r
+ALLOWED_ADMIN_USERS = {\r
+    "kavish": "Kavish",\r
+    "atharv": "Atharv",\r
+    "arjun": "Arjun",\r
+    "suman": "Suman",\r
+    "suraj": "Suraj",\r
+}\r
+ALLOWED_LOGO_EXT = {"png"}\r
+ALLOWED_GALLERY_EXT = {"png", "jpg", "jpeg", "webp"}\r
+ALLOWED_CHAMPION_EXT = {"png", "jpg", "jpeg", "webp"}\r
+VALID_TEAM_IDS = {"creators", "dominators", "royals"}\r
+VALID_STATUSES = {"upcoming", "live", "completed"}\r
+VALID_TAGS = {"Urgent", "Info", "Result"}\r
+VALID_BADGES = {"sports", "cultural", "indoor", "fun", "finale"}\r
+VALID_BANNERS = {\r
+    "banner-basketball", "banner-throwball", "banner-swimming", "banner-cycling",\r
+    "banner-badminton", "banner-rangoli", "banner-cricket", "banner-kabaddi",\r
+    "banner-tabletennis", "banner-carrom", "banner-cooking", "banner-annualday",\r
+    "banner-singing", "banner-dancing", "banner-skit", "banner-drama", "banner-fancy",\r
+}\r
+LIVE_DISABLED_EVENTS = {"carrom", "chess", "cooking", "8ball-pool", "singing", "dancing", "skit", "fancy-dress"}\r
+EMPTY_LIVE = {\r
+    "event_id": None,\r
+    "event_name": "",\r
+    "status": "upcoming",\r
+    "round": "",\r
+    "team_a": None,\r
+    "team_b": None,\r
+    "score_a": 0,\r
+    "score_b": 0,\r
+    "scores": {"creators": 0, "dominators": 0, "royals": 0},\r
+    "commentary": [],\r
+    "details": {},\r
+}\r
+\r
+\r
+def _empty_live():\r
+    return json.loads(json.dumps(EMPTY_LIVE))\r
+\r
+# Set by init_audit_db()\r
+_BASE_DIR = None\r
+_DB_PATH = None\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Data helpers (mirror app.py so admin.py is import-safe on its own)\r
+# ---------------------------------------------------------------------------\r
+def _data_path(name):\r
+    return os.path.join(_BASE_DIR, "data", name)\r
+\r
+\r
+def _db_payload_name(name):\r
+    return name if name.endswith(".json") else f"{name}.json"\r
+\r
+\r
+def _load_from_db(name):\r
+    if not _DB_PATH:\r
+        return None\r
+    try:\r
+        conn = sqlite3.connect(_DB_PATH)\r
+        row = conn.execute(\r
+            "SELECT payload FROM data_store WHERE name = ?",\r
+            (_db_payload_name(name),),\r
+        ).fetchone()\r
+        conn.close()\r
+        if not row:\r
+            return None\r
+        return json.loads(row[0])\r
+    except (sqlite3.Error, json.JSONDecodeError):\r
+        return None\r
+\r
+\r
+def _save_to_db(name, payload):\r
+    if not _DB_PATH:\r
+        return\r
+    try:\r
+        conn = sqlite3.connect(_DB_PATH)\r
+        conn.execute(\r
+            """INSERT INTO data_store (name, payload, updated_at)\r
+               VALUES (?, ?, ?)\r
+               ON CONFLICT(name) DO UPDATE SET\r
+                 payload = excluded.payload,\r
+                 updated_at = excluded.updated_at""",\r
+            (\r
+                _db_payload_name(name),\r
+                json.dumps(payload, ensure_ascii=False),\r
+                datetime.now().isoformat(timespec="seconds"),\r
+            ),\r
+        )\r
+        conn.commit()\r
+        conn.close()\r
+    except sqlite3.Error:\r
+        pass\r
+\r
+\r
+def _load(name, default=None):\r
+    try:\r
+        with open(_data_path(name), "r", encoding="utf-8") as fh:\r
+            return json.load(fh)\r
+    except (FileNotFoundError, json.JSONDecodeError):\r
+        return default\r
+\r
+\r
+def _save(name, payload):\r
+    path = _data_path(name)\r
+    tmp = path + ".tmp"\r
+    with open(tmp, "w", encoding="utf-8") as fh:\r
+        json.dump(payload, fh, indent=2, ensure_ascii=False)\r
+    os.replace(tmp, path)\r
+    _save_to_db(name, payload)\r
+    # Do not auto-push to GitHub on every single save â€” this caused\r
+    # latency, race conditions and unexpected repo changes when many\r
+    # admin actions happen in quick succession. Keep pushing manual\r
+    # and controlled via the admin "Save to GitHub" button.\r
+    # Enable automatic push by setting AUTO_PUSH_ON_SAVE=true in env.\r
+    try:\r
+        if os.environ.get("AUTO_PUSH_ON_SAVE", "false").lower() in {"1", "true", "yes"}:\r
+            sync_data_to_github(name)\r
+    except Exception:\r
+        # Never let git-sync failures break admin writes.\r
+        pass\r
+\r
+\r
+def _load_player_tracker():\r
+    return _load("player_tracker.json", {"teams": {}}) or {"teams": {}}\r
+\r
+\r
+def _save_player_tracker(payload):\r
+    if not isinstance(payload, dict):\r
+        payload = {"teams": {}}\r
+    payload.setdefault("teams", {})\r
+    _save("player_tracker.json", payload)\r
+    return payload\r
+\r
+\r
+def _normalize_player_row(raw):\r
+    played = _normalize_played_list(raw.get("played"))\r
+    games = _normalize_games_list(raw.get("games"))\r
+    player = {\r
+        "id": (raw.get("id") or ("pt-" + uuid.uuid4().hex[:10])),\r
+        "name": (raw.get("name") or "").strip(),\r
+        "employee_id": (raw.get("employee_id") or "").strip(),\r
+        "department": (raw.get("department") or "").strip(),\r
+        "played": played,\r
+        "games": games,\r
+        "created_at": raw.get("created_at") or datetime.now().isoformat(timespec="seconds"),\r
+        "updated_at": datetime.now().isoformat(timespec="seconds"),\r
+    }\r
+    return player\r
+\r
+\r
+def _find_player_row(team_rows, player_id=None, employee_id=None):\r
+    if not isinstance(team_rows, list):\r
+        return None\r
+    for row in team_rows:\r
+        if player_id and row.get("id") == player_id:\r
+            return row\r
+        if employee_id and row.get("employee_id") == employee_id:\r
+            return row\r
+    return None\r
+\r
+\r
+def _parse_player_bulk_line(line):\r
+    parts = line.split("-")\r
+    if len(parts) < 3:\r
+        return None\r
+    name = parts[0].strip()\r
+    employee_id = parts[1].strip()\r
+    department = "-".join(parts[2:]).strip()\r
+    if not name or not employee_id or not department:\r
+        return None\r
+    return {"name": name, "employee_id": employee_id, "department": department}\r
+\r
+\r
+def _normalize_played_list(raw):\r
+    played = []\r
+    if isinstance(raw, list):\r
+        for idx in range(5):\r
+            played.append(bool(raw[idx]) if idx < len(raw) else False)\r
+    else:\r
+        played = [False] * 5\r
+    return played\r
+\r
+\r
+def _normalize_games_list(raw):\r
+    games = []\r
+    if isinstance(raw, list):\r
+        for idx in range(5):\r
+            value = raw[idx] if idx < len(raw) else ""\r
+            if isinstance(value, dict):\r
+                value = value.get("name") or value.get("game") or ""\r
+            games.append(str(value or "").strip())\r
+    else:\r
+        games = [""] * 5\r
+    return games\r
+\r
+\r
+def _ensure_player_data(team_id):\r
+    data = _load_player_tracker()\r
+    teams = data.setdefault("teams", {})\r
+    teams.setdefault(team_id, [])\r
+    return data\r
+\r
+\r
+def _serialize_tracker_response(data):\r
+    if not isinstance(data, dict):\r
+        return {"teams": {}}\r
+    data.setdefault("teams", {})\r
+    return data\r
+\r
+\r
+def _normalize_player_line(line):\r
+    parts = line.split("-")\r
+    if len(parts) < 3:\r
+        return None\r
+    name = parts[0].strip()\r
+    employee_id = parts[1].strip()\r
+    department = "-".join(parts[2:]).strip()\r
+    if not name or not employee_id or not department:\r
+        return None\r
+    return {"name": name, "employee_id": employee_id, "department": department}\r
+\r
+\r
+def _trim_team_tracker(data):\r
+    if not isinstance(data, dict):\r
+        return {"teams": {}}\r
+    data.setdefault("teams", {})\r
+    return data\r
+\r
+\r
+def _team_tracker_safe(data):\r
+    return _trim_team_tracker(data)\r
+\r
+\r
+def _player_tracker_to_public(data):\r
+    out = {"teams": {}}\r
+    teams = data.get("teams") if isinstance(data.get("teams"), dict) else {}\r
+    for team_id, rows in teams.items():\r
+        out[team_id] = [\r
+            {\r
+                "id": row.get("id"),\r
+                "name": row.get("name"),\r
+                "employee_id": row.get("employee_id"),\r
+                "department": row.get("department"),\r
+                "played": _normalize_played_list(row.get("played")),\r
+                "games": _normalize_games_list(row.get("games")),\r
+            }\r
+            for row in (rows or [])\r
+        ]\r
+    return {"teams": out}\r
+\r
+\r
+def _update_player_row(team_rows, player_id, updates):\r
+    row = _find_player_row(team_rows, player_id=player_id)\r
+    if not row:\r
+        return None\r
+    if "name" in updates and isinstance(updates["name"], str):\r
+        row["name"] = updates["name"].strip()\r
+    if "employee_id" in updates and isinstance(updates["employee_id"], str):\r
+        row["employee_id"] = updates["employee_id"].strip()\r
+    if "department" in updates and isinstance(updates["department"], str):\r
+        row["department"] = updates["department"].strip()\r
+    if "played" in updates and isinstance(updates["played"], list):\r
+        row["played"] = _normalize_played_list(updates["played"])\r
+    if "games" in updates and isinstance(updates["games"], list):\r
+        row["games"] = _normalize_games_list(updates["games"])\r
+    if "index" in updates and isinstance(updates["index"], int) and 0 <= updates["index"] < 5:\r
+        row["played"] = _normalize_played_list(row.get("played", []))\r
+        row["games"] = _normalize_games_list(row.get("games", []))\r
+        row["played"][updates["index"]] = bool(updates.get("checked", False))\r
+        if "game" in updates:\r
+            row["games"][updates["index"]] = str(updates.get("game") or "").strip()\r
+    row["updated_at"] = datetime.now().isoformat(timespec="seconds")\r
+    return row\r
+\r
+\r
+def _public_player_row(row):\r
+    return {\r
+        "id": row.get("id"),\r
+        "name": row.get("name"),\r
+        "employee_id": row.get("employee_id"),\r
+        "department": row.get("department"),\r
+        "played": _normalize_played_list(row.get("played")),\r
+        "games": _normalize_games_list(row.get("games")),\r
+    }\r
+\r
+\r
+def _public_player_tracker(data):\r
+    return {"teams": {k: [_public_player_row(r) for r in (v or [])] for k, v in (data.get("teams") or {}).items()}}\r
+\r
+\r
+def _save_player_tracker_payload(data):\r
+    _save_player_tracker(data)\r
+    return data\r
+\r
+\r
+def _normalize_tracker_data(data):\r
+    if not isinstance(data, dict):\r
+        return {"teams": {}}\r
+    cleaned = {"teams": {}}\r
+    for team_id, players in (data.get("teams") or {}).items():\r
+        cleaned[team_id] = [\r
+            _normalize_player_row(player if isinstance(player, dict) else {})\r
+            for player in (players or [])\r
+        ]\r
+    return cleaned\r
+\r
+\r
+def _clean_tracker_data(data):\r
+    data = _normalize_tracker_data(data)\r
+    _save_player_tracker(data)\r
+    return data\r
+\r
+\r
+def _tracker_team_rows(data, team_id):\r
+    return (data.get("teams") or {}).get(team_id, [])\r
+\r
+\r
+def _is_valid_tracker_team(team_id):\r
+    return team_id in VALID_TEAM_IDS\r
+\r
+\r
+def _trim_tracker_input(players):\r
+    if not isinstance(players, list):\r
+        return []\r
+    out = []\r
+    for raw in players:\r
+        if not isinstance(raw, dict):\r
+            continue\r
+        if not raw.get("name") or not raw.get("employee_id"):\r
+            continue\r
+        out.append(_normalize_player_row(raw))\r
+    return out\r
+\r
+\r
+\r
+def _player_tracker_meta(team_rows):\r
+    return {\r
+        "count": len(team_rows),\r
+        "completed": sum(1 for row in team_rows if sum(bool(x) for x in row.get("played", [])) >= 5),\r
+    }\r
+\r
+\r
+def _player_tracker_record(team_rows, raw):\r
+    row = _find_player_row(team_rows, employee_id=raw.get("employee_id"))\r
+    if row:\r
+        row.update({\r
+            "name": raw.get("name", row.get("name")),\r
+            "department": raw.get("department", row.get("department")),\r
+            "updated_at": datetime.now().isoformat(timespec="seconds"),\r
+        })\r
+        return row\r
+    new = _normalize_player_row(raw)\r
+    team_rows.append(new)\r
+    return new\r
+\r
+\r
+def _player_tracker_for_public(data):\r
+    return {"teams": {team_id: [_public_player_row(row) for row in rows] for team_id, rows in (data.get("teams") or {}).items()}}\r
+\r
+\r
+\r
+def _clean_tracker_line(line):\r
+    return _normalize_player_line(line) if isinstance(line, str) else None\r
+\r
+\r
+def _parse_tracker_bulk(lines):\r
+    out = []\r
+    if not isinstance(lines, list):\r
+        return out\r
+    for raw in lines:\r
+        if isinstance(raw, str):\r
+            item = _clean_tracker_line(raw)\r
+            if item:\r
+                out.append(item)\r
+    return out\r
+\r
+\r
+def _tracker_response(data):\r
+    return _player_tracker_for_public(data)\r
+\r
+\r
+\r
+def _tracker_lookup(team_id):\r
+    data = _load_player_tracker()\r
+    return (data.get("teams") or {}).get(team_id, [])\r
+\r
+\r
+def _tracker_full():\r
+    return _player_tracker_for_public(_load_player_tracker())\r
+\r
+\r
+def _tracker_team(team_id):\r
+    data = _load_player_tracker()\r
+    rows = _tracker_lookup(team_id)\r
+    return {"team_id": team_id, "players": [_public_player_row(r) for r in rows]}\r
+\r
+\r
+\r
+def _tracker_row_exists(team_rows, employee_id):\r
+    return _find_player_row(team_rows, employee_id=employee_id) is not None\r
+\r
+\r
+\r
+def _tracker_update_or_add(team_rows, raw):\r
+    existing = _find_player_row(team_rows, employee_id=raw.get("employee_id"))\r
+    if existing:\r
+        existing["name"] = raw.get("name", existing.get("name"))\r
+        existing["department"] = raw.get("department", existing.get("department"))\r
+        existing["updated_at"] = datetime.now().isoformat(timespec="seconds")\r
+        return existing\r
+    new = _normalize_player_row(raw)\r
+    team_rows.append(new)\r
+    return new\r
+\r
+\r
+def _match_key(row):\r
+    return row.get("match_id") or row.get("id") or row.get("event_id")\r
+\r
+\r
+def _new_match_id(event_id):\r
+    return f"{event_id}-{uuid.uuid4().hex[:8]}"\r
+\r
+\r
+def _normal_scores(raw_scores):\r
+    raw_scores = raw_scores if isinstance(raw_scores, dict) else {}\r
+    return {\r
+        "creators": int(raw_scores.get("creators", 0) or 0),\r
+        "dominators": int(raw_scores.get("dominators", 0) or 0),\r
+        "royals": int(raw_scores.get("royals", 0) or 0),\r
+    }\r
+\r
+\r
+def _sync_live_index(scores):\r
+    matches = scores.get("live_matches") if isinstance(scores.get("live_matches"), list) else []\r
+    completed = scores.get("completed") if isinstance(scores.get("completed"), list) else []\r
+\r
+    clean_matches = []\r
+    for m in matches:\r
+        if not isinstance(m, dict) or not m.get("event_id"):\r
+            continue\r
+        m.setdefault("status", "upcoming")\r
+        m.setdefault("match_id", f"{m['event_id']}-{m.get('status', 'upcoming')}")\r
+        m.setdefault("commentary", [])\r
+        m.setdefault("details", {})\r
+        m.setdefault("scores", {"creators": 0, "dominators": 0, "royals": 0})\r
+        if m.get("status") != "completed":\r
+            clean_matches.append(m)\r
+\r
+    clean_completed = []\r
+    for c in completed:\r
+        if not isinstance(c, dict) or not c.get("event_id"):\r
+            continue\r
+        c["status"] = "completed"\r
+        c.setdefault("match_id", f"{c['event_id']}-completed")\r
+        c.setdefault("details", {})\r
+        c.setdefault("scores", {"creators": 0, "dominators": 0, "royals": 0})\r
+        clean_completed.append(c)\r
+\r
+    scores["live_matches"] = clean_matches\r
+    scores["completed"] = clean_completed\r
+    first_live = next((m for m in clean_matches if m.get("status") == "live"), clean_matches[0] if clean_matches else None)\r
+    scores["active_event"] = first_live.get("event_id") if first_live and first_live.get("status") == "live" else None\r
+    scores["live"] = dict(first_live) if first_live else _empty_live()\r
+    return scores\r
+\r
+\r
+def _find_match(scores, match_id=None, event_id=None, status=None):\r
+    rows = []\r
+    rows.extend(scores.get("live_matches") or [])\r
+    rows.extend(scores.get("completed") or [])\r
+    for row in rows:\r
+        if match_id and _match_key(row) == match_id:\r
+            return dict(row)\r
+        if not match_id and event_id and row.get("event_id") == event_id and (not status or row.get("status") == status):\r
+            return dict(row)\r
+    return None\r
+\r
+\r
+def _build_match(body, existing=None, partial=False):\r
+    existing = dict(existing or {})\r
+    events = {e["id"]: e for e in _load("events.json", [])}\r
+    formats = _load("match_formats.json", {})\r
+\r
+    event_id = (body.get("event_id") or existing.get("event_id") or "").strip()\r
+    if not event_id:\r
+        return None, "event_id required"\r
+    if event_id not in events:\r
+        return None, "Unknown event"\r
+\r
+    status = body.get("status", existing.get("status", "upcoming"))\r
+    if status not in VALID_STATUSES:\r
+        return None, "Invalid status"\r
+\r
+    allowed_rounds = (formats.get(event_id, {}) or {}).get("rounds") or []\r
+    round_label = (body.get("round", existing.get("round", "")) or "").strip()\r
+    if allowed_rounds and round_label and round_label not in allowed_rounds:\r
+        return None, "Invalid round for this sport"\r
+    if not round_label and allowed_rounds and not partial:\r
+        round_label = allowed_rounds[0]\r
+\r
+    team_a = body.get("team_a", existing.get("team_a"))\r
+    team_b = body.get("team_b", existing.get("team_b"))\r
+    if team_a and team_a not in VALID_TEAM_IDS:\r
+        return None, "Invalid team A"\r
+    if team_b and team_b not in VALID_TEAM_IDS:\r
+        return None, "Invalid team B"\r
+    if team_a and team_b and team_a == team_b:\r
+        return None, "Teams must be different"\r
+\r
+    try:\r
+        score_a = int(body.get("score_a", existing.get("score_a", 0)) or 0)\r
+        score_b = int(body.get("score_b", existing.get("score_b", 0)) or 0)\r
+    except (TypeError, ValueError):\r
+        return None, "Scores must be numbers"\r
+\r
+    match = dict(existing)\r
+    now = datetime.now().isoformat(timespec="seconds")\r
+    match.update({\r
+        "match_id": existing.get("match_id") or body.get("match_id") or _new_match_id(event_id),\r
+        "event_id": event_id,\r
+        "event_name": events[event_id]["name"],\r
+        "date": events[event_id].get("date", ""),\r
+        "status": status,\r
+        "round": round_label,\r
+        "team_a": team_a or None,\r
+        "team_b": team_b or None,\r
+        "score_a": max(0, score_a),\r
+        "score_b": max(0, score_b),\r
+        "scores": _normal_scores(body.get("scores", existing.get("scores", {}))),\r
+        "details": body.get("details") if isinstance(body.get("details"), dict) else (existing.get("details") or {}),\r
+        "commentary": existing.get("commentary") or [],\r
+        "created_at": existing.get("created_at") or now,\r
+        "updated_at": now,\r
+    })\r
+    return match, None\r
+\r
+\r
+def _save_match(match):\r
+    scores = _sync_live_index(_load("scores.json", {}))\r
+    match_id = _match_key(match)\r
+    scores["live_matches"] = [m for m in scores.get("live_matches", []) if _match_key(m) != match_id]\r
+    scores["completed"] = [m for m in scores.get("completed", []) if _match_key(m) != match_id]\r
+\r
+    if match.get("status") == "completed":\r
+        scores["completed"].insert(0, dict(match))\r
+    else:\r
+        scores["live_matches"].append(dict(match))\r
+\r
+    scores = _sync_live_index(scores)\r
+    _save("scores.json", scores)\r
+    return scores\r
+\r
+\r
+def _delete_match(match_id=None, event_id=None, status=None):\r
+    scores = _sync_live_index(_load("scores.json", {}))\r
+\r
+    def keep(row):\r
+        if match_id:\r
+            return _match_key(row) != match_id\r
+        if event_id and row.get("event_id") == event_id and (not status or row.get("status") == status):\r
+            return False\r
+        return True\r
+\r
+    scores["live_matches"] = [m for m in scores.get("live_matches", []) if keep(m)]\r
+    scores["completed"] = [m for m in scores.get("completed", []) if keep(m)]\r
+    scores = _sync_live_index(scores)\r
+    _save("scores.json", scores)\r
+    return scores\r
+\r
+\r
+def _enrich_match(row, teams):\r
+    out = dict(row)\r
+    out["match_id"] = _match_key(out)\r
+    if out.get("team_a") in teams:\r
+        out["team_a_name"] = teams[out["team_a"]]["name"]\r
+    if out.get("team_b") in teams:\r
+        out["team_b_name"] = teams[out["team_b"]]["name"]\r
+    return out\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Audit log (SQLite)\r
+# ---------------------------------------------------------------------------\r
+def init_audit_db(base_dir):\r
+    """Called once at app start. Creates carnival.db tables and seeds durable data."""\r
+    global _BASE_DIR, _DB_PATH\r
+    _BASE_DIR = base_dir\r
+    _DB_PATH = os.path.join(base_dir, "carnival.db")\r
+    conn = sqlite3.connect(_DB_PATH)\r
+    conn.execute(\r
+        """CREATE TABLE IF NOT EXISTS audit_log (\r
+               id        INTEGER PRIMARY KEY AUTOINCREMENT,\r
+               ts        TEXT NOT NULL,\r
+               action    TEXT NOT NULL,\r
+               detail    TEXT\r
+           )"""\r
+    )\r
+    conn.execute(\r
+        """CREATE TABLE IF NOT EXISTS data_store (\r
+               name       TEXT PRIMARY KEY,\r
+               payload    TEXT NOT NULL,\r
+               updated_at TEXT NOT NULL\r
+           )"""\r
+    )\r
+    data_dir = os.path.join(base_dir, "data")\r
+    try:\r
+        for filename in os.listdir(data_dir):\r
+            if not filename.endswith(".json"):\r
+                continue\r
+            exists = conn.execute("SELECT 1 FROM data_store WHERE name = ?", (filename,)).fetchone()\r
+            if exists:\r
+                continue\r
+            with open(os.path.join(data_dir, filename), "r", encoding="utf-8") as fh:\r
+                payload = json.load(fh)\r
+            conn.execute(\r
+                "INSERT INTO data_store (name, payload, updated_at) VALUES (?, ?, ?)",\r
+                (filename, json.dumps(payload, ensure_ascii=False), datetime.now().isoformat(timespec="seconds")),\r
+            )\r
+    except (OSError, json.JSONDecodeError):\r
+        pass\r
+    conn.commit()\r
+    conn.close()\r
+\r
+\r
+def audit(action, detail=""):\r
+    try:\r
+        conn = sqlite3.connect(_DB_PATH)\r
+        conn.execute(\r
+            "INSERT INTO audit_log (ts, action, detail) VALUES (?, ?, ?)",\r
+            (datetime.now().isoformat(timespec="seconds"), action, detail),\r
+        )\r
+        conn.commit()\r
+        conn.close()\r
+    except sqlite3.Error:\r
+        pass  # never let logging break a write\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Auth\r
+# ---------------------------------------------------------------------------\r
+def login_required(view):\r
+    @wraps(view)\r
+    def wrapped(*args, **kwargs):\r
+        if not session.get("admin"):\r
+            # API calls get JSON 401; page loads get redirected to login.\r
+            if request.path.startswith("/admin/api/"):\r
+                return jsonify({"ok": False, "error": "Not authenticated"}), 401\r
+            return redirect(url_for("admin.login"))\r
+        return view(*args, **kwargs)\r
+    return wrapped\r
+\r
+\r
+@admin_bp.route("/", methods=["GET", "POST"])\r
+def login():\r
+    if session.get("admin"):\r
+        return redirect(url_for("admin.dashboard"))\r
+    error = None\r
+    if request.method == "POST":\r
+        username_raw = (request.form.get("username") or "").strip()\r
+        username_key = username_raw.lower()\r
+        password = request.form.get("password")\r
+        if username_key in ALLOWED_ADMIN_USERS and password == ADMIN_PASSWORD:\r
+            session["admin"] = True\r
+            session["admin_user"] = ALLOWED_ADMIN_USERS[username_key]\r
+            audit("login", f"{session['admin_user']} logged in")\r
+            return redirect(url_for("admin.dashboard"))\r
+        error = "Invalid username or password."\r
+    return render_template("admin/login.html", error=error)\r
+\r
+\r
+@admin_bp.route("/logout")\r
+def logout():\r
+    session.pop("admin", None)\r
+    session.pop("admin_user", None)\r
+    return redirect(url_for("admin.login"))\r
+\r
+\r
+@admin_bp.route("/dashboard")\r
+@login_required\r
+def dashboard():\r
+    events = _load("events.json", [])\r
+    teams = _load("teams.json", [])\r
+    announcements = _load("announcements.json", [])\r
+    awards = _load("awards.json", {})\r
+    scores = _load("scores.json", {})\r
+    gallery_seasons = _load("gallery_seasons.json", [])\r
+    season4 = next((s for s in gallery_seasons if s.get("id") == "season-4"), None)\r
+    gallery = (season4 or {}).get("photos") or _load("gallery.json", [])\r
+    champions = _load("champions.json", [])\r
+    match_formats = _load("match_formats.json", {})\r
+    audit_rows = _recent_audit()\r
+    return render_template(\r
+        "admin/dashboard.html",\r
+        events=events, teams=teams, announcements=announcements,\r
+        awards=awards, scores=scores, gallery=gallery, champions=champions, match_formats=match_formats,\r
+        audit_rows=audit_rows,\r
+    )\r
+\r
+\r
+def _recent_audit(limit=25):\r
+    try:\r
+        conn = sqlite3.connect(_DB_PATH)\r
+        rows = conn.execute(\r
+            "SELECT ts, action, detail FROM audit_log ORDER BY id DESC LIMIT ?",\r
+            (limit,),\r
+        ).fetchall()\r
+        conn.close()\r
+        return [{"ts": r[0], "action": r[1], "detail": r[2]} for r in rows]\r
+    except sqlite3.Error:\r
+        return []\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Announcements\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/announcements/add", methods=["POST"])\r
+@login_required\r
+def add_announcement():\r
+    body = request.get_json(silent=True) or {}\r
+    title = (body.get("title") or "").strip()\r
+    text = (body.get("body") or "").strip()\r
+    tag = body.get("tag") if body.get("tag") in VALID_TAGS else "Info"\r
+    if not title or not text:\r
+        return jsonify({"ok": False, "error": "Title and body required"}), 400\r
+    items = _load("announcements.json", [])\r
+    item = {\r
+        "id": "ann-" + uuid.uuid4().hex[:8],\r
+        "title": title,\r
+        "date": datetime.now().strftime("%Y-%m-%d"),\r
+        "body": text,\r
+        "tag": tag,\r
+    }\r
+    items.insert(0, item)\r
+    _save("announcements.json", items)\r
+    audit("announcement_add", title)\r
+    return jsonify({"ok": True, "item": item})\r
+\r
+\r
+@admin_bp.route("/api/announcements/delete", methods=["POST"])\r
+@login_required\r
+def delete_announcement():\r
+    ann_id = (request.get_json(silent=True) or {}).get("id")\r
+    items = _load("announcements.json", [])\r
+    new_items = [a for a in items if a.get("id") != ann_id]\r
+    _save("announcements.json", new_items)\r
+    audit("announcement_delete", ann_id or "")\r
+    return jsonify({"ok": True})\r
+\r
+\r
+@admin_bp.route("/api/player-tracker", methods=["GET"])\r
+@login_required\r
+def admin_player_tracker():\r
+    data = _load_player_tracker()\r
+    return jsonify({"ok": True, "tracker": _player_tracker_for_public(data)})\r
+\r
+\r
+@admin_bp.route("/api/player-tracker/bulk-add", methods=["POST"])\r
+@login_required\r
+def admin_player_tracker_bulk_add():\r
+    body = request.get_json(silent=True) or {}\r
+    team_id = (body.get("team") or "").strip()\r
+    lines = body.get("lines") if isinstance(body.get("lines"), list) else []\r
+    if team_id not in VALID_TEAM_IDS:\r
+        return jsonify({"ok": False, "error": "Unknown team"}), 400\r
+    if not lines:\r
+        return jsonify({"ok": False, "error": "Add at least one player line"}), 400\r
+\r
+    data = _load_player_tracker()\r
+    team_rows = data.setdefault("teams", {}).setdefault(team_id, [])\r
+    added = 0\r
+    for raw_line in lines:\r
+        if not isinstance(raw_line, str):\r
+            continue\r
+        parsed = _parse_player_bulk_line(raw_line)\r
+        if not parsed:\r
+            continue\r
+        existing = _find_player_row(team_rows, employee_id=parsed["employee_id"])\r
+        if existing:\r
+            existing["name"] = parsed["name"]\r
+            existing["department"] = parsed["department"]\r
+            existing["updated_at"] = datetime.now().isoformat(timespec="seconds")\r
+        else:\r
+            team_rows.append(_normalize_player_row(parsed))\r
+        added += 1\r
+\r
+    _save_player_tracker(data)\r
+    audit("player_tracker_bulk_add", f"{team_id} {added} players")\r
+    return jsonify({"ok": True, "tracker": _player_tracker_for_public(data), "added": added})\r
+\r
+\r
+@admin_bp.route("/api/player-tracker/update-played", methods=["POST"])\r
+@login_required\r
+def admin_player_tracker_update_played():\r
+    body = request.get_json(silent=True) or {}\r
+    team_id = (body.get("team") or "").strip()\r
+    player_id = (body.get("player_id") or "").strip()\r
+    try:\r
+        index = int(body.get("index"))\r
+    except (TypeError, ValueError):\r
+        return jsonify({"ok": False, "error": "Invalid index"}), 400\r
+    checked = bool(body.get("checked"))\r
+\r
+    if team_id not in VALID_TEAM_IDS:\r
+        return jsonify({"ok": False, "error": "Unknown team"}), 400\r
+    if not player_id:\r
+        return jsonify({"ok": False, "error": "player_id is required"}), 400\r
+    if index < 0 or index > 4:\r
+        return jsonify({"ok": False, "error": "Index must be between 0 and 4"}), 400\r
+\r
+    data = _load_player_tracker()\r
+    team_rows = data.setdefault("teams", {}).get(team_id, [])\r
+    row = _find_player_row(team_rows, player_id=player_id)\r
+    if not row:\r
+        return jsonify({"ok": False, "error": "Player not found"}), 404\r
+\r
+    row["played"] = _normalize_played_list(row.get("played", []))\r
+    row["games"] = _normalize_games_list(row.get("games", []))\r
+    row["played"][index] = checked\r
+    if "game" in body:\r
+        row["games"][index] = str(body.get("game") or "").strip()\r
+    row["updated_at"] = datetime.now().isoformat(timespec="seconds")\r
+\r
+    _save_player_tracker(data)\r
+    audit("player_tracker_update_played", f"{team_id} {player_id} game {index + 1} {checked}")\r
+    return jsonify({"ok": True, "player": _public_player_row(row)})\r
+\r
+\r
+@admin_bp.route("/api/player-tracker/delete", methods=["POST"])\r
+@login_required\r
+def admin_player_tracker_delete():\r
+    body = request.get_json(silent=True) or {}\r
+    team_id = (body.get("team") or "").strip()\r
+    player_id = (body.get("player_id") or "").strip()\r
+\r
+    if team_id not in VALID_TEAM_IDS:\r
+        return jsonify({"ok": False, "error": "Unknown team"}), 400\r
+    if not player_id:\r
+        return jsonify({"ok": False, "error": "player_id is required"}), 400\r
+\r
+    data = _load_player_tracker()\r
+    team_rows = data.setdefault("teams", {}).get(team_id, [])\r
+    before = len(team_rows)\r
+    data["teams"][team_id] = [row for row in team_rows if row.get("id") != player_id]\r
+    if len(data["teams"][team_id]) == before:\r
+        return jsonify({"ok": False, "error": "Player not found"}), 404\r
+\r
+    _save_player_tracker(data)\r
+    audit("player_tracker_delete", f"{team_id} {player_id}")\r
+    return jsonify({"ok": True, "tracker": _player_tracker_for_public(data)})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Live scores\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/live/update", methods=["POST"])\r
+@login_required\r
+def update_live():\r
+    body = request.get_json(silent=True) or {}\r
+    lookup = _sync_live_index(_load("scores.json", {}))\r
+    existing = None\r
+    if body.get("match_id"):\r
+        existing = _find_match(lookup, match_id=body.get("match_id"))\r
+    elif not body.get("append_to_live_matches"):\r
+        existing = _find_match(lookup, event_id=body.get("event_id"))\r
+\r
+    match, error = _build_match(body, existing=existing)\r
+    if error:\r
+        return jsonify({"ok": False, "error": error}), 400\r
+\r
+    scores = _save_match(match)\r
+    audit(\r
+        "live_update",\r
+        f"{match['event_id']} {match['status']} {match['round']} {match.get('team_a')} vs {match.get('team_b')} {match['score_a']}-{match['score_b']}",\r
+    )\r
+    return jsonify({"ok": True, "match": match, "live_matches": scores.get("live_matches", []), "live": scores.get("live", {})})\r
+\r
+\r
+@admin_bp.route("/api/live/commentary", methods=["POST"])\r
+@login_required\r
+def add_commentary():\r
+    body = request.get_json(silent=True) or {}\r
+    text = (body.get("text") or "").strip()\r
+    match_id = (body.get("match_id") or "").strip()\r
+    event_id = (body.get("event_id") or "").strip()\r
+    if not text:\r
+        return jsonify({"ok": False, "error": "Empty commentary"}), 400\r
+    scores = _sync_live_index(_load("scores.json", {}))\r
+    matches = scores.setdefault("live_matches", [])\r
+    if not isinstance(matches, list):\r
+        matches = []\r
+    live = None\r
+    if match_id:\r
+        live = next((m for m in matches if _match_key(m) == match_id), None)\r
+    if not live and event_id:\r
+        live = next((m for m in matches if m.get("event_id") == event_id), None)\r
+    if not live:\r
+        live = next((m for m in matches if m.get("status") == "live"), None)\r
+    if not live:\r
+        return jsonify({"ok": False, "error": "No live scoreboard found for commentary"}), 400\r
+    entry = {"time": datetime.now().strftime("%H:%M"), "text": text}\r
+    live.setdefault("commentary", []).insert(0, entry)\r
+    if not event_id:\r
+        event_id = live.get("event_id") or ""\r
+    scores["live"] = dict(live)\r
+    scores["active_event"] = event_id if live.get("status") == "live" else scores.get("active_event")\r
+    _save("scores.json", scores)\r
+    audit("commentary_add", text[:60])\r
+    return jsonify({"ok": True, "entry": entry, "event_id": event_id})\r
+\r
+\r
+@admin_bp.route("/api/live/clear", methods=["POST"])\r
+@login_required\r
+def clear_live_record():\r
+    body = request.get_json(silent=True) or {}\r
+    event_id = body.get("event_id")\r
+    scores = _load("scores.json", {})\r
+    if event_id:\r
+        scores["completed"] = [\r
+            row for row in (scores.get("completed") or [])\r
+            if row.get("event_id") != event_id\r
+        ]\r
+    matches = scores.setdefault("live_matches", [])\r
+    if not isinstance(matches, list):\r
+        matches = []\r
+    if event_id:\r
+        matches = [m for m in matches if m.get("event_id") != event_id]\r
+    else:\r
+        matches = []\r
+    scores["live_matches"] = matches\r
+    first_live = next((m for m in matches if m.get("status") == "live"), matches[0] if matches else None)\r
+    scores["active_event"] = first_live.get("event_id") if first_live and first_live.get("status") == "live" else None\r
+    scores["live"] = dict(first_live) if first_live else {\r
+        "event_id": None,\r
+        "event_name": "",\r
+        "status": "upcoming",\r
+        "round": "",\r
+        "team_a": None,\r
+        "team_b": None,\r
+        "score_a": 0,\r
+        "score_b": 0,\r
+        "scores": {"creators": 0, "dominators": 0, "royals": 0},\r
+        "commentary": [],\r
+        "details": {},\r
+    }\r
+\r
+    _save("scores.json", scores)\r
+    audit("live_clear", event_id or "all")\r
+    return jsonify({"ok": True, "live_matches": scores.get("live_matches", []), "completed": scores.get("completed", [])})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Comprehensive Live Matches Management API\r
+# ---------------------------------------------------------------------------\r
+\r
+@admin_bp.route("/api/live/list", methods=["GET"])\r
+@login_required\r
+def list_live_matches():\r
+    """Get all live, upcoming, and archived matches with optional status filter."""\r
+    status_filter = request.args.get("status", "").lower()\r
+    scores = _sync_live_index(_load("scores.json", {}))\r
+    teams = {t["id"]: t for t in _load("teams.json", [])}\r
+    all_matches = [_enrich_match(m, teams) for m in (scores.get("live_matches") or [])]\r
+    all_matches.extend(_enrich_match(m, teams) for m in (scores.get("completed") or []))\r
+\r
+    if status_filter:\r
+        all_matches = [m for m in all_matches if m.get("status") == status_filter]\r
+\r
+    status_order = {"live": 0, "upcoming": 1, "completed": 2}\r
+    all_matches.sort(key=lambda m: (status_order.get(m.get("status"), 3), m.get("event_name", ""), m.get("round", "")))\r
+    return jsonify({"ok": True, "matches": all_matches, "total": len(all_matches)})\r
+\r
+\r
+@admin_bp.route("/api/live/matches", methods=["GET"])\r
+@login_required\r
+def api_live_matches_get():\r
+    return list_live_matches()\r
+\r
+\r
+@admin_bp.route("/api/live/matches", methods=["POST"])\r
+@login_required\r
+def api_live_matches_create():\r
+    body = request.get_json(silent=True) or {}\r
+    match, error = _build_match(body)\r
+    if error:\r
+        return jsonify({"ok": False, "error": error}), 400\r
+    scores = _save_match(match)\r
+    audit("live_match_create", f"{match['match_id']} {match['event_id']} {match['status']}")\r
+    return jsonify({"ok": True, "match": match, "live": scores.get("live", {})}), 201\r
+\r
+\r
+@admin_bp.route("/api/live/matches/<match_id>", methods=["PUT", "PATCH"])\r
+@login_required\r
+def api_live_matches_update(match_id):\r
+    body = request.get_json(silent=True) or {}\r
+    scores = _sync_live_index(_load("scores.json", {}))\r
+    existing = _find_match(scores, match_id=match_id)\r
+    if not existing:\r
+        return jsonify({"ok": False, "error": "Match not found"}), 404\r
+    body["match_id"] = match_id\r
+    match, error = _build_match(body, existing=existing, partial=request.method == "PATCH")\r
+    if error:\r
+        return jsonify({"ok": False, "error": error}), 400\r
+    scores = _save_match(match)\r
+    audit("live_match_update", f"{match_id} {match['status']}")\r
+    return jsonify({"ok": True, "match": match, "live": scores.get("live", {})})\r
+\r
+\r
+@admin_bp.route("/api/live/matches/<match_id>", methods=["DELETE"])\r
+@login_required\r
+def api_live_matches_delete(match_id):\r
+    scores = _sync_live_index(_load("scores.json", {}))\r
+    if not _find_match(scores, match_id=match_id):\r
+        return jsonify({"ok": False, "error": "Match not found"}), 404\r
+    _delete_match(match_id=match_id)\r
+    audit("live_match_delete", match_id)\r
+    return jsonify({"ok": True, "message": "Match deleted"})\r
+\r
+\r
+@admin_bp.route("/api/live/matches/<match_id>/status", methods=["POST", "PATCH"])\r
+@login_required\r
+def api_live_matches_status(match_id):\r
+    body = request.get_json(silent=True) or {}\r
+    new_status = body.get("new_status") or body.get("status")\r
+    if new_status not in VALID_STATUSES:\r
+        return jsonify({"ok": False, "error": "Invalid status"}), 400\r
+    scores = _sync_live_index(_load("scores.json", {}))\r
+    existing = _find_match(scores, match_id=match_id)\r
+    if not existing:\r
+        return jsonify({"ok": False, "error": "Match not found"}), 404\r
+    existing["status"] = new_status\r
+    match, error = _build_match(existing, existing=existing, partial=True)\r
+    if error:\r
+        return jsonify({"ok": False, "error": error}), 400\r
+    scores = _save_match(match)\r
+    audit("live_match_status", f"{match_id} -> {new_status}")\r
+    return jsonify({"ok": True, "match": match, "live": scores.get("live", {})})\r
+\r
+\r
+@admin_bp.route("/api/live/delete", methods=["POST"])\r
+@login_required\r
+def delete_live_match():\r
+    """Delete a match from live_matches or completed list."""\r
+    body = request.get_json(silent=True) or {}\r
+    match_id = body.get("match_id")\r
+    event_id = body.get("event_id")\r
+    status = body.get("status", "upcoming")\r
+\r
+    if not match_id and not event_id:\r
+        return jsonify({"ok": False, "error": "match_id or event_id required"}), 400\r
+\r
+    _delete_match(match_id=match_id, event_id=event_id, status=status if not match_id else None)\r
+    audit("live_delete", match_id or f"{event_id} ({status})")\r
+    return jsonify({"ok": True, "message": "Match deleted"})\r
+\r
+\r
+@admin_bp.route("/api/live/move-status", methods=["POST"])\r
+@login_required\r
+def move_match_status():\r
+    """Move a match from one status to another (upcoming <-> live <-> completed)."""\r
+    body = request.get_json(silent=True) or {}\r
+    match_id = body.get("match_id")\r
+    event_id = body.get("event_id")\r
+    new_status = body.get("new_status", "upcoming")\r
+\r
+    if not match_id and not event_id:\r
+        return jsonify({"ok": False, "error": "match_id or event_id required"}), 400\r
+    if new_status not in VALID_STATUSES:\r
+        return jsonify({"ok": False, "error": "Invalid status"}), 400\r
+\r
+    scores = _sync_live_index(_load("scores.json", {}))\r
+    match = _find_match(scores, match_id=match_id, event_id=event_id)\r
+    if not match:\r
+        return jsonify({"ok": False, "error": "Match not found"}), 400\r
+\r
+    match["status"] = new_status\r
+    match, error = _build_match(match, existing=match, partial=True)\r
+    if error:\r
+        return jsonify({"ok": False, "error": error}), 400\r
+    _save_match(match)\r
+    audit("live_move_status", f"{_match_key(match)} -> {new_status}")\r
+    return jsonify({"ok": True, "match": match, "message": f"Match moved to {new_status}"})\r
+\r
+\r
+@admin_bp.route("/api/live/quick-update", methods=["POST"])\r
+@login_required\r
+def quick_update_scores():\r
+    """Quick update scores for a match without modifying other fields."""\r
+    body = request.get_json(silent=True) or {}\r
+    match_id = body.get("match_id")\r
+    event_id = body.get("event_id")\r
+\r
+    if not match_id and not event_id:\r
+        return jsonify({"ok": False, "error": "match_id or event_id required"}), 400\r
+    \r
+    try:\r
+        score_a = int(body.get("score_a", 0) or 0)\r
+        score_b = int(body.get("score_b", 0) or 0)\r
+    except (TypeError, ValueError):\r
+        return jsonify({"ok": False, "error": "Scores must be numbers"}), 400\r
+    \r
+    scores = _sync_live_index(_load("scores.json", {}))\r
+    match = _find_match(scores, match_id=match_id, event_id=event_id)\r
+    if not match:\r
+        return jsonify({"ok": False, "error": "Match not found"}), 404\r
+\r
+    match["score_a"] = max(0, score_a)\r
+    match["score_b"] = max(0, score_b)\r
+    match, error = _build_match(match, existing=match, partial=True)\r
+    if error:\r
+        return jsonify({"ok": False, "error": error}), 400\r
+    _save_match(match)\r
+    audit("live_quick_update", f"{_match_key(match)} {score_a}-{score_b}")\r
+    return jsonify({"ok": True, "message": "Scores updated"})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Standings\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/standings/update", methods=["POST"])\r
+@login_required\r
+def update_standings():\r
+    body = request.get_json(silent=True) or {}\r
+    team_id = body.get("team")\r
+    entry_id = (body.get("entry_id") or "").strip()\r
+    event_name = (body.get("event") or "").strip()\r
+    try:\r
+        points = int(body.get("points", 0) or 0)\r
+    except (TypeError, ValueError):\r
+        return jsonify({"ok": False, "error": "Points must be a number"}), 400\r
+    penalty = bool(body.get("penalty"))\r
+    note = (body.get("note") or "").strip()\r
+\r
+    if team_id not in VALID_TEAM_IDS:\r
+        return jsonify({"ok": False, "error": "Unknown team"}), 400\r
+\r
+    standings = _load("standings.json", {"teams": {}})\r
+    teams = standings.get("teams", {})\r
+    if team_id not in teams:\r
+        return jsonify({"ok": False, "error": "Team not in standings"}), 400\r
+\r
+    _ensure_standings_entry_ids(standings)\r
+\r
+    row = {\r
+        "id": entry_id or ("st-" + uuid.uuid4().hex[:10]),\r
+        "event": event_name,\r
+        "points": -points if penalty else points,\r
+        "type": "penalty" if penalty else "points",\r
+        "note": note,\r
+    }\r
+\r
+    if entry_id:\r
+        found = False\r
+        for tid, t in teams.items():\r
+            rows = t.setdefault("event_breakdown", [])\r
+            for idx, existing in enumerate(rows):\r
+                if existing.get("id") == entry_id:\r
+                    found = True\r
+                    if tid == team_id:\r
+                        rows[idx] = row\r
+                    else:\r
+                        rows.pop(idx)\r
+                        teams[team_id].setdefault("event_breakdown", []).append(row)\r
+                    break\r
+            if found:\r
+                break\r
+        if not found:\r
+            teams[team_id].setdefault("event_breakdown", []).append(row)\r
+    else:\r
+        teams[team_id].setdefault("event_breakdown", []).append(row)\r
+\r
+    for t in teams.values():\r
+        _recompute_standings_team_totals(t)\r
+\r
+    _save("standings.json", standings)\r
+    audit("standings_update", f"{team_id} {'-' if penalty else '+'}{points} ({event_name})")\r
+    return jsonify({"ok": True, "team": standings["teams"].get(team_id)})\r
+\r
+\r
+@admin_bp.route("/api/standings/delete-entry", methods=["POST"])\r
+@login_required\r
+def delete_standings_entry():\r
+    body = request.get_json(silent=True) or {}\r
+    entry_id = (body.get("entry_id") or "").strip()\r
+    if not entry_id:\r
+        return jsonify({"ok": False, "error": "entry_id required"}), 400\r
+\r
+    standings = _load("standings.json", {"teams": {}})\r
+    teams = standings.get("teams", {})\r
+    _ensure_standings_entry_ids(standings)\r
+    removed = False\r
+    for t in teams.values():\r
+        rows = t.setdefault("event_breakdown", [])\r
+        new_rows = [r for r in rows if r.get("id") != entry_id]\r
+        if len(new_rows) != len(rows):\r
+            t["event_breakdown"] = new_rows\r
+            removed = True\r
+    if not removed:\r
+        return jsonify({"ok": False, "error": "Entry not found"}), 404\r
+\r
+    for t in teams.values():\r
+        _recompute_standings_team_totals(t)\r
+    _save("standings.json", standings)\r
+    audit("standings_delete", entry_id)\r
+    return jsonify({"ok": True})\r
+\r
+\r
+@admin_bp.route("/api/standings/entries", methods=["GET"])\r
+@login_required\r
+def standings_entries():\r
+    standings = _load("standings.json", {"teams": {}})\r
+    _ensure_standings_entry_ids(standings)\r
+    rows = []\r
+    for team_id, team in (standings.get("teams") or {}).items():\r
+        for row in (team.get("event_breakdown") or []):\r
+            rows.append({\r
+                "id": row.get("id"),\r
+                "team_id": team_id,\r
+                "team_name": team.get("name", team_id),\r
+                "event": row.get("event", ""),\r
+                "points": int(row.get("points", 0) or 0),\r
+                "type": row.get("type", "points"),\r
+                "note": row.get("note", ""),\r
+            })\r
+    return jsonify({"ok": True, "rows": rows})\r
+\r
+\r
+def _ensure_standings_entry_ids(standings):\r
+    changed = False\r
+    for t in (standings.get("teams") or {}).values():\r
+        rows = t.setdefault("event_breakdown", [])\r
+        for row in rows:\r
+            if not row.get("id"):\r
+                row["id"] = "st-" + uuid.uuid4().hex[:10]\r
+                changed = True\r
+    if changed:\r
+        _save("standings.json", standings)\r
+\r
+\r
+def _recompute_standings_team_totals(team):\r
+    rows = team.get("event_breakdown") or []\r
+    points_earned = 0\r
+    penalty_deductions = 0\r
+    events_played = 0\r
+    wins = 0\r
+    for r in rows:\r
+        pts = int(r.get("points", 0) or 0)\r
+        kind = (r.get("type") or "").lower()\r
+        is_penalty = (kind == "penalty") or pts < 0\r
+        if is_penalty:\r
+            penalty_deductions += abs(pts)\r
+        else:\r
+            points_earned += pts\r
+            events_played += 1\r
+            if pts >= 300:\r
+                wins += 1\r
+    team["points_earned"] = points_earned\r
+    team["penalty_deductions"] = penalty_deductions\r
+    team["events_played"] = events_played\r
+    team["wins"] = wins\r
+    team["net_points"] = points_earned - penalty_deductions\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Standings medals (gold / silver / bronze)\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/standings/medals", methods=["POST"])\r
+@login_required\r
+def update_medals():\r
+    body = request.get_json(silent=True) or {}\r
+    team_id = body.get("team")\r
+    if team_id not in VALID_TEAM_IDS:\r
+        return jsonify({"ok": False, "error": "Unknown team"}), 400\r
+    try:\r
+        gold = int(body.get("gold", 0) or 0)\r
+        silver = int(body.get("silver", 0) or 0)\r
+        bronze = int(body.get("bronze", 0) or 0)\r
+    except (TypeError, ValueError):\r
+        return jsonify({"ok": False, "error": "Medal counts must be numbers"}), 400\r
+    if min(gold, silver, bronze) < 0:\r
+        return jsonify({"ok": False, "error": "Medal counts cannot be negative"}), 400\r
+\r
+    standings = _load("standings.json", {"teams": {}})\r
+    team = standings["teams"].get(team_id)\r
+    if not team:\r
+        return jsonify({"ok": False, "error": "Team not in standings"}), 400\r
+\r
+    team["gold"] = gold\r
+    team["silver"] = silver\r
+    team["bronze"] = bronze\r
+    _save("standings.json", standings)\r
+    audit("medals_update", f"{team_id} g{gold} s{silver} b{bronze}")\r
+    return jsonify({"ok": True, "team": team})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Award leaderboards (Overall MVP + Fair Play)\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/award-leaderboards/upsert", methods=["POST"])\r
+@login_required\r
+def upsert_award_leaderboard():\r
+    body = request.get_json(silent=True) or {}\r
+    board = (body.get("board") or "").strip().lower()\r
+    if board not in {"overall_mvp", "fair_play"}:\r
+        return jsonify({"ok": False, "error": "Unknown board"}), 400\r
+\r
+    leaderboards = _load("award_leaderboards.json", {"overall_mvp": [], "fair_play": []})\r
+    rows = leaderboards.setdefault(board, [])\r
+    row_id = (body.get("id") or "").strip()\r
+\r
+    if board == "overall_mvp":\r
+        player_name = (body.get("player_name") or "").strip()\r
+        team_name = (body.get("team_name") or "").strip()\r
+        if not player_name or not team_name:\r
+            return jsonify({"ok": False, "error": "Player and team are required"}), 400\r
+        try:\r
+            gold = int(body.get("gold", 0) or 0)\r
+            silver = int(body.get("silver", 0) or 0)\r
+            points = int(body.get("points", 0) or 0)\r
+        except (TypeError, ValueError):\r
+            return jsonify({"ok": False, "error": "Gold, silver and points must be numbers"}), 400\r
+        if min(gold, silver, points) < 0:\r
+            return jsonify({"ok": False, "error": "Values cannot be negative"}), 400\r
+\r
+        payload = {\r
+            "id": row_id or ("mvp-" + uuid.uuid4().hex[:10]),\r
+            "player_name": player_name,\r
+            "team_name": team_name,\r
+            "gold": gold,\r
+            "silver": silver,\r
+            "points": points,\r
+            "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M"),\r
+        }\r
+    else:\r
+        team_name = (body.get("team_name") or "").strip()\r
+        if not team_name:\r
+            return jsonify({"ok": False, "error": "Team name is required"}), 400\r
+        try:\r
+            fair_play_points = int(body.get("fair_play_points", 0) or 0)\r
+        except (TypeError, ValueError):\r
+            return jsonify({"ok": False, "error": "Fair play points must be a number"}), 400\r
+        if fair_play_points < 0:\r
+            return jsonify({"ok": False, "error": "Points cannot be negative"}), 400\r
+\r
+        payload = {\r
+            "id": row_id or ("fp-" + uuid.uuid4().hex[:10]),\r
+            "team_name": team_name,\r
+            "fair_play_points": fair_play_points,\r
+            "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M"),\r
+        }\r
+\r
+    replaced = False\r
+    for idx, row in enumerate(rows):\r
+        if row.get("id") == payload["id"]:\r
+            rows[idx] = payload\r
+            replaced = True\r
+            break\r
+    if not replaced:\r
+        rows.append(payload)\r
+\r
+    _save("award_leaderboards.json", leaderboards)\r
+    audit("award_board_upsert", f"{board} {payload['id']}")\r
+    return jsonify({"ok": True, "leaderboards": leaderboards, "row": payload})\r
+\r
+\r
+@admin_bp.route("/api/award-leaderboards/delete", methods=["POST"])\r
+@login_required\r
+def delete_award_leaderboard():\r
+    body = request.get_json(silent=True) or {}\r
+    board = (body.get("board") or "").strip().lower()\r
+    row_id = (body.get("id") or "").strip()\r
+    if board not in {"overall_mvp", "fair_play"}:\r
+        return jsonify({"ok": False, "error": "Unknown board"}), 400\r
+    if not row_id:\r
+        return jsonify({"ok": False, "error": "id required"}), 400\r
+\r
+    leaderboards = _load("award_leaderboards.json", {"overall_mvp": [], "fair_play": []})\r
+    rows = leaderboards.setdefault(board, [])\r
+    leaderboards[board] = [row for row in rows if row.get("id") != row_id]\r
+    _save("award_leaderboards.json", leaderboards)\r
+    audit("award_board_delete", f"{board} {row_id}")\r
+    return jsonify({"ok": True, "leaderboards": leaderboards})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Site settings (YouTube live link)\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/settings/youtube", methods=["POST"])\r
+@login_required\r
+def update_youtube_live():\r
+    body = request.get_json(silent=True) or {}\r
+    url = (body.get("youtube_live_url") or "").strip()\r
+    settings = _load("settings.json", {"youtube_live_url": ""})\r
+    settings["youtube_live_url"] = url\r
+    _save("settings.json", settings)\r
+    audit("youtube_live_update", url[:80])\r
+    return jsonify({"ok": True, "settings": settings})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Awards\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/awards/update", methods=["POST"])\r
+@login_required\r
+def update_awards():\r
+    body = request.get_json(silent=True) or {}\r
+    awards = _load("awards.json", {"event_mvps": {}, "overall_best_player": None, "best_team": None, "fair_play_award": None})\r
+\r
+    kind = body.get("kind")\r
+    if kind == "event_mvp":\r
+        event_id = body.get("event_id")\r
+        if not event_id:\r
+            return jsonify({"ok": False, "error": "event_id required"}), 400\r
+        events = {e.get("id"): e for e in _load("events.json", [])}\r
+        event = events.get(event_id)\r
+        if not event:\r
+            return jsonify({"ok": False, "error": "Unknown event"}), 400\r
+        if (event.get("badge") or "").lower() in {"cultural", "finale"}:\r
+            return jsonify({"ok": False, "error": "MVP is disabled for cultural events"}), 400\r
+        awards.setdefault("event_mvps", {})[event_id] = {\r
+            "player": (body.get("player") or "").strip(),\r
+            "team": body.get("team") if body.get("team") in VALID_TEAM_IDS else None,\r
+            "image": (body.get("image") or "").strip(),\r
+        }\r
+    elif kind == "best_player":\r
+        awards["overall_best_player"] = {\r
+            "player": (body.get("player") or "").strip(),\r
+            "team": body.get("team") if body.get("team") in VALID_TEAM_IDS else None,\r
+            "image": (body.get("image") or "").strip(),\r
+        }\r
+    elif kind == "best_team":\r
+        awards["best_team"] = body.get("team") if body.get("team") in VALID_TEAM_IDS else None\r
+    elif kind == "fair_play":\r
+        awards["fair_play_award"] = body.get("team") if body.get("team") in VALID_TEAM_IDS else None\r
+    elif kind == "clear_all":\r
+        awards = {"event_mvps": {}, "overall_best_player": None, "best_team": None, "fair_play_award": None}\r
+    else:\r
+        return jsonify({"ok": False, "error": "Unknown award kind"}), 400\r
+\r
+    _save("awards.json", awards)\r
+    audit("awards_update", kind)\r
+    return jsonify({"ok": True, "awards": awards})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Champions\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/champions/save", methods=["POST"])\r
+@login_required\r
+def save_champion():\r
+    body = request.form if request.content_type and request.content_type.startswith("multipart/form-data") else (request.get_json(silent=True) or {})\r
+    event_id = (body.get("event_id") or "").strip()\r
+    champion_type = (body.get("champion_type") or "team").strip().lower()\r
+    sport_category = (body.get("sport_category") or "").strip()\r
+    team_id = body.get("team")\r
+    player_name = (body.get("player_name") or "").strip()\r
+    team_name = (body.get("team_name") or "").strip()\r
+    if hasattr(body, "getlist"):\r
+        players = body.getlist("players")\r
+    else:\r
+        players = body.get("players") if isinstance(body.get("players"), list) else []\r
+    players = [str(p).strip() for p in players if str(p).strip()]\r
+\r
+    events = {e.get("id"): e for e in _load("events.json", [])}\r
+    if event_id not in events:\r
+        return jsonify({"ok": False, "error": "Unknown event"}), 400\r
+    if champion_type not in {"team", "individual"}:\r
+        return jsonify({"ok": False, "error": "Invalid champion type"}), 400\r
+\r
+    teams = {t.get("id"): t for t in _load("teams.json", [])}\r
+    champions = _load("champions.json", [])\r
+    row = next((x for x in champions if x.get("event_id") == event_id), None)\r
+    if not row:\r
+        row = {"event_id": event_id}\r
+        champions.append(row)\r
+\r
+    row["event_id"] = event_id\r
+    row["event_name"] = events[event_id].get("name", event_id)\r
+    row["sport_category"] = sport_category\r
+    row["champion_type"] = champion_type\r
+    row["team"] = team_id if team_id in teams else None\r
+    row["team_name"] = team_name or (teams[team_id]["name"] if team_id in teams else "")\r
+    second_team_id = body.get("second_team")\r
+    second_team_name = (body.get("second_team_name") or "").strip()\r
+    row["second_team"] = second_team_id if second_team_id in teams else None\r
+    row["second_team_name"] = second_team_name or (teams[second_team_id]["name"] if second_team_id in teams else "")\r
+    row["player_name"] = player_name\r
+    row["second_player_name"] = (body.get("second_player_name") or "").strip()\r
+    row["players"] = players\r
+    if "winning_photo" in request.files and request.files["winning_photo"].filename:\r
+        file = request.files["winning_photo"]\r
+        ext = file.filename.rsplit(".", 1)[-1].lower() if "." in file.filename else ""\r
+        if ext not in ALLOWED_CHAMPION_EXT:\r
+            return jsonify({"ok": False, "error": "Winning photo must be PNG, JPG, JPEG, or WEBP"}), 400\r
+        upload_dir = os.path.join(_BASE_DIR, "static", "images", "champions")\r
+        os.makedirs(upload_dir, exist_ok=True)\r
+        filename = secure_filename(f"{event_id}-{uuid.uuid4().hex[:8]}.{ext}")\r
+        file.save(os.path.join(upload_dir, filename))\r
+        row["winning_photo"] = f"/static/images/champions/{filename}"\r
+    else:\r
+        row["winning_photo"] = (body.get("winning_photo") or row.get("winning_photo") or "").strip()\r
+    row["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M")\r
+\r
+    _save("champions.json", champions)\r
+    audit("champion_save", f"{event_id} {champion_type}")\r
+    return jsonify({"ok": True, "champion": row})\r
+\r
+\r
+@admin_bp.route("/api/champions/delete", methods=["POST"])\r
+@login_required\r
+def delete_champion():\r
+    event_id = ((request.get_json(silent=True) or {}).get("event_id") or "").strip()\r
+    if not event_id:\r
+        return jsonify({"ok": False, "error": "event_id required"}), 400\r
+    champions = _load("champions.json", [])\r
+    champions = [x for x in champions if x.get("event_id") != event_id]\r
+    _save("champions.json", champions)\r
+    audit("champion_delete", event_id)\r
+    return jsonify({"ok": True})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Event details (sports page cards + sport detail header info)\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/events/update", methods=["POST"])\r
+@login_required\r
+def update_event_details():\r
+    body = request.get_json(silent=True) or {}\r
+    event_id = body.get("event_id")\r
+    events = _load("events.json", [])\r
+    event = next((e for e in events if e.get("id") == event_id), None)\r
+    if not event:\r
+        return jsonify({"ok": False, "error": "Unknown event"}), 400\r
+\r
+    name = (body.get("name") or "").strip()\r
+    if not name:\r
+        return jsonify({"ok": False, "error": "Event name is required"}), 400\r
+\r
+    badge = body.get("badge") if body.get("badge") in VALID_BADGES else event.get("badge", "sports")\r
+    status = body.get("status") if body.get("status") in VALID_STATUSES else event.get("status", "upcoming")\r
+    banner = body.get("banner") if body.get("banner") in VALID_BANNERS else event.get("banner", "")\r
+\r
+    try:\r
+        winner_pts = int(body.get("winner_points", event.get("points", {}).get("winner", 300)))\r
+        runner_pts = int(body.get("runner_up_points", event.get("points", {}).get("runner_up", 150)))\r
+    except (TypeError, ValueError):\r
+        return jsonify({"ok": False, "error": "Points must be numbers"}), 400\r
+\r
+    iso_date = (body.get("iso_date") or "").strip()\r
+    if iso_date:\r
+        try:\r
+            datetime.strptime(iso_date, "%Y-%m-%d")\r
+        except ValueError:\r
+            return jsonify({"ok": False, "error": "iso_date must be YYYY-MM-DD"}), 400\r
+\r
+    event["name"] = name\r
+    event["num"] = (body.get("num") or "").strip() or event.get("num", "")\r
+    event["emoji"] = (body.get("emoji") or "").strip() or event.get("emoji", "ðŸ†")\r
+    event["date"] = (body.get("date") or "").strip()\r
+    event["day"] = (body.get("day") or "").strip()\r
+    event["iso_date"] = iso_date or event.get("iso_date", "")\r
+    event["category"] = (body.get("category") or "").strip()\r
+    event["venue"] = (body.get("venue") or "").strip()\r
+    event["location"] = (body.get("location") or "").strip()\r
+    event["venue_maps_link"] = (body.get("venue_maps_link") or "").strip()\r
+    event["weather"] = (body.get("weather") or "").strip()\r
+    event["weather_icon"] = (body.get("weather_icon") or "").strip()\r
+    event["weather_note"] = (body.get("weather_note") or "").strip()\r
+    event["event_time"] = (body.get("event_time") or "").strip()\r
+    event["tournament_format"] = (body.get("tournament_format") or "").strip()\r
+    results = body.get("results")\r
+    event["results"] = results if isinstance(results, list) else event.get("results", [])\r
+    event["badge"] = badge\r
+    event["status"] = status\r
+    event["banner"] = banner\r
+    event["points"] = {"winner": max(0, winner_pts), "runner_up": max(0, runner_pts)}\r
+\r
+    _save("events.json", events)\r
+\r
+    scores = _load("scores.json", {})\r
+    live = scores.get("live") or {}\r
+    if live.get("event_id") == event_id:\r
+        live["event_name"] = name\r
+        _save("scores.json", scores)\r
+\r
+    audit("event_update", f"{event_id}: {name}")\r
+    return jsonify({"ok": True, "event": event})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Event rules\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/events/rules", methods=["POST"])\r
+@login_required\r
+def update_rules():\r
+    body = request.get_json(silent=True) or {}\r
+    event_id = body.get("event_id")\r
+    rules = body.get("rules")\r
+    if not isinstance(rules, list):\r
+        return jsonify({"ok": False, "error": "rules must be a list"}), 400\r
+    rules = [str(r).strip() for r in rules if str(r).strip()]\r
+\r
+    events = _load("events.json", [])\r
+    found = False\r
+    for e in events:\r
+        if e["id"] == event_id:\r
+            e["rules"] = rules\r
+            found = True\r
+            break\r
+    if not found:\r
+        return jsonify({"ok": False, "error": "Unknown event"}), 400\r
+    _save("events.json", events)\r
+    audit("rules_update", f"{event_id} ({len(rules)} rules)")\r
+    return jsonify({"ok": True, "rules": rules})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Logo upload\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/logos/upload", methods=["POST"])\r
+@login_required\r
+def upload_logo():\r
+    team_id = request.form.get("team")\r
+    if team_id not in VALID_TEAM_IDS:\r
+        return jsonify({"ok": False, "error": "Unknown team"}), 400\r
+    file = request.files.get("logo")\r
+    if not file or file.filename == "":\r
+        return jsonify({"ok": False, "error": "No file uploaded"}), 400\r
+    ext = file.filename.rsplit(".", 1)[-1].lower() if "." in file.filename else ""\r
+    if ext not in ALLOWED_LOGO_EXT:\r
+        return jsonify({"ok": False, "error": "PNG files only"}), 400\r
+\r
+    dest_dir = os.path.join(_BASE_DIR, "static", "images", "logos")\r
+    os.makedirs(dest_dir, exist_ok=True)\r
+    filename = secure_filename(f"{team_id}.png")\r
+    file.save(os.path.join(dest_dir, filename))\r
+    audit("logo_upload", team_id)\r
+    return jsonify({"ok": True, "path": f"/static/images/logos/{filename}"})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” Gallery upload/delete\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/gallery/upload", methods=["POST"])\r
+@login_required\r
+def upload_gallery():\r
+    files = request.files.getlist("images")\r
+    caption = (request.form.get("caption") or "").strip()\r
+    if not files:\r
+        return jsonify({"ok": False, "error": "No files uploaded"}), 400\r
+\r
+    dest_dir = os.path.join(_BASE_DIR, "static", "images", "gallery", "season-4")\r
+    os.makedirs(dest_dir, exist_ok=True)\r
+    seasons = _load("gallery_seasons.json", [])\r
+    season4 = next((s for s in seasons if s.get("id") == "season-4"), None)\r
+    if not season4:\r
+        season4 = {\r
+            "id": "season-4",\r
+            "season": "Season 4",\r
+            "name": "Mission Possible",\r
+            "year": "2026",\r
+            "tagline": "Beyond Impossible",\r
+            "photos": [],\r
+        }\r
+        seasons.insert(0, season4)\r
+    season4.setdefault("photos", [])\r
+    added = []\r
+\r
+    for file in files:\r
+        if not file or not file.filename:\r
+            continue\r
+        ext = file.filename.rsplit(".", 1)[-1].lower() if "." in file.filename else ""\r
+        if ext not in ALLOWED_GALLERY_EXT:\r
+            continue\r
+        gid = "gal-" + uuid.uuid4().hex[:10]\r
+        filename = secure_filename(f"{gid}.{ext}")\r
+        file.save(os.path.join(dest_dir, filename))\r
+        item = {\r
+            "id": gid,\r
+            "path": f"/static/images/gallery/season-4/{filename}",\r
+            "caption": caption or "Mission Possible 2026",\r
+            "uploaded_at": datetime.now().strftime("%Y-%m-%d %H:%M"),\r
+        }\r
+        season4["photos"].insert(0, item)\r
+        added.append(item)\r
+\r
+    if not added:\r
+        return jsonify({"ok": False, "error": "No valid images (png/jpg/jpeg/webp)"}), 400\r
+\r
+    _save("gallery_seasons.json", seasons)\r
+    audit("gallery_upload", f"{len(added)} image(s)")\r
+    return jsonify({"ok": True, "items": added})\r
+\r
+\r
+@admin_bp.route("/api/gallery/delete", methods=["POST"])\r
+@login_required\r
+def delete_gallery():\r
+    gid = (request.get_json(silent=True) or {}).get("id")\r
+    if not gid:\r
+        return jsonify({"ok": False, "error": "id required"}), 400\r
+    seasons = _load("gallery_seasons.json", [])\r
+    item = None\r
+    for season in seasons:\r
+        photos = season.get("photos") or []\r
+        found = next((x for x in photos if x.get("id") == gid), None)\r
+        if found:\r
+            item = found\r
+            season["photos"] = [x for x in photos if x.get("id") != gid]\r
+            break\r
+\r
+    if item:\r
+        _save("gallery_seasons.json", seasons)\r
+    else:\r
+        gallery = _load("gallery.json", [])\r
+        item = next((x for x in gallery if x.get("id") == gid), None)\r
+        if not item:\r
+            return jsonify({"ok": False, "error": "Not found"}), 404\r
+        gallery = [x for x in gallery if x.get("id") != gid]\r
+        _save("gallery.json", gallery)\r
+\r
+    rel = (item.get("path") or "").replace("/static/", "").replace("/", os.sep)\r
+    abs_path = os.path.join(_BASE_DIR, "static", rel) if rel else ""\r
+    if abs_path and os.path.isfile(abs_path):\r
+        try:\r
+            os.remove(abs_path)\r
+        except OSError:\r
+            pass\r
+\r
+    audit("gallery_delete", gid)\r
+    return jsonify({"ok": True})\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” GitHub Sync (background)\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/save-to-github", methods=["POST"])\r
+@login_required\r
+def api_save_to_github():\r
+    """Trigger a background sync of the data directory to GitHub.\r
+\r
+    This runs the potentially slow git operations in a separate thread\r
+    so the admin UI does not hang or time out. The sync result is\r
+    recorded in the audit log by the worker.\r
+    """\r
+    body = request.get_json(silent=True) or {}\r
+    detail = (body.get("detail") or "Admin manual save via UI").strip()\r
+\r
+    def _worker(d):\r
+        try:\r
+            res = sync_data_to_github(d)\r
+            # Include the original detail string in audit so the UI can poll for this specific run.\r
+            audit_detail = f"{d} | {json.dumps(res)[:700]}"\r
+            audit("github_save", audit_detail)\r
+        except Exception as exc:\r
+            audit("github_save_error", str(exc)[:800])\r
+\r
+    t = threading.Thread(target=_worker, args=(detail,), daemon=True)\r
+    t.start()\r
+\r
+    return jsonify({"ok": True, "started": True, "message": "Background sync started"}), 202\r
+\r
+\r
+@admin_bp.route("/api/save-to-github-status", methods=["GET"])\r
+@login_required\r
+def api_save_to_github_status():\r
+    """Return the latest github_save or github_save_error audit row.\r
+\r
+    If `nonce` query param is provided, find the latest audit row whose\r
+    detail contains that nonce (this lets the UI poll for a specific run).\r
+    """\r
+    nonce = (request.args.get("nonce") or "").strip()\r
+    try:\r
+        conn = sqlite3.connect(_DB_PATH)\r
+        if nonce:\r
+            row = conn.execute(\r
+                "SELECT ts, action, detail FROM audit_log WHERE detail LIKE ? ORDER BY id DESC LIMIT 1",\r
+                (f"%{nonce}%",),\r
+            ).fetchone()\r
+        else:\r
+            row = conn.execute(\r
+                "SELECT ts, action, detail FROM audit_log WHERE action LIKE 'github_save%' OR action = 'github_save_error' ORDER BY id DESC LIMIT 1",\r
+            ).fetchone()\r
+        conn.close()\r
+        if not row:\r
+            return jsonify({"ok": True, "found": False})\r
+        return jsonify({"ok": True, "found": True, "ts": row[0], "action": row[1], "detail": row[2]})\r
+    except sqlite3.Error:\r
+        return jsonify({"ok": False, "error": "DB error"}), 500\r
+\r
+\r
+# ---------------------------------------------------------------------------\r
+# Write API â€” GitHub Sync\r
+# ---------------------------------------------------------------------------\r
+@admin_bp.route("/api/save-to-github", methods=["POST"])\r
+@login_required\r
+def api_save_to_github():\r
+    """Save all carnival data to GitHub."""\r
+    try:\r
+        result = sync_data_to_github("Admin manual save via UI")\r
+        if result.get("ok"):\r
+            # Extract commit hash if available\r
+            commit_hash = result.get("commit", "").strip()\r
+            if not commit_hash and result.get("method") == "github_api":\r
+                commit_hash = "api-sync"\r
+            \r
+            audit("github_save", f"Status: {result.get('reason', 'success')} | Commit: {commit_hash}")\r
+            return jsonify({\r
+                "ok": True,\r
+                "commit_hash": commit_hash,\r
+                "reason": result.get("reason", "success"),\r
+                "skipped": result.get("skipped", False),\r
+                "method": result.get("method", "git"),\r
+                "updated": result.get("updated", [])\r
+            })\r
+        else:\r
+            error_msg = result.get("error", "Unknown error")\r
+            audit("github_save_error", error_msg)\r
+            return jsonify({"ok": False, "error": error_msg}), 400\r
+    except Exception as e:\r
+        error_msg = str(e)\r
+        audit("github_save_exception", error_msg)\r
+        return jsonify({"ok": False, "error": error_msg}), 500\r
+

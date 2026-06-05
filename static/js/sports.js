@@ -41,6 +41,10 @@
 
   CARNIVAL.get("/api/events").then((events) => {
     allEvents = (events || []).slice().sort((a, b) => {
+      // Push completed events to the bottom while keeping normal date/name ordering
+      const ka = a.status === "completed" ? 1 : 0;
+      const kb = b.status === "completed" ? 1 : 0;
+      if (ka !== kb) return ka - kb; // non-completed (0) come first
       const da = String(a.iso_date || "9999-12-31");
       const db = String(b.iso_date || "9999-12-31");
       if (da !== db) return da.localeCompare(db);

@@ -16,6 +16,7 @@ import sqlite3
 import uuid
 from datetime import datetime
 from functools import wraps
+import threading
 
 from flask import (
     Blueprint, render_template, request, redirect, url_for,
@@ -137,7 +138,17 @@ def _save(name, payload):
         json.dump(payload, fh, indent=2, ensure_ascii=False)
     os.replace(tmp, path)
     _save_to_db(name, payload)
-    sync_data_to_github(name)
+    # Do not auto-push to GitHub on every single save — this caused
+    # latency, race conditions and unexpected repo changes when many
+    # admin actions happen in quick succession. Keep pushing manual
+    # and controlled via the admin "Save to GitHub" button.
+    # Enable automatic push by setting AUTO_PUSH_ON_SAVE=true in env.
+    try:
+        if os.environ.get("AUTO_PUSH_ON_SAVE", "false").lower() in {"1", "true", "yes"}:
+            sync_data_to_github(name)
+    except Exception:
+        # Never let git-sync failures break admin writes.
+        pass
 
 
 def _load_player_tracker():
@@ -1614,23 +1625,35 @@ def update_event_details():
 def update_rules():
     body = request.get_json(silent=True) or {}
     event_id = body.get("event_id")
+    # Accept either a list of rules (legacy) or raw rules text (admin-provided formatting).
     rules = body.get("rules")
-    if not isinstance(rules, list):
-        return jsonify({"ok": False, "error": "rules must be a list"}), 400
-    rules = [str(r).strip() for r in rules if str(r).strip()]
+    rules_text = body.get("rules_text")
+
+    if rules_text is None and rules is None:
+        return jsonify({"ok": False, "error": "rules or rules_text required"}), 400
 
     events = _load("events.json", [])
     found = False
     for e in events:
         if e["id"] == event_id:
-            e["rules"] = rules
+            if rules_text is not None:
+                # Store raw text as-is. Remove legacy list to avoid confusion.
+                e.pop("rules", None)
+                e["rules_text"] = str(rules_text)
+            else:
+                # Normalize list input (backwards compatibility)
+                if not isinstance(rules, list):
+                    return jsonify({"ok": False, "error": "rules must be a list"}), 400
+                cleaned = [str(r).strip() for r in rules if str(r).strip()]
+                e["rules"] = cleaned
+                e.pop("rules_text", None)
             found = True
             break
     if not found:
         return jsonify({"ok": False, "error": "Unknown event"}), 400
     _save("events.json", events)
-    audit("rules_update", f"{event_id} ({len(rules)} rules)")
-    return jsonify({"ok": True, "rules": rules})
+    audit("rules_update", f"{event_id} (text={bool(rules_text)} list={bool(rules)})")
+    return jsonify({"ok": True, "rules_text": rules_text if rules_text is not None else None, "rules": rules if rules is not None else None})
 
 
 # ---------------------------------------------------------------------------
@@ -1750,34 +1773,58 @@ def delete_gallery():
 
 
 # ---------------------------------------------------------------------------
-# Write API — GitHub Sync
+# Write API — GitHub Sync (background)
 # ---------------------------------------------------------------------------
 @admin_bp.route("/api/save-to-github", methods=["POST"])
 @login_required
 def api_save_to_github():
-    """Save all carnival data to GitHub."""
+    """Trigger a background sync of the data directory to GitHub.
+
+    This runs the potentially slow git operations in a separate thread
+    so the admin UI does not hang or time out. The sync result is
+    recorded in the audit log by the worker.
+    """
+    body = request.get_json(silent=True) or {}
+    detail = (body.get("detail") or "Admin manual save via UI").strip()
+
+    def _worker(d):
+        try:
+            res = sync_data_to_github(d)
+            # Include the original detail string in audit so the UI can poll for this specific run.
+            audit_detail = f"{d} | {json.dumps(res)[:700]}"
+            audit("github_save", audit_detail)
+        except Exception as exc:
+            audit("github_save_error", str(exc)[:800])
+
+    t = threading.Thread(target=_worker, args=(detail,), daemon=True)
+    t.start()
+
+    return jsonify({"ok": True, "started": True, "message": "Background sync started"}), 202
+
+
+@admin_bp.route("/api/save-to-github-status", methods=["GET"])
+@login_required
+def api_save_to_github_status():
+    """Return the latest github_save or github_save_error audit row.
+
+    If `nonce` query param is provided, find the latest audit row whose
+    detail contains that nonce (this lets the UI poll for a specific run).
+    """
+    nonce = (request.args.get("nonce") or "").strip()
     try:
-        result = sync_data_to_github("Admin manual save via UI")
-        if result.get("ok"):
-            # Extract commit hash if available
-            commit_hash = result.get("commit", "").strip()
-            if not commit_hash and result.get("method") == "github_api":
-                commit_hash = "api-sync"
-            
-            audit("github_save", f"Status: {result.get('reason', 'success')} | Commit: {commit_hash}")
-            return jsonify({
-                "ok": True,
-                "commit_hash": commit_hash,
-                "reason": result.get("reason", "success"),
-                "skipped": result.get("skipped", False),
-                "method": result.get("method", "git"),
-                "updated": result.get("updated", [])
-            })
+        conn = sqlite3.connect(_DB_PATH)
+        if nonce:
+            row = conn.execute(
+                "SELECT ts, action, detail FROM audit_log WHERE detail LIKE ? ORDER BY id DESC LIMIT 1",
+                (f"%{nonce}%",),
+            ).fetchone()
         else:
-            error_msg = result.get("error", "Unknown error")
-            audit("github_save_error", error_msg)
-            return jsonify({"ok": False, "error": error_msg}), 400
-    except Exception as e:
-        error_msg = str(e)
-        audit("github_save_exception", error_msg)
-        return jsonify({"ok": False, "error": error_msg}), 500
+            row = conn.execute(
+                "SELECT ts, action, detail FROM audit_log WHERE action LIKE 'github_save%' OR action = 'github_save_error' ORDER BY id DESC LIMIT 1",
+            ).fetchone()
+        conn.close()
+        if not row:
+            return jsonify({"ok": True, "found": False})
+        return jsonify({"ok": True, "found": True, "ts": row[0], "action": row[1], "detail": row[2]})
+    except sqlite3.Error:
+        return jsonify({"ok": False, "error": "DB error"}), 500

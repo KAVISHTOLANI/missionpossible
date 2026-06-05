@@ -82,7 +82,14 @@
     }
 
     let rulesBlock;
-    if (e.rules && e.rules.length) {
+    if (e.rules_text != null && String(e.rules_text).trim()) {
+      const rt = String(e.rules_text || "");
+      const paras = rt.split(/\n\s*\n/).map((p) => {
+        const lines = p.split(/\n/).map((l) => CARNIVAL.esc(l)).join("<br>");
+        return `<p>${lines}</p>`;
+      }).join("");
+      rulesBlock = `<div class="rules-text">${paras}</div>`;
+    } else if (e.rules && e.rules.length) {
       rulesBlock = `<ul class="rules">${e.rules.map((r) => `<li>${CARNIVAL.esc(r)}</li>`).join("")}</ul>`;
     } else {
       rulesBlock = `<div class="rules-soon"><span class="rules-soon__icon">🔜</span><span class="rules-soon__t">Rules Coming Soon</span><span class="rules-soon__s">The event rulebook will be published here before match day.</span></div>`;

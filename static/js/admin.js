@@ -759,14 +759,14 @@
     if (!id) return;
     fetch("/api/events/" + id)
       .then((r) => r.json())
-      .then((e) => { const t = document.getElementById("ruleText"); if (t) t.value = (e.rules || []).join("\n"); })
+      .then((e) => { const t = document.getElementById("ruleText"); if (t) t.value = (e.rules_text != null) ? e.rules_text : ((e.rules || []).join("\n")); })
       .catch(() => {});
   };
   window.saveRules = function () {
     const id = val("ruleEvent");
-    const lines = (document.getElementById("ruleText").value || "").split("\n").map((s) => s.trim()).filter(Boolean);
-    postJSON("/admin/api/events/rules", { event_id: id, rules: lines })
-      .then((d) => toast("Rules saved (" + d.rules.length + ")"))
+    const text = (document.getElementById("ruleText").value || "").trim();
+    postJSON("/admin/api/events/rules", { event_id: id, rules_text: text })
+      .then((d) => toast("Rules saved"))
       .catch((e) => toast(e.message, true));
   };
 
@@ -1105,22 +1105,74 @@
     statusEl.className = "github-status loading";
     statusEl.textContent = "⏳ Uploading to GitHub...";
     
-    requestJSON("/admin/api/save-to-github", {})
+    // generate a short nonce so we can poll and match the correct audit log entry
+    const nonce = `ui-${Math.random().toString(36).slice(2,9)}-${Date.now()}`;
+    requestJSON("/admin/api/save-to-github", { detail: nonce })
       .then((data) => {
         btn.disabled = false;
-        const commitHash = data.commit_hash || "sync";
-        const shortHash = commitHash.substring(0, 7);
-        
-        if (data.skipped) {
+        if (data && data.started) {
           statusEl.className = "github-status info";
-          statusEl.textContent = `ℹ No changes to save (${data.reason || "up to date"})`;
+          statusEl.textContent = "🔁 Background sync started — waiting for completion...";
+          toast("Background sync started");
+
+          // Poll for the audit log entry containing our nonce
+          let attempts = 0;
+          const maxAttempts = 30; // ~60 seconds
+          const poll = setInterval(() => {
+            attempts += 1;
+            fetch(`/admin/api/save-to-github-status?nonce=${encodeURIComponent(nonce)}`)
+              .then((r) => r.json())
+              .then((s) => {
+                if (s && s.found) {
+                  clearInterval(poll);
+                  const detail = s.detail || "";
+                  if (detail.includes('"ok": true') || detail.includes('"ok":true')) {
+                    // try to extract commit_hash
+                    let commit = "";
+                    try {
+                      const parts = detail.split('|');
+                      const jsonPart = parts.slice(1).join('|').trim();
+                      const parsed = JSON.parse(jsonPart);
+                      commit = parsed.commit_hash || parsed.commit || "";
+                    } catch (e) {
+                      commit = "";
+                    }
+                    statusEl.className = "github-status success";
+                    statusEl.textContent = `✓ GitHub sync complete${commit ? ` - ${commit}` : ""}`;
+                    toast("GitHub sync complete");
+                  } else {
+                    statusEl.className = "github-status error";
+                    statusEl.textContent = `✗ GitHub sync failed: ${detail.slice(0, 200)}`;
+                    toast("GitHub sync failed", true);
+                  }
+                  setTimeout(() => { statusEl.className = "github-status"; }, 6000);
+                } else if (attempts >= maxAttempts) {
+                  clearInterval(poll);
+                  statusEl.className = "github-status info";
+                  statusEl.textContent = "⌛ Sync still running — check audit log later";
+                }
+              })
+              .catch(() => {
+                if (attempts >= maxAttempts) {
+                  clearInterval(poll);
+                  statusEl.className = "github-status info";
+                  statusEl.textContent = "⌛ Sync still running — check audit log later";
+                }
+              });
+          }, 2000);
         } else {
-          statusEl.className = "github-status success";
-          statusEl.textContent = `✓ Saved to GitHub successfully${shortHash ? ` - Commit: ${shortHash}` : ""}`;
+          const commitHash = (data && data.commit_hash) || "";
+          const shortHash = commitHash ? commitHash.substring(0, 7) : "";
+          if (data && data.skipped) {
+            statusEl.className = "github-status info";
+            statusEl.textContent = `ℹ No changes to save (${data.reason || "up to date"})`;
+          } else {
+            statusEl.className = "github-status success";
+            statusEl.textContent = `✓ Saved to GitHub successfully${shortHash ? ` - Commit: ${shortHash}` : ""}`;
+          }
+          toast("Data saved to GitHub");
+          setTimeout(() => { statusEl.className = "github-status"; }, 4000);
         }
-        
-        toast("Data saved to GitHub");
-        setTimeout(() => { statusEl.className = "github-status"; }, 4000);
       })
       .catch((err) => {
         btn.disabled = false;
