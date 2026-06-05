@@ -3,7 +3,7 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 1,
+      "events_played": 2,
       "wins": 1,
       "points_earned": 300,
       "penalty_deductions": 0,
@@ -18,6 +18,13 @@
           "points": 300,
           "type": "points",
           "note": "Winners Of Basketball"
+        },
+        {
+          "id": "st-0622577e00",
+          "event": "Basketball",
+          "points": 0,
+          "type": "points",
+          "note": ""
         }
       ]
     },
