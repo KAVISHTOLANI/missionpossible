@@ -4,10 +4,10 @@
       "name": "Team Creators",
       "color": "#D4A017",
       "events_played": 1,
-      "wins": 0,
-      "points_earned": 299,
+      "wins": 1,
+      "points_earned": 300,
       "penalty_deductions": 0,
-      "net_points": 299,
+      "net_points": 300,
       "gold": 1,
       "silver": 0,
       "bronze": 0,
@@ -15,7 +15,7 @@
         {
           "id": "st-4139c73f0b",
           "event": "Basketball",
-          "points": 299,
+          "points": 300,
           "type": "points",
           "note": "Winners Of Basketball"
         }
