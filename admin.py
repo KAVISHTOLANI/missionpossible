@@ -22,6 +22,7 @@ from flask import (
     session, jsonify, current_app,
 )
 from werkzeug.utils import secure_filename
+from git_sync import sync_data_to_github
 
 admin_bp = Blueprint("admin", __name__, url_prefix="/admin")
 
@@ -122,9 +123,6 @@ def _save_to_db(name, payload):
 
 
 def _load(name, default=None):
-    db_payload = _load_from_db(name)
-    if db_payload is not None:
-        return db_payload
     try:
         with open(_data_path(name), "r", encoding="utf-8") as fh:
             return json.load(fh)
@@ -139,6 +137,7 @@ def _save(name, payload):
         json.dump(payload, fh, indent=2, ensure_ascii=False)
     os.replace(tmp, path)
     _save_to_db(name, payload)
+    sync_data_to_github(name)
 
 
 def _load_player_tracker():
@@ -1748,3 +1747,37 @@ def delete_gallery():
 
     audit("gallery_delete", gid)
     return jsonify({"ok": True})
+
+
+# ---------------------------------------------------------------------------
+# Write API — GitHub Sync
+# ---------------------------------------------------------------------------
+@admin_bp.route("/api/save-to-github", methods=["POST"])
+@login_required
+def api_save_to_github():
+    """Save all carnival data to GitHub."""
+    try:
+        result = sync_data_to_github("Admin manual save via UI")
+        if result.get("ok"):
+            # Extract commit hash if available
+            commit_hash = result.get("commit", "").strip()
+            if not commit_hash and result.get("method") == "github_api":
+                commit_hash = "api-sync"
+            
+            audit("github_save", f"Status: {result.get('reason', 'success')} | Commit: {commit_hash}")
+            return jsonify({
+                "ok": True,
+                "commit_hash": commit_hash,
+                "reason": result.get("reason", "success"),
+                "skipped": result.get("skipped", False),
+                "method": result.get("method", "git"),
+                "updated": result.get("updated", [])
+            })
+        else:
+            error_msg = result.get("error", "Unknown error")
+            audit("github_save_error", error_msg)
+            return jsonify({"ok": False, "error": error_msg}), 400
+    except Exception as e:
+        error_msg = str(e)
+        audit("github_save_exception", error_msg)
+        return jsonify({"ok": False, "error": error_msg}), 500

@@ -41,6 +41,20 @@
   <main class="amain">
     <div id="atoast" class="atoast"></div>
 
+    <!-- GITHUB SAVE ACTION -->
+    <div class="agithub-bar">
+      <div class="agithub-content">
+        <div class="agithub-info">
+          <span class="agithub-label">Data Management</span>
+          <p class="agithub-desc">Save all changes to GitHub repository</p>
+        </div>
+        <button class="btn btn--github" id="saveToGithubBtn" onclick="saveToGithub()">
+          <span class="github-icon">⬆</span> Save to GitHub →
+        </button>
+      </div>
+      <div id="githubStatus" class="github-status"></div>
+    </div>
+
     <!-- ANNOUNCEMENTS -->
     <section class="apanel active" data-panel="announcements">
       <h1>Announcements</h1>

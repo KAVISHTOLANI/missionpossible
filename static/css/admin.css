@@ -274,6 +274,93 @@
   background: rgba(255,93,93,0.12);
 }
 
+/* ---- GitHub Save Action Bar ---- */
+.agithub-bar {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  border-bottom: 3px solid var(--gold);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+}
+.agithub-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+.agithub-info {
+  flex: 1;
+}
+.agithub-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.agithub-desc {
+  color: #d1d5db;
+  font-size: 0.875rem;
+  margin: 0.25rem 0 0;
+}
+.btn--github {
+  background: var(--gold);
+  color: #1f2937;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background .25s;
+}
+.btn--github:hover:not(:disabled) {
+  background: #f59e0b;
+}
+.btn--github:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.github-icon {
+  font-size: 1.1rem;
+}
+.github-status {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+  display: none;
+  font-weight: 500;
+}
+.github-status.success {
+  display: block;
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+.github-status.error {
+  display: block;
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+.github-status.loading {
+  display: block;
+  background: #dbeafe;
+  color: #1e40af;
+  border: 1px solid #93c5fd;
+}
+.github-status.info {
+  display: block;
+  background: #f0f9ff;
+  color: #075985;
+  border: 1px solid #bae6fd;
+}
+
 .atoast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-120%); background: var(--gold); color: #15110A; padding: 12px 22px; border-radius: 100px; font-weight: 600; font-size: 0.88rem; z-index: 200; transition: transform .4s var(--ease); box-shadow: 0 14px 40px -14px rgba(212,175,55,0.7); }
 .atoast.show { transform: translateX(-50%) translateY(0); }
 .atoast.err { background: #ff6b6b; color: #2a0a0a; }

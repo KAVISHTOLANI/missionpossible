@@ -1095,6 +1095,41 @@
     onLiveEventChange();
   };
 
+  window.saveToGithub = function () {
+    const btn = document.getElementById("saveToGithubBtn");
+    const statusEl = document.getElementById("githubStatus");
+    
+    if (!btn || !statusEl) return;
+    
+    btn.disabled = true;
+    statusEl.className = "github-status loading";
+    statusEl.textContent = "⏳ Uploading to GitHub...";
+    
+    requestJSON("/admin/api/save-to-github", {})
+      .then((data) => {
+        btn.disabled = false;
+        const commitHash = data.commit_hash || "sync";
+        const shortHash = commitHash.substring(0, 7);
+        
+        if (data.skipped) {
+          statusEl.className = "github-status info";
+          statusEl.textContent = `ℹ No changes to save (${data.reason || "up to date"})`;
+        } else {
+          statusEl.className = "github-status success";
+          statusEl.textContent = `✓ Saved to GitHub successfully${shortHash ? ` - Commit: ${shortHash}` : ""}`;
+        }
+        
+        toast("Data saved to GitHub");
+        setTimeout(() => { statusEl.className = "github-status"; }, 4000);
+      })
+      .catch((err) => {
+        btn.disabled = false;
+        statusEl.className = "github-status error";
+        statusEl.textContent = `✗ Error: ${err.message}`;
+        toast(`GitHub save failed: ${err.message}`, true);
+      });
+  };
+
   // Initialize live matches on load
   function initLiveMatches() {
     const livePanel = document.querySelector('[data-panel="live"]');
