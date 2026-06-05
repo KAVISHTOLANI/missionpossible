@@ -20,49 +20,7 @@
   "live_matches": [],
   "completed": [
     {
-      "match_id": "basketball-9e857743",
-      "event_id": "basketball",
-      "event_name": "Basketball",
-      "date": "4th June 2026",
-      "status": "completed",
-      "round": "Match",
-      "team_a": "dominators",
-      "team_b": "royals",
-      "score_a": 8,
-      "score_b": 2,
-      "scores": {
-        "creators": 0,
-        "dominators": 0,
-        "royals": 0
-      },
-      "details": {},
-      "commentary": [],
-      "created_at": "2026-06-05T06:08:40",
-      "updated_at": "2026-06-05T06:08:40"
-    },
-    {
-      "match_id": "basketball-a301f259",
-      "event_id": "basketball",
-      "event_name": "Basketball",
-      "date": "4th June 2026",
-      "status": "completed",
-      "round": "Match",
-      "team_a": "dominators",
-      "team_b": "creators",
-      "score_a": 2,
-      "score_b": 8,
-      "scores": {
-        "creators": 0,
-        "dominators": 0,
-        "royals": 0
-      },
-      "details": {},
-      "commentary": [],
-      "created_at": "2026-06-05T06:08:24",
-      "updated_at": "2026-06-05T06:08:24"
-    },
-    {
-      "match_id": "basketball-8a7ef96e",
+      "match_id": "basketball-418be4d0",
       "event_id": "basketball",
       "event_name": "Basketball",
       "date": "4th June 2026",
@@ -79,8 +37,8 @@
       },
       "details": {},
       "commentary": [],
-      "created_at": "2026-06-05T06:08:00",
-      "updated_at": "2026-06-05T06:08:00"
+      "created_at": "2026-06-05T06:09:14",
+      "updated_at": "2026-06-05T06:09:14"
     }
   ]
 }
