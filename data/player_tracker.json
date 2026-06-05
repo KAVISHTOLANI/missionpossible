@@ -1,5 +1,273 @@
 {
   "teams": {
-    "creators": []
+    "creators": [],
+    "dominators": [
+      {
+        "id": "pt-2691d01d6b",
+        "name": "Suman",
+        "employee_id": "295",
+        "department": "Executive (GSH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:41:12",
+        "updated_at": "2026-06-05T10:46:09"
+      },
+      {
+        "id": "pt-b8e20277ed",
+        "name": "Babullu Sahu",
+        "employee_id": "512497",
+        "department": "Security Supervisor (KAIROSE)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:41:12",
+        "updated_at": "2026-06-05T10:46:31"
+      },
+      {
+        "id": "pt-ba0b1fdeb1",
+        "name": "Sai Kiran Gollapudi",
+        "employee_id": "826",
+        "department": "CC Executive (Aalankrita)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:41:12",
+        "updated_at": "2026-06-05T10:46:34"
+      },
+      {
+        "id": "pt-2e6972c533",
+        "name": "P. Sandeep",
+        "employee_id": "276",
+        "department": "Assistant (GSH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:41:12",
+        "updated_at": "2026-06-05T10:46:37"
+      },
+      {
+        "id": "pt-bf89ee42fb",
+        "name": "Sandhya Rani Gadda",
+        "employee_id": "1484",
+        "department": "CC Executive (DECC)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:41:12",
+        "updated_at": "2026-06-05T10:46:41"
+      },
+      {
+        "id": "pt-304b50efd3",
+        "name": "Anushuman Sharma",
+        "employee_id": "4504",
+        "department": "HOD (MFH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:41:12",
+        "updated_at": "2026-06-05T10:46:49"
+      }
+    ],
+    "royals": [
+      {
+        "id": "pt-b534e83fbc",
+        "name": "Dr. Vamshi",
+        "employee_id": "1239",
+        "department": "Duty Medical Officer",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:45:21",
+        "updated_at": "2026-06-05T10:46:53"
+      },
+      {
+        "id": "pt-253e408363",
+        "name": "Dr. Harika",
+        "employee_id": "4697",
+        "department": "Anesthetist",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:45:21",
+        "updated_at": "2026-06-05T10:46:56"
+      },
+      {
+        "id": "pt-c207f4b0c4",
+        "name": "Mr. Suraj Uttam",
+        "employee_id": "1254",
+        "department": "Admin",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:45:21",
+        "updated_at": "2026-06-05T10:46:59"
+      },
+      {
+        "id": "pt-13dd2f5cf3",
+        "name": "Mr. Srikanth",
+        "employee_id": "1188",
+        "department": "MOD",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:45:21",
+        "updated_at": "2026-06-05T10:47:02"
+      },
+      {
+        "id": "pt-88c0794fd3",
+        "name": "Mr. Jaya Surya",
+        "employee_id": "1281",
+        "department": "Operation Theatre",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:45:21",
+        "updated_at": "2026-06-05T10:47:05"
+      },
+      {
+        "id": "pt-d94744c1d4",
+        "name": "Mr. Nagesh",
+        "employee_id": "321",
+        "department": "Technical Assistant",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:45:21",
+        "updated_at": "2026-06-05T10:47:07"
+      }
+    ]
   }
 }
