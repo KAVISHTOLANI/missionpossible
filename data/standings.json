@@ -3,23 +3,15 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 1,
-      "wins": 1,
-      "points_earned": 300,
+      "events_played": 0,
+      "wins": 0,
+      "points_earned": 0,
       "penalty_deductions": 0,
-      "net_points": 300,
+      "net_points": 0,
       "gold": 0,
       "silver": 0,
       "bronze": 0,
-      "event_breakdown": [
-        {
-          "id": "st-4139c73f0b",
-          "event": "Basketball",
-          "points": 300,
-          "type": "points",
-          "note": "Winners Of Basketball"
-        }
-      ]
+      "event_breakdown": []
     },
     "dominators": {
       "name": "Team Dominators",
