@@ -16,7 +16,7 @@
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 2,
+      "events_played": 1,
       "wins": 0,
       "points_earned": 0,
       "penalty_deductions": 0,
@@ -25,13 +25,6 @@
       "silver": 0,
       "bronze": 0,
       "event_breakdown": [
-        {
-          "id": "st-d55f049499",
-          "event": "Basketball",
-          "points": 0,
-          "type": "points",
-          "note": ""
-        },
         {
           "id": "st-2220fcc567",
           "event": "Basketball",
