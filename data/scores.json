@@ -18,5 +18,27 @@
     "details": {}
   },
   "live_matches": [],
-  "completed": []
+  "completed": [
+    {
+      "match_id": "basketball-78d44ea5",
+      "event_id": "basketball",
+      "event_name": "Basketball",
+      "date": "4th June 2026",
+      "status": "completed",
+      "round": "Match",
+      "team_a": "creators",
+      "team_b": "royals",
+      "score_a": 4,
+      "score_b": 10,
+      "scores": {
+        "creators": 0,
+        "dominators": 0,
+        "royals": 0
+      },
+      "details": {},
+      "commentary": [],
+      "created_at": "2026-06-05T06:07:56",
+      "updated_at": "2026-06-05T06:07:56"
+    }
+  ]
 }
