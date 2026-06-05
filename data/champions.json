@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "event_id": "basketball",
+    "event_name": "Basketball",
+    "sport_category": "Outdoor Sports",
+    "champion_type": "team",
+    "team": "creators",
+    "team_name": "Team Creators",
+    "second_team": "royals",
+    "second_team_name": "Team Royals",
+    "player_name": "",
+    "second_player_name": "",
+    "players": [
+      "Sai Kiran Gollapudi",
+      "Mr. Prakash",
+      "Mr. Tapan",
+      "Mr. Dhrup Yadav",
+      "Mr. Darshan",
+      "Dr. Janaki Ram",
+      "Sunitha Nama",
+      "Tarani"
+    ],
+    "winning_photo": "/static/images/champions/basketball-b859f6b5.jpeg",
+    "updated_at": "2026-06-05 11:07"
+  }
+]
