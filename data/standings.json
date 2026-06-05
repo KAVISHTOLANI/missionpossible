@@ -37,11 +37,11 @@
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 2,
+      "events_played": 1,
       "wins": 0,
-      "points_earned": 300,
+      "points_earned": 150,
       "penalty_deductions": 0,
-      "net_points": 300,
+      "net_points": 150,
       "gold": 0,
       "silver": 1,
       "bronze": 0,
@@ -52,13 +52,6 @@
           "points": 150,
           "type": "points",
           "note": "Runner-Ups Of Basketball"
-        },
-        {
-          "id": "st-d7ad314c48",
-          "event": "Basketball",
-          "points": 150,
-          "type": "points",
-          "note": "Runner's Up Basketball"
         }
       ]
     }
