@@ -1,5 +1,123 @@
 {
-  "overall_mvp": [],
+  "overall_mvp": [
+    {
+      "id": "mvp-546d4840a0",
+      "player_name": "Dr. Janaki Ram",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-08 11:01"
+    },
+    {
+      "id": "mvp-eac106a6e0",
+      "player_name": "Mr. Darshan",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-08 11:01"
+    },
+    {
+      "id": "mvp-c9ee24b178",
+      "player_name": "Mr. Dhrup Yadav",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-08 11:01"
+    },
+    {
+      "id": "mvp-a600d44217",
+      "player_name": "Mr. Prakash",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-08 11:02"
+    },
+    {
+      "id": "mvp-0e0b054795",
+      "player_name": "Mr. Tapan",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-08 11:02"
+    },
+    {
+      "id": "mvp-2c969618a2",
+      "player_name": "Sai Kiran Gollapudi",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-08 11:02"
+    },
+    {
+      "id": "mvp-cbc41e7d18",
+      "player_name": "Sunitha Nama",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-08 11:02"
+    },
+    {
+      "id": "mvp-d1713884eb",
+      "player_name": "Dr. Harika",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-08 11:03"
+    },
+    {
+      "id": "mvp-003f53ce3e",
+      "player_name": "Dr. Vamshi",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-08 11:04"
+    },
+    {
+      "id": "mvp-5225b16483",
+      "player_name": "Mr. Jaya Surya",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-08 11:03"
+    },
+    {
+      "id": "mvp-dedb3c6f03",
+      "player_name": "Mr. Nagesh",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-08 11:03"
+    },
+    {
+      "id": "mvp-f343243b37",
+      "player_name": "Mr. Srikanth",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-08 11:04"
+    },
+    {
+      "id": "mvp-73695346e9",
+      "player_name": "Mr. Suraj Uttam",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-08 11:04"
+    }
+  ],
   "fair_play": [
     {
       "id": "fp-91b77bfb91",
