@@ -5,38 +5,7 @@
     "name": "Mission Possible",
     "year": "2026",
     "tagline": "Beyond Impossible",
-    "photos": [
-      {
-        "id": "gal-72e799a292",
-        "path": "/static/images/gallery/season-4/gal-72e799a292.png",
-        "caption": "Team Dominators Lined Up For the National Anthem",
-        "uploaded_at": "2026-06-08 11:27"
-      },
-      {
-        "id": "gal-c3b07bb7d1",
-        "path": "/static/images/gallery/season-4/gal-c3b07bb7d1.png",
-        "caption": "Mr Jeetandra Honoring The Basketball Referee",
-        "uploaded_at": "2026-06-08 11:26"
-      },
-      {
-        "id": "gal-b32aaf9bb3",
-        "path": "/static/images/gallery/season-4/gal-b32aaf9bb3.jpeg",
-        "caption": "Basketball Runner Ups - Team Royals!",
-        "uploaded_at": "2026-06-08 11:23"
-      },
-      {
-        "id": "gal-7013e1011f",
-        "path": "/static/images/gallery/season-4/gal-7013e1011f.jpeg",
-        "caption": "Basketball MVP - Dr. Janaki Ram",
-        "uploaded_at": "2026-06-08 11:19"
-      },
-      {
-        "id": "gal-d1d67baf93",
-        "path": "/static/images/gallery/season-4/gal-d1d67baf93.jpeg",
-        "caption": "Basketball Champions - Team Creators",
-        "uploaded_at": "2026-06-08 11:19"
-      }
-    ]
+    "photos": []
   },
   {
     "id": "season-3",
