@@ -21,6 +21,11 @@
     });
   }
 
+  function eventCompleted(e, dayKey) {
+    const todayKey = new Date().toISOString().slice(0, 10);
+    return e.status === "completed" || (e.iso_date && e.iso_date < todayKey);
+  }
+
   function renderMonth() {
     const grid = document.getElementById("calGrid");
     const label = document.getElementById("calMonthLabel");
@@ -41,10 +46,11 @@
       const key = `${viewYear}-${String(viewMonth + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
       const evs = byDate[key] || [];
       const isToday = key === todayKey;
+      const dayIsCompleted = evs.some((e) => eventCompleted(e, key));
       const evHtml = evs.map((e) =>
-        `<a class="cal-day__ev" href="/sport-detail?sport=${e.id}" title="${CARNIVAL.esc(e.name)}">${e.emoji || ""} ${CARNIVAL.esc(e.name)}</a>`
+        `<a class="cal-day__ev${eventCompleted(e, key) ? " cal-day__ev--completed" : ""}" href="/sport-detail?sport=${e.id}" title="${CARNIVAL.esc(e.name)}">${e.emoji || ""} ${CARNIVAL.esc(e.name)}</a>`
       ).join("");
-      html += `<div class="cal-day${isToday ? " cal-day--today" : ""}${evs.length ? " cal-day--has-event" : ""}">
+      html += `<div class="cal-day${isToday ? " cal-day--today" : ""}${evs.length ? " cal-day--has-event" : ""}${dayIsCompleted ? " cal-day--completed" : ""}">
         <span class="cal-day__num">${d}</span>${evHtml}</div>`;
     }
 
@@ -71,10 +77,11 @@
     list.innerHTML = `<div class="ornament-line"><span>${MONTHS[viewMonth]} Events</span></div>` +
       monthEvents.map((e) => {
         const dayNum = e.iso_date.split("-")[2];
-        return `<a class="cal-list__item" href="/sport-detail?sport=${e.id}">
+        const completed = eventCompleted(e, e.iso_date);
+        return `<a class="cal-list__item${completed ? " cal-list__item--completed" : ""}" href="/sport-detail?sport=${e.id}">
           <div class="cal-list__date">${dayNum}</div>
           <div class="cal-list__body">
-            <div class="cal-list__name">${e.emoji || ""} ${CARNIVAL.esc(e.name)}</div>
+            <div class="cal-list__name">${e.emoji || ""} ${CARNIVAL.esc(e.name)}${completed ? " <span class=\"badge badge--done\">Completed</span>" : ""}</div>
             <div class="cal-list__meta">${CARNIVAL.esc(e.day)} · ${CARNIVAL.esc(e.venue)} · ${CARNIVAL.esc(e.category)}</div>
           </div>
           <span class="ecard__go">Details →</span>

@@ -5,7 +5,13 @@
     "name": "Mission Possible",
     "year": "2026",
     "tagline": "Beyond Impossible",
-    "photos": []
+    "photos": [
+      { "path": "/static/images/gallery/season-4/champions-team-creators.jpg", "caption": "Champions - Team Creators" },
+      { "path": "/static/images/gallery/season-4/mvp-mr-janaki-ram.jpg", "caption": "MVP - Mr. Janaki Ram" },
+      { "path": "/static/images/gallery/season-4/team-royals.jpg", "caption": "Team Royals" },
+      { "path": "/static/images/gallery/season-4/team-dominators-national-anthem.png", "caption": "Team Dominators lined up for national anthem" },
+      { "path": "/static/images/gallery/season-4/jeetandra-honoring-referee.png", "caption": "Mr. Jeetandra honoring the referee" }
+    ]
   },
   {
     "id": "season-3",

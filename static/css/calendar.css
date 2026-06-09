@@ -59,7 +59,11 @@
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .cal-day__ev:hover { background: rgba(201,168,76,0.28); }
-
+.cal-day--completed { background: rgba(68, 170, 68, 0.12); border-color: #44aa44; }
+.cal-day--completed .cal-day__num { color: #2f7b2f; }
+.cal-day__ev--completed { background: rgba(68, 170, 68, 0.16); border-left-color: #44aa44; }
+.cal-list__item--completed { border-color: rgba(68, 170, 68, 0.25); background: rgba(68, 170, 68, 0.06); }
+.cal-list__item--completed .cal-list__date { color: #44aa44; }
 .cal-legend {
   display: flex; gap: 24px; justify-content: center; margin-top: 20px;
   font-size: 0.75rem; color: #222222;
