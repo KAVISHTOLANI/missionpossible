@@ -540,20 +540,20 @@
         "department": "Operation Theatre",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "",
+          "THROWBALL",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:45:21",
-        "updated_at": "2026-06-05T10:47:05"
+        "updated_at": "2026-06-12T12:09:36"
       },
       {
         "id": "pt-d94744c1d4",
@@ -562,20 +562,130 @@
         "department": "Technical Assistant",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "",
+          "THROWBALL",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:45:21",
-        "updated_at": "2026-06-05T10:47:07"
+        "updated_at": "2026-06-12T12:09:32"
+      },
+      {
+        "id": "pt-b86092b72f",
+        "name": "Dr. K. Victoria",
+        "employee_id": "1266",
+        "department": "Anesthesia",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "THROWBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-12T12:08:53",
+        "updated_at": "2026-06-12T12:09:24"
+      },
+      {
+        "id": "pt-b4e5197936",
+        "name": "Dr. Priyanka Mittra",
+        "employee_id": "N/A",
+        "department": "General Surgery",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "THROWBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-12T12:08:53",
+        "updated_at": "2026-06-12T12:09:20"
+      },
+      {
+        "id": "pt-676499b251",
+        "name": "Sampath Goud",
+        "employee_id": "1415",
+        "department": "IT",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "THROWBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-12T12:08:53",
+        "updated_at": "2026-06-12T12:09:15"
+      },
+      {
+        "id": "pt-e00c72aa55",
+        "name": "Azeem",
+        "employee_id": "358",
+        "department": "Technical Assistant (DECC)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "THROWBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-12T12:08:53",
+        "updated_at": "2026-06-12T12:09:13"
+      },
+      {
+        "id": "pt-59f0736449",
+        "name": "Jareen",
+        "employee_id": "368",
+        "department": "Medical Records (DECC)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "THROWBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-12T12:08:53",
+        "updated_at": "2026-06-12T12:09:09"
       }
     ]
   }
