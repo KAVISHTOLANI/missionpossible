@@ -3,7 +3,7 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 1,
+      "events_played": 2,
       "wins": 1,
       "points_earned": 300,
       "penalty_deductions": 0,
@@ -18,17 +18,24 @@
           "points": 300,
           "type": "points",
           "note": "Winners Of Basketball"
+        },
+        {
+          "id": "st-ff78eabf94",
+          "event": "Throwball",
+          "points": 0,
+          "type": "points",
+          "note": ""
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 1,
-      "wins": 0,
-      "points_earned": 0,
+      "events_played": 2,
+      "wins": 1,
+      "points_earned": 300,
       "penalty_deductions": 0,
-      "net_points": 0,
+      "net_points": 300,
       "gold": 0,
       "silver": 0,
       "bronze": 0,
@@ -39,17 +46,24 @@
           "points": 0,
           "type": "points",
           "note": ""
+        },
+        {
+          "id": "st-99be7c83b0",
+          "event": "Throwball",
+          "points": 300,
+          "type": "points",
+          "note": "Winners Of Throwball"
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 1,
+      "events_played": 2,
       "wins": 0,
-      "points_earned": 150,
+      "points_earned": 300,
       "penalty_deductions": 0,
-      "net_points": 150,
+      "net_points": 300,
       "gold": 0,
       "silver": 1,
       "bronze": 0,
@@ -60,6 +74,13 @@
           "points": 150,
           "type": "points",
           "note": "Runner-Ups Of Basketball"
+        },
+        {
+          "id": "st-f62fd9bd07",
+          "event": "Throwball",
+          "points": 150,
+          "type": "points",
+          "note": "Throwball Runner's Up"
         }
       ]
     }
