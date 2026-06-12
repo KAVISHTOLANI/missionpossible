@@ -1,1 +1,67 @@
-[]
+[
+	{
+		"filename": "/static/images/gallery/season-4/mvp_dhrup_yadav.jpeg",
+		"caption": "MVP Dhrup Yadav",
+		"season": 4,
+		"credit": "Event Photography",
+		"uploaded_at": "2026-06-12 10:00"
+	},
+	{
+		"filename": "/static/images/gallery/season-4/champions_team_dominators.jpeg",
+		"caption": "Champions - Team Dominators",
+		"season": 4,
+		"credit": "Event Photography",
+		"uploaded_at": "2026-06-12 10:00"
+	},
+	{
+		"filename": "/static/images/gallery/season-4/mr_jeetandra_honoring_ref.jpeg",
+		"caption": "Mr Jeetandra honoring referee",
+		"season": 4,
+		"credit": "Event Photography",
+		"uploaded_at": "2026-06-12 10:00"
+	},
+	{
+		"filename": "/static/images/gallery/season-4/referee_briefing_the_players.png",
+		"caption": "Referee briefing the players",
+		"season": 4,
+		"credit": "Event Photography",
+		"uploaded_at": "2026-06-12 10:00"
+	},
+	{
+		"filename": "/static/images/gallery/season-4/royals_vs_dominators.png",
+		"caption": "Royals vs Dominators",
+		"season": 4,
+		"credit": "Event Photography",
+		"uploaded_at": "2026-06-12 10:00"
+	},
+	{
+		"filename": "/static/images/gallery/season-4/finals_winning_moments.png",
+		"caption": "Finals - Winning moments",
+		"season": 4,
+		"credit": "Event Photography",
+		"uploaded_at": "2026-06-12 10:00"
+	},
+	{
+		"filename": "/static/images/gallery/season-4/jeetandra_honoring_referee.png",
+		"caption": "Jeetandra honoring referee",
+		"season": 4,
+		"credit": "Event Photography",
+		"uploaded_at": "2026-06-12 10:00"
+	}
+	,
+	{
+		"filename": "/static/images/gallery/season-4/mr_jeetandra_honoring_ref.png",
+		"caption": "Mr Jeetandra honoring referee (PNG)",
+		"season": 4,
+		"credit": "Event Photography",
+		"uploaded_at": "2026-06-12 10:10"
+	}
+	,
+	{
+		"filename": "/static/images/gallery/season-4/team_royals_and_creators.png",
+		"caption": "Team Royals and Team Creators together",
+		"season": 4,
+		"credit": "Event Photography",
+		"uploaded_at": "2026-06-12 10:20"
+	}
+]

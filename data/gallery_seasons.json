@@ -6,6 +6,12 @@
     "year": "2026",
     "tagline": "Beyond Impossible",
     "photos": [
+      { "path": "/static/images/gallery/season-4/mvp_dhrup_yadav.jpeg", "caption": "MVP Dhrup Yadav" },
+      { "path": "/static/images/gallery/season-4/champions_team_dominators.jpeg", "caption": "Champions - Team Dominators" },
+      { "path": "/static/images/gallery/season-4/mr_jeetandra_honoring_ref.png", "caption": "Mr Jeetandra honoring referee (PNG)" },
+      { "path": "/static/images/gallery/season-4/referee_briefing_the_players.png", "caption": "Referee briefing the players" },
+      { "path": "/static/images/gallery/season-4/royals_vs_dominators.png", "caption": "Royals vs Dominators" },
+      { "path": "/static/images/gallery/season-4/finals_winning_moments.png", "caption": "Finals - Winning moments" },
       { "path": "/static/images/gallery/season-4/champions-team-creators.jpg", "caption": "Champions - Team Creators" },
       { "path": "/static/images/gallery/season-4/mvp-mr-janaki-ram.jpg", "caption": "MVP - Mr. Janaki Ram" },
       { "path": "/static/images/gallery/season-4/team-royals.jpg", "caption": "Team Royals" },

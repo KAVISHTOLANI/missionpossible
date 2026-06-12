@@ -23,4 +23,20 @@
     "winning_photo": "/static/images/gallery/season-4/champions-team-creators.jpeg",
     "updated_at": "2026-06-05 11:50"
   }
+ ,
+  {
+    "event_id": "throwball",
+    "event_name": "Throwball",
+    "sport_category": "Outdoor Sports",
+    "champion_type": "team",
+    "team": "dominators",
+    "team_name": "Team Dominators",
+    "second_team": "creators",
+    "second_team_name": "Team Creators",
+    "player_name": "",
+    "second_player_name": "",
+    "players": [],
+    "winning_photo": "/static/images/gallery/season-4/champions_team_dominators.jpeg",
+    "updated_at": "2026-06-12 10:05"
+  }
 ]
