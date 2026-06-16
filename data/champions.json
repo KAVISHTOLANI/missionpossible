@@ -20,34 +20,8 @@
       "Sunitha Nama",
       "Tarani"
     ],
-    "winning_photo": "/static/images/champions/basketball-269baf33.jpeg",
-    "updated_at": "2026-06-12 17:58"
-  },
-  {
-    "event_id": "throwball",
-    "event_name": "Throwball",
-    "sport_category": "Outdoor Sports",
-    "champion_type": "team",
-    "team": "dominators",
-    "team_name": "Team Dominators",
-    "second_team": "royals",
-    "second_team_name": "Team Royals",
-    "player_name": "",
-    "second_player_name": "",
-    "players": [
-      "R. Anil Kumar",
-      "Babullu Sahu",
-      "P. Sandeep",
-      "Sandhya",
-      "G. Ramesh",
-      "G. Satish Kumar",
-      "Dr. Sneha",
-      "MD Akram Goud Palle",
-      "Maria Barthalomia K",
-      "Gandhi Rodda"
-    ],
-    "winning_photo": "/static/images/champions/throwball-4a70121f.jpeg",
-    "updated_at": "2026-06-12 12:40"
+    "winning_photo": "/static/images/gallery/season-4/champions-team-creators.jpeg",
+    "updated_at": "2026-06-05 11:50"
   }
  ,
   {
