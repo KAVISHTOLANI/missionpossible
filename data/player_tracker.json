@@ -8,20 +8,20 @@
         "department": "Maintenance",
         "played": [
           true,
-          true,
+          false,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "THROWBALL",
+          "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:48:19",
-        "updated_at": "2026-06-12T11:59:46"
+        "updated_at": "2026-06-05T10:48:31"
       },
       {
         "id": "pt-23a64c07f1",
@@ -30,20 +30,20 @@
         "department": "EDP",
         "played": [
           true,
-          true,
+          false,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "THROWBALL",
+          "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:48:19",
-        "updated_at": "2026-06-12T11:59:21"
+        "updated_at": "2026-06-05T10:48:30"
       },
       {
         "id": "pt-d6b1d7be87",
@@ -74,20 +74,20 @@
         "department": "Security",
         "played": [
           true,
-          true,
+          false,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "THROWBALL",
+          "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:48:19",
-        "updated_at": "2026-06-12T12:00:10"
+        "updated_at": "2026-06-05T10:48:45"
       },
       {
         "id": "pt-cc3e6f3142",
@@ -118,20 +118,20 @@
         "department": "Doctor",
         "played": [
           true,
-          true,
+          false,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "THROWBALL",
+          "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:48:19",
-        "updated_at": "2026-06-12T11:59:58"
+        "updated_at": "2026-06-05T10:49:01"
       },
       {
         "id": "pt-5506328c5d",
@@ -154,50 +154,6 @@
         ],
         "created_at": "2026-06-05T10:48:19",
         "updated_at": "2026-06-05T10:49:04"
-      },
-      {
-        "id": "pt-e46fdac27d",
-        "name": "Dr. Vani",
-        "employee_id": "4780",
-        "department": "Doctor",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:02:11",
-        "updated_at": "2026-06-12T12:04:36"
-      },
-      {
-        "id": "pt-21da14f460",
-        "name": "Navaneeta",
-        "employee_id": "046",
-        "department": "MRD",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:02:11",
-        "updated_at": "2026-06-12T12:04:40"
       }
     ],
     "dominators": [
@@ -230,20 +186,42 @@
         "department": "Security Supervisor (KAIROSE)",
         "played": [
           true,
-          true,
+          false,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "THROWBALL",
+          "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:41:12",
-        "updated_at": "2026-06-12T12:05:06"
+        "updated_at": "2026-06-05T10:46:31"
+      },
+      {
+        "id": "pt-ba0b1fdeb1",
+        "name": "Sai Kiran Gollapudi",
+        "employee_id": "826",
+        "department": "CC Executive (Aalankrita)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-05T10:41:12",
+        "updated_at": "2026-06-05T10:46:34"
       },
       {
         "id": "pt-2e6972c533",
@@ -252,20 +230,20 @@
         "department": "Assistant (GSH)",
         "played": [
           true,
-          true,
+          false,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "THROWBALL",
+          "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:41:12",
-        "updated_at": "2026-06-12T12:05:17"
+        "updated_at": "2026-06-05T10:46:37"
       },
       {
         "id": "pt-bf89ee42fb",
@@ -274,20 +252,20 @@
         "department": "CC Executive (DECC)",
         "played": [
           true,
-          true,
+          false,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "THROWBALL",
+          "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:41:12",
-        "updated_at": "2026-06-12T12:06:58"
+        "updated_at": "2026-06-05T10:46:41"
       },
       {
         "id": "pt-304b50efd3",
@@ -310,138 +288,6 @@
         ],
         "created_at": "2026-06-05T10:41:12",
         "updated_at": "2026-06-05T10:46:49"
-      },
-      {
-        "id": "pt-775e91176c",
-        "name": "R. Anil Kumar",
-        "employee_id": "148",
-        "department": "Unit HR",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:04:21",
-        "updated_at": "2026-06-12T12:04:48"
-      },
-      {
-        "id": "pt-7e7e58a811",
-        "name": "G. Ramesh",
-        "employee_id": "450",
-        "department": "Sample Driver",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:04:21",
-        "updated_at": "2026-06-12T12:04:51"
-      },
-      {
-        "id": "pt-9d919ad4ca",
-        "name": "MD Akram",
-        "employee_id": "1167",
-        "department": "HR",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:04:21",
-        "updated_at": "2026-06-12T12:04:54"
-      },
-      {
-        "id": "pt-380771aacb",
-        "name": "Maria Barthalomia K",
-        "employee_id": "1463",
-        "department": "Accounts",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:04:21",
-        "updated_at": "2026-06-12T12:04:56"
-      },
-      {
-        "id": "pt-1746dc35a6",
-        "name": "Gandhi Rodda",
-        "employee_id": "427",
-        "department": "Lab Technician",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:04:21",
-        "updated_at": "2026-06-12T12:05:00"
-      },
-      {
-        "id": "pt-3808749729",
-        "name": "K. Sai Kiran",
-        "employee_id": "826",
-        "department": "CC Executive (Aalankrita)",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "BASKETBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:06:27",
-        "updated_at": "2026-06-12T12:06:40"
       }
     ],
     "royals": [
@@ -540,20 +386,20 @@
         "department": "Operation Theatre",
         "played": [
           true,
-          true,
+          false,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "THROWBALL",
+          "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:45:21",
-        "updated_at": "2026-06-12T12:09:36"
+        "updated_at": "2026-06-05T10:47:05"
       },
       {
         "id": "pt-d94744c1d4",
@@ -562,130 +408,20 @@
         "department": "Technical Assistant",
         "played": [
           true,
-          true,
+          false,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "THROWBALL",
+          "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:45:21",
-        "updated_at": "2026-06-12T12:09:32"
-      },
-      {
-        "id": "pt-b86092b72f",
-        "name": "Dr. K. Victoria",
-        "employee_id": "1266",
-        "department": "Anesthesia",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:08:53",
-        "updated_at": "2026-06-12T12:09:24"
-      },
-      {
-        "id": "pt-b4e5197936",
-        "name": "Dr. Priyanka Mittra",
-        "employee_id": "N/A",
-        "department": "General Surgery",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:08:53",
-        "updated_at": "2026-06-12T12:09:20"
-      },
-      {
-        "id": "pt-676499b251",
-        "name": "Sampath Goud",
-        "employee_id": "1415",
-        "department": "IT",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:08:53",
-        "updated_at": "2026-06-12T12:09:15"
-      },
-      {
-        "id": "pt-e00c72aa55",
-        "name": "Azeem",
-        "employee_id": "358",
-        "department": "Technical Assistant (DECC)",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:08:53",
-        "updated_at": "2026-06-12T12:09:13"
-      },
-      {
-        "id": "pt-59f0736449",
-        "name": "Jareen",
-        "employee_id": "368",
-        "department": "Medical Records (DECC)",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-12T12:08:53",
-        "updated_at": "2026-06-12T12:09:09"
+        "updated_at": "2026-06-05T10:47:07"
       }
     ]
   }
