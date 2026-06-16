@@ -274,20 +274,20 @@
         "department": "Assistant (GSH)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "",
+          "THROWBALL",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:41:12",
-        "updated_at": "2026-06-05T10:46:37"
+        "updated_at": "2026-06-16T11:37:43"
       },
       {
         "id": "pt-bf89ee42fb",
@@ -296,20 +296,20 @@
         "department": "CC Executive (DECC)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "",
+          "THROWBALL",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:41:12",
-        "updated_at": "2026-06-05T10:46:41"
+        "updated_at": "2026-06-16T11:37:52"
       },
       {
         "id": "pt-304b50efd3",
@@ -361,21 +361,21 @@
         "employee_id": "450",
         "department": "Sample Driver",
         "played": [
-          false,
+          true,
           false,
           false,
           false,
           false
         ],
         "games": [
-          "",
+          "THROWBALL",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-16T11:34:04",
-        "updated_at": "2026-06-16T11:34:04"
+        "updated_at": "2026-06-16T11:38:02"
       },
       {
         "id": "pt-a09d0098df",
@@ -383,21 +383,21 @@
         "employee_id": "418",
         "department": "Lab Technician",
         "played": [
-          false,
+          true,
           false,
           false,
           false,
           false
         ],
         "games": [
-          "",
+          "THROWBALL",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-16T11:34:04",
-        "updated_at": "2026-06-16T11:34:04"
+        "updated_at": "2026-06-16T11:38:05"
       },
       {
         "id": "pt-129e5f95ec",
@@ -405,21 +405,21 @@
         "employee_id": "4611",
         "department": "Pathologist",
         "played": [
-          false,
+          true,
           false,
           false,
           false,
           false
         ],
         "games": [
-          "",
+          "THROWBALL",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-16T11:34:04",
-        "updated_at": "2026-06-16T11:34:04"
+        "updated_at": "2026-06-16T11:38:12"
       },
       {
         "id": "pt-251079e210",
@@ -427,21 +427,21 @@
         "employee_id": "1167",
         "department": "HR",
         "played": [
-          false,
+          true,
           false,
           false,
           false,
           false
         ],
         "games": [
-          "",
+          "THROWBALL",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-16T11:34:04",
-        "updated_at": "2026-06-16T11:34:04"
+        "updated_at": "2026-06-16T11:38:20"
       },
       {
         "id": "pt-39e9c62476",
@@ -449,21 +449,21 @@
         "employee_id": "1463",
         "department": "Accounts",
         "played": [
-          false,
+          true,
           false,
           false,
           false,
           false
         ],
         "games": [
-          "",
+          "THROWBALL",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-16T11:34:04",
-        "updated_at": "2026-06-16T11:34:04"
+        "updated_at": "2026-06-16T11:38:28"
       },
       {
         "id": "pt-d8806d1c39",
@@ -471,21 +471,21 @@
         "employee_id": "427",
         "department": "Lab Technician",
         "played": [
-          false,
+          true,
           false,
           false,
           false,
           false
         ],
         "games": [
-          "",
+          "THROWBALL",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-16T11:34:04",
-        "updated_at": "2026-06-16T11:34:04"
+        "updated_at": "2026-06-16T11:38:36"
       }
     ],
     "royals": [
@@ -627,21 +627,21 @@
         "employee_id": "1266",
         "department": "Anesthesia",
         "played": [
-          false,
+          true,
           false,
           false,
           false,
           false
         ],
         "games": [
-          "",
+          "THROWBALL",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-16T11:32:24",
-        "updated_at": "2026-06-16T11:32:24"
+        "updated_at": "2026-06-16T11:39:26"
       },
       {
         "id": "pt-1bc585e937",
@@ -649,21 +649,21 @@
         "employee_id": "N/A",
         "department": "General Surgery",
         "played": [
-          false,
+          true,
           false,
           false,
           false,
           false
         ],
         "games": [
-          "",
+          "THROWBALL",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-16T11:32:24",
-        "updated_at": "2026-06-16T11:32:24"
+        "updated_at": "2026-06-16T11:39:31"
       },
       {
         "id": "pt-f9abaec8d9",
