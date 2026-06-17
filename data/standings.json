@@ -3,7 +3,7 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 2,
+      "events_played": 1,
       "wins": 1,
       "points_earned": 300,
       "penalty_deductions": 0,
@@ -18,25 +18,18 @@
           "points": 300,
           "type": "points",
           "note": "Winners Of Basketball"
-        },
-        {
-          "id": "st-bf55f4e2a6",
-          "event": "Throwball",
-          "points": 0,
-          "type": "points",
-          "note": "3rd Place In Throwball"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 2,
-      "wins": 1,
-      "points_earned": 300,
+      "events_played": 1,
+      "wins": 0,
+      "points_earned": 0,
       "penalty_deductions": 0,
-      "net_points": 300,
-      "gold": 1,
+      "net_points": 0,
+      "gold": 0,
       "silver": 0,
       "bronze": 0,
       "event_breakdown": [
@@ -45,27 +38,20 @@
           "event": "Basketball",
           "points": 0,
           "type": "points",
-          "note": "3rd Place Basketball"
-        },
-        {
-          "id": "st-bf6de1b740",
-          "event": "Throwball",
-          "points": 300,
-          "type": "points",
-          "note": "Winners Of Throwball"
+          "note": ""
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 2,
+      "events_played": 1,
       "wins": 0,
-      "points_earned": 300,
+      "points_earned": 150,
       "penalty_deductions": 0,
-      "net_points": 300,
+      "net_points": 150,
       "gold": 0,
-      "silver": 2,
+      "silver": 1,
       "bronze": 0,
       "event_breakdown": [
         {
@@ -74,13 +60,6 @@
           "points": 150,
           "type": "points",
           "note": "Runner-Ups Of Basketball"
-        },
-        {
-          "id": "st-eddbd64845",
-          "event": "Throwball",
-          "points": 150,
-          "type": "points",
-          "note": "Throwball Runner's Up"
         }
       ]
     }
