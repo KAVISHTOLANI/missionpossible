@@ -22,7 +22,8 @@
     ],
     "winning_photo": "/static/images/gallery/season-4/champions-team-creators.jpeg",
     "updated_at": "2026-06-05 11:50"
-  },
+  }
+ ,
   {
     "event_id": "throwball",
     "event_name": "Throwball",
@@ -34,19 +35,8 @@
     "second_team_name": "Team Creators",
     "player_name": "",
     "second_player_name": "",
-    "players": [
-      "R. Anil Kumar",
-      "Babullu Sahu",
-      "P. Sandeep",
-      "Sandhya",
-      "G. Ramesh",
-      "G. Satish Kumar",
-      "Dr. Sneha",
-      "MD Akram",
-      "Maria Barthalomia K",
-      "Gandhi Rodda"
-    ],
+    "players": [],
     "winning_photo": "/static/images/gallery/season-4/champions_team_dominators.jpeg",
-    "updated_at": "2026-06-16 11:27"
+    "updated_at": "2026-06-12 10:05"
   }
 ]
