@@ -86,18 +86,18 @@
       "player_name": "Mr. Jaya Surya",
       "team_name": "Team Royals",
       "gold": 0,
-      "silver": 1,
-      "points": 5,
-      "updated_at": "2026-06-08 11:03"
+      "silver": 2,
+      "points": 10,
+      "updated_at": "2026-06-20 11:54"
     },
     {
       "id": "mvp-dedb3c6f03",
       "player_name": "Mr. Nagesh",
       "team_name": "Team Royals",
       "gold": 0,
-      "silver": 1,
-      "points": 5,
-      "updated_at": "2026-06-08 11:03"
+      "silver": 2,
+      "points": 10,
+      "updated_at": "2026-06-20 11:54"
     },
     {
       "id": "mvp-f343243b37",
@@ -179,6 +179,51 @@
       "silver": 0,
       "points": 10,
       "updated_at": "2026-06-20 11:38"
+    },
+    {
+      "id": "mvp-1b83cc2925",
+      "player_name": "Azeem",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-20 11:55"
+    },
+    {
+      "id": "mvp-b12c7d1b13",
+      "player_name": "Dr. K. Victoria",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-20 11:55"
+    },
+    {
+      "id": "mvp-c2a009d5aa",
+      "player_name": "Dr. Priyanka Mittra",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-20 11:56"
+    },
+    {
+      "id": "mvp-94ac6e37e9",
+      "player_name": "Jareen",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-20 11:56"
+    },
+    {
+      "id": "mvp-22c71c96fb",
+      "player_name": "Sampath Goud",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-20 11:57"
     }
   ],
   "fair_play": [
