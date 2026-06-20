@@ -3,13 +3,13 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 2,
+      "events_played": 3,
       "wins": 1,
-      "points_earned": 300,
+      "points_earned": 375,
       "penalty_deductions": 0,
-      "net_points": 300,
+      "net_points": 375,
       "gold": 1,
-      "silver": 0,
+      "silver": 1,
       "bronze": 0,
       "event_breakdown": [
         {
@@ -25,18 +25,25 @@
           "points": 0,
           "type": "points",
           "note": "3rd Place Basketball"
+        },
+        {
+          "id": "st-74404dfe91",
+          "event": "Cycling",
+          "points": 75,
+          "type": "points",
+          "note": "2nd Place Men's Cycling - Juneed"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 2,
+      "events_played": 5,
       "wins": 1,
-      "points_earned": 300,
+      "points_earned": 675,
       "penalty_deductions": 0,
-      "net_points": 300,
-      "gold": 1,
+      "net_points": 675,
+      "gold": 4,
       "silver": 0,
       "bronze": 0,
       "event_breakdown": [
@@ -53,6 +60,27 @@
           "points": 300,
           "type": "points",
           "note": "Winners Of Throwball"
+        },
+        {
+          "id": "st-bb18547038",
+          "event": "Cycling",
+          "points": 150,
+          "type": "points",
+          "note": "Winner Of Men's Cycling - Babullu Sahu"
+        },
+        {
+          "id": "st-e9cbf84dba",
+          "event": "Cycling",
+          "points": 150,
+          "type": "points",
+          "note": "Winner Of Women's Cycling - Sandhya Rani Gadda"
+        },
+        {
+          "id": "st-3c5ee813d1",
+          "event": "Cycling",
+          "points": 75,
+          "type": "points",
+          "note": "2nd Place Women's Cycling - Dr.Sneha"
         }
       ]
     },
