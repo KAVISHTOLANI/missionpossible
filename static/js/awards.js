@@ -40,6 +40,7 @@
       </div>`;
   }
 
+  let AWARD_LEADERBOARDS = null;
   async function loadAwards() {
     const awardsResp = await fetch("/api/awards", { credentials: "same-origin" });
     if (!awardsResp.ok) throw new Error("Awards unavailable");
@@ -58,17 +59,38 @@
     }
     let topHtml = "";
     topHtml += bt && META[bt] ? filled("Overall Best Team", null, META[bt].name, bt) : tba("Overall Best Team", null);
-    topHtml += fp && META[fp] ? filled("Fair Play Award", null, META[fp].name, fp) : tba("Fair Play Award", null);
+    topHtml += `<div id="fairPlayTile">` + (fp && META[fp] ? filled("Fair Play Award", null, META[fp].name, fp) : tba("Fair Play Award", null)) + `</div>`;
     top.innerHTML = topHtml;
+
+    // insert hidden details container for Fair Play
+    let fairDetails = document.getElementById('fairPlayDetails');
+    if (!fairDetails && top) {
+      fairDetails = document.createElement('div');
+      fairDetails.id = 'fairPlayDetails';
+      fairDetails.className = 'reveal';
+      fairDetails.style.display = 'none';
+      top.parentNode.insertBefore(fairDetails, top.nextSibling);
+    }
 
     const grid = document.getElementById("eventMvps");
     const mvps = awards.event_mvps || {};
-    grid.innerHTML = mvpEvents.map((e) => {
+    const initialGridHtml = mvpEvents.map((e) => {
       const m = mvps[e.id];
       return `<div class="reveal">${(m && m.player) ? filled("MVP", e.name, m.player, m.team, m.image) : tba("MVP", e.name)}</div>`;
     }).join("");
+    grid.innerHTML = initialGridHtml;
     const io = new IntersectionObserver((es) => es.forEach((x) => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { threshold: 0.08 });
     grid.querySelectorAll(".reveal:not(.in)").forEach((el) => io.observe(el));
+
+    // Search results container (appears when searching)
+    let searchResults = document.getElementById('awardsSearchResults');
+    if (!searchResults && grid && grid.parentNode) {
+      searchResults = document.createElement('div');
+      searchResults.id = 'awardsSearchResults';
+      searchResults.style.marginTop = '18px';
+      grid.parentNode.appendChild(searchResults);
+    }
+    const initialTopHtml = top.innerHTML;
 
     // MVP eligibility table and rules
     const eligible = (events || []).filter((e) => MVP_ELIGIBLE.includes(e.id)).map((e) => e.name);
@@ -131,6 +153,57 @@
           if (icon) icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0)';
         });
       }
+    }
+    // fetch award leaderboards (fair play / overall mvp lists)
+    CARNIVAL.get('/api/award-leaderboards').then((lbs) => {
+      AWARD_LEADERBOARDS = lbs || { overall_mvp: [], fair_play: [] };
+      const tile = document.getElementById('fairPlayTile');
+      const details = document.getElementById('fairPlayDetails');
+      if (tile && details && AWARD_LEADERBOARDS) {
+        tile.style.cursor = 'pointer';
+        tile.addEventListener('click', () => {
+          if (details.style.display === 'none') {
+            const rows = (AWARD_LEADERBOARDS.fair_play || []).slice().sort((a,b)=>Number(b.fair_play_points||0)-Number(a.fair_play_points||0));
+            details.innerHTML = rows.length ? `<div class="detailcard"><strong>Fair Play Leaderboard</strong>${rows.map(r=>`<div class="inforow"><span class="k">${CARNIVAL.esc(r.team_name||'')}</span><span class="v">Points: ${Number(r.fair_play_points||0)} · ${CARNIVAL.esc(r.updated_at||'')}</span></div>`).join('')}</div>` : '<div class="muted">No fair play leaderboard rows available.</div>';
+            details.style.display = 'block';
+          } else {
+            details.style.display = 'none';
+          }
+        });
+      }
+    }).catch(()=>{});
+    // search input handling
+    const searchInput = document.getElementById('awardsSearch');
+    if (searchInput) {
+      let last = '';
+      searchInput.addEventListener('input', function (e) {
+        const q = (e.target.value || '').trim().toLowerCase();
+        if (q === last) return; last = q;
+        if (!q) {
+          // clear search
+          searchResults.innerHTML = '';
+          grid.innerHTML = initialGridHtml;
+          top.innerHTML = initialTopHtml;
+          grid.querySelectorAll('.reveal:not(.in)').forEach((el) => io.observe(el));
+          return;
+        }
+        // filter event MVPs
+        const evHtml = mvpEvents.map((e) => {
+          const m = mvps[e.id];
+          if (!m || !m.player) return '';
+          const hay = ( (m.player || '') + ' ' + (m.team || '') + ' ' + (e.name || '') ).toLowerCase();
+          if (hay.indexOf(q) !== -1) return `<div class="reveal">${filled('MVP', e.name, m.player, m.team, m.image)}</div>`;
+          return '';
+        }).filter(Boolean).join('') || '<div class="muted">No matching MVPs found.</div>';
+
+        // filter overall MVP leaderboard (if available)
+        const ovRows = (AWARD_LEADERBOARDS && AWARD_LEADERBOARDS.overall_mvp) ? AWARD_LEADERBOARDS.overall_mvp.filter(r => ((r.player_name||'') + ' ' + (r.team_name||'')).toLowerCase().indexOf(q) !== -1) : [];
+        const ovHtml = ovRows.length ? `<div class="sec-label"><span class="num">★</span><span class="txt">Overall MVP Matches</span></div><div class="grid cols-2">${ovRows.map(r=>`<div class="card"><div class="award__winner">${CARNIVAL.esc(r.player_name)}</div><div class="award__meta">${CARNIVAL.esc(r.team_name)} · P ${Number(r.points||0)}</div></div>`).join('')}</div>` : '';
+
+        searchResults.innerHTML = ovHtml + `<div class="sec-label"><span class="num">001</span><span class="txt">Event MVP Matches</span></div><div class="grid cols-3">${evHtml}</div>`;
+        grid.innerHTML = '';
+        top.innerHTML = initialTopHtml;
+      });
     }
   }
 

@@ -132,20 +132,33 @@
     (teams || []).forEach((team) => { teamMap[team.id] = team; });
 
     const ids = selectedTeamId ? [selectedTeamId] : TEAM_ORDER;
-    const html = ids
-      .map((teamId) => {
-        const team = teamMap[teamId];
-        if (!team) return "";
-        const players = (tracker.teams && tracker.teams[teamId]) || [];
-        return renderTeam(team, Array.isArray(players) ? players : []);
-      })
-      .join("");
+    const teamsData = ids.map((teamId) => {
+      const team = teamMap[teamId];
+      const players = (tracker.teams && tracker.teams[teamId]) || [];
+      return { teamId, team, players: Array.isArray(players) ? players : [] };
+    });
 
-    root.innerHTML = html || '<div class="empty">No tracker data is available yet.</div>';
-    bindRows();
-    if (selectedTeamId && teamMap[selectedTeamId]) {
-      document.title = teamMap[selectedTeamId].name + " Player Tracker - Mission Possible 2026";
+    function renderAll(filter) {
+      const q = (filter || "").trim().toLowerCase();
+      const html = teamsData.map(({ team, players }) => {
+        if (!team) return "";
+        const filteredPlayers = q ? players.filter((p) => {
+          const s = ((p.name || "") + " " + (p.employee_id || "") + " " + (p.department || "")).toLowerCase();
+          return s.indexOf(q) !== -1;
+        }) : players;
+        return renderTeam(team, filteredPlayers);
+      }).join("");
+      root.innerHTML = html || '<div class="empty">No tracker data is available yet.</div>';
+      bindRows();
+      if (selectedTeamId && teamMap[selectedTeamId]) {
+        document.title = teamMap[selectedTeamId].name + " Player Tracker - Mission Possible 2026";
+      }
     }
+
+    const search = document.getElementById('playerTrackerSearch');
+    if (search) search.addEventListener('input', (e) => renderAll(e.target.value || ''));
+
+    renderAll('');
   }).catch(() => {
     root.innerHTML = '<div class="empty">Could not load player tracker right now.</div>';
   });

@@ -728,6 +728,17 @@ def dashboard():
     )
 
 
+@admin_bp.route("/api/github-sync", methods=["POST"])
+@login_required
+def github_sync():
+    try:
+        result = sync_data_to_github("manual")
+        audit("github_sync", json.dumps(result, ensure_ascii=False)[:240])
+        return jsonify({"ok": True, "result": result})
+    except Exception as exc:
+        return jsonify({"ok": False, "error": str(exc)}), 500
+
+
 def _recent_audit(limit=25):
     try:
         conn = sqlite3.connect(_DB_PATH)
@@ -1372,10 +1383,19 @@ def upsert_award_leaderboard():
         if fair_play_points < 0:
             return jsonify({"ok": False, "error": "Points cannot be negative"}), 400
 
+        events = body.get("fair_play_events") or []
+        if isinstance(events, str):
+            events = [e.strip() for e in events.split(",") if e.strip()]
+        elif isinstance(events, list):
+            events = [str(e).strip() for e in events if str(e).strip()]
+        else:
+            events = []
+
         payload = {
             "id": row_id or ("fp-" + uuid.uuid4().hex[:10]),
             "team_name": team_name,
             "fair_play_points": fair_play_points,
+            "fair_play_events": events,
             "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
         }
 
@@ -1497,6 +1517,14 @@ def save_champion():
     if champion_type not in {"team", "individual"}:
         return jsonify({"ok": False, "error": "Invalid champion type"}), 400
 
+    raw_categories = body.get("categories") or "[]"
+    try:
+        categories = json.loads(raw_categories) if isinstance(raw_categories, str) else raw_categories
+    except json.JSONDecodeError:
+        return jsonify({"ok": False, "error": "Invalid champion categories"}), 400
+    if not isinstance(categories, list):
+        categories = []
+
     teams = {t.get("id"): t for t in _load("teams.json", [])}
     champions = _load("champions.json", [])
     row = next((x for x in champions if x.get("event_id") == event_id), None)
@@ -1517,6 +1545,20 @@ def save_champion():
     row["player_name"] = player_name
     row["second_player_name"] = (body.get("second_player_name") or "").strip()
     row["players"] = players
+    row["categories"] = [
+        {
+            "name": (cat.get("name") or "").strip(),
+            "first_player": (cat.get("first_player") or "").strip(),
+            "first_team": cat.get("first_team") if cat.get("first_team") in teams else None,
+            "first_team_name": teams[cat.get("first_team")]["name"] if cat.get("first_team") in teams else "",
+            "second_player": (cat.get("second_player") or "").strip(),
+            "second_team": cat.get("second_team") if cat.get("second_team") in teams else None,
+            "second_team_name": teams[cat.get("second_team")]["name"] if cat.get("second_team") in teams else "",
+            "photo": (cat.get("photo") or "").strip(),
+        }
+        for cat in categories[:5]
+        if isinstance(cat, dict) and any(str(cat.get(key) or "").strip() for key in ("name", "first_player", "first_team", "second_player", "second_team", "photo"))
+    ] if champion_type == "individual" else []
     if "winning_photo" in request.files and request.files["winning_photo"].filename:
         file = request.files["winning_photo"]
         ext = file.filename.rsplit(".", 1)[-1].lower() if "." in file.filename else ""

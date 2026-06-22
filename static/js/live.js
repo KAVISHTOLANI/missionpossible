@@ -114,7 +114,7 @@
           <div class="nolive__pulse"></div>
           <h2>Live Scores Coming Soon</h2>
           ${nx
-            ? `<p class="muted">Next up: <a class="accent" href="/sport-detail?sport=${nx.id}">${CARNIVAL.esc(nx.name)}</a> · ${CARNIVAL.esc(nx.date)} · ${CARNIVAL.esc(nx.venue)}</p>`
+            ? `<div style="margin-top:8px;margin-bottom:6px"><span class="badge badge--gold">Coming Soon</span></div><p class="muted">Next up: <a class="accent" href="/sport-detail?sport=${nx.id}">${CARNIVAL.esc(nx.name)}</a> · ${CARNIVAL.esc(nx.date)} · ${CARNIVAL.esc(nx.venue)}</p>`
             : '<p class="muted">The schedule will resume shortly.</p>'}
           <a class="btn btn--ghost" href="/calendar" style="margin-top:8px">View Calendar →</a>
         </div>`;

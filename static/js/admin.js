@@ -160,6 +160,23 @@
       .catch((e) => toast(e.message, true));
   };
 
+  window.saveToGitHub = function () {
+    const btn = document.getElementById("gitSyncBtn");
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = "Saving...";
+    }
+    postJSON("/admin/api/github-sync", {})
+      .then(() => toast("Saved to GitHub"))
+      .catch((e) => toast(e.message, true))
+      .finally(() => {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = "Save to GitHub";
+        }
+      });
+  };
+
   window.uploadGallery = function () {
     const input = document.getElementById("galImages");
     if (!input || !input.files || !input.files.length) return toast("Select at least one image", true);
@@ -373,6 +390,11 @@
     );
   }
 
+  function formatFairPlayEvents(events) {
+    if (!events || !events.length) return '<div class="muted">No fair play events recorded.</div>';
+    return `<div class="fairplay-events">${events.map((event) => `<span>${esc(event)}</span>`).join(", ")}</div>`;
+  }
+
   function clearOverallMvpFormInner() {
     setField("ovmvpId", "");
     setField("ovmvpPlayer", "");
@@ -386,6 +408,7 @@
     setField("fairPlayId", "");
     setField("fairPlayTeam", "");
     setField("fairPlayPoints", 0);
+    setField("fairPlayEvents", "");
   }
 
   window.clearOverallMvpForm = clearOverallMvpFormInner;
@@ -413,17 +436,35 @@
     }
     if (fairWrap) {
       fairWrap.innerHTML = fairRows.length ? fairRows.map((row) => `
-        <div class="arow">
-          <div>
-            <strong>${esc(row.team_name || "—")}</strong>
-            <span class="arow__meta">Fair play points: ${Number(row.fair_play_points || 0)}</span>
+        <div class="arow arow--fair" data-id="${esc(row.id || "")}">
+          <div class="arow__main">
+            <div>
+              <strong>${esc(row.team_name || "—")}</strong>
+              <span class="arow__meta">Fair play points: ${Number(row.fair_play_points || 0)}${row.fair_play_events && row.fair_play_events.length ? ` · Events: ${row.fair_play_events.length}` : ""}</span>
+            </div>
+            <div class="abtn-row">
+              <button class="abtn-del" data-action="edit-fair" data-id="${esc(row.id || "")}">Edit</button>
+              <button class="abtn-del" data-action="del-fair" data-id="${esc(row.id || "")}">Delete</button>
+            </div>
           </div>
-          <div class="abtn-row">
-            <button class="abtn-del" data-action="edit-fair" data-id="${esc(row.id || "")}">Edit</button>
-            <button class="abtn-del" data-action="del-fair" data-id="${esc(row.id || "")}">Delete</button>
+          <div class="arow__detail" style="display:none;padding:12px 0 0;">
+            ${formatFairPlayEvents(row.fair_play_events)}
           </div>
         </div>
       `).join("") : '<div class="muted">No Fair Play rows yet.</div>';
+    }
+
+    if (fairWrap) {
+      fairWrap.querySelectorAll('.arow--fair').forEach((rowEl) => {
+        const main = rowEl.querySelector('.arow__main');
+        const detail = rowEl.querySelector('.arow__detail');
+        if (!main || !detail) return;
+        main.addEventListener('click', (event) => {
+          if (event.target.closest('button')) return;
+          const isOpen = detail.style.display !== 'none';
+          detail.style.display = isOpen ? 'none' : 'block';
+        });
+      });
     }
 
     if (overallWrap) {
@@ -488,11 +529,14 @@
   };
 
   window.saveFairPlayRow = function () {
+    const eventsInput = (val("fairPlayEvents") || "").trim();
+    const events = eventsInput ? eventsInput.split(",").map((item) => item.trim()).filter(Boolean) : [];
     const payload = {
       board: "fair_play",
       id: val("fairPlayId"),
       team_name: val("fairPlayTeam"),
       fair_play_points: numVal("fairPlayPoints"),
+      fair_play_events: events,
     };
     if (!payload.team_name) return toast("Team name is required", true);
     postJSON("/admin/api/award-leaderboards/upsert", payload)
@@ -546,9 +590,77 @@
     const type = val("chType") || "team";
     const teamBlock = document.getElementById("chTeamBlock");
     const individualBlock = document.getElementById("chIndividualBlock");
+    const categoryBlock = document.getElementById("chCategoryBlock");
     if (teamBlock) teamBlock.classList.toggle("hide", type !== "team");
     if (individualBlock) individualBlock.classList.toggle("hide", type !== "individual");
+    if (categoryBlock) categoryBlock.classList.toggle("hide", type !== "individual");
   };
+
+  function championTeamOptions(selected) {
+    const teamSelect = document.getElementById("chTeam");
+    const options = ['<option value="">Select team</option>'];
+    if (teamSelect) {
+      Array.from(teamSelect.options).forEach((opt) => {
+        if (!opt.value) return;
+        options.push(`<option value="${esc(opt.value)}" ${opt.value === selected ? "selected" : ""}>${esc(opt.textContent || opt.value)}</option>`);
+      });
+    }
+    return options.join("");
+  }
+
+  function championCategoryTemplate(row, idx) {
+    const item = row || {};
+    return `
+      <div class="champcat" data-index="${idx}">
+        <div class="champcat__title">
+          <strong>Category ${idx + 1}</strong>
+          <button class="abtn-del" type="button" onclick="removeChampionCategory(this)">Remove</button>
+        </div>
+        <label class="field field--wide"><span>Category name</span><input class="chCatName" value="${esc(item.name || "")}" placeholder="e.g. Singles, Doubles, Finals"></label>
+        <label class="field"><span>1st individual name</span><input class="chCatFirstPlayer" value="${esc(item.first_player || "")}" placeholder="Winner name"></label>
+        <label class="field"><span>1st team</span><select class="chCatFirstTeam">${championTeamOptions(item.first_team || "")}</select></label>
+        <label class="field"><span>2nd individual name</span><input class="chCatSecondPlayer" value="${esc(item.second_player || "")}" placeholder="Runner-up name"></label>
+        <label class="field"><span>2nd team</span><select class="chCatSecondTeam">${championTeamOptions(item.second_team || "")}</select></label>
+        <label class="field field--wide"><span>Photo URL</span><input class="chCatPhoto" value="${esc(item.photo || "")}" placeholder="/static/images/... or https://..."></label>
+      </div>`;
+  }
+
+  function renderChampionCategories(rows) {
+    const wrap = document.getElementById("chCategoryRows");
+    if (!wrap) return;
+    const list = Array.isArray(rows) ? rows.slice(0, 5) : [];
+    wrap.innerHTML = list.map((row, idx) => championCategoryTemplate(row, idx)).join("");
+  }
+
+  window.addChampionCategory = function () {
+    const wrap = document.getElementById("chCategoryRows");
+    if (!wrap) return;
+    const count = wrap.querySelectorAll(".champcat").length;
+    if (count >= 5) return toast("Maximum 5 categories allowed", true);
+    wrap.insertAdjacentHTML("beforeend", championCategoryTemplate({}, count));
+  };
+
+  window.removeChampionCategory = function (btn) {
+    const row = btn && btn.closest(".champcat");
+    if (row) row.remove();
+    const rows = collectChampionCategories(false);
+    renderChampionCategories(rows);
+  };
+
+  function collectChampionCategories(showLimitToast = true) {
+    const wrap = document.getElementById("chCategoryRows");
+    if (!wrap) return [];
+    const rows = Array.from(wrap.querySelectorAll(".champcat")).slice(0, 5).map((row) => ({
+      name: (row.querySelector(".chCatName")?.value || "").trim(),
+      first_player: (row.querySelector(".chCatFirstPlayer")?.value || "").trim(),
+      first_team: (row.querySelector(".chCatFirstTeam")?.value || "").trim(),
+      second_player: (row.querySelector(".chCatSecondPlayer")?.value || "").trim(),
+      second_team: (row.querySelector(".chCatSecondTeam")?.value || "").trim(),
+      photo: (row.querySelector(".chCatPhoto")?.value || "").trim(),
+    })).filter((row) => row.name || row.first_player || row.first_team || row.second_player || row.second_team || row.photo);
+    if (showLimitToast && wrap.querySelectorAll(".champcat").length > 5) toast("Only the first 5 categories will be saved", true);
+    return rows;
+  }
 
   function renderChampionsList(rows) {
     const list = document.getElementById("championsExisting");
@@ -593,8 +705,10 @@
         setField("chSecondPlayerName", row.second_player_name || "");
         setField("chSecondIndTeam", row.second_team || "");
         setField("chSecondIndTeamName", row.second_team_name || "");
+        renderChampionCategories(row.categories || []);
         const preview = document.getElementById("chPhotoPreview");
         if (preview) preview.innerHTML = row.winning_photo ? `Current photo: <a class="accent" href="${esc(row.winning_photo)}" target="_blank">View uploaded photo</a>` : "";
+        setField('chWinningPhotoUrls', row.winning_photo || '');
         const photo = document.getElementById("chWinningPhoto");
         if (photo) photo.value = "";
       })
@@ -613,12 +727,15 @@
     fd.append("second_team_name", champion_type === "team" ? val("chSecondTeamName") : val("chSecondIndTeamName"));
     fd.append("player_name", champion_type === "individual" ? val("chPlayerName") : "");
     fd.append("second_player_name", champion_type === "individual" ? val("chSecondPlayerName") : "");
+    fd.append("categories", JSON.stringify(champion_type === "individual" ? collectChampionCategories() : []));
     (champion_type === "team"
       ? (document.getElementById("chPlayers").value || "").split("\n").map((s) => s.trim()).filter(Boolean)
       : []
     ).forEach((p) => fd.append("players", p));
     const photo = document.getElementById("chWinningPhoto");
     if (photo && photo.files && photo.files[0]) fd.append("winning_photo", photo.files[0]);
+    const photoUrls = val('chWinningPhotoUrls');
+    if (photoUrls) fd.append('winning_photo', photoUrls);
 
     fetch("/admin/api/champions/save", { method: "POST", body: fd })
       .then((r) => r.json().then((data) => ({ ok: r.ok, data })))
@@ -639,6 +756,7 @@
       .then(() => {
         toast("Champion deleted");
         ["chCategory", "chTeam", "chTeamName", "chSecondTeam", "chSecondTeamName", "chPlayers", "chPlayerName", "chIndTeam", "chIndTeamName", "chSecondPlayerName", "chSecondIndTeam", "chSecondIndTeamName", "chWinningPhoto"].forEach((id) => setField(id, ""));
+        renderChampionCategories([]);
         const preview = document.getElementById("chPhotoPreview");
         if (preview) preview.innerHTML = "";
         loadChampionsList();
@@ -833,16 +951,26 @@
       }).join("") : '<div class="muted">No players added yet.</div>';
 
       return `
-        <div class="ptteam">
+          <div class="ptteam">
           <div class="ptteam__head">
             <strong>${esc(labels[teamId] || teamId)}</strong>
             <span>${players.length} player${players.length === 1 ? "" : "s"}</span>
           </div>
+          <input class="ptsearch" type="search" placeholder="Search ${esc(labels[teamId] || teamId)} players" oninput="filterPlayerTrackerTeam(this)">
           <div class="ptteam__body">${rows}</div>
         </div>
       `;
     }).join("") || '<div class="muted">No teams available.</div>';
   }
+
+  window.filterPlayerTrackerTeam = function (input) {
+    const team = input.closest(".ptteam");
+    if (!team) return;
+    const q = (input.value || "").trim().toLowerCase();
+    team.querySelectorAll(".ptrow").forEach((row) => {
+      row.style.display = row.textContent.toLowerCase().includes(q) ? "" : "none";
+    });
+  };
 
   function loadPlayerTracker() {
     const wrap = document.getElementById("ptExisting");

@@ -3,63 +3,105 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 2,
+      "events_played": 5,
       "wins": 1,
-      "points_earned": 300,
+      "points_earned": 375,
       "penalty_deductions": 0,
-      "net_points": 300,
+      "net_points": 375,
       "gold": 1,
-      "silver": 0,
-      "bronze": 0,
+      "silver": 1,
+      "bronze": 2,
       "event_breakdown": [
         {
-          "id": "st-df3009b698",
+          "id": "st-creators-basketball",
           "event": "Basketball",
           "points": 300,
           "type": "points",
           "note": "Winners Of Basketball"
         },
         {
-          "id": "st-ff78eabf94",
+          "id": "st-creators-throwball",
           "event": "Throwball",
           "points": 0,
           "type": "points",
-          "note": ""
+          "note": "3rd Place Basketball"
+        },
+        {
+          "id": "st-creators-cycling-men",
+          "event": "Cycling",
+          "points": 75,
+          "type": "points",
+          "note": "2nd Place Men's Cycling - Juneed"
+        },
+        {
+          "id": "st-creators-cycling-women-3rd",
+          "event": "Cycling",
+          "points": 0,
+          "type": "points",
+          "note": "3rd Place Women's Cycling"
+        },
+        {
+          "id": "st-creators-cycling-no-position",
+          "event": "Cycling",
+          "points": 0,
+          "type": "points",
+          "note": "No Other Position Secured In Cycling"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 2,
+      "events_played": 5,
       "wins": 1,
-      "points_earned": 300,
+      "points_earned": 675,
       "penalty_deductions": 0,
-      "net_points": 300,
-      "gold": 1,
-      "silver": 0,
-      "bronze": 0,
+      "net_points": 675,
+      "gold": 3,
+      "silver": 1,
+      "bronze": 1,
       "event_breakdown": [
         {
-          "id": "st-2eaec6c650",
+          "id": "st-dominators-basketball",
           "event": "Basketball",
           "points": 0,
           "type": "points",
-          "note": ""
+          "note": "3rd Place Basketball"
         },
         {
-          "id": "st-99be7c83b0",
+          "id": "st-dominators-throwball",
           "event": "Throwball",
           "points": 300,
           "type": "points",
           "note": "Winners Of Throwball"
+        },
+        {
+          "id": "st-dominators-cycling-men",
+          "event": "Cycling",
+          "points": 150,
+          "type": "points",
+          "note": "Winner Of Men's Cycling - Babullu Sahu"
+        },
+        {
+          "id": "st-dominators-cycling-women",
+          "event": "Cycling",
+          "points": 150,
+          "type": "points",
+          "note": "Winner Of Women's Cycling - Sandhya Rani Gadda"
+        },
+        {
+          "id": "st-dominators-cycling-women-2nd",
+          "event": "Cycling",
+          "points": 75,
+          "type": "points",
+          "note": "2nd Place Women's Cycling - Dr.Sneha"
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 2,
+      "events_played": 5,
       "wins": 0,
       "points_earned": 300,
       "penalty_deductions": 0,
@@ -69,18 +111,39 @@
       "bronze": 0,
       "event_breakdown": [
         {
-          "id": "st-7b7a2c1ce7",
+          "id": "st-royals-basketball",
           "event": "Basketball",
           "points": 150,
           "type": "points",
           "note": "Runner-Ups Of Basketball"
         },
         {
-          "id": "st-f62fd9bd07",
+          "id": "st-royals-throwball",
           "event": "Throwball",
           "points": 150,
           "type": "points",
-          "note": "Throwball Runner's Up"
+          "note": "Runner-Ups Of Throwball"
+        },
+        {
+          "id": "st-royals-cycling-none",
+          "event": "Cycling",
+          "points": 0,
+          "type": "points",
+          "note": "No Position Secured In Cycling"
+        },
+        {
+          "id": "st-royals-cycling-men-none",
+          "event": "Cycling",
+          "points": 0,
+          "type": "points",
+          "note": "No Position Secured In Cycling- Mens"
+        },
+        {
+          "id": "st-royals-cycling-women-none",
+          "event": "Cycling",
+          "points": 0,
+          "type": "points",
+          "note": "No Position Secured In Cycling-Womens"
         }
       ]
     }

@@ -69,6 +69,19 @@
   padding: 8px 4px;
 }
 .asidebar__foot a:hover { color: var(--gold); }
+.asidebar__sync {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid rgba(212,175,55,0.42);
+  border-radius: 10px;
+  background: rgba(212,175,55,0.12);
+  color: var(--gold);
+  font-weight: 700;
+  text-align: center;
+}
+.asidebar__sync:hover { background: rgba(212,175,55,0.18); }
+.asidebar__sync:disabled { opacity: 0.6; cursor: wait; }
 
 .amain { flex: 1; padding: clamp(24px, 4vw, 48px); max-width: 920px; }
 .amain h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 28px; }
@@ -121,6 +134,21 @@
 .ptteam__body {
   display: flex;
   flex-direction: column;
+}
+.ptsearch {
+  margin: 12px 15px;
+  width: calc(100% - 30px);
+  min-width: 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--white);
+  padding: 10px 12px;
+  font: inherit;
+}
+.ptsearch:focus {
+  outline: none;
+  border-color: var(--gold);
 }
 .ptrow {
   position: relative;
@@ -221,6 +249,43 @@
 .ptremove:hover {
   background: rgba(255,93,93,0.12);
 }
+.champcats {
+  border-top: 1px dashed var(--border);
+  padding-top: 14px;
+}
+.champcats__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.champcats__head h4 {
+  font-size: 1rem;
+}
+.champcats__rows {
+  display: grid;
+  gap: 12px;
+}
+.champcat {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+}
+.champcat__title {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.champcat .field--wide {
+  grid-column: 1 / -1;
+}
+@media (max-width: 560px) { .champcat { grid-template-columns: 1fr; } }
 @media (max-width: 700px) {
   .ptrow__games {
     grid-template-columns: 1fr;

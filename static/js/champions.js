@@ -22,12 +22,30 @@
     grid.innerHTML = rows.map((c) => {
       const teamName = teamDisplay(c.team, c.team_name);
       const secondTeamName = teamDisplay(c.second_team, c.second_team_name);
-      const category = c.sport_category ? `<span class="badge badge--gold">${CARNIVAL.esc(c.sport_category)}</span>` : "";
-      const photo = c.winning_photo ? `<img class="champcard__photo" src="${CARNIVAL.esc(c.winning_photo)}" alt="${CARNIVAL.esc(c.event_name || "Winning photo")}" loading="lazy">` : "";
+      // support multiple categories (comma-separated) and multiple photos (comma-separated URLs)
+      const categories = (c.sport_category || '').split(',').map(s => s.trim()).filter(Boolean);
+      const photos = (c.winning_photo || '').split(',').map(s => s.trim()).filter(Boolean);
       if ((c.champion_type || "").toLowerCase() === "individual") {
+        const topBadges = categories.length ? categories.map(cat => `<span class="badge badge--gold">${CARNIVAL.esc(cat)}</span>`).join(' ') : '';
+        const photosHtml = (photos.length ? photos : [c.winning_photo || '']).map((p, idx) => p ? `<img class="champcard__photo" src="${CARNIVAL.esc(p)}" alt="${CARNIVAL.esc(c.event_name || 'Winning photo')}" loading="lazy">` : '').join('');
+        const categoryRows = Array.isArray(c.categories) ? c.categories.slice(0, 5) : [];
+        const categoryHtml = categoryRows.length ? `
+          <div class="champcard__categories">
+            ${categoryRows.map((cat) => `
+              <div class="champcard__category">
+                ${cat.photo ? `<img class="champcard__category-photo" src="${CARNIVAL.esc(cat.photo)}" alt="${CARNIVAL.esc(cat.name || 'Champion category')}" loading="lazy">` : ''}
+                <div class="champcard__label">${CARNIVAL.esc(cat.name || 'Category')}</div>
+                <div class="champcard__value">${CARNIVAL.esc(cat.first_player || '—')}</div>
+                <div class="champcard__meta">${CARNIVAL.esc(teamDisplay(cat.first_team, cat.first_team_name))}</div>
+                <div class="champcard__label" style="margin-top:8px">Second Place</div>
+                <div class="champcard__value">${CARNIVAL.esc(cat.second_player || '—')}</div>
+                <div class="champcard__meta">${CARNIVAL.esc(teamDisplay(cat.second_team, cat.second_team_name))}</div>
+              </div>
+            `).join('')}
+          </div>` : '';
         return `<div class="card champcard">
-          ${photo}
-          <div class="champcard__top">${category}</div>
+          <div class="champcard__photowrap">${photosHtml}</div>
+          <div class="champcard__top">${topBadges}</div>
           <div class="champcard__event">${CARNIVAL.esc(c.event_name || c.event_id)}</div>
           <div class="champcard__label">Individual Champion</div>
           <div class="champcard__value">${CARNIVAL.esc(c.player_name || "—")}</div>
@@ -35,14 +53,15 @@
           <div class="champcard__label" style="margin-top:12px">Second Place</div>
           <div class="champcard__value">${CARNIVAL.esc(c.second_player_name || "—")}</div>
           <div class="champcard__meta">${CARNIVAL.esc(secondTeamName)}</div>
+          ${categoryHtml}
         </div>`;
       }
       const players = (c.players || []).length
         ? `<ul class="champcard__players">${(c.players || []).map((p) => `<li>${CARNIVAL.esc(p)}</li>`).join("")}</ul>`
         : '<div class="muted">Players not added yet.</div>';
       return `<div class="card champcard">
-        ${photo}
-        <div class="champcard__top">${category}</div>
+        <div class="champcard__photo">${photos.length ? `<img src="${CARNIVAL.esc(photos[0])}">` : ''}</div>
+        <div class="champcard__top">${CARNIVAL.esc(c.sport_category || '')}</div>
         <div class="champcard__event">${CARNIVAL.esc(c.event_name || c.event_id)}</div>
         <div class="champcard__label">Team Champion</div>
         <div class="champcard__value">${CARNIVAL.esc(teamName)}</div>

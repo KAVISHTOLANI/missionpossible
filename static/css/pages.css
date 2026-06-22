@@ -919,3 +919,6 @@
 .champcard__players { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; color: var(--muted); }
 .champcard__players li { list-style: none; padding-left: 14px; position: relative; }
 .champcard__players li::before { content: "•"; position: absolute; left: 0; color: var(--gold); }
+.champcard__categories { margin-top: 18px; display: grid; gap: 12px; }
+.champcard__category { border: 1px solid var(--border); border-radius: 10px; padding: 13px; background: rgba(255,255,255,0.03); }
+.champcard__category-photo { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 10px; }

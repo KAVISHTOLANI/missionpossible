@@ -31,6 +31,7 @@
       <button class="anav" data-panel="audit">Audit Log</button>
     </nav>
     <div class="asidebar__foot">
+      <button class="asidebar__sync" id="gitSyncBtn" type="button" onclick="saveToGitHub()">Save to GitHub</button>
       <a href="/" target="_blank">View site ↗</a>
       <a href="{{ url_for('admin.logout') }}">Log out →</a>
     </div>
@@ -280,6 +281,7 @@
         <div class="scoregrid scoregrid--2">
           <label class="field"><span>Team name</span><input id="fairPlayTeam" placeholder="Team Royals"></label>
           <label class="field"><span>Fair play points</span><input type="number" id="fairPlayPoints" value="0" min="0"></label>
+          <label class="field"><span>Fair play events</span><input id="fairPlayEvents" placeholder="Basketball, Throwball"></label>
         </div>
         <div class="abtn-row">
           <button class="btn btn--gold" onclick="saveFairPlayRow()">Save Fair Play Row →</button>
@@ -412,7 +414,16 @@
           </label>
           <label class="field"><span>Second place team display name</span><input id="chSecondIndTeamName" placeholder="Team Dominators"></label>
         </div>
+        <div id="chCategoryBlock" class="champcats">
+          <div class="champcats__head">
+            <h4>Champion Categories</h4>
+            <button class="btn btn--ghost" type="button" onclick="addChampionCategory()">Add Category</button>
+          </div>
+          <p class="amini">Add up to 5 categories for individual sports. Each category can include 1st, 2nd, teams, and a photo URL.</p>
+          <div id="chCategoryRows" class="champcats__rows"></div>
+        </div>
         <label class="field"><span>Winning photo</span><input type="file" id="chWinningPhoto" accept="image/png,image/jpeg,image/jpg,image/webp"></label>
+        <label class="field"><span>Winning photo URLs (optional, comma-separated)</span><input id="chWinningPhotoUrls" placeholder="https://... , https://..."></label>
         <div id="chPhotoPreview" class="amini"></div>
         <div class="abtn-row">
           <button class="btn btn--gold" onclick="saveChampion()">Save Champion →</button>
