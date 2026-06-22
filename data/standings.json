@@ -3,7 +3,7 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 3,
+      "events_played": 5,
       "wins": 1,
       "points_earned": 375,
       "penalty_deductions": 0,
@@ -32,6 +32,20 @@
           "points": 75,
           "type": "points",
           "note": "2nd Place Men's Cycling - Juneed"
+        },
+        {
+          "id": "st-46cd9c2502",
+          "event": "Cycling",
+          "points": 0,
+          "type": "points",
+          "note": "3rd Place Women's Cycling"
+        },
+        {
+          "id": "st-e1de0d59b8",
+          "event": "Cycling",
+          "points": 0,
+          "type": "points",
+          "note": "No Other Position Secured In Cycling"
         }
       ]
     },
@@ -87,7 +101,7 @@
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 2,
+      "events_played": 5,
       "wins": 0,
       "points_earned": 300,
       "penalty_deductions": 0,
@@ -109,6 +123,27 @@
           "points": 150,
           "type": "points",
           "note": "Runner-Ups Of Throwball"
+        },
+        {
+          "id": "st-08f0679da2",
+          "event": "Cycling",
+          "points": 0,
+          "type": "points",
+          "note": "No Position Secured In Cycling"
+        },
+        {
+          "id": "st-d2c2fd742a",
+          "event": "Cycling",
+          "points": 0,
+          "type": "points",
+          "note": "No Position Secured In Cycling- Mens"
+        },
+        {
+          "id": "st-09f21dbf78",
+          "event": "Cycling",
+          "points": 0,
+          "type": "points",
+          "note": "No Position Secured In Cycling-Womens"
         }
       ]
     }
