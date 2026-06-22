@@ -253,19 +253,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
-          "",
+          "CYCLING",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:41:12",
-        "updated_at": "2026-06-18T13:42:53"
+        "updated_at": "2026-06-22T11:48:35"
       },
       {
         "id": "pt-ba0b1fdeb1",
@@ -318,20 +318,20 @@
         "department": "CC Executive (DECC)",
         "played": [
           true,
-          false,
-          false,
+          true,
+          true,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
-          "",
+          "CYCLING",
           "",
           ""
         ],
         "created_at": "2026-06-05T10:41:12",
-        "updated_at": "2026-06-18T13:43:10"
+        "updated_at": "2026-06-22T11:48:42"
       },
       {
         "id": "pt-304b50efd3",
@@ -464,6 +464,50 @@
         ],
         "created_at": "2026-06-18T13:36:35",
         "updated_at": "2026-06-18T13:43:31"
+      },
+      {
+        "id": "pt-56569e9a0d",
+        "name": "K. Rakesh",
+        "employee_id": "4857",
+        "department": "Lab Technician (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CYCLING",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-22T11:48:23",
+        "updated_at": "2026-06-22T11:48:48"
+      },
+      {
+        "id": "pt-b6bae1dc25",
+        "name": "Dr. Sneha",
+        "employee_id": "4611",
+        "department": "Pathologist (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CYCLING",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-22T11:48:23",
+        "updated_at": "2026-06-22T11:48:51"
       }
     ],
     "royals": [
