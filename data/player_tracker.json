@@ -562,18 +562,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
           "CYCLING",
-          "",
+          "TUG OF WAR",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-06-23T09:39:11"
       },
       {
         "id": "pt-90df3ecae9",
@@ -626,20 +626,20 @@
         "department": "Lab Technician",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "THROWBALL",
-          "",
+          "TUG OF WAR",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-06-23T09:39:20"
       },
       {
         "id": "pt-842e536b61",
@@ -692,20 +692,20 @@
         "department": "HR",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "THROWBALL",
-          "",
+          "TUG OF WAR",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-06-23T09:39:27"
       },
       {
         "id": "pt-7d99b4d8cd",
@@ -816,6 +816,270 @@
         ],
         "created_at": "2026-06-22T10:00:00",
         "updated_at": "2026-06-22T10:00:00"
+      },
+      {
+        "id": "pt-1e37728ca2",
+        "name": "Ravi Kumar T",
+        "employee_id": "286",
+        "department": "Assistant (GSH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:39:34"
+      },
+      {
+        "id": "pt-9e22917c2b",
+        "name": "Venkatesh M",
+        "employee_id": "285",
+        "department": "Assistant (GSH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:39:37"
+      },
+      {
+        "id": "pt-c8396538ca",
+        "name": "Srikanth Goud Palle",
+        "employee_id": "283",
+        "department": "Assistant (GSH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:39:39"
+      },
+      {
+        "id": "pt-96bfaca159",
+        "name": "M. Vijay Kumar",
+        "employee_id": "(No ID listed)",
+        "department": "Driver (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:39:42"
+      },
+      {
+        "id": "pt-7ab4ddfed6",
+        "name": "Ramesh Toorkarigari",
+        "employee_id": "409",
+        "department": "Manager (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:39:45"
+      },
+      {
+        "id": "pt-d0d4a989f7",
+        "name": "P. Rajshekhar",
+        "employee_id": "4803",
+        "department": "Asst. Accountant (MFH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:39:48"
+      },
+      {
+        "id": "pt-e534220d2e",
+        "name": "Rakesh Chandra Panda",
+        "employee_id": "333",
+        "department": "Driver (DECC)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:39:51"
+      },
+      {
+        "id": "pt-bf3c03cfab",
+        "name": "Rakesh Dubbaka",
+        "employee_id": "354",
+        "department": "Asst. Manager (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:39:53"
+      },
+      {
+        "id": "pt-626453f00c",
+        "name": "Priyanka Mudigonda",
+        "employee_id": "294",
+        "department": "Executive (GSH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:40:13"
+      },
+      {
+        "id": "pt-722164ddfa",
+        "name": "J. Geetha Bhavani",
+        "employee_id": "4821",
+        "department": "Lab Technician (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:40:16"
+      },
+      {
+        "id": "pt-2d86f6d5d6",
+        "name": "Ramya Karnam",
+        "employee_id": "466",
+        "department": "Lab Technician (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:40:20"
+      },
+      {
+        "id": "pt-fd3999623f",
+        "name": "B. Anuradha",
+        "employee_id": "910769",
+        "department": "Housekeeper (Kairos)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:38:55",
+        "updated_at": "2026-06-23T09:40:32"
       }
     ],
     "royals": [
