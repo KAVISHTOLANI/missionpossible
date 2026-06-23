@@ -75,5 +75,34 @@
     ],
     "winning_photo": "",
     "updated_at": "2026-06-23 09:14"
+  },
+  {
+    "event_id": "tug-of-war",
+    "event_name": "Tug of War",
+    "sport_category": "Outdoor Sports",
+    "champion_type": "team",
+    "team": "royals",
+    "team_name": "Team Royals",
+    "second_team": "dominators",
+    "second_team_name": "Team Dominators",
+    "player_name": "",
+    "second_player_name": "",
+    "players": [
+      "Mr. Srikanth (Captain)",
+      "Mr. Nayan Das",
+      "Mr. Pintu Behra",
+      "Mr. Balaji",
+      "Mr. Ambedkar",
+      "Mr. Teja",
+      "Mr. Srinivas",
+      "Mr. Ganesh",
+      "Mrs. Saritha",
+      "Ms. Soumya",
+      "Mrs. Mallika",
+      "Mrs. Shima"
+    ],
+    "categories": [],
+    "winning_photo": "",
+    "updated_at": "2026-06-23 10:35"
   }
 ]
