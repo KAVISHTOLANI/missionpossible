@@ -113,20 +113,22 @@
     "date": "18th June 2026",
     "day": "Thursday",
     "category": "Outdoor Sports",
-    "venue": "TBD",
+    "venue": "RRC Grounds",
     "location": "Marredpally, Hyderabad",
     "venue_maps_link": "",
     "weather": "Cloudy & Breezy — ~30°C",
     "weather_icon": "🌬",
     "weather_note": "End of June brings cooler breezy days (~30°C), ideal for cycling.",
-    "status": "upcoming",
+    "status": "completed",
     "points": {
       "winner": 300,
       "runner_up": 150
     },
     "event_time": "",
     "num": "#05",
-    "rules_text": "1. Categories\nMale Category\nFemale Category\n2. Substitutions\nEach team may register up to 2 substitute participants for the entire event.\nTeams may use these substitutes across any category at their discretion.\n3. General Rules\nParticipants shall be assigned a designated starting position on the circular track.\nOnce the race begins, participants may ride freely within the designated cycling course.\nDeliberately obstructing, pushing, or interfering with another participant is not permitted.\nReceiving physical assistance from another person is not permitted.\nParticipants must follow all instructions given by referees and event officials.\nDangerous riding deemed intentional by the referee may result in disqualification.\nReferees may disqualify participants for rule violations during or after the race, even after the\nparticipant has crossed the finish line.\nThe decision of the referees and event officials shall be final and binding on all participants.\nMALE CATEGORY\nTeam Composition\nEach team may nominate 2 male participants.\nA total of 6 participants shall compete simultaneously.\nMatch Format\nAll participants shall compete in a single race over the designated cycling course.\nThe participant who crosses the finish line first shall be declared the Winner.\nThe participant who crosses the finish line second shall be declared the Runner-Up.\nReferees & Officials\nThe event shall be conducted under the supervision of appointed referees and officials.\nAwards\nWinner: 100 Team Points\nRunner-Up: 75 Team Points\n\nFEMALE CATEGORY\nTeam Composition\nEach team may nominate 2 female participants.\nA total of 6 participants shall compete simultaneously.\nMatch Format\nAll participants shall compete in a single race over the designated cycling course.\nThe participant who crosses the finish line first shall be declared the Winner.\nThe participant who crosses the finish line second shall be declared the Runner-Up.\nReferees & Officials\nThe event shall be conducted under the supervision of appointed referees and officials.\nAwards\nWinner: 150 Team Points\nRunner-Up: 75 Team Points\nGifts & Certificates\nGifts and Certificates will be distributed on the same day"
+    "rules_text": "1. Categories\nMale Category\nFemale Category\n2. Substitutions\nEach team may register up to 2 substitute participants for the entire event.\nTeams may use these substitutes across any category at their discretion.\n3. General Rules\nParticipants shall be assigned a designated starting position on the circular track.\nOnce the race begins, participants may ride freely within the designated cycling course.\nDeliberately obstructing, pushing, or interfering with another participant is not permitted.\nReceiving physical assistance from another person is not permitted.\nParticipants must follow all instructions given by referees and event officials.\nDangerous riding deemed intentional by the referee may result in disqualification.\nReferees may disqualify participants for rule violations during or after the race, even after the\nparticipant has crossed the finish line.\nThe decision of the referees and event officials shall be final and binding on all participants.\nMALE CATEGORY\nTeam Composition\nEach team may nominate 2 male participants.\nA total of 6 participants shall compete simultaneously.\nMatch Format\nAll participants shall compete in a single race over the designated cycling course.\nThe participant who crosses the finish line first shall be declared the Winner.\nThe participant who crosses the finish line second shall be declared the Runner-Up.\nReferees & Officials\nThe event shall be conducted under the supervision of appointed referees and officials.\nAwards\nWinner: 100 Team Points\nRunner-Up: 75 Team Points\n\nFEMALE CATEGORY\nTeam Composition\nEach team may nominate 2 female participants.\nA total of 6 participants shall compete simultaneously.\nMatch Format\nAll participants shall compete in a single race over the designated cycling course.\nThe participant who crosses the finish line first shall be declared the Winner.\nThe participant who crosses the finish line second shall be declared the Runner-Up.\nReferees & Officials\nThe event shall be conducted under the supervision of appointed referees and officials.\nAwards\nWinner: 150 Team Points\nRunner-Up: 75 Team Points\nGifts & Certificates\nGifts and Certificates will be distributed on the same day",
+    "tournament_format": "",
+    "results": []
   },
   {
     "id": "tug-of-war",
