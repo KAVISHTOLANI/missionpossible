@@ -446,32 +446,23 @@
     {
       "id": "fp-35a1d3da46",
       "team_name": "Team Creators",
-      "fair_play_points": 3,
-      "fair_play_events": [
-        "Basketball",
-        "Cycling"
-      ],
-      "updated_at": "2026-06-23 09:15"
+      "fair_play_points": 7,
+      "fair_play_events": [],
+      "updated_at": "2026-06-23 12:38"
     },
     {
       "id": "fp-e641765f2a",
       "team_name": "Team Dominators",
-      "fair_play_points": 3,
-      "fair_play_events": [
-        "Basketball",
-        "Throwball"
-      ],
-      "updated_at": "2026-06-23 09:08"
+      "fair_play_points": 4,
+      "fair_play_events": [],
+      "updated_at": "2026-06-23 12:38"
     },
     {
       "id": "fp-f9bc5b3f71",
       "team_name": "Team Royals",
-      "fair_play_points": 3,
-      "fair_play_events": [
-        "Throwball",
-        "Cycling"
-      ],
-      "updated_at": "2026-06-23 09:16"
+      "fair_play_points": 4,
+      "fair_play_events": [],
+      "updated_at": "2026-06-23 12:38"
     }
   ]
 }
