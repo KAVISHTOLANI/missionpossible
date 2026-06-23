@@ -75,19 +75,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
-          "",
+          "TUG OF WAR",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-06-23T09:36:01"
       },
       {
         "id": "pt-c4ca1ef8f6",
@@ -118,20 +118,20 @@
         "department": "Driver",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "THROWBALL",
-          "",
+          "TUG OF WAR",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-06-23T09:31:37"
       },
       {
         "id": "pt-3e40c44861",
@@ -267,9 +267,9 @@
       },
       {
         "id": "pt-c7842de58e",
-        "name": "Dr. Nandini",
+        "name": "Dr. Shakeel",
         "employee_id": "(No ID listed)",
-        "department": "Doctor",
+        "department": "Doctor (Captain)",
         "played": [
           true,
           false,
@@ -278,14 +278,14 @@
           false
         ],
         "games": [
-          "CYCLING",
+          "TUG OF WAR",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:09:44",
-        "updated_at": "2026-06-23T09:10:18"
+        "updated_at": "2026-06-23T09:30:30"
       },
       {
         "id": "pt-1724dc57ae",
@@ -300,14 +300,234 @@
           false
         ],
         "games": [
-          "CYCLING",
+          "TUG OF WAR",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:09:44",
-        "updated_at": "2026-06-23T09:10:40"
+        "updated_at": "2026-06-23T09:30:34"
+      },
+      {
+        "id": "pt-10d13b3ed0",
+        "name": "Mr. Imran",
+        "employee_id": "714",
+        "department": "Maintenance",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:29:57",
+        "updated_at": "2026-06-23T09:30:37"
+      },
+      {
+        "id": "pt-516f9f90c6",
+        "name": "Mr. Charan",
+        "employee_id": "4699",
+        "department": "Maintenance",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:29:57",
+        "updated_at": "2026-06-23T09:30:40"
+      },
+      {
+        "id": "pt-c1376997af",
+        "name": "Mr. Rasool",
+        "employee_id": "829",
+        "department": "EDP",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:29:57",
+        "updated_at": "2026-06-23T09:30:42"
+      },
+      {
+        "id": "pt-c74cb89228",
+        "name": "Mr. Sathyanarayana",
+        "employee_id": "021",
+        "department": "Art Lab",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:29:57",
+        "updated_at": "2026-06-23T09:30:46"
+      },
+      {
+        "id": "pt-3ccd9560a2",
+        "name": "Mr. Ashok",
+        "employee_id": "804",
+        "department": "MRD",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:29:57",
+        "updated_at": "2026-06-23T09:30:48"
+      },
+      {
+        "id": "pt-9981a7ae2d",
+        "name": "Mr. Roshan",
+        "employee_id": "513232",
+        "department": "Security",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:29:57",
+        "updated_at": "2026-06-23T09:30:51"
+      },
+      {
+        "id": "pt-66a868bb30",
+        "name": "Mr. Renuka",
+        "employee_id": "513804",
+        "department": "Security",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:29:57",
+        "updated_at": "2026-06-23T09:30:54"
+      },
+      {
+        "id": "pt-5ed439cb04",
+        "name": "Mr. Sanju",
+        "employee_id": "508915",
+        "department": "Security",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:29:57",
+        "updated_at": "2026-06-23T09:30:57"
+      },
+      {
+        "id": "pt-0ae40f117c",
+        "name": "Ms. Upendra",
+        "employee_id": "14091",
+        "department": "HK",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:29:57",
+        "updated_at": "2026-06-23T09:31:00"
+      },
+      {
+        "id": "pt-8a117389a8",
+        "name": "Ms. Ranjitha",
+        "employee_id": "14316",
+        "department": "HK Sup",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T09:29:57",
+        "updated_at": "2026-06-23T09:31:02"
       }
     ],
     "dominators": [
