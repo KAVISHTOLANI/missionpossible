@@ -267,9 +267,9 @@
       },
       {
         "id": "pt-c7842de58e",
-        "name": "Dr. Shakeel",
+        "name": "Charan",
         "employee_id": "(No ID listed)",
-        "department": "Doctor (Captain)",
+        "department": "Videographer",
         "played": [
           true,
           false,
@@ -278,20 +278,20 @@
           false
         ],
         "games": [
-          "TUG OF WAR",
+          "SACK RACE",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:09:44",
-        "updated_at": "2026-06-23T09:30:30"
+        "updated_at": "2026-06-23T12:30:37"
       },
       {
         "id": "pt-1724dc57ae",
-        "name": "Kalavathi",
+        "name": "Aarthi",
         "employee_id": "4774",
-        "department": "Clinical",
+        "department": "HK",
         "played": [
           true,
           false,
@@ -300,14 +300,14 @@
           false
         ],
         "games": [
-          "TUG OF WAR",
+          "SACK RACE",
           "",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:09:44",
-        "updated_at": "2026-06-23T09:30:34"
+        "updated_at": "2026-06-23T12:30:09"
       },
       {
         "id": "pt-10d13b3ed0",
@@ -351,7 +351,7 @@
           ""
         ],
         "created_at": "2026-06-23T09:29:57",
-        "updated_at": "2026-06-23T09:30:40"
+        "updated_at": "2026-06-23T12:29:39"
       },
       {
         "id": "pt-c1376997af",
@@ -528,6 +528,50 @@
         ],
         "created_at": "2026-06-23T09:29:57",
         "updated_at": "2026-06-23T09:31:02"
+      },
+      {
+        "id": "pt-17b0e1e487",
+        "name": "Vishal",
+        "employee_id": "11226",
+        "department": "HK",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SACK RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T12:28:34",
+        "updated_at": "2026-06-23T12:29:08"
+      },
+      {
+        "id": "pt-6889c63e97",
+        "name": "Vijji",
+        "employee_id": "69",
+        "department": "DA",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SACK RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T12:28:34",
+        "updated_at": "2026-06-23T12:29:13"
       }
     ],
     "dominators": [
