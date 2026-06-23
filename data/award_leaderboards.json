@@ -229,10 +229,10 @@
       "id": "mvp-mr-srikanth",
       "player_name": "Mr. Srikanth",
       "team_name": "Team Royals",
-      "gold": 0,
+      "gold": 1,
       "silver": 1,
-      "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "points": 15,
+      "updated_at": "2026-06-23 10:22"
     },
     {
       "id": "mvp-mr-suraj-uttam",
@@ -251,6 +251,105 @@
       "silver": 1,
       "points": 5,
       "updated_at": "2026-06-22 10:00"
+    },
+    {
+      "id": "mvp-df22fad524",
+      "player_name": "Mr. Nayan Das",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 10:22"
+    },
+    {
+      "id": "mvp-b797c34713",
+      "player_name": "Mr. Pintu Behra",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 10:22"
+    },
+    {
+      "id": "mvp-fc942409c4",
+      "player_name": "Mr. Balaj",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 10:23"
+    },
+    {
+      "id": "mvp-507014354d",
+      "player_name": "Mr. Ambedkar",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 10:23"
+    },
+    {
+      "id": "mvp-6ef54c2386",
+      "player_name": "Mr. Teja",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 10:23"
+    },
+    {
+      "id": "mvp-99543b7409",
+      "player_name": "Mr. Srinivas",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 10:23"
+    },
+    {
+      "id": "mvp-ad08642158",
+      "player_name": "Mr. Ganesh",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 10:23"
+    },
+    {
+      "id": "mvp-7ac86be0c3",
+      "player_name": "Mrs. Saritha",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 10:24"
+    },
+    {
+      "id": "mvp-0ecf18e556",
+      "player_name": "Ms. Soumya",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 10:24"
+    },
+    {
+      "id": "mvp-b8c39bc4d3",
+      "player_name": "Mrs. Mallika",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 10:25"
+    },
+    {
+      "id": "mvp-d671f8b3d4",
+      "player_name": "Mrs. Shima",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 10:25"
     }
   ],
   "fair_play": [
