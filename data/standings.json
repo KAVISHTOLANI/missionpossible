@@ -3,7 +3,7 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 10,
+      "events_played": 9,
       "wins": 1,
       "points_earned": 600,
       "penalty_deductions": 0,
@@ -74,13 +74,6 @@
           "points": 150,
           "type": "points",
           "note": "Winner Of Lemon And Spoon Race Men - Praveen"
-        },
-        {
-          "id": "st-d27a3a1415",
-          "event": "Lemon & Spoon Race",
-          "points": 0,
-          "type": "points",
-          "note": "In Lemon and Spoon Race Men's - No Position secured"
         }
       ]
     },
@@ -164,7 +157,7 @@
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 8,
+      "events_played": 9,
       "wins": 1,
       "points_earned": 825,
       "penalty_deductions": 0,
@@ -228,6 +221,13 @@
           "points": 150,
           "type": "points",
           "note": "Winner OF Women's Sack Race - Ms. Manasa"
+        },
+        {
+          "id": "st-d397e59c9c",
+          "event": "Lemon & Spoon Race",
+          "points": 0,
+          "type": "points",
+          "note": "No Position Secured In Lemon And Spoon Men"
         }
       ]
     }
