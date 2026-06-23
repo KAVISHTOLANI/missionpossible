@@ -1150,28 +1150,6 @@
         "updated_at": "2026-06-22T10:00:00"
       },
       {
-        "id": "pt-83f741ce66",
-        "name": "Mr. Nayan Das",
-        "employee_id": "N/A",
-        "department": "Valet Driver – Sunrise Valet",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "TUG OF WAR",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-23T09:52:27"
-      },
-      {
         "id": "pt-51eb8d8b12",
         "name": "Dr. Vamshi",
         "employee_id": "1239",
