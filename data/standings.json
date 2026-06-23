@@ -3,11 +3,11 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 8,
+      "events_played": 10,
       "wins": 1,
-      "points_earned": 450,
+      "points_earned": 600,
       "penalty_deductions": 0,
-      "net_points": 450,
+      "net_points": 600,
       "gold": 1,
       "silver": 2,
       "bronze": 0,
@@ -67,17 +67,31 @@
           "points": 0,
           "type": "points",
           "note": "Nothing Else Won In Sack race"
+        },
+        {
+          "id": "st-dca8f65012",
+          "event": "Lemon & Spoon Race",
+          "points": 150,
+          "type": "points",
+          "note": "Winner Of Lemon And Spoon Race Men - Praveen"
+        },
+        {
+          "id": "st-d27a3a1415",
+          "event": "Lemon & Spoon Race",
+          "points": 0,
+          "type": "points",
+          "note": "In Lemon and Spoon Race Men's - No Position secured"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 8,
+      "events_played": 9,
       "wins": 1,
-      "points_earned": 975,
+      "points_earned": 1050,
       "penalty_deductions": 0,
-      "net_points": 975,
+      "net_points": 1050,
       "gold": 3,
       "silver": 2,
       "bronze": 0,
@@ -137,6 +151,13 @@
           "points": 0,
           "type": "points",
           "note": "Nothing Else Won In Sack race"
+        },
+        {
+          "id": "st-c9505c4b83",
+          "event": "Lemon & Spoon Race",
+          "points": 75,
+          "type": "points",
+          "note": "2nd Place Lemon And Spoon Race Men's - Debendra"
         }
       ]
     },
