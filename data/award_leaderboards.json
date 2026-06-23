@@ -350,6 +350,78 @@
       "silver": 0,
       "points": 10,
       "updated_at": "2026-06-23 10:25"
+    },
+    {
+      "id": "mvp-5a6261703a",
+      "player_name": "Ramesh Toorkarigari",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-23 10:31"
+    },
+    {
+      "id": "mvp-00f9b42275",
+      "player_name": "P. Rajshekhar",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-23 10:31"
+    },
+    {
+      "id": "mvp-e9d084518b",
+      "player_name": "Rakesh Chandra Panda",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-23 10:31"
+    },
+    {
+      "id": "mvp-106c4a9627",
+      "player_name": "Rakesh Dubbaka",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-23 10:32"
+    },
+    {
+      "id": "mvp-454515f5bb",
+      "player_name": "Priyanka Mudigonda",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-23 10:32"
+    },
+    {
+      "id": "mvp-ed46293801",
+      "player_name": "J. Geetha Bhavani",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-23 10:32"
+    },
+    {
+      "id": "mvp-71c208637d",
+      "player_name": "Ramya Karnam",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-23 10:32"
+    },
+    {
+      "id": "mvp-f2b2a49bcb",
+      "player_name": "B. Anuradha",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-23 10:33"
     }
   ],
   "fair_play": [
