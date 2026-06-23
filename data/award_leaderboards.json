@@ -40,10 +40,10 @@
       "id": "mvp-gandhi-rodda",
       "player_name": "Gandhi Rodda",
       "team_name": "Team Dominators",
-      "gold": 1,
+      "gold": 2,
       "silver": 1,
-      "points": 15,
-      "updated_at": "2026-06-23 10:36"
+      "points": 25,
+      "updated_at": "2026-06-23 12:24"
     },
     {
       "id": "mvp-maria-barthalomia-k",
@@ -140,9 +140,9 @@
       "player_name": "Mr. Jaya Surya",
       "team_name": "Team Royals",
       "gold": 0,
-      "silver": 2,
-      "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "silver": 3,
+      "points": 15,
+      "updated_at": "2026-06-23 12:25"
     },
     {
       "id": "mvp-nagesh",
@@ -422,6 +422,24 @@
       "silver": 1,
       "points": 5,
       "updated_at": "2026-06-23 10:33"
+    },
+    {
+      "id": "mvp-23339c40b8",
+      "player_name": "Aarthi",
+      "team_name": "Team creators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-23 12:24"
+    },
+    {
+      "id": "mvp-761e7090d4",
+      "player_name": "Ms. Manasa",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-23 12:25"
     }
   ],
   "fair_play": [
