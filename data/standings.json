@@ -3,11 +3,11 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 6,
+      "events_played": 8,
       "wins": 1,
-      "points_earned": 375,
+      "points_earned": 450,
       "penalty_deductions": 0,
-      "net_points": 375,
+      "net_points": 450,
       "gold": 1,
       "silver": 1,
       "bronze": 0,
@@ -53,17 +53,31 @@
           "points": 0,
           "type": "points",
           "note": "3rd Place Tug Of War"
+        },
+        {
+          "id": "st-3ad9e79665",
+          "event": "Sack Race",
+          "points": 75,
+          "type": "points",
+          "note": "2nd Place Women's Sack Race - Aarthi"
+        },
+        {
+          "id": "st-f7bdcf3617",
+          "event": "Sack Race",
+          "points": 0,
+          "type": "points",
+          "note": "Nothing Else Won In Sack race"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 6,
+      "events_played": 8,
       "wins": 1,
-      "points_earned": 825,
+      "points_earned": 975,
       "penalty_deductions": 0,
-      "net_points": 825,
+      "net_points": 975,
       "gold": 3,
       "silver": 2,
       "bronze": 0,
@@ -109,17 +123,31 @@
           "points": 150,
           "type": "points",
           "note": "Runner's Up Of Tug Of War"
+        },
+        {
+          "id": "st-fc8cffe944",
+          "event": "Sack Race",
+          "points": 150,
+          "type": "points",
+          "note": "Winner Of Men's Sack Race - Gandhi Rodda"
+        },
+        {
+          "id": "st-0c373ffc46",
+          "event": "Sack Race",
+          "points": 0,
+          "type": "points",
+          "note": "Nothing Else Won In Sack race"
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 6,
+      "events_played": 8,
       "wins": 1,
-      "points_earned": 600,
+      "points_earned": 825,
       "penalty_deductions": 0,
-      "net_points": 600,
+      "net_points": 825,
       "gold": 1,
       "silver": 2,
       "bronze": 0,
@@ -165,6 +193,20 @@
           "points": 300,
           "type": "points",
           "note": "Winners Of Tug Of War"
+        },
+        {
+          "id": "st-23e178db82",
+          "event": "Sack Race",
+          "points": 75,
+          "type": "points",
+          "note": "2nd Place Men's Sack Race - Mr. Jaya Surya"
+        },
+        {
+          "id": "st-d1b9e2eaea",
+          "event": "Sack Race",
+          "points": 150,
+          "type": "points",
+          "note": "Winner OF Women's Sack Race - Ms. Manasa"
         }
       ]
     }
