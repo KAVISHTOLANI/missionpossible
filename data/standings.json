@@ -3,7 +3,7 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 6,
+      "events_played": 5,
       "wins": 1,
       "points_earned": 375,
       "penalty_deductions": 0,
@@ -46,24 +46,17 @@
           "points": 0,
           "type": "points",
           "note": "No Other Position Secured In Cycling"
-        },
-        {
-          "id": "st-52e5d65cde",
-          "event": "Tug of War",
-          "points": 0,
-          "type": "points",
-          "note": "3rd Place Tug Of War"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 5,
+      "events_played": 7,
       "wins": 1,
-      "points_earned": 675,
+      "points_earned": 975,
       "penalty_deductions": 0,
-      "net_points": 675,
+      "net_points": 975,
       "gold": 3,
       "silver": 1,
       "bronze": 0,
@@ -102,17 +95,31 @@
           "points": 75,
           "type": "points",
           "note": "2nd Place Women's Cycling - Dr.Sneha"
+        },
+        {
+          "id": "st-b9323db8f4",
+          "event": "Tug of War",
+          "points": 150,
+          "type": "points",
+          "note": "Runner's Up - Tug Of War"
+        },
+        {
+          "id": "st-42d3280263",
+          "event": "Tug of War",
+          "points": 150,
+          "type": "points",
+          "note": "Runner's Up Of Tug Of War"
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 5,
-      "wins": 0,
-      "points_earned": 300,
+      "events_played": 7,
+      "wins": 2,
+      "points_earned": 900,
       "penalty_deductions": 0,
-      "net_points": 300,
+      "net_points": 900,
       "gold": 0,
       "silver": 2,
       "bronze": 0,
@@ -151,6 +158,20 @@
           "points": 0,
           "type": "points",
           "note": "No Position Secured In Cycling-Womens"
+        },
+        {
+          "id": "st-1a99f13f47",
+          "event": "Tug of War",
+          "points": 300,
+          "type": "points",
+          "note": "Winner's of Tug Of War"
+        },
+        {
+          "id": "st-9029fec0c7",
+          "event": "Tug of War",
+          "points": 300,
+          "type": "points",
+          "note": "Winners Of Tug Of War"
         }
       ]
     }
