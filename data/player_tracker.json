@@ -626,20 +626,20 @@
         "department": "Pathologist (ADL)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "CYCLING",
-          "",
+          "SACK RACE",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-06-23T12:33:20"
       },
       {
         "id": "pt-68cb4ff63b",
@@ -671,19 +671,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "THROWBALL",
           "TUG OF WAR",
-          "",
+          "SACK RACE",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-23T09:39:20"
+        "updated_at": "2026-06-23T12:32:15"
       },
       {
         "id": "pt-842e536b61",
@@ -978,20 +978,20 @@
         "department": "Asst. Accountant (MFH)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
-          "",
+          "SACK RACE",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:38:55",
-        "updated_at": "2026-06-23T09:39:48"
+        "updated_at": "2026-06-23T12:33:06"
       },
       {
         "id": "pt-e534220d2e",
@@ -1088,20 +1088,20 @@
         "department": "Lab Technician (ADL)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
-          "",
+          "SACK RACE",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:38:55",
-        "updated_at": "2026-06-23T09:40:20"
+        "updated_at": "2026-06-23T12:32:55"
       },
       {
         "id": "pt-fd3999623f",
