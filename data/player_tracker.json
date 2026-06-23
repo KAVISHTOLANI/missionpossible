@@ -291,7 +291,7 @@
         "id": "pt-1724dc57ae",
         "name": "Aarthi",
         "employee_id": "4774",
-        "department": "HK",
+        "department": "n/a",
         "played": [
           true,
           false,
@@ -301,13 +301,13 @@
         ],
         "games": [
           "SACK RACE",
-          "",
+          "LEMON AND SPOON RACE",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:09:44",
-        "updated_at": "2026-06-23T12:30:09"
+        "updated_at": "2026-06-23T12:51:54"
       },
       {
         "id": "pt-10d13b3ed0",
@@ -426,20 +426,20 @@
         "department": "Security",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
-          "",
+          "LEMON AND SPOON RACE",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:29:57",
-        "updated_at": "2026-06-23T09:30:51"
+        "updated_at": "2026-06-23T12:49:50"
       },
       {
         "id": "pt-66a868bb30",
@@ -572,6 +572,72 @@
         ],
         "created_at": "2026-06-23T12:28:34",
         "updated_at": "2026-06-23T12:29:13"
+      },
+      {
+        "id": "pt-7a61a5a868",
+        "name": "Praveen",
+        "employee_id": "4804",
+        "department": "Maintenance",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T12:50:36",
+        "updated_at": "2026-06-23T12:50:45"
+      },
+      {
+        "id": "pt-306553fb90",
+        "name": "Ramya",
+        "employee_id": "814",
+        "department": "EDP",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T12:50:36",
+        "updated_at": "2026-06-23T12:50:50"
+      },
+      {
+        "id": "pt-57b2703bb4",
+        "name": "Kalavathy",
+        "employee_id": "N/A",
+        "department": "Clinical",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T12:52:17",
+        "updated_at": "2026-06-23T12:52:29"
       }
     ],
     "dominators": [
@@ -672,18 +738,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "THROWBALL",
           "TUG OF WAR",
           "SACK RACE",
-          "",
+          "LEMON AND SPOON RACE",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-23T12:32:15"
+        "updated_at": "2026-06-23T12:52:38"
       },
       {
         "id": "pt-842e536b61",
@@ -1089,19 +1155,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
           "SACK RACE",
-          "",
+          "LEMON AND SPOON RACE",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:38:55",
-        "updated_at": "2026-06-23T12:32:55"
+        "updated_at": "2026-06-23T12:52:56"
       },
       {
         "id": "pt-fd3999623f",
@@ -1110,20 +1176,42 @@
         "department": "Housekeeper (Kairos)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
-          "",
+          "LEMON AND SPOON RACE",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:38:55",
-        "updated_at": "2026-06-23T09:40:32"
+        "updated_at": "2026-06-23T12:53:12"
+      },
+      {
+        "id": "pt-e4163384e6",
+        "name": "Debendra",
+        "employee_id": "512975",
+        "department": "Security Guard (Kairos)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T12:53:51",
+        "updated_at": "2026-06-23T12:54:02"
       }
     ],
     "royals": [
@@ -1420,20 +1508,20 @@
         "department": "Technical Assistant (DECC)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "CYCLING",
-          "",
+          "LEMON AND SPOON RACE",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:12:09",
-        "updated_at": "2026-06-23T09:12:30"
+        "updated_at": "2026-06-23T12:54:40"
       },
       {
         "id": "pt-1c4eacd205",
@@ -1662,20 +1750,20 @@
         "department": "Operation Theatre",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "SACK RACE",
-          "",
+          "LEMON AND SPOON RACE",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T12:36:35",
-        "updated_at": "2026-06-23T12:36:48"
+        "updated_at": "2026-06-23T12:54:24"
       },
       {
         "id": "pt-77664f5301",
@@ -1698,6 +1786,50 @@
         ],
         "created_at": "2026-06-23T12:36:35",
         "updated_at": "2026-06-23T12:36:51"
+      },
+      {
+        "id": "pt-5ff9a3b0b2",
+        "name": "Ms. Anusha",
+        "employee_id": "4842",
+        "department": "PRE",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T12:55:05",
+        "updated_at": "2026-06-23T12:55:20"
+      },
+      {
+        "id": "pt-9200cb90e6",
+        "name": "Mr. Charan",
+        "employee_id": "1460",
+        "department": "CT Technician",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-23T12:55:05",
+        "updated_at": "2026-06-23T12:55:23"
       }
     ]
   }
