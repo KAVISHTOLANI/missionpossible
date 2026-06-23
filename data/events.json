@@ -315,20 +315,22 @@
     "date": "18th June 2026",
     "day": "Thursday",
     "category": "Fun",
-    "venue": "MFH",
+    "venue": "RRC Secundrabad",
     "location": "Marredpally, Hyderabad",
     "venue_maps_link": "",
     "weather": "Overcast & Humid — ~28°C",
     "weather_icon": "🌥",
     "weather_note": "Track should be dry and safe for participants.",
-    "status": "upcoming",
+    "status": "completed",
     "points": {
       "winner": 300,
       "runner_up": 150
     },
     "event_time": "",
     "num": "#13",
-    "rules_text": "1. Categories\nMale Category\nFemale Category\nRelay Category\n2. Substitutions\nEach team may register up to 3 substitute participants for the entire event.\nAt least 1 substitute participant must be female.\nTeams may use these substitutes across any category.\nOnce a participant has started competing in a category, substitutions shall not be permitted\nexcept with referee approval in the case of injury.\n3. General Rules\nParticipants must remain inside the sack throughout the race.\nThe sack must remain above waist level at all times.\nIf a participant falls, they shall be immediately disqualified.\nParticipants must remain within their designated lanes.\nDeliberately pushing, obstructing, or interfering with another participant is not permitted.\nReceiving physical assistance from another person is not permitted.\nParticipants must follow all instructions given by referees and event officials.\nReferees may disqualify participants during or after the race, even after the participant has\ncrossed the finish line.\nThe decision of the referees and event officials shall be final and binding on all participants.\nMALE CATEGORY\nTeam Composition\nEach team may nominate 2 male participants.\nA total of 6 participants shall compete simultaneously.\nMatch Format\nAll participants shall compete individually in a single race.\nThe participant who crosses the finish line first shall be declared the Winner.\nThe participant who crosses the finish line second shall be declared the Runner-Up.\nReferees & Officials\n\nThe event shall be conducted under the supervision of appointed referees and officials.\nAwards\nWinner: 100 Team Points\nRunner-Up: 50 Team Points\nFEMALE CATEGORY\nTeam Composition\nEach team may nominate 2 female participants.\nA total of 6 participants shall compete simultaneously.\nMatch Format\nAll participants shall compete individually in a single race.\nThe participant who crosses the finish line first shall be declared the Winner.\nThe participant who crosses the finish line second shall be declared the Runner-Up.\nReferees & Officials\nThe event shall be conducted under the supervision of appointed referees and officials.\nAwards\nWinner: 150 Team Points\nRunner-Up: 75 Team Points"
+    "rules_text": "1. Categories\nMale Category\nFemale Category\nRelay Category\n2. Substitutions\nEach team may register up to 3 substitute participants for the entire event.\nAt least 1 substitute participant must be female.\nTeams may use these substitutes across any category.\nOnce a participant has started competing in a category, substitutions shall not be permitted\nexcept with referee approval in the case of injury.\n3. General Rules\nParticipants must remain inside the sack throughout the race.\nThe sack must remain above waist level at all times.\nIf a participant falls, they shall be immediately disqualified.\nParticipants must remain within their designated lanes.\nDeliberately pushing, obstructing, or interfering with another participant is not permitted.\nReceiving physical assistance from another person is not permitted.\nParticipants must follow all instructions given by referees and event officials.\nReferees may disqualify participants during or after the race, even after the participant has\ncrossed the finish line.\nThe decision of the referees and event officials shall be final and binding on all participants.\nMALE CATEGORY\nTeam Composition\nEach team may nominate 2 male participants.\nA total of 6 participants shall compete simultaneously.\nMatch Format\nAll participants shall compete individually in a single race.\nThe participant who crosses the finish line first shall be declared the Winner.\nThe participant who crosses the finish line second shall be declared the Runner-Up.\nReferees & Officials\n\nThe event shall be conducted under the supervision of appointed referees and officials.\nAwards\nWinner: 100 Team Points\nRunner-Up: 50 Team Points\nFEMALE CATEGORY\nTeam Composition\nEach team may nominate 2 female participants.\nA total of 6 participants shall compete simultaneously.\nMatch Format\nAll participants shall compete individually in a single race.\nThe participant who crosses the finish line first shall be declared the Winner.\nThe participant who crosses the finish line second shall be declared the Runner-Up.\nReferees & Officials\nThe event shall be conducted under the supervision of appointed referees and officials.\nAwards\nWinner: 150 Team Points\nRunner-Up: 75 Team Points",
+    "tournament_format": "",
+    "results": []
   },
   {
     "id": "carrom",

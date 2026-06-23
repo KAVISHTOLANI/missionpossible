@@ -104,5 +104,32 @@
     "categories": [],
     "winning_photo": "",
     "updated_at": "2026-06-23 10:35"
+  },
+  {
+    "event_id": "sack-race",
+    "event_name": "Sack Race",
+    "sport_category": "Outdoor Sports",
+    "champion_type": "individual",
+    "team": "dominators",
+    "team_name": "Team Dominators",
+    "second_team": "royals",
+    "second_team_name": "Team Royals",
+    "player_name": "Gandhi Rodda",
+    "second_player_name": "Mr. Jaya Surya",
+    "players": [],
+    "categories": [
+      {
+        "name": "Female's",
+        "first_player": "Ms. Manasa",
+        "first_team": "royals",
+        "first_team_name": "Team Royals",
+        "second_player": "Aarthi",
+        "second_team": "creators",
+        "second_team_name": "Team Creators",
+        "photo": ""
+      }
+    ],
+    "winning_photo": "",
+    "updated_at": "2026-06-23 12:39"
   }
 ]
