@@ -48,5 +48,32 @@
     ],
     "winning_photo": "/static/images/gallery/season-4/champions_team_dominators.jpeg",
     "updated_at": "2026-06-12 12:40"
+  },
+  {
+    "event_id": "cycling",
+    "event_name": "Cycling",
+    "sport_category": "Outdoor Sports",
+    "champion_type": "individual",
+    "team": "dominators",
+    "team_name": "Team Dominators",
+    "second_team": "creators",
+    "second_team_name": "Team Creators",
+    "player_name": "Babullu Sahu",
+    "second_player_name": "Juneed",
+    "players": [],
+    "categories": [
+      {
+        "name": "Females",
+        "first_player": "Sandhya",
+        "first_team": "dominators",
+        "first_team_name": "Team Dominators",
+        "second_player": "Dr. Sneha",
+        "second_team": "dominators",
+        "second_team_name": "Team Dominators",
+        "photo": ""
+      }
+    ],
+    "winning_photo": "",
+    "updated_at": "2026-06-23 09:14"
   }
 ]
