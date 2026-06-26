@@ -21,7 +21,7 @@
       "Tarani"
     ],
     "winning_photo": "/static/images/champions/champions-team-creators.jpeg",
-    "updated_at": "2026-06-26 10:00"
+    "updated_at": "2026-06-12 17:58"
   },
   {
     "event_id": "throwball",
@@ -47,7 +47,7 @@
       "Gandhi Rodda"
     ],
     "winning_photo": "/static/images/gallery/season-4/champions_team_dominators.jpeg",
-    "updated_at": "2026-06-26 10:00"
+    "updated_at": "2026-06-12 12:40"
   },
   {
     "event_id": "cycling",
@@ -74,7 +74,7 @@
       }
     ],
     "winning_photo": "",
-    "updated_at": "2026-06-26 10:00"
+    "updated_at": "2026-06-23 09:14"
   },
   {
     "event_id": "tug-of-war",
@@ -101,8 +101,9 @@
       "Mrs. Mallika",
       "Mrs. Shima"
     ],
+    "categories": [],
     "winning_photo": "",
-    "updated_at": "2026-06-26 10:00"
+    "updated_at": "2026-06-23 10:35"
   },
   {
     "event_id": "sack-race",
@@ -129,6 +130,6 @@
       }
     ],
     "winning_photo": "",
-    "updated_at": "2026-06-26 10:00"
+    "updated_at": "2026-06-23 12:39"
   }
 ]

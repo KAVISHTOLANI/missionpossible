@@ -1,96 +1,5 @@
 {
   "teams": {
-    "dominators": {
-      "name": "Team Dominators",
-      "color": "#800000",
-      "events_played": 11,
-      "wins": 1,
-      "points_earned": 1200,
-      "penalty_deductions": 0,
-      "net_points": 1200,
-      "gold": 3,
-      "silver": 2,
-      "bronze": 0,
-      "event_breakdown": [
-        {
-          "id": "st-dominators-basketball-3rd-place-basketball",
-          "event": "Basketball",
-          "points": 0,
-          "type": "points",
-          "note": "3rd Place Basketball"
-        },
-        {
-          "id": "st-dominators-throwball-winners-of-throwball",
-          "event": "Throwball",
-          "points": 300,
-          "type": "points",
-          "note": "Winners Of Throwball"
-        },
-        {
-          "id": "st-dominators-cycling-winner-of-men-s-cycling-babu",
-          "event": "Cycling",
-          "points": 150,
-          "type": "points",
-          "note": "Winner Of Men's Cycling - Babullu Sahu"
-        },
-        {
-          "id": "st-dominators-cycling-winner-of-women-s-cycling-sa",
-          "event": "Cycling",
-          "points": 150,
-          "type": "points",
-          "note": "Winner Of Women's Cycling - Sandhya Rani Gadda"
-        },
-        {
-          "id": "st-dominators-cycling-2nd-place-women-s-cycling-dr",
-          "event": "Cycling",
-          "points": 75,
-          "type": "points",
-          "note": "2nd Place Women's Cycling - Dr.Sneha"
-        },
-        {
-          "id": "st-dominators-tug-of-war-runner-s-up-of-tug-of-war",
-          "event": "Tug of War",
-          "points": 150,
-          "type": "points",
-          "note": "Runner's Up Of Tug Of War"
-        },
-        {
-          "id": "st-dominators-sack-race-winner-of-men-s-sack-race-ga",
-          "event": "Sack Race",
-          "points": 150,
-          "type": "points",
-          "note": "Winner Of Men's Sack Race - Gandhi Rodda"
-        },
-        {
-          "id": "st-dominators-sack-race-nothing-else-won-in-sack-rac",
-          "event": "Sack Race",
-          "points": 0,
-          "type": "points",
-          "note": "Nothing Else Won In Sack race"
-        },
-        {
-          "id": "st-dominators-lemon-spoon-race-2nd-place-lemon-and-spoon-ra",
-          "event": "Lemon & Spoon Race",
-          "points": 75,
-          "type": "points",
-          "note": "2nd Place Lemon And Spoon Race Men's - Debendra"
-        },
-        {
-          "id": "st-dominators-lemon-spoon-race-nothing-won-in-lemon-and-spo",
-          "event": "Lemon & Spoon Race",
-          "points": 0,
-          "type": "points",
-          "note": "Nothing won in Lemon and Spoon Women"
-        },
-        {
-          "id": "st-dominators-kabaddi-2nd-place-in-kabaddi",
-          "event": "Kabaddi",
-          "points": 150,
-          "type": "points",
-          "note": "2nd Place In Kabaddi"
-        }
-      ]
-    },
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
@@ -99,86 +8,177 @@
       "points_earned": 975,
       "penalty_deductions": 0,
       "net_points": 975,
-      "gold": 2,
-      "silver": 2,
+      "gold": 3,
+      "silver": 3,
       "bronze": 0,
       "event_breakdown": [
         {
-          "id": "st-creators-basketball-winners-of-basketball",
+          "id": "st-creators-basketball",
           "event": "Basketball",
           "points": 300,
           "type": "points",
           "note": "Winners Of Basketball"
         },
         {
-          "id": "st-creators-throwball-3rd-place-basketball",
+          "id": "st-creators-throwball",
           "event": "Throwball",
           "points": 0,
           "type": "points",
           "note": "3rd Place Basketball"
         },
         {
-          "id": "st-creators-cycling-2nd-place-men-s-cycling-june",
+          "id": "st-creators-cycling-men",
           "event": "Cycling",
           "points": 75,
           "type": "points",
           "note": "2nd Place Men's Cycling - Juneed"
         },
         {
-          "id": "st-creators-cycling-3rd-place-women-s-cycling",
+          "id": "st-creators-cycling-women-3rd",
           "event": "Cycling",
           "points": 0,
           "type": "points",
           "note": "3rd Place Women's Cycling"
         },
         {
-          "id": "st-creators-cycling-no-other-position-secured-in",
+          "id": "st-creators-cycling-no-position",
           "event": "Cycling",
           "points": 0,
           "type": "points",
           "note": "No Other Position Secured In Cycling"
         },
         {
-          "id": "st-creators-tug-of-war-3rd-place-tug-of-war",
+          "id": "st-7c64755437",
           "event": "Tug of War",
           "points": 0,
           "type": "points",
           "note": "3rd Place Tug Of War"
         },
         {
-          "id": "st-creators-sack-race-2nd-place-women-s-sack-race-",
+          "id": "st-3ad9e79665",
           "event": "Sack Race",
           "points": 75,
           "type": "points",
           "note": "2nd Place Women's Sack Race - Aarthi"
         },
         {
-          "id": "st-creators-sack-race-nothing-else-won-in-sack-rac",
+          "id": "st-f7bdcf3617",
           "event": "Sack Race",
           "points": 0,
           "type": "points",
           "note": "Nothing Else Won In Sack race"
         },
         {
-          "id": "st-creators-lemon-spoon-race-winner-of-lemon-and-spoon-ra",
+          "id": "st-dca8f65012",
           "event": "Lemon & Spoon Race",
           "points": 150,
           "type": "points",
           "note": "Winner Of Lemon And Spoon Race Men - Praveen"
         },
         {
-          "id": "st-creators-lemon-spoon-race-2nd-place-lemon-and-spoon-wo",
+          "id": "st-d2ec4b9d3e",
           "event": "Lemon & Spoon Race",
           "points": 75,
           "type": "points",
           "note": "2nd Place Lemon and Spoon Women - Kalavathy"
         },
         {
-          "id": "st-creators-kabaddi-winners-of-kabaddi",
+          "id": "st-e6ee087eff",
           "event": "Kabaddi",
           "points": 300,
           "type": "points",
           "note": "Winners Of Kabaddi"
+        }
+      ]
+    },
+    "dominators": {
+      "name": "Team Dominators",
+      "color": "#800000",
+      "events_played": 11,
+      "wins": 1,
+      "points_earned": 1200,
+      "penalty_deductions": 0,
+      "net_points": 1200,
+      "gold": 4,
+      "silver": 4,
+      "bronze": 0,
+      "event_breakdown": [
+        {
+          "id": "st-dominators-basketball",
+          "event": "Basketball",
+          "points": 0,
+          "type": "points",
+          "note": "3rd Place Basketball"
+        },
+        {
+          "id": "st-dominators-throwball",
+          "event": "Throwball",
+          "points": 300,
+          "type": "points",
+          "note": "Winners Of Throwball"
+        },
+        {
+          "id": "st-dominators-cycling-men",
+          "event": "Cycling",
+          "points": 150,
+          "type": "points",
+          "note": "Winner Of Men's Cycling - Babullu Sahu"
+        },
+        {
+          "id": "st-dominators-cycling-women",
+          "event": "Cycling",
+          "points": 150,
+          "type": "points",
+          "note": "Winner Of Women's Cycling - Sandhya Rani Gadda"
+        },
+        {
+          "id": "st-dominators-cycling-women-2nd",
+          "event": "Cycling",
+          "points": 75,
+          "type": "points",
+          "note": "2nd Place Women's Cycling - Dr.Sneha"
+        },
+        {
+          "id": "st-42d3280263",
+          "event": "Tug of War",
+          "points": 150,
+          "type": "points",
+          "note": "Runner's Up Of Tug Of War"
+        },
+        {
+          "id": "st-fc8cffe944",
+          "event": "Sack Race",
+          "points": 150,
+          "type": "points",
+          "note": "Winner Of Men's Sack Race - Gandhi Rodda"
+        },
+        {
+          "id": "st-0c373ffc46",
+          "event": "Sack Race",
+          "points": 0,
+          "type": "points",
+          "note": "Nothing Else Won In Sack race"
+        },
+        {
+          "id": "st-c9505c4b83",
+          "event": "Lemon & Spoon Race",
+          "points": 75,
+          "type": "points",
+          "note": "2nd Place Lemon And Spoon Race Men's - Debendra"
+        },
+        {
+          "id": "st-d5a85073a5",
+          "event": "Lemon & Spoon Race",
+          "points": 0,
+          "type": "points",
+          "note": "Nothing won in Lemon and Spoon Women"
+        },
+        {
+          "id": "st-5926aea7da",
+          "event": "Kabaddi",
+          "points": 150,
+          "type": "points",
+          "note": "2nd Place In Kabaddi"
         }
       ]
     },
@@ -190,82 +190,82 @@
       "points_earned": 975,
       "penalty_deductions": 0,
       "net_points": 975,
-      "gold": 1,
-      "silver": 2,
+      "gold": 3,
+      "silver": 3,
       "bronze": 0,
       "event_breakdown": [
         {
-          "id": "st-royals-basketball-runner-ups-of-basketball",
+          "id": "st-royals-basketball",
           "event": "Basketball",
           "points": 150,
           "type": "points",
           "note": "Runner-Ups Of Basketball"
         },
         {
-          "id": "st-royals-throwball-runner-ups-of-throwball",
+          "id": "st-royals-throwball",
           "event": "Throwball",
           "points": 150,
           "type": "points",
           "note": "Runner-Ups Of Throwball"
         },
         {
-          "id": "st-royals-cycling-no-position-secured-in-cycli",
+          "id": "st-royals-cycling-none",
           "event": "Cycling",
           "points": 0,
           "type": "points",
           "note": "No Position Secured In Cycling"
         },
         {
-          "id": "st-royals-cycling-no-position-secured-in-cycli",
+          "id": "st-royals-cycling-men-none",
           "event": "Cycling",
           "points": 0,
           "type": "points",
           "note": "No Position Secured In Cycling- Mens"
         },
         {
-          "id": "st-royals-cycling-no-position-secured-in-cycli",
+          "id": "st-royals-cycling-women-none",
           "event": "Cycling",
           "points": 0,
           "type": "points",
           "note": "No Position Secured In Cycling-Womens"
         },
         {
-          "id": "st-royals-tug-of-war-winners-of-tug-of-war",
+          "id": "st-cbed0177ae",
           "event": "Tug of War",
           "points": 300,
           "type": "points",
           "note": "Winners Of Tug Of War"
         },
         {
-          "id": "st-royals-sack-race-2nd-place-men-s-sack-race-mr",
+          "id": "st-23e178db82",
           "event": "Sack Race",
           "points": 75,
           "type": "points",
           "note": "2nd Place Men's Sack Race - Mr. Jaya Surya"
         },
         {
-          "id": "st-royals-sack-race-winner-of-women-s-sack-race-",
+          "id": "st-d1b9e2eaea",
           "event": "Sack Race",
           "points": 150,
           "type": "points",
           "note": "Winner OF Women's Sack Race - Ms. Manasa"
         },
         {
-          "id": "st-royals-lemon-spoon-race-no-position-secured-in-lemon",
+          "id": "st-d397e59c9c",
           "event": "Lemon & Spoon Race",
           "points": 0,
           "type": "points",
           "note": "No Position Secured In Lemon And Spoon Men"
         },
         {
-          "id": "st-royals-lemon-spoon-race-winners-of-lemon-and-spoon-w",
+          "id": "st-0b0a2d20ee",
           "event": "Lemon & Spoon Race",
           "points": 150,
           "type": "points",
           "note": "Winners Of Lemon and Spoon Women - Prashanti"
         },
         {
-          "id": "st-royals-kabaddi-3rd-place-in-kabaddi",
+          "id": "st-3b89b14196",
           "event": "Kabaddi",
           "points": 0,
           "type": "points",
