@@ -3,11 +3,11 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 9,
-      "wins": 1,
-      "points_earned": 600,
+      "events_played": 11,
+      "wins": 2,
+      "points_earned": 975,
       "penalty_deductions": 0,
-      "net_points": 600,
+      "net_points": 975,
       "gold": 2,
       "silver": 2,
       "bronze": 0,
@@ -74,17 +74,31 @@
           "points": 150,
           "type": "points",
           "note": "Winner Of Lemon And Spoon Race Men - Praveen"
+        },
+        {
+          "id": "st-d2ec4b9d3e",
+          "event": "Lemon & Spoon Race",
+          "points": 75,
+          "type": "points",
+          "note": "2nd Place Lemon and Spoon Women - Kalavathy"
+        },
+        {
+          "id": "st-e6ee087eff",
+          "event": "Kabaddi",
+          "points": 300,
+          "type": "points",
+          "note": "Winners Of Kabaddi"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 9,
+      "events_played": 11,
       "wins": 1,
-      "points_earned": 1050,
+      "points_earned": 1200,
       "penalty_deductions": 0,
-      "net_points": 1050,
+      "net_points": 1200,
       "gold": 3,
       "silver": 2,
       "bronze": 0,
@@ -151,17 +165,31 @@
           "points": 75,
           "type": "points",
           "note": "2nd Place Lemon And Spoon Race Men's - Debendra"
+        },
+        {
+          "id": "st-d5a85073a5",
+          "event": "Lemon & Spoon Race",
+          "points": 0,
+          "type": "points",
+          "note": "Nothing won in Lemon and Spoon Women"
+        },
+        {
+          "id": "st-5926aea7da",
+          "event": "Kabaddi",
+          "points": 150,
+          "type": "points",
+          "note": "2nd Place In Kabaddi"
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 9,
+      "events_played": 11,
       "wins": 1,
-      "points_earned": 825,
+      "points_earned": 975,
       "penalty_deductions": 0,
-      "net_points": 825,
+      "net_points": 975,
       "gold": 1,
       "silver": 2,
       "bronze": 0,
@@ -228,6 +256,20 @@
           "points": 0,
           "type": "points",
           "note": "No Position Secured In Lemon And Spoon Men"
+        },
+        {
+          "id": "st-0b0a2d20ee",
+          "event": "Lemon & Spoon Race",
+          "points": 150,
+          "type": "points",
+          "note": "Winners Of Lemon and Spoon Women - Prashanti"
+        },
+        {
+          "id": "st-3b89b14196",
+          "event": "Kabaddi",
+          "points": 0,
+          "type": "points",
+          "note": "3rd Place In Kabaddi"
         }
       ]
     }
