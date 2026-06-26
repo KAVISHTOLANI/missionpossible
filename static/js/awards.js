@@ -6,6 +6,27 @@
     dominators: { name: "Team Dominators", color: "#800000", logo: "/static/images/logos/dominators.png" },
     royals: { name: "Team Royals", color: "#4169E1", logo: "/static/images/logos/royals.png" },
   };
+  const GAME_ORDER = [
+    "basketball",
+    "throwball",
+    "cycling",
+    "tug-of-war",
+    "sack-race",
+    "lemon-spoon",
+    "kabaddi",
+    "badminton",
+    "cricket",
+    "table-tennis",
+    "carrom",
+    "sand-volleyball",
+    "swimming",
+    "dancing",
+    "skit",
+  ];
+  const gameOrderIndex = (id) => {
+    const idx = GAME_ORDER.indexOf(id);
+    return idx === -1 ? 999 : idx;
+  };
 
   function tba(title, sub) {
     return `
@@ -45,9 +66,10 @@
     const awardsResp = await fetch("/api/awards", { credentials: "same-origin" });
     if (!awardsResp.ok) throw new Error("Awards unavailable");
     const awards = await awardsResp.json();
-    const events = await CARNIVAL.get("/api/events");
+    const events = await CARNIVAL.get("/api/events") || [];
+    events.sort((a, b) => gameOrderIndex(a.id) - gameOrderIndex(b.id) || (a.iso_date || "").localeCompare(b.iso_date || ""));
     const MVP_ELIGIBLE = ['basketball','throwball','kabaddi','badminton','cricket','table-tennis','carrom','sand-volleyball','swimming','dancing','skit'];
-    const mvpEvents = (events || []).filter((e) => MVP_ELIGIBLE.includes(e.id));
+    const mvpEvents = events.filter((e) => MVP_ELIGIBLE.includes(e.id));
 
     const top = document.getElementById("topAwards");
     const featured = document.getElementById("overallMvpFeatured");

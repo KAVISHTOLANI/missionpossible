@@ -21,7 +21,7 @@
       "Tarani"
     ],
     "winning_photo": "/static/images/champions/champions-team-creators.jpeg",
-    "updated_at": "2026-06-12 17:58"
+    "updated_at": "2026-06-26 10:00"
   },
   {
     "event_id": "throwball",
@@ -47,6 +47,88 @@
       "Gandhi Rodda"
     ],
     "winning_photo": "/static/images/gallery/season-4/champions_team_dominators.jpeg",
-    "updated_at": "2026-06-12 12:40"
+    "updated_at": "2026-06-26 10:00"
+  },
+  {
+    "event_id": "cycling",
+    "event_name": "Cycling",
+    "sport_category": "Outdoor Sports",
+    "champion_type": "individual",
+    "team": "dominators",
+    "team_name": "Team Dominators",
+    "second_team": "creators",
+    "second_team_name": "Team Creators",
+    "player_name": "Babullu Sahu",
+    "second_player_name": "Juneed",
+    "players": [],
+    "categories": [
+      {
+        "name": "Females",
+        "first_player": "Sandhya",
+        "first_team": "dominators",
+        "first_team_name": "Team Dominators",
+        "second_player": "Dr. Sneha",
+        "second_team": "dominators",
+        "second_team_name": "Team Dominators",
+        "photo": ""
+      }
+    ],
+    "winning_photo": "",
+    "updated_at": "2026-06-26 10:00"
+  },
+  {
+    "event_id": "tug-of-war",
+    "event_name": "Tug of War",
+    "sport_category": "Outdoor Sports",
+    "champion_type": "team",
+    "team": "royals",
+    "team_name": "Team Royals",
+    "second_team": "dominators",
+    "second_team_name": "Team Dominators",
+    "player_name": "",
+    "second_player_name": "",
+    "players": [
+      "Mr. Srikanth (Captain)",
+      "Mr. Nayan Das",
+      "Mr. Pintu Behra",
+      "Mr. Balaji",
+      "Mr. Ambedkar",
+      "Mr. Teja",
+      "Mr. Srinivas",
+      "Mr. Ganesh",
+      "Mrs. Saritha",
+      "Ms. Soumya",
+      "Mrs. Mallika",
+      "Mrs. Shima"
+    ],
+    "winning_photo": "",
+    "updated_at": "2026-06-26 10:00"
+  },
+  {
+    "event_id": "sack-race",
+    "event_name": "Sack Race",
+    "sport_category": "Outdoor Sports",
+    "champion_type": "individual",
+    "team": "dominators",
+    "team_name": "Team Dominators",
+    "second_team": "royals",
+    "second_team_name": "Team Royals",
+    "player_name": "Gandhi Rodda",
+    "second_player_name": "Mr. Jaya Surya",
+    "players": [],
+    "categories": [
+      {
+        "name": "Female's",
+        "first_player": "Ms. Manasa",
+        "first_team": "royals",
+        "first_team_name": "Team Royals",
+        "second_player": "Aarthi",
+        "second_team": "creators",
+        "second_team_name": "Team Creators",
+        "photo": ""
+      }
+    ],
+    "winning_photo": "",
+    "updated_at": "2026-06-26 10:00"
   }
 ]

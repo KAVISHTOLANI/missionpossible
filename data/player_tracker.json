@@ -2,7 +2,51 @@
   "teams": {
     "creators": [
       {
-        "id": "pt-6d5abe2895",
+        "id": "pt-creators-a",
+        "name": "Aarthi",
+        "employee_id": "4774",
+        "department": "n/a",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SACK RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-c",
+        "name": "Charan",
+        "employee_id": "No ID listed",
+        "department": "Videographer",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SACK RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-d",
         "name": "Dr. Janaki Ram",
         "employee_id": "4675",
         "department": "Doctor",
@@ -20,11 +64,11 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-320062282c",
+        "id": "pt-creators-d",
         "name": "Dr. Vani",
         "employee_id": "4780",
         "department": "Doctor",
@@ -42,11 +86,121 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-beb4618f44",
+        "id": "pt-creators-h",
+        "name": "Harsha",
+        "employee_id": "837",
+        "department": "MRD",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CYCLING",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-j",
+        "name": "Juneed",
+        "employee_id": "4753",
+        "department": "Maintenance",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CYCLING",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-k",
+        "name": "Kalavathy",
+        "employee_id": "N/A",
+        "department": "Clinical",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-m",
+        "name": "Mr. Ashok",
+        "employee_id": "804",
+        "department": "MRD",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-m",
+        "name": "Mr. Charan",
+        "employee_id": "4699",
+        "department": "Maintenance",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-m",
         "name": "Mr. Darshan",
         "employee_id": "4790",
         "department": "MRD",
@@ -64,33 +218,55 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-f42d8e1da3",
+        "id": "pt-creators-m",
         "name": "Mr. Dhrup Yadav",
         "employee_id": "510891",
         "department": "Security",
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
+          "TUG OF WAR",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-m",
+        "name": "Mr. Imran",
+        "employee_id": "714",
+        "department": "Maintenance",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
           "",
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-c4ca1ef8f6",
+        "id": "pt-creators-m",
         "name": "Mr. Prakash",
         "employee_id": "070",
         "department": "EDP",
@@ -108,14 +284,14 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-6420e26906",
-        "name": "Mr. Sridhar",
-        "employee_id": "245",
-        "department": "Driver",
+        "id": "pt-creators-m",
+        "name": "Mr. Rasool",
+        "employee_id": "829",
+        "department": "EDP",
         "played": [
           true,
           false,
@@ -124,17 +300,127 @@
           false
         ],
         "games": [
-          "THROWBALL",
+          "TUG OF WAR",
           "",
           "",
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-3e40c44861",
+        "id": "pt-creators-m",
+        "name": "Mr. Renuka",
+        "employee_id": "513804",
+        "department": "Security",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-m",
+        "name": "Mr. Roshan",
+        "employee_id": "513232",
+        "department": "Security",
+        "played": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-m",
+        "name": "Mr. Sanju",
+        "employee_id": "508915",
+        "department": "Security",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-m",
+        "name": "Mr. Sathyanarayana",
+        "employee_id": "021",
+        "department": "Art Lab",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-m",
+        "name": "Mr. Sridhar",
+        "employee_id": "245",
+        "department": "Driver",
+        "played": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "THROWBALL",
+          "TUG OF WAR",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-m",
         "name": "Mr. Tapan",
         "employee_id": "510314",
         "department": "Security",
@@ -152,11 +438,55 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-ea519f5e24",
+        "id": "pt-creators-m",
+        "name": "Ms. Ranjitha",
+        "employee_id": "14316",
+        "department": "HK Sup",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-m",
+        "name": "Ms. Upendra",
+        "employee_id": "14091",
+        "department": "HK",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-n",
         "name": "Navaneeta",
         "employee_id": "046",
         "department": "MRD",
@@ -174,11 +504,55 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-ddf45d4b3c",
+        "id": "pt-creators-p",
+        "name": "Praveen",
+        "employee_id": "4804",
+        "department": "Maintenance",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-r",
+        "name": "Ramya",
+        "employee_id": "814",
+        "department": "EDP",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-s",
         "name": "Sai Kiran Gollapudi",
         "employee_id": "826",
         "department": "Maintenance",
@@ -196,11 +570,11 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-d9eb8f3ba8",
+        "id": "pt-creators-s",
         "name": "Sunitha Nama",
         "employee_id": "836",
         "department": "Art Lab",
@@ -218,13 +592,57 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-v",
+        "name": "Vijji",
+        "employee_id": "69",
+        "department": "DA",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SACK RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-creators-v",
+        "name": "Vishal",
+        "employee_id": "11226",
+        "department": "HK",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SACK RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       }
     ],
     "dominators": [
       {
-        "id": "pt-03a84d5041",
+        "id": "pt-dominators",
         "name": "Anushuman Sharma",
         "employee_id": "4504",
         "department": "HOD (MFH)",
@@ -242,11 +660,33 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-78e8107080",
+        "id": "pt-dominators",
+        "name": "B. Anuradha",
+        "employee_id": "910769",
+        "department": "Housekeeper (Kairos)",
+        "played": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
         "name": "Babullu Sahu",
         "employee_id": "512497",
         "department": "Security Supervisor (KAIROSE)",
@@ -254,24 +694,24 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
           "CYCLING",
-          "",
+          "TUG OF WAR",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-90df3ecae9",
-        "name": "Dr. Sneha",
-        "employee_id": "4611",
-        "department": "Pathologist (ADL)",
+        "id": "pt-dominators",
+        "name": "Debendra",
+        "employee_id": "512975",
+        "department": "Security Guard (Kairos)",
         "played": [
           true,
           false,
@@ -280,17 +720,39 @@
           false
         ],
         "games": [
-          "CYCLING",
+          "LEMON AND SPOON RACE",
           "",
           "",
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-68cb4ff63b",
+        "id": "pt-dominators",
+        "name": "Dr. Sneha",
+        "employee_id": "4611",
+        "department": "Pathologist (ADL)",
+        "played": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CYCLING",
+          "SACK RACE",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
         "name": "G. Ramesh",
         "employee_id": "450",
         "department": "Sample Driver",
@@ -308,14 +770,36 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-48395828f0",
+        "id": "pt-dominators",
         "name": "Gandhi Rodda",
         "employee_id": "427",
         "department": "Lab Technician",
+        "played": [
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "games": [
+          "THROWBALL",
+          "TUG OF WAR",
+          "SACK RACE",
+          "LEMON AND SPOON RACE",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
+        "name": "J. Geetha Bhavani",
+        "employee_id": "4821",
+        "department": "Lab Technician (ADL)",
         "played": [
           true,
           false,
@@ -324,17 +808,17 @@
           false
         ],
         "games": [
-          "THROWBALL",
+          "TUG OF WAR",
           "",
           "",
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-842e536b61",
+        "id": "pt-dominators",
         "name": "K. Rakesh",
         "employee_id": "4857",
         "department": "Lab Technician (ADL)",
@@ -352,11 +836,33 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-60003f6fc3",
+        "id": "pt-dominators",
+        "name": "M. Vijay Kumar",
+        "employee_id": "No ID listed",
+        "department": "Driver (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
         "name": "Maria Barthalomia K",
         "employee_id": "1463",
         "department": "Accounts",
@@ -374,33 +880,55 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-fd3e2b693a",
+        "id": "pt-dominators",
         "name": "MD Akram",
         "employee_id": "1167",
         "department": "HR",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "THROWBALL",
-          "",
+          "TUG OF WAR",
           "",
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-7d99b4d8cd",
+        "id": "pt-dominators",
+        "name": "P. Rajshekhar",
+        "employee_id": "4803",
+        "department": "Asst. Accountant (MFH)",
+        "played": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "SACK RACE",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
         "name": "P. Sandeep",
         "employee_id": "276",
         "department": "Assistant (GSH)",
@@ -418,11 +946,33 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-ac1171a5ad",
+        "id": "pt-dominators",
+        "name": "Priyanka Mudigonda",
+        "employee_id": "294",
+        "department": "Executive (GSH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
         "name": "R. Anil Kumar",
         "employee_id": "148",
         "department": "Unit HR",
@@ -440,11 +990,121 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-23670634cd",
+        "id": "pt-dominators",
+        "name": "Rakesh Chandra Panda",
+        "employee_id": "333",
+        "department": "Driver (DECC)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
+        "name": "Rakesh Dubbaka",
+        "employee_id": "354",
+        "department": "Asst. Manager (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
+        "name": "Ramesh Toorkarigari",
+        "employee_id": "409",
+        "department": "Manager (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
+        "name": "Ramya Karnam",
+        "employee_id": "466",
+        "department": "Lab Technician (ADL)",
+        "played": [
+          true,
+          true,
+          true,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "SACK RACE",
+          "LEMON AND SPOON RACE",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
+        "name": "Ravi Kumar T",
+        "employee_id": "286",
+        "department": "Assistant (GSH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
         "name": "Sai Kiran Gollapudi",
         "employee_id": "826",
         "department": "CC Executive (Aalankrita)",
@@ -462,11 +1122,11 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-ae612fb2bd",
+        "id": "pt-dominators",
         "name": "Sandhya Rani Gadda",
         "employee_id": "1484",
         "department": "CC Executive (DECC)",
@@ -484,11 +1144,33 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-78dbf1fe3e",
+        "id": "pt-dominators",
+        "name": "Srikanth Goud Palle",
+        "employee_id": "283",
+        "department": "Assistant (GSH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
         "name": "Suman",
         "employee_id": "295",
         "department": "Executive (GSH)",
@@ -506,13 +1188,35 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-dominators",
+        "name": "Venkatesh M",
+        "employee_id": "285",
+        "department": "Assistant (GSH)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       }
     ],
     "royals": [
       {
-        "id": "pt-8f26b42e7d",
+        "id": "pt-royals-aze",
         "name": "Azeem",
         "employee_id": "358",
         "department": "Technical Assistant (DECC)",
@@ -530,11 +1234,11 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-bb948d5865",
+        "id": "pt-royals-dr-",
         "name": "Dr. Harika",
         "employee_id": "4697",
         "department": "Anesthetist",
@@ -552,11 +1256,11 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-a268249597",
+        "id": "pt-royals-dr-",
         "name": "Dr. K. Victoria",
         "employee_id": "1266",
         "department": "Anesthesia",
@@ -574,33 +1278,11 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-83f741ce66",
-        "name": "Dr. Priyanka Mittra",
-        "employee_id": "N/A",
-        "department": "General Surgery",
-        "played": [
-          true,
-          false,
-          false,
-          false,
-          false
-        ],
-        "games": [
-          "THROWBALL",
-          "",
-          "",
-          "",
-          ""
-        ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
-      },
-      {
-        "id": "pt-51eb8d8b12",
+        "id": "pt-royals-dr-",
         "name": "Dr. Vamshi",
         "employee_id": "1239",
         "department": "Duty Medical Officer",
@@ -618,11 +1300,11 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-b04f7cc915",
+        "id": "pt-royals-jar",
         "name": "Jareen",
         "employee_id": "368",
         "department": "Medical Records (DECC)",
@@ -640,11 +1322,11 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-701b1d438b",
+        "id": "pt-royals-jay",
         "name": "Jaya Surya",
         "employee_id": "1281",
         "department": "Operation Theatre",
@@ -662,14 +1344,36 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-6007a012c1",
-        "name": "Mr. Srikanth",
-        "employee_id": "1188",
-        "department": "MOD",
+        "id": "pt-royals-mr-",
+        "name": "Mr. Akshay",
+        "employee_id": "4860",
+        "department": "Technical Assistant (DECC)",
+        "played": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CYCLING",
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mr-",
+        "name": "Mr. Ambedkar",
+        "employee_id": "1468",
+        "department": "Maintenance",
         "played": [
           true,
           false,
@@ -678,17 +1382,171 @@
           false
         ],
         "games": [
-          "BASKETBALL",
+          "TUG OF WAR",
           "",
           "",
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-2bfe6c7167",
+        "id": "pt-royals-mr-",
+        "name": "Mr. Balaji",
+        "employee_id": "504378",
+        "department": "Security - Kairos",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mr-",
+        "name": "Mr. Charan",
+        "employee_id": "1460",
+        "department": "CT Technician",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mr-",
+        "name": "Mr. Ganesh",
+        "employee_id": "513368",
+        "department": "Security - Kairos",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mr-",
+        "name": "Mr. Pintu Behra",
+        "employee_id": "504023",
+        "department": "Security - Kairos",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mr-",
+        "name": "Mr. Raja Lingam",
+        "employee_id": "4800",
+        "department": "IP Billing",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SACK RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mr-",
+        "name": "Mr. Srikanth",
+        "employee_id": "1188",
+        "department": "MOD",
+        "played": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BASKETBALL",
+          "TUG OF WAR",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mr-",
+        "name": "Mr. Srinivas",
+        "employee_id": "1021",
+        "department": "Maintenance",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mr-",
         "name": "Mr. Suraj Uttam",
         "employee_id": "1254",
         "department": "Admin",
@@ -706,11 +1564,231 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-df0b102756",
+        "id": "pt-royals-mr-",
+        "name": "Mr. Teja",
+        "employee_id": "N/A",
+        "department": "Valet Driver - Sunrise Valet",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mr-",
+        "name": "Mr.Das",
+        "employee_id": "XYZ",
+        "department": "Valet",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mrs",
+        "name": "Mrs. Mallika",
+        "employee_id": "326",
+        "department": "Doctor Assistant (DECC)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mrs",
+        "name": "Mrs. Saritha",
+        "employee_id": "0101108121",
+        "department": "Housekeeping - SSI",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-mrs",
+        "name": "Mrs. Shima",
+        "employee_id": "0101113565",
+        "department": "Housekeeping - SSI",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TUG OF WAR",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-ms-",
+        "name": "Ms. Anusha",
+        "employee_id": "4842",
+        "department": "PRE",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-ms-",
+        "name": "Ms. Manasa",
+        "employee_id": "1496",
+        "department": "Nursing",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SACK RACE",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-ms-",
+        "name": "Ms. Prashanthi",
+        "employee_id": "4813",
+        "department": "Operation Theatre",
+        "played": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SACK RACE",
+          "LEMON AND SPOON RACE",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-ms-",
+        "name": "Ms. Shravanthi",
+        "employee_id": "1475",
+        "department": "Operation Theatre",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CYCLING",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-ms-",
+        "name": "Ms. Soumya",
+        "employee_id": "1509",
+        "department": "Nursing",
+        "played": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CYCLING",
+          "TUG OF WAR",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
+      },
+      {
+        "id": "pt-royals-nag",
         "name": "Nagesh",
         "employee_id": "321",
         "department": "Technical Assistant (DECC)",
@@ -728,11 +1806,11 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       },
       {
-        "id": "pt-0d22814cc7",
+        "id": "pt-royals-sam",
         "name": "Sampath Goud",
         "employee_id": "1415",
         "department": "IT",
@@ -750,8 +1828,8 @@
           "",
           ""
         ],
-        "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "created_at": "2026-06-26T10:00:00",
+        "updated_at": "2026-06-26T10:00:00"
       }
     ]
   }

@@ -7,6 +7,7 @@
   const RACE_EVENTS = new Set(["swimming", "sand-volleyball", "cycling", "lemon-spoon", "sack-race", "rangoli"]);
   const CRICKET_EVENTS = new Set(["cricket"]);
   let liveMatchesCache = [];
+  let cachedAwardLeaderboards = { overall_mvp: [], fair_play: [] };
 
   const menu = document.getElementById("amenu");
   const sidebar = document.getElementById("asidebar");
@@ -406,19 +407,27 @@
 
   function clearFairPlayFormInner() {
     setField("fairPlayId", "");
-    setField("fairPlayTeam", "");
+    setField("fairPlayTeam", "Team Creators");
     setField("fairPlayPoints", 0);
-    setField("fairPlayEvents", "");
+    setField("fairPlayWhy", "");
   }
 
   window.clearOverallMvpForm = clearOverallMvpFormInner;
   window.clearFairPlayForm = clearFairPlayFormInner;
 
   function renderAwardBoardRows(payload) {
-    const overallRows = sortOverallMvp((payload && payload.overall_mvp) || []);
+    let overallRows = sortOverallMvp((payload && payload.overall_mvp) || []);
     const fairRows = sortFairPlay((payload && payload.fair_play) || []);
     const overallWrap = document.getElementById("ovmvpRows");
     const fairWrap = document.getElementById("fairPlayRows");
+
+    const query = (document.getElementById("adminMvpSearch")?.value || "").trim().toLowerCase();
+    if (query) {
+      overallRows = overallRows.filter((row) =>
+        (row.player_name || "").toLowerCase().includes(query) ||
+        (row.team_name || "").toLowerCase().includes(query)
+      );
+    }
 
     if (overallWrap) {
       overallWrap.innerHTML = overallRows.length ? overallRows.map((row) => `
@@ -436,35 +445,17 @@
     }
     if (fairWrap) {
       fairWrap.innerHTML = fairRows.length ? fairRows.map((row) => `
-        <div class="arow arow--fair" data-id="${esc(row.id || "")}">
-          <div class="arow__main">
-            <div>
-              <strong>${esc(row.team_name || "—")}</strong>
-              <span class="arow__meta">Fair play points: ${Number(row.fair_play_points || 0)}${row.fair_play_events && row.fair_play_events.length ? ` · Events: ${row.fair_play_events.length}` : ""}</span>
-            </div>
-            <div class="abtn-row">
-              <button class="abtn-del" data-action="edit-fair" data-id="${esc(row.id || "")}">Edit</button>
-              <button class="abtn-del" data-action="del-fair" data-id="${esc(row.id || "")}">Delete</button>
-            </div>
+        <div class="arow">
+          <div>
+            <strong>${esc(row.team_name || "—")}</strong>
+            <span class="arow__meta">${row.fair_play_points > 0 ? "+" : ""}${Number(row.fair_play_points || 0)} points · ${esc(row.why || "Points addition")}</span>
           </div>
-          <div class="arow__detail" style="display:none;padding:12px 0 0;">
-            ${formatFairPlayEvents(row.fair_play_events)}
+          <div class="abtn-row">
+            <button class="abtn-del" data-action="edit-fair" data-id="${esc(row.id || "")}">Edit</button>
+            <button class="abtn-del" data-action="del-fair" data-id="${esc(row.id || "")}">Delete</button>
           </div>
         </div>
       `).join("") : '<div class="muted">No Fair Play rows yet.</div>';
-    }
-
-    if (fairWrap) {
-      fairWrap.querySelectorAll('.arow--fair').forEach((rowEl) => {
-        const main = rowEl.querySelector('.arow__main');
-        const detail = rowEl.querySelector('.arow__detail');
-        if (!main || !detail) return;
-        main.addEventListener('click', (event) => {
-          if (event.target.closest('button')) return;
-          const isOpen = detail.style.display !== 'none';
-          detail.style.display = isOpen ? 'none' : 'block';
-        });
-      });
     }
 
     if (overallWrap) {
@@ -493,6 +484,7 @@
           setField("fairPlayId", row.id || "");
           setField("fairPlayTeam", row.team_name || "");
           setField("fairPlayPoints", Number(row.fair_play_points || 0));
+          setField("fairPlayWhy", row.why || "");
         });
       });
       fairWrap.querySelectorAll('[data-action="del-fair"]').forEach((btn) => {
@@ -504,7 +496,10 @@
   function loadAwardLeaderboards() {
     fetch("/api/award-leaderboards?ts=" + Date.now(), { cache: "no-store" })
       .then((r) => r.json())
-      .then((data) => renderAwardBoardRows(data || { overall_mvp: [], fair_play: [] }))
+      .then((data) => {
+        cachedAwardLeaderboards = data || { overall_mvp: [], fair_play: [] };
+        renderAwardBoardRows(cachedAwardLeaderboards);
+      })
       .catch(() => {});
   }
 
@@ -521,7 +516,8 @@
     if (!payload.player_name || !payload.team_name) return toast("Player and team are required", true);
     postJSON("/admin/api/award-leaderboards/upsert", payload)
       .then((d) => {
-        renderAwardBoardRows(d.leaderboards || { overall_mvp: [], fair_play: [] });
+        cachedAwardLeaderboards = d.leaderboards || { overall_mvp: [], fair_play: [] };
+        renderAwardBoardRows(cachedAwardLeaderboards);
         clearOverallMvpFormInner();
         toast("Overall MVP row saved");
       })
@@ -529,19 +525,18 @@
   };
 
   window.saveFairPlayRow = function () {
-    const eventsInput = (val("fairPlayEvents") || "").trim();
-    const events = eventsInput ? eventsInput.split(",").map((item) => item.trim()).filter(Boolean) : [];
     const payload = {
       board: "fair_play",
       id: val("fairPlayId"),
       team_name: val("fairPlayTeam"),
       fair_play_points: numVal("fairPlayPoints"),
-      fair_play_events: events,
+      why: (val("fairPlayWhy") || "").trim(),
     };
     if (!payload.team_name) return toast("Team name is required", true);
     postJSON("/admin/api/award-leaderboards/upsert", payload)
       .then((d) => {
-        renderAwardBoardRows(d.leaderboards || { overall_mvp: [], fair_play: [] });
+        cachedAwardLeaderboards = d.leaderboards || { overall_mvp: [], fair_play: [] };
+        renderAwardBoardRows(cachedAwardLeaderboards);
         clearFairPlayFormInner();
         toast("Fair Play row saved");
       })
@@ -553,7 +548,8 @@
     if (!window.confirm("Delete this row?")) return;
     postJSON("/admin/api/award-leaderboards/delete", { board, id })
       .then((d) => {
-        renderAwardBoardRows(d.leaderboards || { overall_mvp: [], fair_play: [] });
+        cachedAwardLeaderboards = d.leaderboards || { overall_mvp: [], fair_play: [] };
+        renderAwardBoardRows(cachedAwardLeaderboards);
         if (board === "overall_mvp" && val("ovmvpId") === id) clearOverallMvpFormInner();
         if (board === "fair_play" && val("fairPlayId") === id) clearFairPlayFormInner();
         toast("Row deleted");
@@ -1336,5 +1332,13 @@
   if (document.getElementById("chEvent")) { window.toggleChampionType(); loadChampionsList(); window.loadChampionRow(); }
   if (document.getElementById("stEntries")) loadStandingsEntries();
   if (document.getElementById("ptExisting")) loadPlayerTracker();
-  if (document.getElementById("ovmvpRows") || document.getElementById("fairPlayRows")) loadAwardLeaderboards();
+  if (document.getElementById("ovmvpRows") || document.getElementById("fairPlayRows")) {
+    loadAwardLeaderboards();
+    const searchInput = document.getElementById("adminMvpSearch");
+    if (searchInput) {
+      searchInput.addEventListener("input", () => {
+        renderAwardBoardRows(cachedAwardLeaderboards);
+      });
+    }
+  }
 })();

@@ -922,3 +922,38 @@
 .champcard__categories { margin-top: 18px; display: grid; gap: 12px; }
 .champcard__category { border: 1px solid var(--border); border-radius: 10px; padding: 13px; background: rgba(255,255,255,0.03); }
 .champcard__category-photo { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 10px; }
+
+/* ---- MVP & Fair Play Search Bar and Responsive Overrides ---- */
+.mvp-search-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.mvp-search-input {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: var(--white);
+  font-family: var(--f-sans);
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  transition: border-color .25s, box-shadow .25s;
+}
+
+.mvp-search-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.18);
+}
+
+@media (max-width: 760px) {
+  /* Prevent the 3rd column (Fair Play Points) from being hidden on mobile screens */
+  .ptable--fairplay thead th:nth-child(3),
+  .ptable--fairplay td:nth-child(3) {
+    display: table-cell !important;
+  }
+}

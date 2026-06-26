@@ -260,6 +260,7 @@
       <div class="acard">
         <h3>Overall MVP Leaderboard</h3>
         <p class="amini">Add or update player rows. Public page shows top 10 by points (then gold, silver).</p>
+        <label class="field" style="margin-bottom:12px"><span>Search MVP entries</span><input type="text" id="adminMvpSearch" placeholder="Filter by player name or team..."></label>
         <input type="hidden" id="ovmvpId">
         <div class="scoregrid scoregrid--2">
           <label class="field"><span>Player name</span><input id="ovmvpPlayer" placeholder="Player name"></label>
@@ -279,9 +280,15 @@
         <p class="amini">Add or update fair play rows with team name and fair play points.</p>
         <input type="hidden" id="fairPlayId">
         <div class="scoregrid scoregrid--2">
-          <label class="field"><span>Team name</span><input id="fairPlayTeam" placeholder="Team Royals"></label>
-          <label class="field"><span>Fair play points</span><input type="number" id="fairPlayPoints" value="0" min="0"></label>
-          <label class="field"><span>Fair play events</span><input id="fairPlayEvents" placeholder="Basketball, Throwball"></label>
+          <label class="field"><span>Team name</span>
+            <select id="fairPlayTeam">
+              <option value="Team Creators">Team Creators</option>
+              <option value="Team Dominators">Team Dominators</option>
+              <option value="Team Royals">Team Royals</option>
+            </select>
+          </label>
+          <label class="field"><span>Fair play points</span><input type="number" id="fairPlayPoints" value="0"></label>
+          <label class="field"><span>Reason / Why</span><input id="fairPlayWhy" placeholder="e.g. Excellent conduct in Cricket match"></label>
         </div>
         <div class="abtn-row">
           <button class="btn btn--gold" onclick="saveFairPlayRow()">Save Fair Play Row →</button>

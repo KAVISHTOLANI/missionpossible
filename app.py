@@ -295,7 +295,14 @@ def api_awards():
 @app.route("/api/award-leaderboards")
 def api_award_leaderboards():
     try:
-        return jsonify(load("award_leaderboards"))
+        data = load("award_leaderboards")
+        q = request.args.get("q", "").strip().lower()
+        if q and "overall_mvp" in data:
+            data["overall_mvp"] = [
+                row for row in data["overall_mvp"]
+                if q in row.get("player_name", "").lower() or q in row.get("team_name", "").lower()
+            ]
+        return jsonify(data)
     except Exception:
         return jsonify({"overall_mvp": [], "fair_play": []})
 

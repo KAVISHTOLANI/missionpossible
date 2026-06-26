@@ -5,9 +5,18 @@
       "player_name": "Babullu Sahu",
       "team_name": "Team Dominators",
       "gold": 2,
-      "silver": 0,
-      "points": 20,
-      "updated_at": "2026-06-22 10:00"
+      "silver": 1,
+      "points": 25,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-gandhi-rodda",
+      "player_name": "Gandhi Rodda",
+      "team_name": "Team Dominators",
+      "gold": 2,
+      "silver": 1,
+      "points": 25,
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-sandhya",
@@ -16,16 +25,43 @@
       "gold": 2,
       "silver": 0,
       "points": 20,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
-      "id": "mvp-janaki-ram",
+      "id": "mvp-md-akram",
+      "player_name": "MD Akram",
+      "team_name": "Team Dominators",
+      "gold": 1,
+      "silver": 1,
+      "points": 15,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-mr-srikanth",
+      "player_name": "Mr. Srikanth",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 1,
+      "points": 15,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-mr-jaya-surya",
+      "player_name": "Mr. Jaya Surya",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 3,
+      "points": 15,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-dr-janaki-ram",
       "player_name": "Dr. Janaki Ram",
       "team_name": "Team Creators",
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-g-ramesh",
@@ -34,16 +70,7 @@
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
-    },
-    {
-      "id": "mvp-gandhi-rodda",
-      "player_name": "Gandhi Rodda",
-      "team_name": "Team Dominators",
-      "gold": 1,
-      "silver": 0,
-      "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-maria-barthalomia-k",
@@ -52,16 +79,25 @@
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
-      "id": "mvp-md-akram",
-      "player_name": "MD Akram",
-      "team_name": "Team Dominators",
+      "id": "mvp-mr-ambedkar",
+      "player_name": "Mr. Ambedkar",
+      "team_name": "Team Royals",
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-mr-balaj",
+      "player_name": "Mr. Balaj",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-mr-darshan",
@@ -70,7 +106,7 @@
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-mr-dhrup-yadav",
@@ -79,7 +115,34 @@
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-mr-ganesh",
+      "player_name": "Mr. Ganesh",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-mr-nayan-das",
+      "player_name": "Mr. Nayan Das",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-mr-pintu-behra",
+      "player_name": "Mr. Pintu Behra",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-mr-prakash",
@@ -88,7 +151,16 @@
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-mr-srinivas",
+      "player_name": "Mr. Srinivas",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-mr-tapan",
@@ -97,7 +169,61 @@
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-mr-teja",
+      "player_name": "Mr. Teja",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-mrs-mallika",
+      "player_name": "Mrs. Mallika",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-mrs-saritha",
+      "player_name": "Mrs. Saritha",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-mrs-shima",
+      "player_name": "Mrs. Shima",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-ms-manasa",
+      "player_name": "Ms. Manasa",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-ms-soumya",
+      "player_name": "Ms. Soumya",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-p-sandeep",
@@ -106,7 +232,7 @@
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-r-anil-kumar",
@@ -115,7 +241,7 @@
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-sai-kiran-gollapudi",
@@ -124,7 +250,7 @@
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-sunitha-nama",
@@ -133,25 +259,34 @@
       "gold": 1,
       "silver": 0,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
-      "id": "mvp-jaya-surya",
-      "player_name": "Mr. Jaya Surya",
-      "team_name": "Team Royals",
-      "gold": 0,
-      "silver": 2,
-      "points": 10,
-      "updated_at": "2026-06-22 10:00"
-    },
-    {
-      "id": "mvp-nagesh",
+      "id": "mvp-mr-nagesh",
       "player_name": "Mr. Nagesh",
       "team_name": "Team Royals",
       "gold": 0,
       "silver": 2,
       "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-debendra",
+      "player_name": "Debendra",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 5,
+      "points": 5,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-aarthi",
+      "player_name": "Aarthi",
+      "team_name": "Team Creators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-azeem",
@@ -160,7 +295,16 @@
       "gold": 0,
       "silver": 1,
       "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-b-anuradha",
+      "player_name": "B. Anuradha",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-dr-harika",
@@ -169,7 +313,7 @@
       "gold": 0,
       "silver": 1,
       "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-dr-k-victoria",
@@ -178,7 +322,7 @@
       "gold": 0,
       "silver": 1,
       "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-dr-priyanka-mittra",
@@ -187,7 +331,7 @@
       "gold": 0,
       "silver": 1,
       "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-dr-sneha",
@@ -196,7 +340,7 @@
       "gold": 0,
       "silver": 1,
       "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-dr-vamshi",
@@ -205,7 +349,16 @@
       "gold": 0,
       "silver": 1,
       "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-j-geetha-bhavani",
+      "player_name": "J. Geetha Bhavani",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-jareen",
@@ -214,7 +367,7 @@
       "gold": 0,
       "silver": 1,
       "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-juneed",
@@ -223,16 +376,7 @@
       "gold": 0,
       "silver": 1,
       "points": 5,
-      "updated_at": "2026-06-22 10:00"
-    },
-    {
-      "id": "mvp-mr-srikanth",
-      "player_name": "Mr. Srikanth",
-      "team_name": "Team Royals",
-      "gold": 0,
-      "silver": 1,
-      "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-mr-suraj-uttam",
@@ -241,7 +385,61 @@
       "gold": 0,
       "silver": 1,
       "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-p-rajshekhar",
+      "player_name": "P. Rajshekhar",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-priyanka-mudigonda",
+      "player_name": "Priyanka Mudigonda",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-rakesh-chandra-panda",
+      "player_name": "Rakesh Chandra Panda",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-rakesh-dubbaka",
+      "player_name": "Rakesh Dubbaka",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-ramesh-toorkarigari",
+      "player_name": "Ramesh Toorkarigari",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-26 10:00"
+    },
+    {
+      "id": "mvp-ramya-karnam",
+      "player_name": "Ramya Karnam",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-26 10:00"
     },
     {
       "id": "mvp-sampath-goud",
@@ -250,7 +448,7 @@
       "gold": 0,
       "silver": 1,
       "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "updated_at": "2026-06-26 10:00"
     }
   ],
   "fair_play": []

@@ -1380,22 +1380,21 @@ def upsert_award_leaderboard():
             fair_play_points = int(body.get("fair_play_points", 0) or 0)
         except (TypeError, ValueError):
             return jsonify({"ok": False, "error": "Fair play points must be a number"}), 400
-        if fair_play_points < 0:
-            return jsonify({"ok": False, "error": "Points cannot be negative"}), 400
 
+        why = (body.get("why") or "").strip()
+        # Fallback if they sent events
         events = body.get("fair_play_events") or []
-        if isinstance(events, str):
-            events = [e.strip() for e in events.split(",") if e.strip()]
-        elif isinstance(events, list):
-            events = [str(e).strip() for e in events if str(e).strip()]
-        else:
-            events = []
+        if not why and events:
+            if isinstance(events, list):
+                why = ", ".join(events)
+            else:
+                why = str(events)
 
         payload = {
             "id": row_id or ("fp-" + uuid.uuid4().hex[:10]),
             "team_name": team_name,
             "fair_play_points": fair_play_points,
-            "fair_play_events": events,
+            "why": why,
             "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
         }
 

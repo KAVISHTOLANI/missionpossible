@@ -1,0 +1,1651 @@
+<USER_REQUEST>
+Rank	Team	Played	Wins	Gold	Silver	Points	Penalties	Net
+1
+
+Team Dominators
+v
+11	1	3	2	1200	0	1200
+Basketball	0	3rd Place Basketball
+Throwball	+300	Winners Of Throwball
+Cycling	+150	Winner Of Men's Cycling - Babullu Sahu
+Cycling	+150	Winner Of Women's Cycling - Sandhya Rani Gadda
+Cycling	+75	2nd Place Women's Cycling - Dr.Sneha
+Tug of War	+150	Runner's Up Of Tug Of War
+Sack Race	+150	Winner Of Men's Sack Race - Gandhi Rodda
+Sack Race	0	Nothing Else Won In Sack race
+Lemon & Spoon Race	+75	2nd Place Lemon And Spoon Race Men's - Debendra
+Lemon & Spoon Race	0	Nothing won in Lemon and Spoon Women
+Kabaddi	+150	2nd Place In Kabaddi
+2
+
+Team Creators
+v
+11	2	2	2	975	0	975
+Basketball	+300	Winners Of Basketball
+Throwball	0	3rd Place Basketball
+Cycling	+75	2nd Place Men's Cycling - Juneed
+Cycling	0	3rd Place Women's Cycling
+Cycling	0	No Other Position Secured In Cycling
+Tug of War	0	3rd Place Tug Of War
+Sack Race	+75	2nd Place Women's Sack Race - Aarthi
+Sack Race	0	Nothing Else Won In Sack race
+Lemon & Spoon Race	+150	Winner Of Lemon And Spoon Race Men - Praveen
+Lemon & Spoon Race	+75	2nd Place Lemon and Spoon Women - Kalavathy
+Kabaddi	+300	Winners Of Kabaddi
+3
+
+Team Royals
+v
+11	1	1	2	975	0	975
+Basketball	+150	Runner-Ups Of Basketball
+Throwball	+150	Runner-Ups Of Throwball
+Cycling	0	No Position Secured In Cycling
+Cycling	0	No Position Secured In Cycling- Mens
+Cycling	0	No Position Secured In Cycling-Womens
+Tug of War	+300	Winners Of Tug Of War
+Sack Race	+75	2nd Place Men's Sack Race - Mr. Jaya Surya
+Sack Race	+150	Winner OF Women's Sack Race - Ms. Manasa
+Lemon & Spoon Race	0	No Position Secured In Lemon And Spoon Men
+Lemon & Spoon Race	+150	Winners Of Lemon and Spoon Women - Prashanti
+Kabaddi	0	3rd Place In Kabaddi
+
+
+
+
+
+
+
+
+
+
+Babullu Sahu
+Team Dominators · G 2 · S 1 · P 25
+Edit
+Delete
+Gandhi Rodda
+Team Dominators · G 2 · S 1 · P 25
+Edit
+Delete
+Sandhya
+Team Dominators · G 2 · S 0 · P 20
+Edit
+Delete
+MD Akram
+Team Dominators · G 1 · S 1 · P 15
+Edit
+Delete
+Mr. Srikanth
+Team Royals · G 1 · S 1 · P 15
+Edit
+Delete
+Mr. Jaya Surya
+Team Royals · G 0 · S 3 · P 15
+Edit
+Delete
+Dr. Janaki Ram
+Team Creators · G 1 · S 0 · P 10
+Edit
+Delete
+G. Ramesh
+Team Dominators · G 1 · S 0 · P 10
+Edit
+Delete
+Maria Barthalomia K
+Team Dominators · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Ambedkar
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Balaj
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Darshan
+Team Creators · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Dhrup Yadav
+Team Creators · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Ganesh
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Nayan Das
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Pintu Behra
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Prakash
+Team Creators · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Srinivas
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Tapan
+Team Creators · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Teja
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+Mrs. Mallika
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+Mrs. Saritha
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+Mrs. Shima
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+Ms. Manasa
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+Ms. Soumya
+Team Royals · G 1 · S 0 · P 10
+Edit
+Delete
+P. Sandeep
+Team Dominators · G 1 · S 0 · P 10
+Edit
+Delete
+R. Anil Kumar
+Team Dominators · G 1 · S 0 · P 10
+Edit
+Delete
+Sai Kiran Gollapudi
+Team Creators · G 1 · S 0 · P 10
+Edit
+Delete
+Sunitha Nama
+Team Creators · G 1 · S 0 · P 10
+Edit
+Delete
+Mr. Nagesh
+Team Royals · G 0 · S 2 · P 10
+Edit
+Delete
+Debendra
+Team Dominators · G 0 · S 5 · P 5
+Edit
+Delete
+Aarthi
+Team creators · G 0 · S 1 · P 5
+Edit
+Delete
+Azeem
+Team Royals · G 0 · S 1 · P 5
+Edit
+Delete
+B. Anuradha
+Team Dominators · G 0 · S 1 · P 5
+Edit
+Delete
+Dr. Harika
+Team Royals · G 0 · S 1 · P 5
+Edit
+Delete
+Dr. K. Victoria
+Team Royals · G 0 · S 1 · P 5
+Edit
+Delete
+Dr. Priyanka Mittra
+Team Royals · G 0 · S 1 · P 5
+Edit
+Delete
+Dr. Sneha
+Team Dominators · G 0 · S 1 · P 5
+Edit
+Delete
+Dr. Vamshi
+Team Royals · G 0 · S 1 · P 5
+Edit
+Delete
+J. Geetha Bhavani
+Team Dominators · G 0 · S 1 · P 5
+Edit
+Delete
+Jareen
+Team Royals · G 0 · S 1 · P 5
+Edit
+Delete
+Juneed
+Team Creators · G 0 · S 1 · P 5
+Edit
+Delete
+Mr. Suraj Uttam
+Team Royals · G 0 · S 1 · P 5
+Edit
+Delete
+P. Rajshekhar
+Team Dominators · G 0 · S 1 · P 5
+Edit
+Delete
+Priyanka Mudigonda
+Team Dominators · G 0 · S 1 · P 5
+Edit
+Delete
+Rakesh Chandra Panda
+Team Dominators · G 0 · S 1 · P 5
+Edit
+Delete
+Rakesh Dubbaka
+Team Dominators · G 0 · S 1 · P 5
+Edit
+Delete
+Ramesh Toorkarigari
+Team Dominators · G 0 · S 1 · P 5
+Edit
+Delete
+Ramya Karnam
+Team Dominators · G 0 · S 1 · P 5
+Edit
+Delete
+Sampath Goud
+Team Royals · G 0 · S 1 · P 5
+Edit
+Delete
+
+
+
+PLAYER TRACKER 
+Team Creators
+Mamta Fertility Hospitals
+
+29
+Players
+0
+Completed
+Aarthi
+4774
+n/a
+1/5
+v
+SACK RACE
+Played
+LEMON AND SPOON RACE
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Charan
+(No ID listed)
+Videographer
+1/5
+v
+SACK RACE
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Dr. Janaki Ram
+4675
+Doctor
+2/5
+v
+BASKETBALL
+Played
+THROWBALL
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Dr. Vani
+4780
+Doctor
+1/5
+v
+THROWBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Harsha
+837
+MRD
+1/5
+v
+CYCLING
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Juneed
+4753
+Maintenance
+1/5
+v
+CYCLING
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Kalavathy
+N/A
+Clinical
+1/5
+v
+LEMON AND SPOON RACE
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Ashok
+804
+MRD
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Charan
+4699
+Maintenance
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Darshan
+4790
+MRD
+1/5
+v
+BASKETBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Dhrup Yadav
+510891
+Security
+3/5
+v
+BASKETBALL
+Played
+THROWBALL
+Played
+TUG OF WAR
+Played
+Game 4
+Open
+Game 5
+Open
+Mr. Imran
+714
+Maintenance
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Prakash
+070
+EDP
+2/5
+v
+BASKETBALL
+Played
+THROWBALL
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Rasool
+829
+EDP
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Renuka
+513804
+Security
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Roshan
+513232
+Security
+2/5
+v
+TUG OF WAR
+Played
+LEMON AND SPOON RACE
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Sanju
+508915
+Security
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Sathyanarayana
+021
+Art Lab
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Sridhar
+245
+Driver
+2/5
+v
+THROWBALL
+Played
+TUG OF WAR
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Tapan
+510314
+Security
+1/5
+v
+BASKETBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Ms. Ranjitha
+14316
+HK Sup
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Ms. Upendra
+14091
+HK
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Navaneeta
+046
+MRD
+1/5
+v
+THROWBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Praveen
+4804
+Maintenance
+1/5
+v
+LEMON AND SPOON RACE
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Ramya
+814
+EDP
+1/5
+v
+LEMON AND SPOON RACE
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Sai Kiran Gollapudi
+826
+Maintenance
+2/5
+v
+BASKETBALL
+Played
+THROWBALL
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Sunitha Nama
+836
+Art Lab
+1/5
+v
+BASKETBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Vijji
+69
+DA
+1/5
+v
+SACK RACE
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Vishal
+11226
+HK
+1/5
+v
+SACK RACE
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Team Dominators
+Team Dominators
+Corporate Office + ADL + GSH + Expresso Foods + MD Residence
+
+26
+Players
+0
+Completed
+Anushuman Sharma
+4504
+HOD (MFH)
+1/5
+v
+BASKETBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+B. Anuradha
+910769
+Housekeeper (Kairos)
+2/5
+v
+TUG OF WAR
+Played
+LEMON AND SPOON RACE
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Babullu Sahu
+512497
+Security Supervisor (KAIROSE)
+4/5
+v
+BASKETBALL
+Played
+THROWBALL
+Played
+CYCLING
+Played
+TUG OF WAR
+Played
+Game 5
+Open
+Debendra
+512975
+Security Guard (Kairos)
+1/5
+v
+LEMON AND SPOON RACE
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Dr. Sneha
+4611
+Pathologist (ADL)
+2/5
+v
+CYCLING
+Played
+SACK RACE
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+G. Ramesh
+450
+Sample Driver
+1/5
+v
+THROWBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Gandhi Rodda
+427
+Lab Technician
+4/5
+v
+THROWBALL
+Played
+TUG OF WAR
+Played
+SACK RACE
+Played
+LEMON AND SPOON RACE
+Played
+Game 5
+Open
+J. Geetha Bhavani
+4821
+Lab Technician (ADL)
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+K. Rakesh
+4857
+Lab Technician (ADL)
+1/5
+v
+CYCLING
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+M. Vijay Kumar
+(No ID listed)
+Driver (ADL)
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Maria Barthalomia K
+1463
+Accounts
+1/5
+v
+THROWBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+MD Akram
+1167
+HR
+2/5
+v
+THROWBALL
+Played
+TUG OF WAR
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+P. Rajshekhar
+4803
+Asst. Accountant (MFH)
+2/5
+v
+TUG OF WAR
+Played
+SACK RACE
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+P. Sandeep
+276
+Assistant (GSH)
+2/5
+v
+BASKETBALL
+Played
+THROWBALL
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Priyanka Mudigonda
+294
+Executive (GSH)
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+R. Anil Kumar
+148
+Unit HR
+1/5
+v
+THROWBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Rakesh Chandra Panda
+333
+Driver (DECC)
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Rakesh Dubbaka
+354
+Asst. Manager (ADL)
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Ramesh Toorkarigari
+409
+Manager (ADL)
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Ramya Karnam
+466
+Lab Technician (ADL)
+3/5
+v
+TUG OF WAR
+Played
+SACK RACE
+Played
+LEMON AND SPOON RACE
+Played
+Game 4
+Open
+Game 5
+Open
+Ravi Kumar T
+286
+Assistant (GSH)
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Sai Kiran Gollapudi
+826
+CC Executive (Aalankrita)
+1/5
+v
+BASKETBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Sandhya Rani Gadda
+1484
+CC Executive (DECC)
+3/5
+v
+BASKETBALL
+Played
+THROWBALL
+Played
+CYCLING
+Played
+Game 4
+Open
+Game 5
+Open
+Srikanth Goud Palle
+283
+Assistant (GSH)
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Suman
+295
+Executive (GSH)
+1/5
+v
+BASKETBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Venkatesh M
+285
+Assistant (GSH)
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Team Royals
+Team Royals
+Shenoy Hospitals + DECC
+
+28
+Players
+0
+Completed
+Azeem
+358
+Technical Assistant (DECC)
+1/5
+v
+THROWBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Dr. Harika
+4697
+Anesthetist
+1/5
+v
+BASKETBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Dr. K. Victoria
+1266
+Anesthesia
+1/5
+v
+THROWBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Dr. Vamshi
+1239
+Duty Medical Officer
+1/5
+v
+BASKETBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Jareen
+368
+Medical Records (DECC)
+1/5
+v
+THROWBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Jaya Surya
+1281
+Operation Theatre
+2/5
+v
+BASKETBALL
+Played
+THROWBALL
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Akshay
+4860
+Technical Assistant (DECC)
+2/5
+v
+CYCLING
+Played
+LEMON AND SPOON RACE
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Ambedkar
+1468
+Maintenance
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Balaji
+504378
+Security - Kairos
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Charan
+1460
+CT Technician
+1/5
+v
+LEMON AND SPOON RACE
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Ganesh
+513368
+Security - Kairos
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Pintu Behra
+504023
+Security - Kairos
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Raja Lingam
+4800
+IP Billing
+1/5
+v
+SACK RACE
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Srikanth
+1188
+MOD
+2/5
+v
+BASKETBALL
+Played
+TUG OF WAR
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Srinivas
+1021
+Maintenance
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Suraj Uttam
+1254
+Admin
+1/5
+v
+BASKETBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr. Teja
+N/A
+Valet Driver – Sunrise Valet
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mr.Das
+XYZ
+Valet
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mrs. Mallika
+326
+Doctor Assistant (DECC)
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mrs. Saritha
+0101108121
+Housekeeping - SSI
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Mrs. Shima
+0101113565
+Housekeeping - SSI
+1/5
+v
+TUG OF WAR
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Ms. Anusha
+4842
+PRE
+1/5
+v
+LEMON AND SPOON RACE
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Ms. Manasa
+1496
+Nursing
+1/5
+v
+SACK RACE
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Ms. Prashanthi
+4813
+Operation Theatre
+2/5
+v
+SACK RACE
+Played
+LEMON AND SPOON RACE
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Ms. Shravanthi
+1475
+Operation Theatre
+1/5
+v
+CYCLING
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Ms. Soumya
+1509
+Nursing
+2/5
+v
+CYCLING
+Played
+TUG OF WAR
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Nagesh
+321
+Technical Assistant (DECC)
+2/5
+v
+BASKETBALL
+Played
+THROWBALL
+Played
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+Sampath Goud
+1415
+IT
+1/5
+v
+THROWBALL
+Played
+Game 2
+Open
+Game 3
+Open
+Game 4
+Open
+Game 5
+Open
+
+
+
+CHAMPIONS PAGE
+
+Basketball
+Team Champion
+Team Creators
+Sai Kiran Gollapudi
+Mr. Prakash
+Mr. Tapan
+Mr. Dhrup Yadav
+Mr. Darshan
+Dr. Janaki Ram
+Sunitha Nama
+Tarani
+Second Place Team
+Team Royals
+
+Outdoor Sports
+Throwball
+Team Champion
+Team Dominators
+R. Anil Kumar
+Babullu Sahu
+P. Sandeep
+Sandhya
+G. Ramesh
+G. Satish Kumar
+Dr. Sneha
+MD Akram Goud Palle
+Maria Barthalomia K
+Gandhi Rodda
+Second Place Team
+Team Royals
+Outdoor Sports
+Cycling
+Individual Champion
+Babullu Sahu
+Team Dominators
+Second Place
+Juneed
+Team Creators
+Females
+Sandhya
+Team Dominators
+Second Place
+Dr. Sneha
+Team Dominators
+Outdoor Sports
+Tug of War
+Team Champion
+Team Royals
+Mr. Srikanth (Captain)
+Mr. Nayan Das
+Mr. Pintu Behra
+Mr. Balaji
+Mr. Ambedkar
+Mr. Teja
+Mr. Srinivas
+Mr. Ganesh
+Mrs. Saritha
+Ms. Soumya
+Mrs. Mallika
+Mrs. Shima
+Second Place Team
+Team Dominators
+Outdoor Sports
+Sack Race
+Individual Champion
+Gandhi Rodda
+Team Dominators
+Second Place
+Mr. Jaya Surya
+Team Royals
+Female's
+Ms. Manasa
+Team Royals
+Second Place
+Aarthi
+Team Creators
+
+
+
+ANNOUNCEMENTS PAGE 
+Every update, result, and notice — newest first.
+
+Result
+23 June 2026
+Official Fair Play Award Winners: MEGA EVENT – Annual Carnival 2026
+Dear Participants and Team Members, We are thrilled to announce the official Fair Play Award winners for the sporting events of our mega carnival! These awards recognize the teams that displayed exceptional sportsmanship, integrity, and team spirit throughout the competitions. Following a comprehensive evaluation, here are the official Fair Play recipients for each event: 🚴♂️ Cycling Winners: Team Creators & Team Royals 🤝 Tug of War Winners: Team Creators & Team Dominators 🏃♂️ Sack Race Winners: Team Creators & Team Royals 🍋 Lemon and Spoon Race Winner: Team Creators (Please note: The second-place Fair Play Award for the Lemon and Spoon Race has been withheld and will not be awarded due to a lack of sportsmanship demonstrated by the remaining competing teams). Thank you to all our teams for their incredible energy and participation. Congratulations to our Fair Play winners for setting a wonderful example of sportsmanship! Best regards, Tournament Organizing Committee
+
+Info
+23 June 2026
+Women's Lemon & Spoon Race Results Under Review
+Dear Participants, Please be informed that the official results for the Women's Category of the Lemon & Spoon Race are currently being withheld. To ensure absolute fairness and accuracy, the final standings are undergoing a professional review. We are thoroughly checking the event recordings and judge tallies to resolve any discrepancies. The verified results will be announced shortly. We appreciate your patience and understanding as we ensure the integrity of the competition. Best regards, Tournament Organizing Committee
+
+Urgent
+23 June 2026
+LEMON AND SPOON RACE
+The second-place Fair Play Award for the Lemon and Spoon Race has been rescinded due to a lack of sportsmanship demonstrated by the two other teams.
+
+Info
+5 June 2026
+Mission Possible 2026 — Season Begins!
+The wait is over. Mission Possible 2026 kicks off on 4th June at RRC with Basketball. Three teams, twelve events, one champion. Stay tuned for live scores, results, and updates right here.
+
+
+
+
+
+ALSO ARRANGE THE AWARDS PAGE IN TIMELY ORDER GAME ORDER 
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-06-26T17:45:01+05:30.
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from None to Gemini 3.5 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>

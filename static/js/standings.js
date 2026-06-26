@@ -42,9 +42,18 @@
     if (wrap) wrap.innerHTML = '<div class="empty">Could not load standings.</div>';
   });
 
+  let allMvpRows = [];
   CARNIVAL.get("/api/award-leaderboards").then((data) => {
-    renderOverallMvpBoard((data && data.overall_mvp) || []);
+    allMvpRows = (data && data.overall_mvp) || [];
+    renderOverallMvpBoard(allMvpRows);
     renderFairPlayBoard((data && data.fair_play) || []);
+
+    const searchInput = document.getElementById("mvpSearchInput");
+    if (searchInput) {
+      searchInput.addEventListener("input", () => {
+        renderOverallMvpBoard(allMvpRows);
+      });
+    }
   }).catch(() => {
     const a = document.getElementById("overallMvpTable");
     const b = document.getElementById("fairPlayTable");
@@ -98,15 +107,26 @@
   function renderOverallMvpBoard(rows) {
     const wrap = document.getElementById("overallMvpTable");
     if (!wrap) return;
-    const top10 = sortOverallMvp(rows).slice(0, 10);
+    let displayRows = sortOverallMvp(rows);
+    const query = (document.getElementById("mvpSearchInput")?.value || "").trim().toLowerCase();
+    
+    if (query) {
+      displayRows = displayRows.filter(r => 
+        (r.player_name || "").toLowerCase().includes(query) ||
+        (r.team_name || "").toLowerCase().includes(query)
+      );
+    } else {
+      displayRows = displayRows.slice(0, 10);
+    }
+
     wrap.innerHTML = `
       <div class="table-wrap">
         <table class="ptable ptable--awards">
           <thead><tr><th>Rank</th><th>Player</th><th>Team</th><th>Gold</th><th>Silver</th><th>Points</th></tr></thead>
           <tbody>
-            ${top10.length ? top10.map((r, idx) => `
+            ${displayRows.length ? displayRows.map((r, idx) => `
               <tr><td class="rank">${idx + 1}</td><td>${CARNIVAL.esc(r.player_name || "-")}</td><td>${CARNIVAL.esc(r.team_name || "-")}</td><td>${Number(r.gold || 0)}</td><td>${Number(r.silver || 0)}</td><td><strong>${Number(r.points || 0)}</strong></td></tr>
-            `).join("") : '<tr><td colspan="6" class="muted">No Overall MVP entries yet.</td></tr>'}
+            `).join("") : '<tr><td colspan="6" class="muted">No Overall MVP entries match your search.</td></tr>'}
           </tbody>
         </table>
       </div>
@@ -116,19 +136,74 @@
   function renderFairPlayBoard(rows) {
     const wrap = document.getElementById("fairPlayTable");
     if (!wrap) return;
-    const sorted = sortFairPlay(rows);
+
+    const teamData = {
+      "Team Creators": { name: "Team Creators", id: "creators", color: "#D4A017", points: 0, breakdown: [] },
+      "Team Dominators": { name: "Team Dominators", id: "dominators", color: "#800000", points: 0, breakdown: [] },
+      "Team Royals": { name: "Team Royals", id: "royals", color: "#4169E1", points: 0, breakdown: [] }
+    };
+
+    (rows || []).forEach((row) => {
+      const tname = row.team_name || "";
+      if (teamData[tname]) {
+        const pts = Number(row.fair_play_points || 0);
+        teamData[tname].points += pts;
+        teamData[tname].breakdown.push({
+          points: pts,
+          why: row.why || (row.fair_play_events ? row.fair_play_events.join(", ") : "") || "Points addition"
+        });
+      }
+    });
+
+    const sorted = Object.values(teamData).sort((a, b) => (b.points - a.points) || a.name.localeCompare(b.name));
+
     wrap.innerHTML = `
       <div class="table-wrap">
-        <table class="ptable ptable--awards">
-          <thead><tr><th>Rank</th><th>Team Name</th><th>Fair Play Points</th></tr></thead>
+        <table class="ptable ptable--fairplay">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Team</th>
+              <th>Fair Play Points</th>
+            </tr>
+          </thead>
           <tbody>
-            ${sorted.length ? sorted.map((r, idx) => `
-              <tr><td class="rank">${idx + 1}</td><td>${CARNIVAL.esc(r.team_name || "-")}</td><td><strong>${Number(r.fair_play_points || 0)}</strong></td></tr>
-            `).join("") : '<tr><td colspan="3" class="muted">No Fair Play entries yet.</td></tr>'}
+            ${sorted.map((t, idx) => {
+              const breakdownHtml = t.breakdown.length
+                ? `<table class="bk"><tbody>${t.breakdown.map((b) => `
+                    <tr>
+                      <td class="${b.points < 0 ? "neg" : "pos"}">${b.points > 0 ? "+" : ""} ${b.points}</td>
+                      <td class="bk__note">${CARNIVAL.esc(b.why || "")}</td>
+                    </tr>`).join("")}</tbody></table>`
+                : '<div class="muted" style="padding:14px 18px">No fair play records yet for this team.</div>';
+
+              return `
+                <tr class="ptable__row fp-row" style="--tc:${t.color}">
+                  <td class="rank">${idx + 1}</td>
+                  <td class="teamcell">
+                    <img src="${LOGO[t.id] || ""}" alt="" class="teamcell__logo">
+                    <span class="teamcell__name" style="color:${t.color}">${CARNIVAL.esc(t.name)}</span>
+                    <span class="teamcell__chev">v</span>
+                  </td>
+                  <td class="netcell" style="color:${t.color}"><strong>${t.points}</strong></td>
+                </tr>
+                <tr class="ptable__detail"><td colspan="3"><div class="ptable__detail-inner">${breakdownHtml}</div></td></tr>
+              `;
+            }).join("")}
           </tbody>
         </table>
       </div>
       ${rulesToggle("Fair Play Rules & Regulations", FAIR_PLAY_RULES)}`;
+
+    wrap.querySelectorAll(".ptable__row.fp-row").forEach((tr) => {
+      tr.addEventListener("click", () => {
+        const next = tr.nextElementSibling;
+        if (next && next.classList.contains("ptable__detail")) {
+          const open = next.classList.toggle("open");
+          tr.classList.toggle("expanded", open);
+        }
+      });
+    });
   }
 
   function rulesToggle(title, htmlBody) {

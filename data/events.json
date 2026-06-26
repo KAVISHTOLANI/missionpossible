@@ -84,16 +84,16 @@
     "badge": "sports",
     "banner": "banner-swimming",
     "name": "Sand Volleyball",
-    "iso_date": "2026-08-06",
-    "date": "6th August 2026",
+    "iso_date": "2026-07-23",
+    "date": "23rd July 2026",
     "day": "Thursday",
     "category": "Outdoor Sports",
     "venue": "Aalankrita",
     "location": "Alankrita Resort, Marredpally",
     "venue_maps_link": "",
-    "weather": "Warm & Humid — ~31°C",
-    "weather_icon": "💧",
-    "weather_note": "Overcast skies and humid conditions expected; ideal with hydration breaks.",
+    "weather": "Monsoon — Warm & Cloudy — ~29°C",
+    "weather_icon": "☁️",
+    "weather_note": "Indoor arrangement recommended.",
     "status": "upcoming",
     "rules": [],
     "points": {
@@ -119,7 +119,7 @@
     "weather": "Cloudy & Breezy — ~30°C",
     "weather_icon": "🌬",
     "weather_note": "End of June brings cooler breezy days (~30°C), ideal for cycling.",
-    "status": "upcoming",
+    "status": "completed",
     "points": {
       "winner": 300,
       "runner_up": 150
@@ -144,7 +144,7 @@
     "weather": "Cloudy & Breezy — ~30°C",
     "weather_icon": "🌬",
     "weather_note": "Ground may be slightly muddy — check terrain before matches.",
-    "status": "upcoming",
+    "status": "completed",
     "points": {
       "winner": 300,
       "runner_up": 150
@@ -244,7 +244,7 @@
     "weather": "Monsoon — Warm & Wet — ~28°C",
     "weather_icon": "🌧",
     "weather_note": "Plan early morning slot before afternoon showers.",
-    "status": "upcoming",
+    "status": "completed",
     "rules": [],
     "points": {
       "winner": 300,
@@ -294,7 +294,7 @@
     "weather": "Overcast & Humid — ~28°C",
     "weather_icon": "🌥",
     "weather_note": "Quick fun race format with heats and finals.",
-    "status": "upcoming",
+    "status": "completed",
     "points": {
       "winner": 300,
       "runner_up": 150
@@ -319,7 +319,7 @@
     "weather": "Overcast & Humid — ~28°C",
     "weather_icon": "🌥",
     "weather_note": "Track should be dry and safe for participants.",
-    "status": "upcoming",
+    "status": "completed",
     "points": {
       "winner": 300,
       "runner_up": 150
@@ -384,16 +384,16 @@
     "badge": "cultural",
     "banner": "banner-cooking",
     "name": "Cooking Competition",
-    "iso_date": "2026-07-23",
-    "date": "23rd July 2026",
+    "iso_date": "2026-08-06",
+    "date": "6th August 2026",
     "day": "Thursday",
     "category": "Cultural",
     "venue": "Aalankrita",
     "location": "Marredpally, Hyderabad",
     "venue_maps_link": "",
-    "weather": "Monsoon — Warm & Cloudy — ~29°C",
-    "weather_icon": "☁️",
-    "weather_note": "Indoor arrangement recommended.",
+    "weather": "Warm & Humid — ~31°C",
+    "weather_icon": "💧",
+    "weather_note": "Overcast skies and humid conditions expected; ideal with hydration breaks.",
     "status": "upcoming",
     "rules": [],
     "points": {

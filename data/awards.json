@@ -9,6 +9,31 @@
       "player": "Mr. Dhrup Yadav",
       "team": "creators",
       "image": ""
+    },
+    "cycling": {
+      "player": "Babullu Sahu",
+      "team": "dominators",
+      "image": ""
+    },
+    "tug-of-war": {
+      "player": "Mr. Srikanth",
+      "team": "royals",
+      "image": ""
+    },
+    "sack-race": {
+      "player": "Gandhi Rodda",
+      "team": "dominators",
+      "image": ""
+    },
+    "lemon-spoon": {
+      "player": "Praveen",
+      "team": "creators",
+      "image": ""
+    },
+    "kabaddi": {
+      "player": "TBD",
+      "team": "creators",
+      "image": ""
     }
   },
   "overall_best_player": null,
