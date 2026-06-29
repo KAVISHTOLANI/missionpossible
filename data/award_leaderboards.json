@@ -22,10 +22,10 @@
       "id": "mvp-janaki-ram",
       "player_name": "Dr. Janaki Ram",
       "team_name": "Team Creators",
-      "gold": 1,
+      "gold": 2,
       "silver": 0,
-      "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "points": 20,
+      "updated_at": "2026-06-29 11:49"
     },
     {
       "id": "mvp-g-ramesh",
@@ -76,19 +76,19 @@
       "id": "mvp-mr-dhrup-yadav",
       "player_name": "Mr. Dhrup Yadav",
       "team_name": "Team Creators",
-      "gold": 1,
+      "gold": 2,
       "silver": 0,
-      "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "points": 20,
+      "updated_at": "2026-06-29 11:51"
     },
     {
       "id": "mvp-mr-prakash",
       "player_name": "Mr. Prakash",
       "team_name": "Team Creators",
-      "gold": 1,
+      "gold": 2,
       "silver": 0,
-      "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "points": 20,
+      "updated_at": "2026-06-29 11:49"
     },
     {
       "id": "mvp-mr-tapan",
@@ -449,6 +449,42 @@
       "silver": 5,
       "points": 5,
       "updated_at": "2026-06-23 12:56"
+    },
+    {
+      "id": "mvp-93eb6c048f",
+      "player_name": "Sridhar",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-29 11:50"
+    },
+    {
+      "id": "mvp-58a9965868",
+      "player_name": "Anil",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-29 11:51"
+    },
+    {
+      "id": "mvp-cc04540e7b",
+      "player_name": "Praveen",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-29 11:51"
+    },
+    {
+      "id": "mvp-efec0b9728",
+      "player_name": "David",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-06-29 11:52"
     }
   ],
   "fair_play": [
