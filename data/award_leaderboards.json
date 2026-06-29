@@ -59,9 +59,9 @@
       "player_name": "MD Akram",
       "team_name": "Team Dominators",
       "gold": 1,
-      "silver": 1,
-      "points": 15,
-      "updated_at": "2026-06-23 10:36"
+      "silver": 2,
+      "points": 20,
+      "updated_at": "2026-06-29 11:52"
     },
     {
       "id": "mvp-mr-darshan",
@@ -104,9 +104,9 @@
       "player_name": "P. Sandeep",
       "team_name": "Team Dominators",
       "gold": 1,
-      "silver": 0,
-      "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "silver": 1,
+      "points": 15,
+      "updated_at": "2026-06-29 11:53"
     },
     {
       "id": "mvp-r-anil-kumar",
@@ -365,9 +365,9 @@
       "player_name": "P. Rajshekhar",
       "team_name": "Team Dominators",
       "gold": 0,
-      "silver": 1,
-      "points": 5,
-      "updated_at": "2026-06-23 10:31"
+      "silver": 2,
+      "points": 10,
+      "updated_at": "2026-06-29 11:56"
     },
     {
       "id": "mvp-e9d084518b",
@@ -485,6 +485,87 @@
       "silver": 0,
       "points": 10,
       "updated_at": "2026-06-29 11:52"
+    },
+    {
+      "id": "mvp-a39de7df89",
+      "player_name": "Satish",
+      "team_name": "Team Creators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-29 11:53"
+    },
+    {
+      "id": "mvp-ac960af722",
+      "player_name": "Vamshi",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-29 11:53"
+    },
+    {
+      "id": "mvp-f6fd70a934",
+      "player_name": "Laxman Pembarthi",
+      "team_name": "Team Creators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-29 11:53"
+    },
+    {
+      "id": "mvp-8e36c24d29",
+      "player_name": "K.Rakesh",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 2,
+      "points": 10,
+      "updated_at": "2026-06-29 11:55"
+    },
+    {
+      "id": "mvp-f908553488",
+      "player_name": "Ravi Kumar T",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 2,
+      "points": 10,
+      "updated_at": "2026-06-29 11:56"
+    },
+    {
+      "id": "mvp-28c1c1dbb1",
+      "player_name": "Venkatesh",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 2,
+      "points": 10,
+      "updated_at": "2026-06-29 11:56"
+    },
+    {
+      "id": "mvp-08341773b6",
+      "player_name": "B Hari Kumar",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-29 11:57"
+    },
+    {
+      "id": "mvp-c888c97b13",
+      "player_name": "K Sai Kiran",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-29 11:57"
+    },
+    {
+      "id": "mvp-16a871fc70",
+      "player_name": "Ramanna Madiga",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-06-29 11:57"
     }
   ],
   "fair_play": [
