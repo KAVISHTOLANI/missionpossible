@@ -758,20 +758,20 @@
         "department": "Lab Technician (ADL)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "CYCLING",
-          "",
+          "KABADDI",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-06-29T11:41:25"
       },
       {
         "id": "pt-60003f6fc3",
@@ -803,19 +803,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "THROWBALL",
           "TUG OF WAR",
-          "",
+          "KABADDI",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-23T09:39:27"
+        "updated_at": "2026-06-29T11:40:49"
       },
       {
         "id": "pt-7d99b4d8cd",
@@ -825,19 +825,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
-          "",
+          "KABADDI",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-06-29T11:41:04"
       },
       {
         "id": "pt-ac1171a5ad",
@@ -868,20 +868,20 @@
         "department": "CC Executive (Aalankrita)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "",
+          "KABADDI",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-06-29T11:42:04"
       },
       {
         "id": "pt-ae612fb2bd",
@@ -934,20 +934,20 @@
         "department": "Assistant (GSH)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
-          "",
+          "KABADDI",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:38:55",
-        "updated_at": "2026-06-23T09:39:34"
+        "updated_at": "2026-06-29T11:41:33"
       },
       {
         "id": "pt-9e22917c2b",
@@ -956,20 +956,20 @@
         "department": "Assistant (GSH)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
-          "",
+          "KABADDI",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:38:55",
-        "updated_at": "2026-06-23T09:39:37"
+        "updated_at": "2026-06-29T11:41:48"
       },
       {
         "id": "pt-c8396538ca",
@@ -1045,19 +1045,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
           "SACK RACE",
-          "",
+          "KABADDI",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:38:55",
-        "updated_at": "2026-06-23T12:33:06"
+        "updated_at": "2026-06-29T11:41:41"
       },
       {
         "id": "pt-e534220d2e",
@@ -1212,6 +1212,116 @@
         ],
         "created_at": "2026-06-23T12:53:51",
         "updated_at": "2026-06-23T12:54:02"
+      },
+      {
+        "id": "pt-7a246e0763",
+        "name": "G.Satish Kumar",
+        "employee_id": "418",
+        "department": "LAB TECHNICIAN",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "KABADDI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-29T11:40:32",
+        "updated_at": "2026-06-29T11:40:58"
+      },
+      {
+        "id": "pt-e10963a263",
+        "name": "S.Vamshi",
+        "employee_id": "439",
+        "department": "LAB TECHNICIAN",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "KABADDI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-29T11:40:32",
+        "updated_at": "2026-06-29T11:41:11"
+      },
+      {
+        "id": "pt-f858cb34cf",
+        "name": "Laxman Pembarthi",
+        "employee_id": "263",
+        "department": "Sample Driver",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "KABADDI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-29T11:40:32",
+        "updated_at": "2026-06-29T11:41:18"
+      },
+      {
+        "id": "pt-bb1a00f07f",
+        "name": "B Hari Kumar",
+        "employee_id": "723",
+        "department": "Pharmacist",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "KABADDI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-29T11:40:32",
+        "updated_at": "2026-06-29T11:41:57"
+      },
+      {
+        "id": "pt-90c475780c",
+        "name": "Ramanna Madiga",
+        "employee_id": "274",
+        "department": "Pharmacist",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "KABADDI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-06-29T11:40:32",
+        "updated_at": "2026-06-29T11:42:12"
       }
     ],
     "royals": [
