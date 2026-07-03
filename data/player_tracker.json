@@ -10,18 +10,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
           "KABADDI",
-          "",
+          "CARROMS",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-29T11:47:26"
+        "updated_at": "2026-07-03T11:33:23"
       },
       {
         "id": "pt-320062282c",
@@ -404,20 +404,20 @@
         "department": "MRD",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
-          "",
+          "CARROMS",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:29:57",
-        "updated_at": "2026-06-23T09:30:48"
+        "updated_at": "2026-07-03T11:33:46"
       },
       {
         "id": "pt-9981a7ae2d",
@@ -682,6 +682,94 @@
         ],
         "created_at": "2026-06-29T11:48:59",
         "updated_at": "2026-06-29T11:49:11"
+      },
+      {
+        "id": "pt-ee760dc7b3",
+        "name": "Mr. Nagesh",
+        "employee_id": "01844",
+        "department": "Security",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CARROMS",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-03T11:33:18",
+        "updated_at": "2026-07-03T11:33:37"
+      },
+      {
+        "id": "pt-4a1f43f636",
+        "name": "Ms. Nilandhini",
+        "employee_id": "711",
+        "department": "Admin",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CARROMS",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-03T11:33:18",
+        "updated_at": "2026-07-03T11:34:04"
+      },
+      {
+        "id": "pt-e75cdb1126",
+        "name": "Mr. Satyanarayana",
+        "employee_id": "21",
+        "department": "ART Lab",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CARROMS",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-03T11:33:18",
+        "updated_at": "2026-07-03T11:34:21"
+      },
+      {
+        "id": "pt-605159c5bf",
+        "name": "Dr. Monika. K",
+        "employee_id": "4834",
+        "department": "Clinical",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CARROMS",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-03T11:33:18",
+        "updated_at": "2026-07-03T11:34:35"
       }
     ],
     "dominators": [
