@@ -115,7 +115,7 @@
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 12,
+      "events_played": 14,
       "wins": 1,
       "points_earned": 1300,
       "penalty_deductions": 0,
@@ -207,13 +207,27 @@
           "points": 100,
           "type": "points",
           "note": "Winners Of Carroms Doubles - Venkat & Aakash"
+        },
+        {
+          "id": "st-25a19c360b",
+          "event": "Carrom",
+          "points": 0,
+          "type": "points",
+          "note": "No other position won in carroms"
+        },
+        {
+          "id": "st-6ca96a9bbd",
+          "event": "Carrom",
+          "points": 0,
+          "type": "points",
+          "note": "No other position won in carroms"
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 13,
+      "events_played": 14,
       "wins": 1,
       "points_earned": 1125,
       "penalty_deductions": 0,
@@ -312,6 +326,13 @@
           "points": 100,
           "type": "points",
           "note": "Winners Of Carroms Mixed Doubles - Suraj & Elizabeth"
+        },
+        {
+          "id": "st-5aa4a04eb4",
+          "event": "Carrom",
+          "points": 0,
+          "type": "points",
+          "note": "No other position won in carroms"
         }
       ]
     }
