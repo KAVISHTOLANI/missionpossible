@@ -604,5 +604,97 @@
       "updated_at": "2026-07-03 12:41"
     }
   ],
-  "fair_play": []
+  "fair_play": [
+    {
+      "id": "fp-d2b3c46dcd",
+      "team_name": "Team Royals",
+      "fair_play_points": 2,
+      "why": "Fair Play Throwball",
+      "updated_at": "2026-07-03 12:48"
+    },
+    {
+      "id": "fp-cb61254a69",
+      "team_name": "Team Dominators",
+      "fair_play_points": 1,
+      "why": "Fair Play Throwball -2nd Place",
+      "updated_at": "2026-07-03 12:48"
+    },
+    {
+      "id": "fp-5ccd949691",
+      "team_name": "Team Dominators",
+      "fair_play_points": 2,
+      "why": "Fair Play Basketball",
+      "updated_at": "2026-07-03 12:48"
+    },
+    {
+      "id": "fp-648650541d",
+      "team_name": "Team Creators",
+      "fair_play_points": 1,
+      "why": "Fair Play Basketball- 2nd Place",
+      "updated_at": "2026-07-03 12:49"
+    },
+    {
+      "id": "fp-8be2b56788",
+      "team_name": "Team Creators",
+      "fair_play_points": 2,
+      "why": "Fair Play Cycling",
+      "updated_at": "2026-07-03 12:49"
+    },
+    {
+      "id": "fp-af264f5685",
+      "team_name": "Team Royals",
+      "fair_play_points": 1,
+      "why": "Fair Play Cycling - 2nd Place",
+      "updated_at": "2026-07-03 12:50"
+    },
+    {
+      "id": "fp-1a6720c6b3",
+      "team_name": "Team Creators",
+      "fair_play_points": 2,
+      "why": "Fair Play Tug Of War",
+      "updated_at": "2026-07-03 12:50"
+    },
+    {
+      "id": "fp-f7446d871d",
+      "team_name": "Team Dominators",
+      "fair_play_points": 1,
+      "why": "Fair Play Tug Of War - 2nd Place",
+      "updated_at": "2026-07-03 12:50"
+    },
+    {
+      "id": "fp-49c52e4c34",
+      "team_name": "Team Creators",
+      "fair_play_points": 2,
+      "why": "Fair Play Sack Race",
+      "updated_at": "2026-07-03 12:51"
+    },
+    {
+      "id": "fp-6a06b765b8",
+      "team_name": "Team Royals",
+      "fair_play_points": 1,
+      "why": "Fair Play Sack Race - 2nd Place",
+      "updated_at": "2026-07-03 12:51"
+    },
+    {
+      "id": "fp-eded5add2a",
+      "team_name": "Team Creators",
+      "fair_play_points": 2,
+      "why": "Fair Play Lemon and Spoon",
+      "updated_at": "2026-07-03 12:51"
+    },
+    {
+      "id": "fp-2368fd1123",
+      "team_name": "Team Dominators",
+      "fair_play_points": 2,
+      "why": "Fair Play Caroms",
+      "updated_at": "2026-07-03 12:52"
+    },
+    {
+      "id": "fp-b513dc754e",
+      "team_name": "Team Royals",
+      "fair_play_points": 1,
+      "why": "Fair Play Carroms - 2nd place",
+      "updated_at": "2026-07-03 12:52"
+    }
+  ]
 }
