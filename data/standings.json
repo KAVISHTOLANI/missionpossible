@@ -3,11 +3,11 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 11,
+      "events_played": 13,
       "wins": 2,
-      "points_earned": 975,
+      "points_earned": 1075,
       "penalty_deductions": 0,
-      "net_points": 975,
+      "net_points": 1075,
       "gold": 3,
       "silver": 3,
       "bronze": 0,
@@ -88,17 +88,31 @@
           "points": 300,
           "type": "points",
           "note": "Winners Of Kabaddi"
+        },
+        {
+          "id": "st-2bfef26498",
+          "event": "Carrom",
+          "points": 50,
+          "type": "points",
+          "note": "2nd Place Caroms Doubles - Satyanarayana & Dr. Janaki Ram"
+        },
+        {
+          "id": "st-a39468b198",
+          "event": "Carrom",
+          "points": 50,
+          "type": "points",
+          "note": "2nd Place Carroms Mixed Doubles - Dr. Janaki Ram & Monica"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 11,
+      "events_played": 12,
       "wins": 1,
-      "points_earned": 1200,
+      "points_earned": 1300,
       "penalty_deductions": 0,
-      "net_points": 1200,
+      "net_points": 1300,
       "gold": 4,
       "silver": 4,
       "bronze": 0,
@@ -179,17 +193,24 @@
           "points": 150,
           "type": "points",
           "note": "2nd Place In Kabaddi"
+        },
+        {
+          "id": "st-f86fea8896",
+          "event": "Carrom",
+          "points": 100,
+          "type": "points",
+          "note": "Winners Of Carroms Doubles - Venkat & Aakash"
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 11,
+      "events_played": 13,
       "wins": 1,
-      "points_earned": 975,
+      "points_earned": 1125,
       "penalty_deductions": 0,
-      "net_points": 975,
+      "net_points": 1125,
       "gold": 3,
       "silver": 3,
       "bronze": 0,
@@ -270,6 +291,20 @@
           "points": 0,
           "type": "points",
           "note": "3rd Place In Kabaddi"
+        },
+        {
+          "id": "st-77c7e4e431",
+          "event": "Carrom",
+          "points": 50,
+          "type": "points",
+          "note": "2nd Place Carroms Singles - Vamshi"
+        },
+        {
+          "id": "st-dbdb4155b7",
+          "event": "Carrom",
+          "points": 100,
+          "type": "points",
+          "note": "Winners Of Carroms Mixed Doubles - Suraj & Elizabeth"
         }
       ]
     }
