@@ -158,5 +158,42 @@
     ],
     "winning_photo": "",
     "updated_at": "2026-07-03 11:49"
+  },
+  {
+    "event_id": "carrom",
+    "event_name": "Carrom",
+    "sport_category": "Indoor Sport",
+    "champion_type": "individual",
+    "team": "creators",
+    "team_name": "Team Creators",
+    "second_team": "royals",
+    "second_team_name": "Team Royals",
+    "player_name": "Satyanarayana",
+    "second_player_name": "Vamshi",
+    "players": [],
+    "categories": [
+      {
+        "name": "Doubles",
+        "first_player": "Venkat & Aakash",
+        "first_team": "dominators",
+        "first_team_name": "Team Dominators",
+        "second_player": "Satyanarayana & Dr. Janaki Ram",
+        "second_team": "creators",
+        "second_team_name": "Team Creators",
+        "photo": ""
+      },
+      {
+        "name": "Mixed Doubles",
+        "first_player": "Suraj & Elizabeth",
+        "first_team": "royals",
+        "first_team_name": "Team Royals",
+        "second_player": "Dr. Janaki Ram & Monica",
+        "second_team": "creators",
+        "second_team_name": "Team Creators",
+        "photo": ""
+      }
+    ],
+    "winning_photo": "",
+    "updated_at": "2026-07-03 12:04"
   }
 ]
