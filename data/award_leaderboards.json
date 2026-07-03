@@ -23,9 +23,9 @@
       "player_name": "Dr. Janaki Ram",
       "team_name": "Team Creators",
       "gold": 2,
-      "silver": 0,
-      "points": 20,
-      "updated_at": "2026-06-29 11:49"
+      "silver": 1,
+      "points": 25,
+      "updated_at": "2026-07-03 12:40"
     },
     {
       "id": "mvp-g-ramesh",
@@ -203,9 +203,9 @@
       "player_name": "Dr. Vamshi",
       "team_name": "Team Royals",
       "gold": 0,
-      "silver": 1,
-      "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "silver": 2,
+      "points": 10,
+      "updated_at": "2026-07-03 12:39"
     },
     {
       "id": "mvp-jareen",
@@ -238,10 +238,10 @@
       "id": "mvp-mr-suraj-uttam",
       "player_name": "Mr. Suraj Uttam",
       "team_name": "Team Royals",
-      "gold": 0,
+      "gold": 1,
       "silver": 1,
-      "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "points": 15,
+      "updated_at": "2026-07-03 12:40"
     },
     {
       "id": "mvp-sampath-goud",
@@ -535,10 +535,10 @@
       "id": "mvp-28c1c1dbb1",
       "player_name": "Venkatesh",
       "team_name": "Team Dominators",
-      "gold": 0,
+      "gold": 1,
       "silver": 2,
-      "points": 10,
-      "updated_at": "2026-06-29 11:56"
+      "points": 20,
+      "updated_at": "2026-07-03 12:39"
     },
     {
       "id": "mvp-08341773b6",
@@ -566,6 +566,42 @@
       "silver": 1,
       "points": 5,
       "updated_at": "2026-06-29 11:57"
+    },
+    {
+      "id": "mvp-3a4e915fef",
+      "player_name": "Satyanarayana",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-07-03 12:38"
+    },
+    {
+      "id": "mvp-03edbbc34c",
+      "player_name": "Aakash",
+      "team_name": "Team Dominators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-07-03 12:39"
+    },
+    {
+      "id": "mvp-070b4b95dc",
+      "player_name": "Elizabeth",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-07-03 12:41"
+    },
+    {
+      "id": "mvp-383a16e13d",
+      "player_name": "Monica",
+      "team_name": "Team Creators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-07-03 12:41"
     }
   ],
   "fair_play": []
