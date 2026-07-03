@@ -3,11 +3,11 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 13,
+      "events_played": 14,
       "wins": 2,
-      "points_earned": 1075,
+      "points_earned": 1175,
       "penalty_deductions": 0,
-      "net_points": 1075,
+      "net_points": 1175,
       "gold": 3,
       "silver": 3,
       "bronze": 0,
@@ -102,6 +102,13 @@
           "points": 50,
           "type": "points",
           "note": "2nd Place Carroms Mixed Doubles - Dr. Janaki Ram & Monica"
+        },
+        {
+          "id": "st-053d3e7c95",
+          "event": "Carrom",
+          "points": 100,
+          "type": "points",
+          "note": "Winner Of Carroms Singles - Satyanarayana"
         }
       ]
     },
