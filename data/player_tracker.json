@@ -826,18 +826,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "CYCLING",
           "SACK RACE",
           "CARROMS",
-          "",
+          "BADMINTON",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-03T11:43:09"
+        "updated_at": "2026-07-06T12:48:57"
       },
       {
         "id": "pt-68cb4ff63b",
@@ -1352,20 +1352,20 @@
         "department": "LAB TECHNICIAN",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "KABADDI",
-          "",
+          "BADMINTON",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-29T11:40:32",
-        "updated_at": "2026-06-29T11:40:58"
+        "updated_at": "2026-07-06T12:49:27"
       },
       {
         "id": "pt-e10963a263",
@@ -1374,20 +1374,20 @@
         "department": "LAB TECHNICIAN",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "KABADDI",
-          "",
+          "BADMINTON",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-29T11:40:32",
-        "updated_at": "2026-06-29T11:41:11"
+        "updated_at": "2026-07-06T12:49:36"
       },
       {
         "id": "pt-f858cb34cf",
@@ -1520,6 +1520,72 @@
         ],
         "created_at": "2026-07-03T11:44:01",
         "updated_at": "2026-07-03T11:44:13"
+      },
+      {
+        "id": "pt-e3a2621ff3",
+        "name": "Mr. Arjun Deenadayal",
+        "employee_id": "1223",
+        "department": "DIRECTOR",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BADMINTON",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-06T12:48:22",
+        "updated_at": "2026-07-06T12:48:47"
+      },
+      {
+        "id": "pt-9b8daf8047",
+        "name": "Mr. Jeetandra Tolani",
+        "employee_id": "1226",
+        "department": "DIRECTOR",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BADMINTON",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-06T12:48:22",
+        "updated_at": "2026-07-06T12:48:36"
+      },
+      {
+        "id": "pt-4c8241ac08",
+        "name": "Ms. Raja Rajeshwari Akhila T",
+        "employee_id": "435",
+        "department": "MOD (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BADMINTON",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-06T12:48:22",
+        "updated_at": "2026-07-06T12:49:16"
       }
     ],
     "royals": [
