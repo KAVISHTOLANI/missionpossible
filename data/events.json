@@ -371,7 +371,7 @@
     "badge": "indoor",
     "banner": "banner-carrom",
     "name": "Chess",
-    "iso_date": "2026-07-30",
+    "iso_date": "2026-08-13",
     "date": "30th July 2026",
     "day": "Thursday",
     "category": "Indoor Games",
@@ -388,7 +388,9 @@
       "runner_up": 150
     },
     "event_time": "",
-    "num": "#15"
+    "num": "#15",
+    "tournament_format": "",
+    "results": []
   },
   {
     "id": "cooking",
