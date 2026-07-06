@@ -195,5 +195,42 @@
     ],
     "winning_photo": "",
     "updated_at": "2026-07-03 12:04"
+  },
+  {
+    "event_id": "badminton",
+    "event_name": "Badminton",
+    "sport_category": "Indoor Sport",
+    "champion_type": "individual",
+    "team": "creators",
+    "team_name": "Team Creators",
+    "second_team": "royals",
+    "second_team_name": "Team Royals",
+    "player_name": "Mr.Sai",
+    "second_player_name": "Dr.Suresh",
+    "players": [],
+    "categories": [
+      {
+        "name": "Doubles",
+        "first_player": "Mr. Sai And Mr.Kishore",
+        "first_team": "creators",
+        "first_team_name": "Team Creators",
+        "second_player": "Dr. Suresh and Dr.M.Naveen",
+        "second_team": "royals",
+        "second_team_name": "Team Royals",
+        "photo": ""
+      },
+      {
+        "name": "Mixed Doubles",
+        "first_player": "Dr. Amit And Dr. K. Victoria",
+        "first_team": "royals",
+        "first_team_name": "Team Royals",
+        "second_player": "Mr. Arjun Deenadayal and Ms. Raja Rajeshwari Akhila T",
+        "second_team": "dominators",
+        "second_team_name": "Team Dominators",
+        "photo": ""
+      }
+    ],
+    "winning_photo": "",
+    "updated_at": "2026-07-06 13:12"
   }
 ]
