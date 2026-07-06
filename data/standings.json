@@ -3,7 +3,7 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 16,
+      "events_played": 17,
       "wins": 2,
       "points_earned": 1375,
       "penalty_deductions": 0,
@@ -123,13 +123,20 @@
           "points": 100,
           "type": "points",
           "note": "Winner Of Badminton Singles - Mr.Sai"
+        },
+        {
+          "id": "st-759f272007",
+          "event": "Badminton",
+          "points": 0,
+          "type": "points",
+          "note": ""
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 15,
+      "events_played": 17,
       "wins": 1,
       "points_earned": 1350,
       "penalty_deductions": 0,
@@ -242,6 +249,20 @@
           "points": 50,
           "type": "points",
           "note": "2nd Place Badminton Mixed Doubles - Arjun and Akhila"
+        },
+        {
+          "id": "st-f86f7d9188",
+          "event": "Badminton",
+          "points": 0,
+          "type": "points",
+          "note": ""
+        },
+        {
+          "id": "st-9643ed0b2a",
+          "event": "Badminton",
+          "points": 0,
+          "type": "points",
+          "note": ""
         }
       ]
     },
