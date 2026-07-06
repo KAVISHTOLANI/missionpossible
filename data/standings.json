@@ -3,11 +3,11 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 14,
+      "events_played": 16,
       "wins": 2,
-      "points_earned": 1175,
+      "points_earned": 1375,
       "penalty_deductions": 0,
-      "net_points": 1175,
+      "net_points": 1375,
       "gold": 3,
       "silver": 3,
       "bronze": 0,
@@ -109,17 +109,31 @@
           "points": 100,
           "type": "points",
           "note": "Winner Of Carroms Singles - Satyanarayana"
+        },
+        {
+          "id": "st-7d2fe30e1a",
+          "event": "Badminton",
+          "points": 100,
+          "type": "points",
+          "note": "Winner Of Badminton Doubles - Mr. Sai And Mr. Suresh"
+        },
+        {
+          "id": "st-92e3f8b1a1",
+          "event": "Badminton",
+          "points": 100,
+          "type": "points",
+          "note": "Winner Of Badminton Singles - Mr.Sai"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 14,
+      "events_played": 15,
       "wins": 1,
-      "points_earned": 1300,
+      "points_earned": 1350,
       "penalty_deductions": 0,
-      "net_points": 1300,
+      "net_points": 1350,
       "gold": 4,
       "silver": 4,
       "bronze": 0,
@@ -221,17 +235,24 @@
           "points": 0,
           "type": "points",
           "note": "No other position won in carroms"
+        },
+        {
+          "id": "st-3a0d12c626",
+          "event": "Badminton",
+          "points": 50,
+          "type": "points",
+          "note": "2nd Place Badminton Mixed Doubles - Arjun and Akhila"
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 14,
+      "events_played": 17,
       "wins": 1,
-      "points_earned": 1125,
+      "points_earned": 1325,
       "penalty_deductions": 0,
-      "net_points": 1125,
+      "net_points": 1325,
       "gold": 3,
       "silver": 3,
       "bronze": 0,
@@ -333,6 +354,27 @@
           "points": 0,
           "type": "points",
           "note": "No other position won in carroms"
+        },
+        {
+          "id": "st-1732721a5f",
+          "event": "Badminton",
+          "points": 50,
+          "type": "points",
+          "note": "2nd Place Badminton Men's - Dr. Suresh"
+        },
+        {
+          "id": "st-5a24fd275a",
+          "event": "Badminton",
+          "points": 100,
+          "type": "points",
+          "note": "Winner Of Badminton Mixed Doubles - Dr.Amit and Dr. Victoria"
+        },
+        {
+          "id": "st-f506ab9966",
+          "event": "Badminton",
+          "points": 50,
+          "type": "points",
+          "note": "2nd Place Badminton Doubles - Suresh and Naveeen"
         }
       ]
     }
