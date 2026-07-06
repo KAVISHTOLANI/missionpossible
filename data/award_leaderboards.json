@@ -695,6 +695,20 @@
       "fair_play_points": 1,
       "why": "Fair Play Carroms - 2nd place",
       "updated_at": "2026-07-03 12:52"
+    },
+    {
+      "id": "fp-96615a4df7",
+      "team_name": "Team Dominators",
+      "fair_play_points": 2,
+      "why": "Fair Play Badminton",
+      "updated_at": "2026-07-06 13:04"
+    },
+    {
+      "id": "fp-9c1ad35463",
+      "team_name": "Team Royals",
+      "fair_play_points": 1,
+      "why": "Fair Play Badminton",
+      "updated_at": "2026-07-06 13:04"
     }
   ]
 }
