@@ -1574,20 +1574,20 @@
         "department": "Anesthesia",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "THROWBALL",
-          "",
+          "BADMINTON",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-07-06T12:44:27"
       },
       {
         "id": "pt-51eb8d8b12",
@@ -1728,20 +1728,20 @@
         "department": "IT",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "THROWBALL",
-          "",
+          "BADMINTON",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-07-06T12:44:42"
       },
       {
         "id": "pt-58e730d3ef",
@@ -1987,25 +1987,25 @@
       },
       {
         "id": "pt-e33dfad407",
-        "name": "Mr. Teja",
+        "name": "Dr. Achyuth",
         "employee_id": "N/A",
-        "department": "Valet Driver – Sunrise Valet",
+        "department": "Oncologist",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
-          "",
+          "BADMINTON",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T12:13:41",
-        "updated_at": "2026-06-23T12:13:56"
+        "updated_at": "2026-07-06T12:44:18"
       },
       {
         "id": "pt-6d48aad3ce",
@@ -2248,6 +2248,94 @@
         ],
         "created_at": "2026-07-03T11:40:23",
         "updated_at": "2026-07-03T11:40:39"
+      },
+      {
+        "id": "pt-9cfdb9a9c5",
+        "name": "Dr. Amit Kumar",
+        "employee_id": "1229",
+        "department": "Anesthesia",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BADMINTON",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-06T12:43:15",
+        "updated_at": "2026-07-06T12:43:38"
+      },
+      {
+        "id": "pt-cc2d8ecacb",
+        "name": "Dr. M. Naveen Kumar",
+        "employee_id": "1022",
+        "department": "ENT",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BADMINTON",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-06T12:43:15",
+        "updated_at": "2026-07-06T12:43:34"
+      },
+      {
+        "id": "pt-06e6b82695",
+        "name": "Dr. Subbalakshmi",
+        "employee_id": "4585",
+        "department": "Anesthesia",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BADMINTON",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-06T12:43:15",
+        "updated_at": "2026-07-06T12:43:31"
+      },
+      {
+        "id": "pt-c1b8276d4b",
+        "name": "Dr. Suresh Kumar",
+        "employee_id": "abcD",
+        "department": "ENT",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "BADMINTON",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-06T12:45:03",
+        "updated_at": "2026-07-06T12:45:19"
       }
     ]
   }
