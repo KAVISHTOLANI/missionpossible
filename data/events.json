@@ -198,14 +198,16 @@
     "weather": "Monsoon — Warm & Wet — ~29°C",
     "weather_icon": "🌧",
     "weather_note": "Badminton is best played indoors during peak monsoon.",
-    "status": "upcoming",
+    "status": "completed",
     "rules": [],
     "points": {
       "winner": 300,
       "runner_up": 150
     },
     "event_time": "",
-    "num": "#08"
+    "num": "#08",
+    "tournament_format": "",
+    "results": []
   },
   {
     "id": "cricket",
