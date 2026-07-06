@@ -175,10 +175,10 @@
       "id": "mvp-dr-k-victoria",
       "player_name": "Dr. K. Victoria",
       "team_name": "Team Royals",
-      "gold": 0,
+      "gold": 1,
       "silver": 1,
-      "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "points": 15,
+      "updated_at": "2026-07-06 13:07"
     },
     {
       "id": "mvp-dr-priyanka-mittra",
@@ -602,6 +602,51 @@
       "silver": 1,
       "points": 5,
       "updated_at": "2026-07-03 12:41"
+    },
+    {
+      "id": "mvp-0cdbb50a01",
+      "player_name": "Dr.Amit",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-07-06 13:07"
+    },
+    {
+      "id": "mvp-167640d622",
+      "player_name": "Mr. Arjun Deenadayal",
+      "team_name": "Team Domintors",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-07-06 13:08"
+    },
+    {
+      "id": "mvp-78b752d622",
+      "player_name": "Ms. Raja Rajeshwari Akhila T",
+      "team_name": "Team Dominators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-07-06 13:08"
+    },
+    {
+      "id": "mvp-a37a7a328b",
+      "player_name": "Mr.Kishore",
+      "team_name": "Team Creators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-07-06 13:09"
+    },
+    {
+      "id": "mvp-609d9b33aa",
+      "player_name": "Dr.M.Naveen",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-07-06 13:09"
     }
   ],
   "fair_play": [
