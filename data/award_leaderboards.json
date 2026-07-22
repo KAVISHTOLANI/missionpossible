@@ -754,6 +754,27 @@
       "fair_play_points": 1,
       "why": "Fair Play Badminton - 2nd Place",
       "updated_at": "2026-07-06 13:05"
+    },
+    {
+      "id": "fp-a4015b0abd",
+      "team_name": "Team Royals",
+      "fair_play_points": 1,
+      "why": "Fair Play 2st - Table Tennis",
+      "updated_at": "2026-07-22 10:55"
+    },
+    {
+      "id": "fp-266454e62c",
+      "team_name": "Team Dominators",
+      "fair_play_points": 2,
+      "why": "Fair Play 1st - Cricket",
+      "updated_at": "2026-07-22 10:55"
+    },
+    {
+      "id": "fp-ed94eedadc",
+      "team_name": "Team Royals",
+      "fair_play_points": 1,
+      "why": "Fair Play 2st - Cricket",
+      "updated_at": "2026-07-22 10:55"
     }
   ]
 }
