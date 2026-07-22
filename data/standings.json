@@ -3,7 +3,7 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 17,
+      "events_played": 20,
       "wins": 2,
       "points_earned": 1375,
       "penalty_deductions": 0,
@@ -130,17 +130,38 @@
           "points": 0,
           "type": "points",
           "note": ""
+        },
+        {
+          "id": "st-83b577bb1b",
+          "event": "Table Tennis",
+          "points": 0,
+          "type": "points",
+          "note": "-"
+        },
+        {
+          "id": "st-2c04dbea68",
+          "event": "Table Tennis",
+          "points": 0,
+          "type": "points",
+          "note": "-"
+        },
+        {
+          "id": "st-470e37c227",
+          "event": "Table Tennis",
+          "points": 0,
+          "type": "points",
+          "note": "-"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 17,
+      "events_played": 21,
       "wins": 1,
-      "points_earned": 1350,
+      "points_earned": 1700,
       "penalty_deductions": 0,
-      "net_points": 1350,
+      "net_points": 1700,
       "gold": 4,
       "silver": 5,
       "bronze": 0,
@@ -263,17 +284,45 @@
           "points": 0,
           "type": "points",
           "note": ""
+        },
+        {
+          "id": "st-af75e5fb2b",
+          "event": "Table Tennis",
+          "points": 100,
+          "type": "points",
+          "note": "Table Tennis Singles 1st Place - Arjun Deenadayal"
+        },
+        {
+          "id": "st-94499a1cd4",
+          "event": "Table Tennis",
+          "points": 50,
+          "type": "points",
+          "note": "Table Tennis Singles 2st Place -  Anshuman Sharma"
+        },
+        {
+          "id": "st-50bdd2a9dd",
+          "event": "Table Tennis",
+          "points": 100,
+          "type": "points",
+          "note": "Table Tennis Mixed Doubles  1st Place - Arjun Deenadayal and Akhila"
+        },
+        {
+          "id": "st-c03a75cdd8",
+          "event": "Table Tennis",
+          "points": 100,
+          "type": "points",
+          "note": "Table Tennis Doubles 1st Place - Arjun Deenadayal and Anshuman Sharma"
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 17,
+      "events_played": 20,
       "wins": 1,
-      "points_earned": 1325,
+      "points_earned": 1425,
       "penalty_deductions": 0,
-      "net_points": 1325,
+      "net_points": 1425,
       "gold": 4,
       "silver": 5,
       "bronze": 0,
@@ -396,6 +445,27 @@
           "points": 50,
           "type": "points",
           "note": "2nd Place Badminton Doubles - Suresh and Naveeen"
+        },
+        {
+          "id": "st-6051d5bc88",
+          "event": "Table Tennis",
+          "points": 50,
+          "type": "points",
+          "note": "Table Tennis Doubles 2st Place - Ankita and Dr.M.Naveen"
+        },
+        {
+          "id": "st-c422703568",
+          "event": "Table Tennis",
+          "points": 50,
+          "type": "points",
+          "note": "Table Tennis Mixed Doubles 2st Place - Ankita and Dr.M.Naveen"
+        },
+        {
+          "id": "st-a7446f9c81",
+          "event": "Table Tennis",
+          "points": 0,
+          "type": "points",
+          "note": "-"
         }
       ]
     }
