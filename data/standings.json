@@ -3,7 +3,7 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 21,
+      "events_played": 22,
       "wins": 2,
       "points_earned": 1525,
       "penalty_deductions": 0,
@@ -158,6 +158,13 @@
           "points": 150,
           "type": "points",
           "note": "2nd Place Cricket"
+        },
+        {
+          "id": "st-a629b9e175",
+          "event": "Cricket",
+          "points": 0,
+          "type": "points",
+          "note": "-"
         }
       ]
     },
@@ -332,7 +339,7 @@
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 21,
+      "events_played": 22,
       "wins": 2,
       "points_earned": 1725,
       "penalty_deductions": 0,
@@ -487,6 +494,13 @@
           "points": 300,
           "type": "points",
           "note": "Winners Of Cricket"
+        },
+        {
+          "id": "st-b010bab5c7",
+          "event": "Cricket",
+          "points": 0,
+          "type": "points",
+          "note": "-"
         }
       ]
     }
