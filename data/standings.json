@@ -5,9 +5,9 @@
       "color": "#D4A017",
       "events_played": 21,
       "wins": 2,
-      "points_earned": 1375,
+      "points_earned": 1525,
       "penalty_deductions": 0,
-      "net_points": 1375,
+      "net_points": 1525,
       "gold": 5,
       "silver": 3,
       "bronze": 0,
@@ -153,18 +153,18 @@
           "note": "-"
         },
         {
-          "id": "st-12e0d7a9f9",
-          "event": "Table Tennis",
-          "points": 0,
+          "id": "st-802dc3f072",
+          "event": "Cricket",
+          "points": 150,
           "type": "points",
-          "note": "-"
+          "note": "2nd Place Cricket"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 21,
+      "events_played": 22,
       "wins": 1,
       "points_earned": 1700,
       "penalty_deductions": 0,
@@ -319,6 +319,13 @@
           "points": 100,
           "type": "points",
           "note": "Table Tennis Doubles 1st Place - Arjun Deenadayal and Anshuman Sharma"
+        },
+        {
+          "id": "st-d7487e901c",
+          "event": "Cricket",
+          "points": 0,
+          "type": "points",
+          "note": "3rd Place Cricket"
         }
       ]
     },
@@ -326,10 +333,10 @@
       "name": "Team Royals",
       "color": "#4169E1",
       "events_played": 21,
-      "wins": 1,
-      "points_earned": 1425,
+      "wins": 2,
+      "points_earned": 1725,
       "penalty_deductions": 0,
-      "net_points": 1425,
+      "net_points": 1725,
       "gold": 4,
       "silver": 5,
       "bronze": 0,
@@ -475,11 +482,11 @@
           "note": "-"
         },
         {
-          "id": "st-60ac3e45b3",
-          "event": "Table Tennis",
-          "points": 0,
+          "id": "st-02f57e685b",
+          "event": "Cricket",
+          "points": 300,
           "type": "points",
-          "note": "-"
+          "note": "Winners Of Cricket"
         }
       ]
     }
