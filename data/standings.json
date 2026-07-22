@@ -3,7 +3,7 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 20,
+      "events_played": 21,
       "wins": 2,
       "points_earned": 1375,
       "penalty_deductions": 0,
@@ -147,6 +147,13 @@
         },
         {
           "id": "st-470e37c227",
+          "event": "Table Tennis",
+          "points": 0,
+          "type": "points",
+          "note": "-"
+        },
+        {
+          "id": "st-12e0d7a9f9",
           "event": "Table Tennis",
           "points": 0,
           "type": "points",
@@ -318,7 +325,7 @@
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 20,
+      "events_played": 21,
       "wins": 1,
       "points_earned": 1425,
       "penalty_deductions": 0,
@@ -462,6 +469,13 @@
         },
         {
           "id": "st-a7446f9c81",
+          "event": "Table Tennis",
+          "points": 0,
+          "type": "points",
+          "note": "-"
+        },
+        {
+          "id": "st-60ac3e45b3",
           "event": "Table Tennis",
           "points": 0,
           "type": "points",
