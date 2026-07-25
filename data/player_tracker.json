@@ -990,6 +990,50 @@
         ],
         "created_at": "2026-07-25T13:22:57",
         "updated_at": "2026-07-25T13:23:34"
+      },
+      {
+        "id": "pt-79daf91f64",
+        "name": "Dr. Nikitha",
+        "employee_id": "4897",
+        "department": "Doctor",
+        "played": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "8-BALL POOL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-25T14:01:29",
+        "updated_at": "2026-07-25T14:02:13"
+      },
+      {
+        "id": "pt-3bf1666444",
+        "name": "Kanakarasu",
+        "employee_id": "750",
+        "department": "Driver",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "8-BALL POOL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-25T14:01:29",
+        "updated_at": "2026-07-25T14:02:19"
       }
     ],
     "dominators": [
@@ -1749,19 +1793,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BADMINTON",
           "TABLE TENNIS",
-          "",
+          "8-BALL POOL",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:48:22",
-        "updated_at": "2026-07-25T12:51:16"
+        "updated_at": "2026-07-25T14:02:36"
       },
       {
         "id": "pt-9b8daf8047",
@@ -1850,6 +1894,28 @@
         ],
         "created_at": "2026-07-25T12:50:53",
         "updated_at": "2026-07-25T12:51:36"
+      },
+      {
+        "id": "pt-6624b6bd7f",
+        "name": "Ms Kavitha S",
+        "employee_id": "1507",
+        "department": "Sr. Accountant (Gsh)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "8-BALL POOL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-25T14:01:51",
+        "updated_at": "2026-07-25T14:02:42"
       }
     ],
     "royals": [
@@ -1928,18 +1994,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "BASKETBALL",
           "CARROMS",
           "TABLE TENNIS",
-          "",
+          "8-BALL POOL",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-25T13:01:15"
+        "updated_at": "2026-07-25T14:03:00"
       },
       {
         "id": "pt-b04f7cc915",
@@ -2696,20 +2762,20 @@
         "department": "COO",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TABLE TENNIS",
-          "",
+          "8-BALL POOL",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-25T13:00:17",
-        "updated_at": "2026-07-25T13:00:36"
+        "updated_at": "2026-07-25T14:02:55"
       },
       {
         "id": "pt-83374c5d6a",
