@@ -616,19 +616,19 @@
       "id": "mvp-167640d622",
       "player_name": "Mr. Arjun Deenadayal",
       "team_name": "Team Domintors",
-      "gold": 0,
+      "gold": 1,
       "silver": 1,
-      "points": 5,
-      "updated_at": "2026-07-06 13:08"
+      "points": 15,
+      "updated_at": "2026-07-25 13:03"
     },
     {
       "id": "mvp-78b752d622",
       "player_name": "Ms. Raja Rajeshwari Akhila T",
       "team_name": "Team Dominators",
-      "gold": 0,
+      "gold": 1,
       "silver": 1,
-      "points": 5,
-      "updated_at": "2026-07-06 13:08"
+      "points": 15,
+      "updated_at": "2026-07-25 13:05"
     },
     {
       "id": "mvp-a37a7a328b",
@@ -643,10 +643,28 @@
       "id": "mvp-609d9b33aa",
       "player_name": "Dr.M.Naveen",
       "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 1,
+      "points": 15,
+      "updated_at": "2026-07-25 13:04"
+    },
+    {
+      "id": "mvp-2e255e767c",
+      "player_name": "Mr.Anshuman Sharma",
+      "team_name": "Team Dominators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-07-25 13:04"
+    },
+    {
+      "id": "mvp-c167a2e0ed",
+      "player_name": "Ankita Deenadayal",
+      "team_name": "Team Royals",
       "gold": 0,
       "silver": 1,
       "points": 5,
-      "updated_at": "2026-07-06 13:09"
+      "updated_at": "2026-07-25 13:04"
     }
   ],
   "fair_play": [
