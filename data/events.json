@@ -94,14 +94,16 @@
     "weather": "Warm & Humid — ~31°C",
     "weather_icon": "💧",
     "weather_note": "Overcast skies and humid conditions expected; ideal with hydration breaks.",
-    "status": "upcoming",
+    "status": "completed",
     "rules": [],
     "points": {
       "winner": 300,
       "runner_up": 150
     },
     "event_time": "",
-    "num": "#04"
+    "num": "#04",
+    "tournament_format": "",
+    "results": []
   },
   {
     "id": "cycling",
@@ -225,14 +227,16 @@
     "weather": "Monsoon Showers — ~29°C",
     "weather_icon": "🌦",
     "weather_note": "Plan morning start with scheduled rain breaks.",
-    "status": "upcoming",
+    "status": "completed",
     "rules": [],
     "points": {
       "winner": 300,
       "runner_up": 150
     },
     "event_time": "",
-    "num": "#09"
+    "num": "#09",
+    "tournament_format": "",
+    "results": []
   },
   {
     "id": "kabaddi",
@@ -277,14 +281,16 @@
     "weather": "Overcast & Humid — ~28°C",
     "weather_icon": "🌥",
     "weather_note": "Indoor setup recommended.",
-    "status": "upcoming",
+    "status": "completed",
     "rules": [],
     "points": {
       "winner": 300,
       "runner_up": 150
     },
     "event_time": "",
-    "num": "#11"
+    "num": "#11",
+    "tournament_format": "",
+    "results": []
   },
   {
     "id": "lemon-spoon",
@@ -435,14 +441,16 @@
     "weather": "Monsoon — Warm & Cloudy — ~29°C",
     "weather_icon": "☁️",
     "weather_note": "Indoor setup ideal during monsoon.",
-    "status": "upcoming",
+    "status": "completed",
     "rules": [],
     "points": {
       "winner": 300,
       "runner_up": 150
     },
     "event_time": "",
-    "num": "#17"
+    "num": "#17",
+    "tournament_format": "",
+    "results": []
   },
   {
     "id": "singing",
