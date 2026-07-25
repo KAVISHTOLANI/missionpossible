@@ -313,5 +313,27 @@
     "categories": [],
     "winning_photo": "",
     "updated_at": "2026-07-25 14:04"
+  },
+  {
+    "event_id": "sand-volleyball",
+    "event_name": "Sand Volleyball",
+    "sport_category": "Outdoor Sport",
+    "champion_type": "team",
+    "team": "dominators",
+    "team_name": "Team Dominators",
+    "second_team": "creators",
+    "second_team_name": "Team Creators",
+    "player_name": "",
+    "second_player_name": "",
+    "players": [
+      "R Anil Kumar",
+      "Mohammed Akram Khan",
+      "Srikanth Goud Palle",
+      "P Sandeep",
+      "Sandhya Darsi"
+    ],
+    "categories": [],
+    "winning_photo": "",
+    "updated_at": "2026-07-25 14:12"
   }
 ]
