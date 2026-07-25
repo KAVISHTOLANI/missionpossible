@@ -31,19 +31,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "THROWBALL",
           "TABLE TENNIS",
-          "",
+          "SAND VOLLYBALL",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-25T12:55:38"
+        "updated_at": "2026-07-25T14:07:07"
       },
       {
         "id": "pt-beb4618f44",
@@ -185,19 +185,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
-          "",
+          "SAND VOLLYBALL",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-07-25T14:07:20"
       },
       {
         "id": "pt-d9eb8f3ba8",
@@ -382,20 +382,20 @@
         "department": "Art Lab",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
-          "",
+          "SAND VOLLYBALL",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:29:57",
-        "updated_at": "2026-06-23T09:30:46"
+        "updated_at": "2026-07-25T14:07:02"
       },
       {
         "id": "pt-3ccd9560a2",
@@ -845,19 +845,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BADMINTON",
           "TABLE TENNIS",
-          "",
+          "SAND VOLLYBALL",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:53:59",
-        "updated_at": "2026-07-25T12:54:59"
+        "updated_at": "2026-07-25T14:07:38"
       },
       {
         "id": "pt-6cd619ceb3",
@@ -1034,6 +1034,28 @@
         ],
         "created_at": "2026-07-25T14:01:29",
         "updated_at": "2026-07-25T14:02:19"
+      },
+      {
+        "id": "pt-408f6c860d",
+        "name": "Cheran",
+        "employee_id": "825",
+        "department": "Maintenance",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SAND VOLLYBALL",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-25T14:06:45",
+        "updated_at": "2026-07-25T14:07:32"
       }
     ],
     "dominators": [
@@ -1223,17 +1245,17 @@
           true,
           true,
           true,
-          false
+          true
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
           "KABADDI",
           "CRICKET",
-          ""
+          "SAND VOLLYBALL"
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-25T13:15:53"
+        "updated_at": "2026-07-25T14:08:21"
       },
       {
         "id": "pt-ac1171a5ad",
@@ -1242,20 +1264,20 @@
         "department": "Unit HR",
         "played": [
           true,
-          false,
-          false,
+          true,
+          true,
           false,
           false
         ],
         "games": [
           "THROWBALL",
           "CRICKET",
-          "",
+          "SAND VOLLYBALL",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-25T13:15:18"
+        "updated_at": "2026-07-25T14:08:14"
       },
       {
         "id": "pt-23670634cd",
@@ -1288,18 +1310,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
           "CYCLING",
-          "",
+          "SAND VOLLYBALL",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-07-25T14:08:28"
       },
       {
         "id": "pt-78dbf1fe3e",
@@ -1927,19 +1949,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "THROWBALL",
           "CRICKET",
-          "",
+          "SAND VOLLYBALL",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-25T13:28:14"
+        "updated_at": "2026-07-25T14:08:44"
       },
       {
         "id": "pt-bb948d5865",
@@ -2170,18 +2192,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "CYCLING",
           "TUG OF WAR",
           "CRICKET",
-          "",
+          "SAND VOLLYBALL",
           ""
         ],
         "created_at": "2026-06-23T09:12:09",
-        "updated_at": "2026-07-25T13:28:28"
+        "updated_at": "2026-07-25T14:09:03"
       },
       {
         "id": "pt-6221b6e9f5",
@@ -2279,19 +2301,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
           "KABADDI",
-          "",
+          "SAND VOLLYBALL",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:45:54",
-        "updated_at": "2026-06-29T11:43:40"
+        "updated_at": "2026-07-25T14:08:57"
       },
       {
         "id": "pt-a3378df17f",
@@ -2564,20 +2586,20 @@
         "department": "Xray Technician",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "KABADDI",
-          "",
+          "SAND VOLLYBALL",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-29T11:45:45",
-        "updated_at": "2026-06-29T11:46:15"
+        "updated_at": "2026-07-25T14:08:51"
       },
       {
         "id": "pt-979586e137",
