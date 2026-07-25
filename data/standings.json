@@ -3,11 +3,11 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 22,
+      "events_played": 24,
       "wins": 2,
-      "points_earned": 1525,
+      "points_earned": 1675,
       "penalty_deductions": 0,
-      "net_points": 1525,
+      "net_points": 1675,
       "gold": 5,
       "silver": 3,
       "bronze": 0,
@@ -165,17 +165,31 @@
           "points": 0,
           "type": "points",
           "note": "-"
+        },
+        {
+          "id": "st-4b084c63ac",
+          "event": "Sand Volleyball",
+          "points": 150,
+          "type": "points",
+          "note": "2nd Place Sand Vollyball"
+        },
+        {
+          "id": "st-538341cf8d",
+          "event": "8-Ball Pool",
+          "points": 0,
+          "type": "points",
+          "note": "-"
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 22,
-      "wins": 1,
-      "points_earned": 1700,
+      "events_played": 24,
+      "wins": 2,
+      "points_earned": 2150,
       "penalty_deductions": 0,
-      "net_points": 1700,
+      "net_points": 2150,
       "gold": 4,
       "silver": 5,
       "bronze": 0,
@@ -333,17 +347,31 @@
           "points": 0,
           "type": "points",
           "note": "3rd Place Cricket"
+        },
+        {
+          "id": "st-a17131c55d",
+          "event": "Sand Volleyball",
+          "points": 300,
+          "type": "points",
+          "note": "Winners Of Sand Vollyball"
+        },
+        {
+          "id": "st-3f94e3a7ef",
+          "event": "8-Ball Pool",
+          "points": 150,
+          "type": "points",
+          "note": "2nd Place 8-Ball Pool - Arjun Deenadayal"
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 22,
-      "wins": 2,
-      "points_earned": 1725,
+      "events_played": 24,
+      "wins": 3,
+      "points_earned": 2025,
       "penalty_deductions": 0,
-      "net_points": 1725,
+      "net_points": 2025,
       "gold": 4,
       "silver": 5,
       "bronze": 0,
@@ -498,6 +526,20 @@
         {
           "id": "st-b010bab5c7",
           "event": "Cricket",
+          "points": 0,
+          "type": "points",
+          "note": "-"
+        },
+        {
+          "id": "st-36d3e6583b",
+          "event": "8-Ball Pool",
+          "points": 300,
+          "type": "points",
+          "note": "Winner 8-Ball Pool - Dr.Vamshi"
+        },
+        {
+          "id": "st-f4793b526b",
+          "event": "Sand Volleyball",
           "points": 0,
           "type": "points",
           "note": "-"
