@@ -1860,20 +1860,20 @@
         "department": "Technical Assistant (DECC)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "THROWBALL",
-          "",
+          "CRICKET",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-23T09:46:37"
+        "updated_at": "2026-07-25T13:28:14"
       },
       {
         "id": "pt-bb948d5865",
@@ -1949,19 +1949,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "THROWBALL",
           "KABADDI",
-          "",
+          "CRICKET",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-29T11:46:06"
+        "updated_at": "2026-07-25T13:27:54"
       },
       {
         "id": "pt-701b1d438b",
@@ -1973,17 +1973,17 @@
           true,
           true,
           true,
-          false
+          true
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
           "KABADDI",
           "SACK RACE",
-          ""
+          "CRICKET"
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-03T11:39:49"
+        "updated_at": "2026-07-25T13:27:41"
       },
       {
         "id": "pt-6007a012c1",
@@ -1993,19 +1993,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
           "TUG OF WAR",
-          "",
+          "CRICKET",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-23T09:47:32"
+        "updated_at": "2026-07-25T13:27:33"
       },
       {
         "id": "pt-2bfe6c7167",
@@ -2016,18 +2016,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "BASKETBALL",
           "CARROMS",
           "TABLE TENNIS",
-          "",
+          "CRICKET",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-25T13:01:32"
+        "updated_at": "2026-07-25T13:27:15"
       },
       {
         "id": "pt-df0b102756",
@@ -2038,18 +2038,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
           "KABADDI",
-          "",
+          "CRICKET",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-29T11:43:34"
+        "updated_at": "2026-07-25T13:28:07"
       },
       {
         "id": "pt-0d22814cc7",
@@ -2059,19 +2059,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "THROWBALL",
           "BADMINTON",
-          "",
+          "CRICKET",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-06T12:44:42"
+        "updated_at": "2026-07-25T13:27:06"
       },
       {
         "id": "pt-58e730d3ef",
@@ -2103,19 +2103,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "CYCLING",
           "TUG OF WAR",
-          "",
+          "CRICKET",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:12:09",
-        "updated_at": "2026-06-23T09:51:44"
+        "updated_at": "2026-07-25T13:28:28"
       },
       {
         "id": "pt-6221b6e9f5",
@@ -2147,19 +2147,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "CYCLING",
           "LEMON AND SPOON RACE",
-          "",
+          "CRICKET",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:12:09",
-        "updated_at": "2026-06-23T12:54:40"
+        "updated_at": "2026-07-25T13:28:21"
       },
       {
         "id": "pt-1c4eacd205",
@@ -2652,20 +2652,20 @@
         "department": "ENT",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BADMINTON",
-          "",
+          "CRICKET",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:45:03",
-        "updated_at": "2026-07-06T12:45:19"
+        "updated_at": "2026-07-25T13:27:25"
       },
       {
         "id": "pt-17e5ecba05",
@@ -2710,6 +2710,28 @@
         ],
         "created_at": "2026-07-25T13:00:17",
         "updated_at": "2026-07-25T13:00:36"
+      },
+      {
+        "id": "pt-83374c5d6a",
+        "name": "Mr. Balakrishna",
+        "employee_id": "334",
+        "department": "Audiologist",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "CRICKET",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-25T13:26:48",
+        "updated_at": "2026-07-25T13:27:48"
       }
     ]
   }
