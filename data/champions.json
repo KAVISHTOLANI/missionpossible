@@ -297,5 +297,21 @@
     "categories": [],
     "winning_photo": "/static/images/champions/cricket-295b785e.jpeg",
     "updated_at": "2026-07-25 13:30"
+  },
+  {
+    "event_id": "8ball-pool",
+    "event_name": "8-Ball Pool",
+    "sport_category": "Indoor Sport",
+    "champion_type": "individual",
+    "team": "royals",
+    "team_name": "Team Royals",
+    "second_team": "dominators",
+    "second_team_name": "Team Dominators",
+    "player_name": "Dr. Vamshidhar Reddy",
+    "second_player_name": "Mr Arjun Deenadayal",
+    "players": [],
+    "categories": [],
+    "winning_photo": "",
+    "updated_at": "2026-07-25 14:04"
   }
 ]
