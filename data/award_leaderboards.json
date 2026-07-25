@@ -103,19 +103,19 @@
       "id": "mvp-p-sandeep",
       "player_name": "P. Sandeep",
       "team_name": "Team Dominators",
-      "gold": 1,
+      "gold": 2,
       "silver": 1,
-      "points": 15,
-      "updated_at": "2026-06-29 11:53"
+      "points": 25,
+      "updated_at": "2026-07-25 14:16"
     },
     {
       "id": "mvp-r-anil-kumar",
       "player_name": "R. Anil Kumar",
       "team_name": "Team Dominators",
-      "gold": 1,
+      "gold": 2,
       "silver": 0,
-      "points": 10,
-      "updated_at": "2026-06-22 10:00"
+      "points": 20,
+      "updated_at": "2026-07-25 14:16"
     },
     {
       "id": "mvp-sai-kiran-gollapudi",
