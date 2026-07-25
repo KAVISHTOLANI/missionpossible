@@ -775,6 +775,13 @@
       "fair_play_points": 1,
       "why": "Fair Play 2st - Cricket",
       "updated_at": "2026-07-22 10:55"
+    },
+    {
+      "id": "fp-114ba2c629",
+      "team_name": "Team Creators",
+      "fair_play_points": 2,
+      "why": "Fair Play Table Tennis",
+      "updated_at": "2026-07-25 11:31"
     }
   ]
 }
