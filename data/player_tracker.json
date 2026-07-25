@@ -30,20 +30,20 @@
         "department": "Doctor",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "THROWBALL",
-          "",
+          "TABLE TENNIS",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-07-25T12:55:38"
       },
       {
         "id": "pt-beb4618f44",
@@ -778,20 +778,20 @@
         "department": "MAINTANANCE",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BADMINTON",
-          "",
+          "TABLE TENNIS",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:53:59",
-        "updated_at": "2026-07-06T12:54:13"
+        "updated_at": "2026-07-25T12:55:31"
       },
       {
         "id": "pt-408d35f41b",
@@ -800,20 +800,20 @@
         "department": "EDP",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BADMINTON",
-          "",
+          "TABLE TENNIS",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:53:59",
-        "updated_at": "2026-07-06T12:54:20"
+        "updated_at": "2026-07-25T12:55:17"
       },
       {
         "id": "pt-53e353d332",
@@ -822,20 +822,20 @@
         "department": "CLINICAL",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BADMINTON",
-          "",
+          "TABLE TENNIS",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:53:59",
-        "updated_at": "2026-07-06T12:54:36"
+        "updated_at": "2026-07-25T12:55:44"
       },
       {
         "id": "pt-ae741c1b1d",
@@ -844,20 +844,20 @@
         "department": "ART LAB",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BADMINTON",
-          "",
+          "TABLE TENNIS",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:53:59",
-        "updated_at": "2026-07-06T12:54:42"
+        "updated_at": "2026-07-25T12:54:59"
       },
       {
         "id": "pt-6cd619ceb3",
@@ -865,21 +865,21 @@
         "employee_id": "4743",
         "department": "ART LAB",
         "played": [
-          false,
-          false,
+          true,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BADMINTON",
-          "",
+          "TABLE TENNIS",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:53:59",
-        "updated_at": "2026-07-06T12:55:07"
+        "updated_at": "2026-07-25T12:55:10"
       }
     ],
     "dominators": [
@@ -890,20 +890,20 @@
         "department": "HOD (MFH)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
-          "",
+          "TABLE TENNIS",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-07-25T12:51:10"
       },
       {
         "id": "pt-78e8107080",
@@ -1638,20 +1638,20 @@
         "department": "DIRECTOR",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BADMINTON",
-          "",
+          "TABLE TENNIS",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:48:22",
-        "updated_at": "2026-07-06T12:48:47"
+        "updated_at": "2026-07-25T12:51:16"
       },
       {
         "id": "pt-9b8daf8047",
@@ -1660,20 +1660,20 @@
         "department": "DIRECTOR",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BADMINTON",
-          "",
+          "TABLE TENNIS",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:48:22",
-        "updated_at": "2026-07-06T12:48:36"
+        "updated_at": "2026-07-25T12:51:29"
       },
       {
         "id": "pt-4c8241ac08",
@@ -1682,20 +1682,64 @@
         "department": "MOD (ADL)",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BADMINTON",
-          "",
+          "TABLE TENNIS",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:48:22",
-        "updated_at": "2026-07-06T12:49:16"
+        "updated_at": "2026-07-25T12:51:23"
+      },
+      {
+        "id": "pt-890522d1bd",
+        "name": "Dr. Hajra Luqman",
+        "employee_id": "4750",
+        "department": "Doctor (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TABLE TENNIS",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-25T12:50:53",
+        "updated_at": "2026-07-25T12:51:41"
+      },
+      {
+        "id": "pt-ef207f3968",
+        "name": "Dr. Sai Kiran",
+        "employee_id": "4770",
+        "department": "Doctor (ADL)",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TABLE TENNIS",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-25T12:50:53",
+        "updated_at": "2026-07-25T12:51:36"
       }
     ],
     "royals": [
@@ -1773,19 +1817,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
           "CARROMS",
-          "",
+          "TABLE TENNIS",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-03T11:41:15"
+        "updated_at": "2026-07-25T13:01:15"
       },
       {
         "id": "pt-b04f7cc915",
@@ -1861,19 +1905,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
           "CARROMS",
-          "",
+          "TABLE TENNIS",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-03T11:37:04"
+        "updated_at": "2026-07-25T13:01:32"
       },
       {
         "id": "pt-df0b102756",
@@ -2181,7 +2225,7 @@
           ""
         ],
         "created_at": "2026-06-23T12:13:41",
-        "updated_at": "2026-07-06T12:44:18"
+        "updated_at": "2026-07-25T13:00:07"
       },
       {
         "id": "pt-6d48aad3ce",
@@ -2454,20 +2498,20 @@
         "department": "ENT",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BADMINTON",
-          "",
+          "TABLE TENNIS",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:43:15",
-        "updated_at": "2026-07-06T12:43:34"
+        "updated_at": "2026-07-25T13:00:47"
       },
       {
         "id": "pt-06e6b82695",
@@ -2512,6 +2556,50 @@
         ],
         "created_at": "2026-07-06T12:45:03",
         "updated_at": "2026-07-06T12:45:19"
+      },
+      {
+        "id": "pt-17e5ecba05",
+        "name": "Dr. Ratnamala",
+        "employee_id": "4874",
+        "department": "Pediatrician",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TABLE TENNIS",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-25T12:58:39",
+        "updated_at": "2026-07-25T13:01:01"
+      },
+      {
+        "id": "pt-e2a037ecdc",
+        "name": "Mrs. Ankita Deenadayal",
+        "employee_id": "ANKITA",
+        "department": "COO",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "TABLE TENNIS",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-07-25T13:00:17",
+        "updated_at": "2026-07-25T13:00:36"
       }
     ]
   }
