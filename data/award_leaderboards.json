@@ -796,6 +796,34 @@
       "fair_play_points": 1,
       "why": "Fair Play Kabaddi - 2nd Place",
       "updated_at": "2026-07-25 11:34"
+    },
+    {
+      "id": "fp-5d0b2077dc",
+      "team_name": "Team Dominators",
+      "fair_play_points": 2,
+      "why": "Fair Play 8-Ball Pool",
+      "updated_at": "2026-07-25 12:41"
+    },
+    {
+      "id": "fp-1a6764c915",
+      "team_name": "Team Royals",
+      "fair_play_points": 1,
+      "why": "2nd Place Fair Play 8-Ball Pool",
+      "updated_at": "2026-07-25 12:41"
+    },
+    {
+      "id": "fp-38b3b58b9a",
+      "team_name": "Team Royals",
+      "fair_play_points": 2,
+      "why": "Fair Play Sand Vollyball",
+      "updated_at": "2026-07-25 12:41"
+    },
+    {
+      "id": "fp-e9c2236c67",
+      "team_name": "Team Dominators",
+      "fair_play_points": 1,
+      "why": "2nd Place Fair Play Sand Vollyball",
+      "updated_at": "2026-07-25 12:41"
     }
   ]
 }

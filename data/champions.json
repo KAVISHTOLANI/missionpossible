@@ -232,5 +232,42 @@
     ],
     "winning_photo": "",
     "updated_at": "2026-07-06 13:12"
+  },
+  {
+    "event_id": "table-tennis",
+    "event_name": "Table Tennis",
+    "sport_category": "Indoor Sport",
+    "champion_type": "individual",
+    "team": "dominators",
+    "team_name": "Team Dominators",
+    "second_team": "dominators",
+    "second_team_name": "Team Dominators",
+    "player_name": "Mr.Arjun Deenadayal",
+    "second_player_name": "Mr.Anshuman Sharma",
+    "players": [],
+    "categories": [
+      {
+        "name": "Doubles",
+        "first_player": "Mr.Arjun Deenadayal & Mr.Anshuman Sharma",
+        "first_team": "dominators",
+        "first_team_name": "Team Dominators",
+        "second_player": "Ankita Deenadayal and Dr.M.Naveen",
+        "second_team": "royals",
+        "second_team_name": "Team Royals",
+        "photo": ""
+      },
+      {
+        "name": "Mixed Doubles",
+        "first_player": "Arjun Deenadayal and Akhila",
+        "first_team": "dominators",
+        "first_team_name": "Team Dominators",
+        "second_player": "Ankita Deenadayal and Dr.M.Naveen",
+        "second_team": "royals",
+        "second_team_name": "Team Royals",
+        "photo": ""
+      }
+    ],
+    "winning_photo": "",
+    "updated_at": "2026-07-25 11:48"
   }
 ]
