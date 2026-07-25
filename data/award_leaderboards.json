@@ -782,6 +782,20 @@
       "fair_play_points": 2,
       "why": "Fair Play Table Tennis",
       "updated_at": "2026-07-25 11:31"
+    },
+    {
+      "id": "fp-c634945f7e",
+      "team_name": "Team Royals",
+      "fair_play_points": 2,
+      "why": "Fair Play Kabaddi",
+      "updated_at": "2026-07-25 11:34"
+    },
+    {
+      "id": "fp-b31657d6b8",
+      "team_name": "Team Dominators",
+      "fair_play_points": 1,
+      "why": "Fair Play Kabaddi - 2nd Place",
+      "updated_at": "2026-07-25 11:34"
     }
   ]
 }
