@@ -202,10 +202,10 @@
       "id": "mvp-dr-vamshi",
       "player_name": "Dr. Vamshi",
       "team_name": "Team Royals",
-      "gold": 0,
+      "gold": 1,
       "silver": 2,
-      "points": 10,
-      "updated_at": "2026-07-03 12:39"
+      "points": 20,
+      "updated_at": "2026-07-25 14:03"
     },
     {
       "id": "mvp-jareen",
@@ -617,9 +617,9 @@
       "player_name": "Mr. Arjun Deenadayal",
       "team_name": "Team Domintors",
       "gold": 1,
-      "silver": 1,
-      "points": 15,
-      "updated_at": "2026-07-25 13:03"
+      "silver": 2,
+      "points": 20,
+      "updated_at": "2026-07-25 14:03"
     },
     {
       "id": "mvp-78b752d622",
