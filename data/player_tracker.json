@@ -937,17 +937,17 @@
           true,
           true,
           true,
-          false
+          true
         ],
         "games": [
           "CYCLING",
           "SACK RACE",
           "CARROMS",
           "BADMINTON",
-          ""
+          "CRICKET"
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-06T12:48:57"
+        "updated_at": "2026-07-25T13:17:15"
       },
       {
         "id": "pt-68cb4ff63b",
@@ -981,17 +981,17 @@
           true,
           true,
           true,
-          false
+          true
         ],
         "games": [
           "THROWBALL",
           "TUG OF WAR",
           "SACK RACE",
           "LEMON AND SPOON RACE",
-          ""
+          "CRICKET"
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-23T12:52:38"
+        "updated_at": "2026-07-25T13:16:53"
       },
       {
         "id": "pt-842e536b61",
@@ -1046,18 +1046,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "THROWBALL",
           "TUG OF WAR",
           "KABADDI",
-          "",
+          "CRICKET",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-29T11:40:49"
+        "updated_at": "2026-07-25T13:15:25"
       },
       {
         "id": "pt-7d99b4d8cd",
@@ -1068,18 +1068,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "BASKETBALL",
           "THROWBALL",
           "KABADDI",
-          "",
+          "CRICKET",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-29T11:41:04"
+        "updated_at": "2026-07-25T13:15:53"
       },
       {
         "id": "pt-ac1171a5ad",
@@ -1095,13 +1095,13 @@
         ],
         "games": [
           "THROWBALL",
-          "",
+          "CRICKET",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-06-22T10:00:00"
+        "updated_at": "2026-07-25T13:15:18"
       },
       {
         "id": "pt-23670634cd",
@@ -1155,19 +1155,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BASKETBALL",
           "CARROMS",
-          "",
+          "CRICKET",
           "",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-03T11:42:45"
+        "updated_at": "2026-07-25T13:15:46"
       },
       {
         "id": "pt-1e37728ca2",
@@ -1177,19 +1177,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
           "KABADDI",
-          "",
+          "CRICKET",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:38:55",
-        "updated_at": "2026-06-29T11:41:33"
+        "updated_at": "2026-07-25T13:17:02"
       },
       {
         "id": "pt-9e22917c2b",
@@ -1200,18 +1200,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "TUG OF WAR",
           "KABADDI",
           "CARROMS",
-          "",
+          "CRICKET",
           ""
         ],
         "created_at": "2026-06-23T09:38:55",
-        "updated_at": "2026-07-03T11:42:27"
+        "updated_at": "2026-07-25T13:15:35"
       },
       {
         "id": "pt-c8396538ca",
@@ -1463,19 +1463,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "KABADDI",
           "BADMINTON",
-          "",
+          "CRICKET",
           "",
           ""
         ],
         "created_at": "2026-06-29T11:40:32",
-        "updated_at": "2026-07-06T12:49:27"
+        "updated_at": "2026-07-25T13:16:09"
       },
       {
         "id": "pt-e10963a263",
@@ -1485,19 +1485,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "KABADDI",
           "BADMINTON",
-          "",
+          "CRICKET",
           "",
           ""
         ],
         "created_at": "2026-06-29T11:40:32",
-        "updated_at": "2026-07-06T12:49:36"
+        "updated_at": "2026-07-25T13:16:02"
       },
       {
         "id": "pt-f858cb34cf",
@@ -1506,20 +1506,20 @@
         "department": "Sample Driver",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "KABADDI",
-          "",
+          "CRICKET",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-29T11:40:32",
-        "updated_at": "2026-06-29T11:41:18"
+        "updated_at": "2026-07-25T13:16:36"
       },
       {
         "id": "pt-bb1a00f07f",
@@ -1661,19 +1661,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "BADMINTON",
+          "CRICKET",
           "TABLE TENNIS",
-          "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:48:22",
-        "updated_at": "2026-07-25T12:51:29"
+        "updated_at": "2026-07-25T13:14:58"
       },
       {
         "id": "pt-4c8241ac08",
