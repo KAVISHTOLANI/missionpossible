@@ -269,5 +269,33 @@
     ],
     "winning_photo": "",
     "updated_at": "2026-07-25 11:48"
+  },
+  {
+    "event_id": "cricket",
+    "event_name": "Cricket",
+    "sport_category": "Outdoor Sport",
+    "champion_type": "team",
+    "team": "royals",
+    "team_name": "Team Royals",
+    "second_team": "creators",
+    "second_team_name": "Team Creators",
+    "player_name": "",
+    "second_player_name": "",
+    "players": [
+      "Mr. Sampath",
+      "Mr. Suraj Uttam",
+      "Dr. Suresh",
+      "Mr. Srikanth",
+      "Mr. Jaya Surya",
+      "Mr. Balakrishna",
+      "Mr. Jareen Vikas Patrick",
+      "Mr. Nagesh",
+      "Mr. Azeem",
+      "Mr. Akshay",
+      "Ms. Sowmya"
+    ],
+    "categories": [],
+    "winning_photo": "/static/images/champions/cricket-295b785e.jpeg",
+    "updated_at": "2026-07-25 13:30"
   }
 ]
