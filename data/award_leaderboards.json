@@ -238,19 +238,19 @@
       "id": "mvp-mr-suraj-uttam",
       "player_name": "Mr. Suraj Uttam",
       "team_name": "Team Royals",
-      "gold": 1,
+      "gold": 2,
       "silver": 1,
-      "points": 15,
-      "updated_at": "2026-07-03 12:40"
+      "points": 25,
+      "updated_at": "2026-07-27 11:39"
     },
     {
       "id": "mvp-sampath-goud",
       "player_name": "Sampath Goud",
       "team_name": "Team Royals",
-      "gold": 0,
+      "gold": 1,
       "silver": 1,
-      "points": 5,
-      "updated_at": "2026-06-22 10:00"
+      "points": 15,
+      "updated_at": "2026-07-27 11:40"
     },
     {
       "id": "mvp-df22fad524",
