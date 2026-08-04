@@ -2324,18 +2324,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "THROWBALL",
           "KABADDI",
           "CRICKET",
-          "",
+          "RANGOLI",
           ""
         ],
         "created_at": "2026-06-22T10:00:00",
-        "updated_at": "2026-07-25T13:27:54"
+        "updated_at": "2026-08-04T12:32:37"
       },
       {
         "id": "pt-701b1d438b",
@@ -2498,20 +2498,20 @@
         "department": "Maintenance",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TUG OF WAR",
-          "",
+          "RANGOLI",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:12:09",
-        "updated_at": "2026-06-23T09:50:09"
+        "updated_at": "2026-08-04T12:32:42"
       },
       {
         "id": "pt-8e139adabb",
@@ -2828,20 +2828,20 @@
         "department": "CT Technician",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "LEMON AND SPOON RACE",
-          "",
+          "RANGOLI",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T12:55:05",
-        "updated_at": "2026-06-23T12:55:23"
+        "updated_at": "2026-08-04T12:32:26"
       },
       {
         "id": "pt-b6c222d5fa",
@@ -3106,6 +3106,138 @@
         ],
         "created_at": "2026-07-25T13:26:48",
         "updated_at": "2026-07-25T13:27:48"
+      },
+      {
+        "id": "pt-f87508a0e6",
+        "name": "Mr. Gouranga Singh",
+        "employee_id": "510311",
+        "department": "Security",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:31:34",
+        "updated_at": "2026-08-04T12:31:51"
+      },
+      {
+        "id": "pt-3cd8418409",
+        "name": "Mrs. A. Bhargavi",
+        "employee_id": "1500",
+        "department": "Consent",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:31:34",
+        "updated_at": "2026-08-04T12:31:54"
+      },
+      {
+        "id": "pt-840421d906",
+        "name": "Mrs. G. Sandhya",
+        "employee_id": "Sandhya",
+        "department": "PRE",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:31:34",
+        "updated_at": "2026-08-04T12:31:57"
+      },
+      {
+        "id": "pt-ea30bacb56",
+        "name": "Ms. R. Pallavi",
+        "employee_id": "366",
+        "department": "Doctor Assistant – DECC",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:31:34",
+        "updated_at": "2026-08-04T12:32:00"
+      },
+      {
+        "id": "pt-8cc157e311",
+        "name": "Ms. Shruthi Vyas",
+        "employee_id": "371",
+        "department": "Doctor Assistant – DECC",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:31:34",
+        "updated_at": "2026-08-04T12:32:03"
+      },
+      {
+        "id": "pt-2405104ac9",
+        "name": "Mrs. P. Anuradha",
+        "employee_id": "1012",
+        "department": "Housekeeping",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:31:34",
+        "updated_at": "2026-08-04T12:32:06"
       }
     ]
   }
