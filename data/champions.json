@@ -335,5 +335,25 @@
     "categories": [],
     "winning_photo": "",
     "updated_at": "2026-07-25 14:12"
+  },
+  {
+    "event_id": "rangoli",
+    "event_name": "Rangoli",
+    "sport_category": "Cultural Event",
+    "champion_type": "team",
+    "team": "dominators",
+    "team_name": "Team Dominators",
+    "second_team": "dominators",
+    "second_team_name": "Team Dominators",
+    "player_name": "",
+    "second_player_name": "",
+    "players": [
+      "Ms Maheshwari Medi",
+      "Mr Ravi Kiran K",
+      "Ms Gulla Niharika"
+    ],
+    "categories": [],
+    "winning_photo": "",
+    "updated_at": "2026-08-04 12:34"
   }
 ]
