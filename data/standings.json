@@ -395,7 +395,7 @@
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 25,
+      "events_played": 26,
       "wins": 3,
       "points_earned": 2025,
       "penalty_deductions": 0,
@@ -574,6 +574,13 @@
         },
         {
           "id": "st-f0254ce95a",
+          "event": "Rangoli",
+          "points": 0,
+          "type": "points",
+          "note": ""
+        },
+        {
+          "id": "st-5e5f142a93",
           "event": "Rangoli",
           "points": 0,
           "type": "points",
