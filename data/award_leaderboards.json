@@ -1004,6 +1004,20 @@
       "fair_play_points": 1,
       "why": "2nd Place Fair Play Sand Vollyball",
       "updated_at": "2026-07-25 12:41"
+    },
+    {
+      "id": "fp-538f521ba6",
+      "team_name": "Team Royals",
+      "fair_play_points": 2,
+      "why": "Fair Play Rangoli",
+      "updated_at": "2026-08-04 12:18"
+    },
+    {
+      "id": "fp-38341e1337",
+      "team_name": "Team Dominators",
+      "fair_play_points": 1,
+      "why": "Fair Play Rangoon - 2nd Place",
+      "updated_at": "2026-08-04 12:19"
     }
   ]
 }
