@@ -228,20 +228,20 @@
         "department": "MRD",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "CYCLING",
-          "",
+          "RANGOLI",
           "",
           "",
           ""
         ],
         "created_at": "2026-06-23T09:09:44",
-        "updated_at": "2026-06-23T09:09:55"
+        "updated_at": "2026-08-04T12:25:36"
       },
       {
         "id": "pt-5c3c0f982b",
@@ -681,7 +681,7 @@
           ""
         ],
         "created_at": "2026-06-29T11:48:59",
-        "updated_at": "2026-06-29T11:49:11"
+        "updated_at": "2026-08-04T12:24:34"
       },
       {
         "id": "pt-ee760dc7b3",
@@ -997,21 +997,21 @@
         "employee_id": "4897",
         "department": "Doctor",
         "played": [
-          false,
-          false,
+          true,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "8-BALL POOL",
-          "",
+          "RANGOLI",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-25T14:01:29",
-        "updated_at": "2026-07-25T14:02:13"
+        "updated_at": "2026-08-04T12:25:19"
       },
       {
         "id": "pt-3bf1666444",
@@ -1056,6 +1056,160 @@
         ],
         "created_at": "2026-07-25T14:06:45",
         "updated_at": "2026-07-25T14:07:32"
+      },
+      {
+        "id": "pt-6bbfe8b62f",
+        "name": "K. Swathi",
+        "employee_id": "782",
+        "department": "DA",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:24:34",
+        "updated_at": "2026-08-04T12:24:51"
+      },
+      {
+        "id": "pt-e8776268a3",
+        "name": "A. Divya",
+        "employee_id": "133",
+        "department": "DA",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:24:34",
+        "updated_at": "2026-08-04T12:24:54"
+      },
+      {
+        "id": "pt-2bf8e4ae38",
+        "name": "T. Sumalatha",
+        "employee_id": "815",
+        "department": "DA",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:24:34",
+        "updated_at": "2026-08-04T12:24:57"
+      },
+      {
+        "id": "pt-2c68571f0b",
+        "name": "S. Swetha",
+        "employee_id": "4828",
+        "department": "DA",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:24:34",
+        "updated_at": "2026-08-04T12:25:00"
+      },
+      {
+        "id": "pt-ec33645cc6",
+        "name": "Dr. Sirisha",
+        "employee_id": "4894",
+        "department": "Doctor",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:24:34",
+        "updated_at": "2026-08-04T12:25:03"
+      },
+      {
+        "id": "pt-11047f3a28",
+        "name": "Dr. Chaitanya",
+        "employee_id": "4357",
+        "department": "Doctor",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:24:34",
+        "updated_at": "2026-08-04T12:25:06"
+      },
+      {
+        "id": "pt-7ce67fa3e0",
+        "name": "K. Kavitha",
+        "employee_id": "505759",
+        "department": "Security",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "RANGOLI",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-04T12:24:34",
+        "updated_at": "2026-08-04T12:25:09"
       }
     ],
     "dominators": [
