@@ -185,11 +185,11 @@
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 24,
-      "wins": 2,
-      "points_earned": 2150,
+      "events_played": 26,
+      "wins": 3,
+      "points_earned": 2600,
       "penalty_deductions": 0,
-      "net_points": 2150,
+      "net_points": 2600,
       "gold": 7,
       "silver": 6,
       "bronze": 0,
@@ -361,6 +361,20 @@
           "points": 150,
           "type": "points",
           "note": "2nd Place 8-Ball Pool - Arjun Deenadayal"
+        },
+        {
+          "id": "st-e180fea596",
+          "event": "Rangoli",
+          "points": 300,
+          "type": "points",
+          "note": "Winner Of Rangoli - Ms Maheshwari Medi -  Mr Ravi Kiran K  -  Ms Gulla Niharika"
+        },
+        {
+          "id": "st-7936ed601d",
+          "event": "Rangoli",
+          "points": 150,
+          "type": "points",
+          "note": "2nd Place Rangoli - Mr Gnaneshwar G -  Ms Srujana Paka - Ms Jyothi P"
         }
       ]
     },
