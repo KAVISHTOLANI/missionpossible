@@ -416,11 +416,11 @@
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 30,
+      "events_played": 31,
       "wins": 3,
-      "points_earned": 2425,
+      "points_earned": 2525,
       "penalty_deductions": 0,
-      "net_points": 2425,
+      "net_points": 2525,
       "gold": 6,
       "silver": 7,
       "bronze": 0,
@@ -634,6 +634,13 @@
           "points": 100,
           "type": "points",
           "note": "Winner's Swimming Relay"
+        },
+        {
+          "id": "st-4577bb11d7",
+          "event": "Swimming",
+          "points": 100,
+          "type": "points",
+          "note": "Winner Men's Swimming - Mr.Himanshu"
         }
       ]
     }
