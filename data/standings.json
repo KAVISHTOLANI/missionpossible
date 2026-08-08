@@ -3,7 +3,7 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 28,
+      "events_played": 31,
       "wins": 2,
       "points_earned": 1775,
       "penalty_deductions": 0,
@@ -207,13 +207,34 @@
           "points": 50,
           "type": "points",
           "note": "2nd Place Swimming Relay"
+        },
+        {
+          "id": "st-caae2c2d12",
+          "event": "Cooking Competition",
+          "points": 0,
+          "type": "points",
+          "note": ""
+        },
+        {
+          "id": "st-a4a088a329",
+          "event": "Swimming",
+          "points": 0,
+          "type": "points",
+          "note": ""
+        },
+        {
+          "id": "st-bd810b9ca8",
+          "event": "Swimming",
+          "points": 0,
+          "type": "points",
+          "note": ""
         }
       ]
     },
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 27,
+      "events_played": 31,
       "wins": 4,
       "points_earned": 2900,
       "penalty_deductions": 0,
@@ -410,6 +431,34 @@
           "points": 300,
           "type": "points",
           "note": "Winners Of Cooking"
+        },
+        {
+          "id": "st-ad64af8871",
+          "event": "Swimming",
+          "points": 0,
+          "type": "points",
+          "note": ""
+        },
+        {
+          "id": "st-0881ed7eae",
+          "event": "Swimming",
+          "points": 0,
+          "type": "points",
+          "note": ""
+        },
+        {
+          "id": "st-aa4bc47bd3",
+          "event": "Swimming",
+          "points": 0,
+          "type": "points",
+          "note": ""
+        },
+        {
+          "id": "st-9991b68a40",
+          "event": "Swimming",
+          "points": 0,
+          "type": "points",
+          "note": ""
         }
       ]
     },
