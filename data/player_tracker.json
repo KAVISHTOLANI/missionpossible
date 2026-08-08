@@ -581,19 +581,19 @@
         "played": [
           true,
           true,
-          false,
+          true,
           false,
           false
         ],
         "games": [
           "LEMON AND SPOON RACE",
           "KABADDI",
-          "",
+          "SWIMMING",
           "",
           ""
         ],
         "created_at": "2026-06-23T12:50:36",
-        "updated_at": "2026-06-29T11:48:28"
+        "updated_at": "2026-08-08T07:08:24"
       },
       {
         "id": "pt-306553fb90",
@@ -954,20 +954,20 @@
         "department": "Security",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "CRICKET",
-          "",
+          "SWIMMING",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-25T13:22:57",
-        "updated_at": "2026-07-25T13:23:29"
+        "updated_at": "2026-08-08T07:08:49"
       },
       {
         "id": "pt-adc2d293b0",
@@ -1196,20 +1196,64 @@
         "department": "Security",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "RANGOLI",
-          "",
+          "SWIMMING",
           "",
           "",
           ""
         ],
         "created_at": "2026-08-04T12:24:34",
-        "updated_at": "2026-08-04T12:25:09"
+        "updated_at": "2026-08-08T07:08:14"
+      },
+      {
+        "id": "pt-1994577b59",
+        "name": "Abinav",
+        "employee_id": "810",
+        "department": "Maintenance",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SWIMMING",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-08T07:07:53",
+        "updated_at": "2026-08-08T07:08:39"
+      },
+      {
+        "id": "pt-96f960e8e8",
+        "name": "Pinky",
+        "employee_id": "507579",
+        "department": "H.K",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SWIMMING",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-08T07:07:53",
+        "updated_at": "2026-08-08T07:08:01"
       }
     ],
     "dominators": [
