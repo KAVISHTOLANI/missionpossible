@@ -283,10 +283,10 @@
       "id": "mvp-507014354d",
       "player_name": "Mr. Ambedkar",
       "team_name": "Team Royals",
-      "gold": 1,
+      "gold": 2,
       "silver": 0,
-      "points": 10,
-      "updated_at": "2026-06-23 10:23"
+      "points": 20,
+      "updated_at": "2026-08-08 06:08"
     },
     {
       "id": "mvp-6ef54c2386",
@@ -473,9 +473,9 @@
       "player_name": "Praveen",
       "team_name": "Team Creators",
       "gold": 1,
-      "silver": 0,
-      "points": 10,
-      "updated_at": "2026-06-29 11:51"
+      "silver": 1,
+      "points": 15,
+      "updated_at": "2026-08-08 06:06"
     },
     {
       "id": "mvp-efec0b9728",
@@ -608,9 +608,9 @@
       "player_name": "Dr.Amit",
       "team_name": "Team Royals",
       "gold": 1,
-      "silver": 0,
-      "points": 10,
-      "updated_at": "2026-07-06 13:07"
+      "silver": 1,
+      "points": 15,
+      "updated_at": "2026-08-08 06:10"
     },
     {
       "id": "mvp-167640d622",
@@ -734,9 +734,9 @@
       "player_name": "Mr. Kailash",
       "team_name": "Team Creators",
       "gold": 0,
-      "silver": 1,
-      "points": 5,
-      "updated_at": "2026-07-25 13:35"
+      "silver": 2,
+      "points": 10,
+      "updated_at": "2026-08-08 06:06"
     },
     {
       "id": "mvp-0c4db390f0",
@@ -827,6 +827,96 @@
       "silver": 0,
       "points": 10,
       "updated_at": "2026-08-04 12:18"
+    },
+    {
+      "id": "mvp-7be3962b47",
+      "player_name": "Ms Roseline Suzan Konmanda",
+      "team_name": "Team Dominators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-08-08 06:03"
+    },
+    {
+      "id": "mvp-498f3506ee",
+      "player_name": "Mr Shiva Reddy",
+      "team_name": "Team Dominators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-08-08 06:03"
+    },
+    {
+      "id": "mvp-4037ef8139",
+      "player_name": "Mr Bijay Kundu",
+      "team_name": "Team Dominators",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-08-08 06:03"
+    },
+    {
+      "id": "mvp-458c920bb9",
+      "player_name": "Mr. Himanshu",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-08-08 06:04"
+    },
+    {
+      "id": "mvp-abe3616645",
+      "player_name": "Mr. Gouranga Singh",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-08-08 06:05"
+    },
+    {
+      "id": "mvp-a6f17c0d15",
+      "player_name": "Dr. Vyshnavi Bommakanti",
+      "team_name": "Team Royals",
+      "gold": 1,
+      "silver": 0,
+      "points": 10,
+      "updated_at": "2026-08-08 06:05"
+    },
+    {
+      "id": "mvp-144c7022ce",
+      "player_name": "Pinky",
+      "team_name": "Team Creators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-08-08 06:05"
+    },
+    {
+      "id": "mvp-317be85f58",
+      "player_name": "Abinav",
+      "team_name": "Team Creators",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-08-08 06:06"
+    },
+    {
+      "id": "mvp-02e5d94756",
+      "player_name": "Dr. Sravya Reddy",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-08-08 06:11"
+    },
+    {
+      "id": "mvp-09289b1583",
+      "player_name": "Dr. Ratnamala",
+      "team_name": "Team Royals",
+      "gold": 0,
+      "silver": 1,
+      "points": 5,
+      "updated_at": "2026-08-08 06:11"
     }
   ],
   "fair_play": [
