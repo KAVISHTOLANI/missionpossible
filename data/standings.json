@@ -3,11 +3,11 @@
     "creators": {
       "name": "Team Creators",
       "color": "#D4A017",
-      "events_played": 26,
+      "events_played": 28,
       "wins": 2,
-      "points_earned": 1675,
+      "points_earned": 1775,
       "penalty_deductions": 0,
-      "net_points": 1675,
+      "net_points": 1775,
       "gold": 5,
       "silver": 4,
       "bronze": 0,
@@ -193,6 +193,20 @@
           "points": 0,
           "type": "points",
           "note": ""
+        },
+        {
+          "id": "st-65fa2869ec",
+          "event": "Swimming",
+          "points": 50,
+          "type": "points",
+          "note": "2nd Place Women's Swimming - Pinky"
+        },
+        {
+          "id": "st-5ee86d3255",
+          "event": "Swimming",
+          "points": 50,
+          "type": "points",
+          "note": "2nd Place Swimming Relay"
         }
       ]
     },
@@ -402,11 +416,11 @@
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 27,
+      "events_played": 30,
       "wins": 3,
-      "points_earned": 2175,
+      "points_earned": 2425,
       "penalty_deductions": 0,
-      "net_points": 2175,
+      "net_points": 2425,
       "gold": 6,
       "silver": 7,
       "bronze": 0,
@@ -599,6 +613,27 @@
           "points": 150,
           "type": "points",
           "note": "2nd Place Cooking Competition"
+        },
+        {
+          "id": "st-01d16662c9",
+          "event": "Swimming",
+          "points": 50,
+          "type": "points",
+          "note": "2nd Place Men's Swimming - Mr. Gouranga Singh"
+        },
+        {
+          "id": "st-cde5144be1",
+          "event": "Swimming",
+          "points": 100,
+          "type": "points",
+          "note": "Winner Women's Swimming - Dr. Vyshnavi Bommakanti"
+        },
+        {
+          "id": "st-7700ec3877",
+          "event": "Swimming",
+          "points": 100,
+          "type": "points",
+          "note": "Winner's Swimming Relay"
         }
       ]
     }
