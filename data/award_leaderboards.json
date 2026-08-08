@@ -1018,6 +1018,20 @@
       "fair_play_points": 1,
       "why": "Fair Play Rangoon - 2nd Place",
       "updated_at": "2026-08-04 12:19"
+    },
+    {
+      "id": "fp-ca65fc5873",
+      "team_name": "Team Creators",
+      "fair_play_points": 2,
+      "why": "Fair Play Swimming",
+      "updated_at": "2026-08-08 06:00"
+    },
+    {
+      "id": "fp-5db70c83b9",
+      "team_name": "Team Dominators",
+      "fair_play_points": 1,
+      "why": "Fair Play Swimming - 2nd Place",
+      "updated_at": "2026-08-08 06:01"
     }
   ]
 }
