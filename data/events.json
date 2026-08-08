@@ -69,14 +69,16 @@
     "weather": "Warm & Humid — ~31°C",
     "weather_icon": "💧",
     "weather_note": "Late June temperatures moderate to ~31°C as monsoon progresses.",
-    "status": "upcoming",
+    "status": "completed",
     "rules": [],
     "points": {
       "winner": 300,
       "runner_up": 150
     },
     "event_time": "",
-    "num": "#03"
+    "num": "#03",
+    "tournament_format": "",
+    "results": []
   },
   {
     "id": "sand-volleyball",
@@ -175,14 +177,16 @@
     "weather": "Monsoon — Warm & Wet — ~29°C",
     "weather_icon": "🌧",
     "weather_note": "Early July active monsoon season. Rangoli needs a sheltered space.",
-    "status": "upcoming",
+    "status": "completed",
     "rules": [],
     "points": {
       "winner": 300,
       "runner_up": 150
     },
     "event_time": "",
-    "num": "#07"
+    "num": "#07",
+    "tournament_format": "",
+    "results": []
   },
   {
     "id": "badminton",
@@ -416,14 +420,16 @@
     "weather": "Monsoon — Warm & Cloudy — ~29°C",
     "weather_icon": "☁️",
     "weather_note": "Indoor arrangement recommended.",
-    "status": "upcoming",
+    "status": "completed",
     "rules": [],
     "points": {
       "winner": 300,
       "runner_up": 150
     },
     "event_time": "",
-    "num": "#16"
+    "num": "#16",
+    "tournament_format": "",
+    "results": []
   },
   {
     "id": "8ball-pool",
