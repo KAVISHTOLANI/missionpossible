@@ -1122,6 +1122,13 @@
       "fair_play_points": 1,
       "why": "Fair Play Swimming - 2nd Place",
       "updated_at": "2026-08-08 06:01"
+    },
+    {
+      "id": "fp-7cf434a65d",
+      "team_name": "Team Royals",
+      "fair_play_points": 2,
+      "why": "Fair Play Swimming",
+      "updated_at": "2026-08-08 07:17"
     }
   ]
 }
