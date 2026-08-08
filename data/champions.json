@@ -355,5 +355,62 @@
     "categories": [],
     "winning_photo": "",
     "updated_at": "2026-08-04 12:34"
+  },
+  {
+    "event_id": "cooking",
+    "event_name": "Cooking Competition",
+    "sport_category": "Indoor Event",
+    "champion_type": "team",
+    "team": "dominators",
+    "team_name": "Team Dominators",
+    "second_team": "royals",
+    "second_team_name": "Team Royals",
+    "player_name": "",
+    "second_player_name": "",
+    "players": [
+      "Ms Roseline Suzan Konmanda",
+      "Mr Shiva Reddy",
+      "Mr Bijay Kundu"
+    ],
+    "categories": [],
+    "winning_photo": "",
+    "updated_at": "2026-08-08 07:29"
+  },
+  {
+    "event_id": "swimming",
+    "event_name": "Swimming",
+    "sport_category": "Outdoor Sport",
+    "champion_type": "individual",
+    "team": "royals",
+    "team_name": "Team Royals",
+    "second_team": "royals",
+    "second_team_name": "Team Royals",
+    "player_name": "Mr. Himanshu",
+    "second_player_name": "Mr. Gouranga Singh",
+    "players": [],
+    "categories": [
+      {
+        "name": "Women's Singles",
+        "first_player": "Dr. Vyshnavi Bommakanti",
+        "first_team": "royals",
+        "first_team_name": "Team Royals",
+        "second_player": "Pinky",
+        "second_team": "creators",
+        "second_team_name": "Team Creators",
+        "photo": ""
+      },
+      {
+        "name": "Relay Race",
+        "first_player": "Team Royals",
+        "first_team": "royals",
+        "first_team_name": "Team Royals",
+        "second_player": "Team Creators",
+        "second_team": "creators",
+        "second_team_name": "Team Creators",
+        "photo": ""
+      }
+    ],
+    "winning_photo": "",
+    "updated_at": "2026-08-08 07:31"
   }
 ]
