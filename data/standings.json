@@ -199,11 +199,11 @@
     "dominators": {
       "name": "Team Dominators",
       "color": "#800000",
-      "events_played": 26,
-      "wins": 3,
-      "points_earned": 2600,
+      "events_played": 27,
+      "wins": 4,
+      "points_earned": 2900,
       "penalty_deductions": 0,
-      "net_points": 2600,
+      "net_points": 2900,
       "gold": 8,
       "silver": 7,
       "bronze": 0,
@@ -389,17 +389,24 @@
           "points": 150,
           "type": "points",
           "note": "2nd Place Rangoli - Mr Gnaneshwar G -  Ms Srujana Paka - Ms Jyothi P"
+        },
+        {
+          "id": "st-44d9fcd42b",
+          "event": "Cooking Competition",
+          "points": 300,
+          "type": "points",
+          "note": "Winners Of Cooking"
         }
       ]
     },
     "royals": {
       "name": "Team Royals",
       "color": "#4169E1",
-      "events_played": 26,
+      "events_played": 27,
       "wins": 3,
-      "points_earned": 2025,
+      "points_earned": 2175,
       "penalty_deductions": 0,
-      "net_points": 2025,
+      "net_points": 2175,
       "gold": 6,
       "silver": 7,
       "bronze": 0,
@@ -585,6 +592,13 @@
           "points": 0,
           "type": "points",
           "note": ""
+        },
+        {
+          "id": "st-ebfceb5e0f",
+          "event": "Cooking Competition",
+          "points": 150,
+          "type": "points",
+          "note": "2nd Place Cooking Competition"
         }
       ]
     }
