@@ -2742,18 +2742,18 @@
           true,
           true,
           true,
-          false,
+          true,
           false
         ],
         "games": [
           "TUG OF WAR",
           "KABADDI",
           "SAND VOLLYBALL",
-          "",
+          "SWIMMING",
           ""
         ],
         "created_at": "2026-06-23T09:45:54",
-        "updated_at": "2026-07-25T14:08:57"
+        "updated_at": "2026-08-08T07:12:27"
       },
       {
         "id": "pt-a3378df17f",
@@ -3114,20 +3114,20 @@
         "department": "Anesthesia",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "BADMINTON",
-          "",
+          "COOKING",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-06T12:43:15",
-        "updated_at": "2026-07-06T12:43:38"
+        "updated_at": "2026-08-08T07:13:13"
       },
       {
         "id": "pt-cc2d8ecacb",
@@ -3199,23 +3199,23 @@
         "id": "pt-17e5ecba05",
         "name": "Dr. Ratnamala",
         "employee_id": "4874",
-        "department": "Pediatrician",
+        "department": "Doctor",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "TABLE TENNIS",
-          "",
+          "COOKING",
           "",
           "",
           ""
         ],
         "created_at": "2026-07-25T12:58:39",
-        "updated_at": "2026-07-25T13:01:01"
+        "updated_at": "2026-08-08T07:13:27"
       },
       {
         "id": "pt-e2a037ecdc",
@@ -3268,20 +3268,20 @@
         "department": "Security",
         "played": [
           true,
-          false,
+          true,
           false,
           false,
           false
         ],
         "games": [
           "RANGOLI",
-          "",
+          "SWIMMING",
           "",
           "",
           ""
         ],
         "created_at": "2026-08-04T12:31:34",
-        "updated_at": "2026-08-04T12:31:51"
+        "updated_at": "2026-08-08T07:12:35"
       },
       {
         "id": "pt-3cd8418409",
@@ -3392,6 +3392,94 @@
         ],
         "created_at": "2026-08-04T12:31:34",
         "updated_at": "2026-08-04T12:32:06"
+      },
+      {
+        "id": "pt-4960df4af5",
+        "name": "Dr. Vyshnavi Bommakanti",
+        "employee_id": "Vyshnavi",
+        "department": "Doctor",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SWIMMING",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-08T07:11:54",
+        "updated_at": "2026-08-08T07:12:09"
+      },
+      {
+        "id": "pt-e94acf5ea3",
+        "name": "Ms. G. Nagalakshmi",
+        "employee_id": "4838",
+        "department": "Nursing",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SWIMMING",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-08T07:11:54",
+        "updated_at": "2026-08-08T07:12:12"
+      },
+      {
+        "id": "pt-476de01655",
+        "name": "Mr. Himanshu",
+        "employee_id": "511194",
+        "department": "Security",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "SWIMMING",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-08T07:11:54",
+        "updated_at": "2026-08-08T07:12:14"
+      },
+      {
+        "id": "pt-ddcffcbb11",
+        "name": "Dr. Sravya Reddy",
+        "employee_id": "4840",
+        "department": "Doctor",
+        "played": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "games": [
+          "COOKING",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "created_at": "2026-08-08T07:12:59",
+        "updated_at": "2026-08-08T07:13:20"
       }
     ]
   }
